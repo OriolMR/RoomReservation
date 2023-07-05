@@ -26,8 +26,8 @@ namespace RoomReservation.Models
         public Reserve(DateTime reserveDate, TimeSpan startingHour, TimeSpan endingHour)
         {
             this.reserveDate = reserveDate;
-            this.startingHour = startingHour;
-            this.endingHour = endingHour;
+            this.startingHour = TimeSpan.FromTicks(startingHour.Ticks);
+            this.endingHour = TimeSpan.FromTicks(endingHour.Ticks);
         }
     }
 }

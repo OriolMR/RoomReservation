@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "prhmfb8vuXKS6P4zhs1OXZ83uEsxGLCS8+mISQdgn1ll9iM+xxhmvsVHGZbjef+eBrzXSUdNX+WAIMYGvee0/A==",
+  "dgSpecHash": "BGLyeVDpN3FUwqGmJlb3VLLD8XYllXLrlSke88uIAXc4Z0esSsSEFutyyQxRVquI+SH4H3LsxuYSIAAjzkXUAg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\oriol.martinez\\source4\\RoomReservation\\webapi\\webapi.csproj",
+  "projectFilePath": "C:\\Users\\oriol.martinez\\Desktop\\source4\\RoomReservation\\webapi\\webapi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\oriol.martinez\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\oriol.martinez\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
