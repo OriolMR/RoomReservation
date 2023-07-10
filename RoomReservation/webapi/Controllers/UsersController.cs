@@ -74,7 +74,7 @@ namespace RoomReservation.Controllers
             {
                 UserName = user.UserName,
                 Email = user.Email
-            };
+            }; 
 
             var result = await userManager.CreateAsync(newUser, user.PasswordHash);
 
