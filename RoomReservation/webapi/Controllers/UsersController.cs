@@ -1,19 +1,26 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using webapi.Areas.Identity.Data;
+using webapi.Controllers;
 using webapi.DataAccess;
 
 namespace RoomReservation.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class UsersController : ControllerBase
     {
         private readonly IIdentityAppDbContext identityAppDbContext;
+        private readonly UserManager<webapiUser> userManager;
+        private readonly ILogger<AuthenticationController> logger;
 
-        public UsersController(IIdentityAppDbContext dbContext)
+        public UsersController(IIdentityAppDbContext dbContext, UserManager<webapiUser> userManager, ILogger<AuthenticationController> logger)
         {
             identityAppDbContext = dbContext;
+            this.userManager = userManager;
+            this.logger = logger;
         }
 
         // GET: api/Users
@@ -39,10 +46,25 @@ namespace RoomReservation.Controllers
             return NotFound();
         }
 
+        // GET: api/Users/{username}
+        [HttpGet("username/{username}")]
+        public async Task<IActionResult> GetUserByUsername(string username)
+        {
+            var user = await identityAppDbContext.Users.FirstOrDefaultAsync(x => x.UserName == username);
+
+            if (user != null)
+            {
+                return Ok(user);
+            }
+
+            return NotFound();
+        }
+
         // POST: api/Users
         [HttpPost]
         public async Task<IActionResult> AddUser([FromBody] webapiUser user)
         {
+            Console.WriteLine("Añadiendo usuario...");
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -50,29 +72,26 @@ namespace RoomReservation.Controllers
 
             var newUser = new webapiUser
             {
-                // Asignar las propiedades del nuevo usuario
                 UserName = user.UserName,
-                NormalizedUserName = user.NormalizedUserName,
-                Email = user.Email,
-                NormalizedEmail = user.NormalizedEmail,
-                EmailConfirmed = user.EmailConfirmed,
-                PasswordHash = user.PasswordHash,
-                SecurityStamp = user.SecurityStamp,
-                ConcurrencyStamp = user.ConcurrencyStamp,
-                PhoneNumber = user.PhoneNumber,
-                PhoneNumberConfirmed = user.PhoneNumberConfirmed,
-                TwoFactorEnabled = user.TwoFactorEnabled,
-                LockoutEnd = user.LockoutEnd,
-                LockoutEnabled = user.LockoutEnabled,
-                AccessFailedCount = user.AccessFailedCount
+                Email = user.Email
             };
 
-            identityAppDbContext.Users.Add(newUser); // Agregar el nuevo usuario al contexto
+            var result = await userManager.CreateAsync(newUser, user.PasswordHash);
 
-            await identityAppDbContext.SaveChangesAsync();
+            if (result.Succeeded)
+            {
+                return CreatedAtAction(nameof(GetUserById), new { id = newUser.Id }, newUser);
+            }
 
-            return CreatedAtAction(nameof(GetUserById), new { id = newUser.Id }, newUser);
+            // Hubo errores al crear el usuario
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error.Description);
+            }
+
+            return BadRequest(ModelState);
         }
+
 
         // PUT: api/Users/{id}
         [HttpPut("{id}")]

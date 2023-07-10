@@ -1,6 +1,8 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using webapi.Areas.Identity.Data;
 using webapi.DataAccess;
+using Microsoft.AspNetCore.Identity.UI;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,19 +19,43 @@ builder.Services.AddDbContext<IdentityAppDbContext>(options =>
 
 builder.Services.AddScoped<IRoomReservationDbContext, RoomReservationDbContext>();
 builder.Services.AddScoped<IIdentityAppDbContext, IdentityAppDbContext>();
+builder.Services.AddLogging();
 
-builder.Services.AddDefaultIdentity<webapiUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<IdentityAppDbContext>();
+
+builder.Services.AddIdentity<webapiUser, IdentityRole>(options =>
+{
+    options.SignIn.RequireConfirmedAccount = true;
+    options.User.RequireUniqueEmail = true;
+    options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+  
+})
+.AddEntityFrameworkStores<IdentityAppDbContext>()
+.AddDefaultUI()
+.AddDefaultTokenProviders();
+  
+
+
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowLocalhost4200",
+        builder =>
+        {
+            builder.WithOrigins("https://localhost:4200")
+                .AllowAnyHeader()
+                .AllowAnyMethod();
+        });
+});
 
 builder.Services.AddControllers();
 
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+app.UseCors("AllowLocalhost4200");
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -41,6 +67,7 @@ else
     app.UseDefaultFiles();
     app.UseStaticFiles();
 }
+
 
 app.UseAuthorization();
 
