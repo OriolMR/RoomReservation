@@ -2,25 +2,26 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using webapi.DataAccess;
+using webapi.Repositories;
 
 namespace RoomReservation.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class OfficesController : ControllerBase
+    public class OfficesController : ControllerBase, IOfficesController
     {
-        private readonly IRoomReservationDbContext roomReservationRepository;
+        private readonly RoomReservationDbContext roomReservationDbContext;
 
-        public OfficesController(IRoomReservationDbContext roomReservationRepository)
+        public OfficesController(RoomReservationDbContext roomReservationRepository)
         {
-            this.roomReservationRepository = roomReservationRepository;
+            this.roomReservationDbContext = roomReservationRepository;
         }
 
         // GET: api/Offices
         [HttpGet]
         public async Task<IActionResult> GetAllOffices()
         {
-            var offices = await roomReservationRepository.Offices.ToListAsync();
+            var offices = await roomReservationDbContext.Offices.ToListAsync();
 
             return Ok(offices);
         }
@@ -29,11 +30,25 @@ namespace RoomReservation.Controllers
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetOfficeById([FromRoute] int id)
         {
-            var office = await roomReservationRepository.Offices.FirstOrDefaultAsync(x => x.officeId == id);
+            var office = await roomReservationDbContext.Offices.FirstOrDefaultAsync(x => x.officeId == id);
 
             if (office != null)
             {
                 return Ok(office);
+            }
+
+            return NotFound();
+        }
+
+        // GET: api/Offices/getOfficesByCityId/{cityId}
+        [HttpGet("getOfficesByCityId/{cityId:int}")]
+        public async Task<IActionResult> GetOfficesByCityId(int cityId)
+        {
+            var offices = await roomReservationDbContext.Offices.Where(x => x.cityId == cityId).ToListAsync();
+
+            if (offices != null && offices.Count > 0)
+            {
+                return Ok(offices);
             }
 
             return NotFound();
@@ -44,8 +59,8 @@ namespace RoomReservation.Controllers
         public async Task<IActionResult> AddOffice([FromBody] Office office)
         {
             office.officeId = 0; // Asignar valor inicial a OfficeId
-            await roomReservationRepository.Offices.AddAsync(office);
-            await roomReservationRepository.SaveChangesAsync();
+            await roomReservationDbContext.Offices.AddAsync(office);
+            await roomReservationDbContext.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetOfficeById), new { id = office.officeId }, office);
         }
@@ -54,13 +69,13 @@ namespace RoomReservation.Controllers
         [HttpPut("{id:int}")]
         public async Task<IActionResult> UpdateOffice(int id, [FromBody] Office office)
         {
-            var existingOffice = await roomReservationRepository.Offices.FirstOrDefaultAsync(x => x.officeId == id);
+            var existingOffice = await roomReservationDbContext.Offices.FirstOrDefaultAsync(x => x.officeId == id);
 
             if (existingOffice != null)
             {
                 existingOffice.officeName = office.officeName;
                 existingOffice.cityId = office.cityId;
-                await roomReservationRepository.SaveChangesAsync();
+                await roomReservationDbContext.SaveChangesAsync();
 
                 return Ok(existingOffice);
             }
@@ -72,12 +87,12 @@ namespace RoomReservation.Controllers
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteOffice(int id)
         {
-            var office = await roomReservationRepository.Offices.FindAsync(id);
+            var office = await roomReservationDbContext.Offices.FindAsync(id);
 
             if (office != null)
             {
-                roomReservationRepository.Offices.Remove(office);
-                await roomReservationRepository.SaveChangesAsync();
+                roomReservationDbContext.Offices.Remove(office);
+                await roomReservationDbContext.SaveChangesAsync();
 
                 return NoContent();
             }

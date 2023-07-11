@@ -2,25 +2,24 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using webapi.Areas.Identity.Data;
-using webapi.Controllers;
 using webapi.DataAccess;
+using webapi.Repositories;
 
 namespace RoomReservation.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
-    public class UsersController : ControllerBase
-    {
-        private readonly IIdentityAppDbContext identityAppDbContext;
-        private readonly UserManager<webapiUser> userManager;
-        private readonly ILogger<AuthenticationController> logger;
 
-        public UsersController(IIdentityAppDbContext dbContext, UserManager<webapiUser> userManager, ILogger<AuthenticationController> logger)
+   
+    public class UsersController : ControllerBase, IUsersController
+    {
+        private readonly IdentityAppDbContext identityAppDbContext;
+        private readonly UserManager<webapiUser> userManager;
+
+        public UsersController(IdentityAppDbContext dbContext, UserManager<webapiUser> userManager)
         {
             identityAppDbContext = dbContext;
             this.userManager = userManager;
-            this.logger = logger;
         }
 
         // GET: api/Users
@@ -58,40 +57,7 @@ namespace RoomReservation.Controllers
             }
 
             return NotFound();
-        }
-
-        // POST: api/Users
-        [HttpPost]
-        public async Task<IActionResult> AddUser([FromBody] webapiUser user)
-        {
-            Console.WriteLine("Añadiendo usuario...");
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
-            var newUser = new webapiUser
-            {
-                UserName = user.UserName,
-                Email = user.Email
-            }; 
-
-            var result = await userManager.CreateAsync(newUser, user.PasswordHash);
-
-            if (result.Succeeded)
-            {
-                return CreatedAtAction(nameof(GetUserById), new { id = newUser.Id }, newUser);
-            }
-
-            // Hubo errores al crear el usuario
-            foreach (var error in result.Errors)
-            {
-                ModelState.AddModelError("", error.Description);
-            }
-
-            return BadRequest(ModelState);
-        }
-
+        }       
 
         // PUT: api/Users/{id}
         [HttpPut("{id}")]

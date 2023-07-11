@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\oriol.martinez\\Desktop\\lzt\\RoomReservation\\RoomReservation\\webapi\\webapi.csproj": {}
+    "C:\\Users\\oriol.martinez\\Desktop\\zli\\RoomReservation\\RoomReservation\\webapi\\webapi.csproj": {}
   },
   "projects": {
-    "C:\\Users\\oriol.martinez\\Desktop\\lzt\\RoomReservation\\RoomReservation\\webapi\\webapi.csproj": {
+    "C:\\Users\\oriol.martinez\\Desktop\\zli\\RoomReservation\\RoomReservation\\webapi\\webapi.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\oriol.martinez\\Desktop\\lzt\\RoomReservation\\RoomReservation\\webapi\\webapi.csproj",
+        "projectUniqueName": "C:\\Users\\oriol.martinez\\Desktop\\zli\\RoomReservation\\RoomReservation\\webapi\\webapi.csproj",
         "projectName": "webapi",
-        "projectPath": "C:\\Users\\oriol.martinez\\Desktop\\lzt\\RoomReservation\\RoomReservation\\webapi\\webapi.csproj",
+        "projectPath": "C:\\Users\\oriol.martinez\\Desktop\\zli\\RoomReservation\\RoomReservation\\webapi\\webapi.csproj",
         "packagesPath": "C:\\Users\\oriol.martinez\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\oriol.martinez\\Desktop\\lzt\\RoomReservation\\RoomReservation\\webapi\\obj\\",
+        "outputPath": "C:\\Users\\oriol.martinez\\Desktop\\zli\\RoomReservation\\RoomReservation\\webapi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\oriol.martinez\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -41,10 +41,6 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "dependencies": {
-            "Fluent.Infrastructure": {
-              "target": "Package",
-              "version": "[2.0.0-beta-01, )"
-            },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
               "version": "[7.0.8, )"

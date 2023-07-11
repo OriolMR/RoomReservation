@@ -1,16 +1,18 @@
 ﻿using RoomReservation.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using webapi.DataAccess;
+using webapi.Repositories;
 
 namespace RoomReservation.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ReservesController : ControllerBase
+    public class ReservesController : ControllerBase, IReservesController
     {
-        private readonly IRoomReservationDbContext roomReservationDbContext;
+        private readonly RoomReservationDbContext roomReservationDbContext;
 
-        public ReservesController(IRoomReservationDbContext roomReservationDbContext)
+        public ReservesController(RoomReservationDbContext roomReservationDbContext)
         {
             this.roomReservationDbContext = roomReservationDbContext;
         }
@@ -33,6 +35,20 @@ namespace RoomReservation.Controllers
             if (reserve != null)
             {
                 return Ok(reserve);
+            }
+
+            return NotFound();
+        }
+
+        // GET: api/Reserves/{meetingRoomId}
+        [HttpGet("getReservesByMeetingRoomId/{meetingRoomId:int}")]
+        public async Task<IActionResult> GetReservesByMeetingRoomId(int meetingRoomId)
+        {
+            var reserves = await roomReservationDbContext.Reserves.Where(x => x.meetingRoomId == meetingRoomId).ToListAsync();
+
+            if (reserves != null && reserves.Count > 0)
+            {
+                return Ok(reserves);
             }
 
             return NotFound();

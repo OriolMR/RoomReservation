@@ -2,16 +2,17 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using webapi.DataAccess;
+using webapi.Repositories;
 
 namespace RoomReservation.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class MeetingRoomsController : ControllerBase
+    public class MeetingRoomsController : ControllerBase, IMeetingRoomsController
     {
-        private readonly IRoomReservationDbContext roomReservationDbContext;
+        private readonly RoomReservationDbContext roomReservationDbContext;
 
-        public MeetingRoomsController(IRoomReservationDbContext roomReservationDbContext)
+        public MeetingRoomsController(RoomReservationDbContext roomReservationDbContext)
         {
             this.roomReservationDbContext = roomReservationDbContext;
         }
@@ -38,6 +39,21 @@ namespace RoomReservation.Controllers
 
             return NotFound();
         }
+
+        // GET: api/Rooms/getMeetingRoomsByOfficeId/{officeId}
+        [HttpGet("getMeetingRoomsByOfficeId/{officeId:int}")]
+        public async Task<IActionResult> GetMeetingRoomsByOfficeId(int officeId)
+        {
+            var meetingRooms = await roomReservationDbContext.MeetingRooms.Where(x => x.officeId == officeId).ToListAsync();
+
+            if (meetingRooms != null && meetingRooms.Count > 0)
+            {
+                return Ok(meetingRooms);
+            }
+
+            return NotFound();
+        }
+
 
         // POST: api/Rooms
         [HttpPost]

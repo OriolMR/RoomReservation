@@ -9,20 +9,14 @@ namespace webapi.Areas.Identity.Data
     // Add profile data for application users by adding properties to the webapiUser class
     public class webapiUser : IdentityUser
     {
-        public string UserName { get; set; }
-        public string Email { get; set; }
-        public string PasswordHash { get; set; }
-
-        public virtual string? NormalizedUserName { get; set; }
 
         public webapiUser() { }
 
-        public webapiUser(string userName, string email, string passwordHash, string normalizedUsername)
+        public webapiUser(string userName, string email, string passwordHash)
         {
             UserName = userName;
             Email = email;
             PasswordHash = passwordHash;
-            NormalizedUserName = normalizedUsername;
         }
     }
 

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace webapi.DataAccess
 {
-    public class RoomReservationDbContext : DbContext, IRoomReservationDbContext
+    public class RoomReservationDbContext : DbContext
     {
 
         public RoomReservationDbContext(DbContextOptions<RoomReservationDbContext> options) : base(options)

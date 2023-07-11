@@ -1,40 +1,25 @@
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using webapi.Areas.Identity.Data;
 using webapi.DataAccess;
-using Microsoft.AspNetCore.Identity.UI;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-var authApplicationConnectionString = builder.Configuration.GetConnectionString("RoomReservationConnection") ?? throw new InvalidOperationException("Connection string 'AuthApplicationConnection' not found.");
+var roomReservationConnectionString = builder.Configuration.GetConnectionString("RoomReservationConnection") ?? throw new InvalidOperationException("Connection string 'AuthApplicationConnection' not found.");
 builder.Services.AddDbContext<RoomReservationDbContext>(options =>
-    options.UseSqlServer(authApplicationConnectionString));
+    options.UseSqlServer(roomReservationConnectionString));
 
-var authApplicationContextConnectionString = builder.Configuration.GetConnectionString("IdentityConnection") ?? throw new InvalidOperationException("Connection string 'AuthApplicationContextConnection' not found.");
+var roomReservationContextConnectionString = builder.Configuration.GetConnectionString("IdentityConnection") ?? throw new InvalidOperationException("Connection string 'AuthApplicationContextConnection' not found.");
 builder.Services.AddDbContext<IdentityAppDbContext>(options =>
-    options.UseSqlServer(authApplicationContextConnectionString));
+    options.UseSqlServer(roomReservationContextConnectionString));
 
-builder.Services.AddScoped<IRoomReservationDbContext, RoomReservationDbContext>();
-builder.Services.AddScoped<IIdentityAppDbContext, IdentityAppDbContext>();
-builder.Services.AddLogging();
-
-
-builder.Services.AddIdentity<webapiUser, IdentityRole>(options =>
+builder.Services.AddDefaultIdentity<webapiUser>(options =>
 {
-    options.SignIn.RequireConfirmedAccount = true;
-    options.User.RequireUniqueEmail = true;
-    options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
-  
+    options.SignIn.RequireConfirmedAccount = false;
 })
-.AddEntityFrameworkStores<IdentityAppDbContext>()
-.AddDefaultUI()
-.AddDefaultTokenProviders();
-  
-
-
+   .AddEntityFrameworkStores<IdentityAppDbContext>();
 
 builder.Services.AddCors(options =>
 {
@@ -67,7 +52,6 @@ else
     app.UseDefaultFiles();
     app.UseStaticFiles();
 }
-
 
 app.UseAuthorization();
 

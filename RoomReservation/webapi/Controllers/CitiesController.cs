@@ -2,18 +2,19 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using webapi.DataAccess;
+using webapi.Repositories;
 
 namespace RoomReservation.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class CitiesController : ControllerBase
+    public class CitiesController : ControllerBase, ICitiesController
     {
         private readonly RoomReservationDbContext roomReservationDbContext;
 
-        public CitiesController(RoomReservationDbContext authApplicationDbContext)
+        public CitiesController(RoomReservationDbContext roomReservationDbContext)
         {
-            this.roomReservationDbContext = authApplicationDbContext;
+            this.roomReservationDbContext = roomReservationDbContext;
         }
 
         // GET: api/Cities
@@ -34,6 +35,20 @@ namespace RoomReservation.Controllers
             if (city != null)
             {
                 return Ok(city);
+            }
+
+            return NotFound();
+        }
+
+        // GET: api/Cities/{countryId}
+        [HttpGet("getCitiesByCountryId/{countryId:int}")]
+        public async Task<IActionResult> GetCitiesByCountryId(int countryId)
+        {
+            var cities = await roomReservationDbContext.Cities.Where(x => x.countryId == countryId).ToListAsync();
+
+            if (cities != null && cities.Count > 0)
+            {
+                return Ok(cities);
             }
 
             return NotFound();

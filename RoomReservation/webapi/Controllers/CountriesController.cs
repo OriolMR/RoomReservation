@@ -1,26 +1,27 @@
 ﻿using RoomReservation.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-
+using webapi.DataAccess;
+using webapi.Repositories;
 
 namespace RoomReservation.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class CountriesController : ControllerBase
+    public class CountriesController : ControllerBase, ICountriesController 
     {
-        private readonly IRoomReservationDbContext roomReservationRepository;
+        private readonly RoomReservationDbContext roomReservationDbContext;
 
-        public CountriesController(IRoomReservationDbContext roomReservationRepository)
+        public CountriesController(RoomReservationDbContext roomReservationDbContext)
         {
-            this.roomReservationRepository = roomReservationRepository;
+            this.roomReservationDbContext = roomReservationDbContext;
         }
 
         // GET: api/Country
         [HttpGet]
         public async Task<IActionResult> GetAllCountries()
         {
-            var countries = await roomReservationRepository.Countries.ToListAsync();
+            var countries = await roomReservationDbContext.Countries.ToListAsync();
 
             return Ok(countries);
         }
@@ -29,7 +30,7 @@ namespace RoomReservation.Controllers
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetCountryById([FromRoute] int id)
         {
-            var country = await roomReservationRepository.Countries.FirstOrDefaultAsync(x => x.countryId == id);
+            var country = await roomReservationDbContext.Countries.FirstOrDefaultAsync(x => x.countryId == id);
 
             if (country != null)
             {
@@ -44,8 +45,8 @@ namespace RoomReservation.Controllers
         public async Task<IActionResult> AddCountry([FromBody] Country country)
         {
             country.countryId = 0; // Asignar valor inicial a countryId
-            await roomReservationRepository.Countries.AddAsync(country);
-            await roomReservationRepository.SaveChangesAsync();
+            await roomReservationDbContext.Countries.AddAsync(country);
+            await roomReservationDbContext.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetCountryById), new { id = country.countryId }, country);
         }
@@ -54,12 +55,12 @@ namespace RoomReservation.Controllers
         [HttpPut("{id:guid}")]
         public async Task<IActionResult> UpdateCountry(int id, [FromBody] Country country)
         {
-            var existingCountry = await roomReservationRepository.Countries.FirstOrDefaultAsync(x => x.countryId == id);
+            var existingCountry = await roomReservationDbContext.Countries.FirstOrDefaultAsync(x => x.countryId == id);
 
             if (existingCountry != null)
             {
                 existingCountry.countryName = country.countryName;
-                await roomReservationRepository.SaveChangesAsync();
+                await roomReservationDbContext.SaveChangesAsync();
 
                 return Ok(existingCountry);
             }
@@ -71,12 +72,12 @@ namespace RoomReservation.Controllers
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteCountry(int id)
         {
-            var country = await roomReservationRepository.Countries.FindAsync(id);
+            var country = await roomReservationDbContext.Countries.FindAsync(id);
 
             if (country != null)
             {
-                roomReservationRepository.Countries.Remove(country);
-                await roomReservationRepository.SaveChangesAsync();
+                roomReservationDbContext.Countries.Remove(country);
+                await roomReservationDbContext.SaveChangesAsync();
 
                 return NoContent();
             }

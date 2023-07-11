@@ -5,20 +5,18 @@ namespace RoomReservation.Models
 {
     public class LoginViewModel
     {
-        public string userName { get; set; }
-        public string passwordHash { get; set; }
+        public string UserName { get; set; }
+        public string PasswordHash { get; set; }
 
         public bool ValidateUserInput()
         {
-            //check if all fields are filled
-            if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(passwordHash))
+            // Verificar que todos los campos estén completos
+            if (string.IsNullOrEmpty(UserName) || string.IsNullOrEmpty(PasswordHash))
                 return false;
 
-            //do any other necessary validation checks
+            // Realizar cualquier otra validación necesaria
 
             return true;
         }
-
-       
     }
 }
