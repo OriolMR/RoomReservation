@@ -7,7 +7,6 @@ using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.Text;
 using System.IdentityModel.Tokens.Jwt;
-using Microsoft.AspNetCore.Authorization;
 
 namespace webapi.Controllers
 {
@@ -112,7 +111,7 @@ namespace webapi.Controllers
             new Claim(ClaimTypes.Name, user.UserName)
             // Puedes agregar más reclamaciones (claims) según tus necesidades
         }),
-                Expires = DateTime.UtcNow.AddDays(7), // Define la fecha de expiración del token
+                Expires = DateTime.UtcNow.AddHours(1), // Define la fecha de expiración del token
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);

@@ -17,7 +17,10 @@ builder.Services.AddDbContext<IdentityAppDbContext>(options =>
 
 builder.Services.AddDefaultIdentity<webapiUser>(options =>
 {
+    options.Password.RequireNonAlphanumeric = false;
     options.SignIn.RequireConfirmedAccount = false;
+    options.Password.RequireUppercase = false;
+    options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
 })
    .AddEntityFrameworkStores<IdentityAppDbContext>();
 
