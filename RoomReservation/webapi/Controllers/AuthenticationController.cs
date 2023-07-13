@@ -59,7 +59,7 @@ namespace webapi.Controllers
 
         [HttpPost("login")]
     
-   
+
         public async Task<IActionResult> Login([FromBody] LoginViewModel loginData)
         {
             if (!loginData.ValidateUserInput())
@@ -73,8 +73,6 @@ namespace webapi.Controllers
             if (user != null)
             {
                 var result = await signInManager.PasswordSignInAsync(user, loginData.PasswordHash, false, lockoutOnFailure: false);
-                
-               
 
                 if (result.Succeeded)
                 {
@@ -82,7 +80,13 @@ namespace webapi.Controllers
 
                     // Generar el token
                     var token = GenerateToken(user);
-                    
+
+                    if (token == null)
+                    {
+                        // Si el token es nulo, indica un error en la generación del token
+                        return BadRequest(new { success = false, error = "Error en la generación del token" });
+                    }
+
                     // Devolver el token en la respuesta
                     return Ok(new { success = true, token });
                 }
@@ -102,7 +106,7 @@ namespace webapi.Controllers
         private string GenerateToken(webapiUser user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(configuration.GetValue<string>("Jwt:SecretKey")); ; // Obtiene la clave secreta de la configuración de la aplicación
+            var key = Encoding.ASCII.GetBytes(configuration.GetValue<string>("Jwt:SecretKey"));  // Obtiene la clave secreta de la configuración de la aplicación
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new[]
