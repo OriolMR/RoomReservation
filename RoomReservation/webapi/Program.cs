@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using System.Configuration;
 using webapi.Areas.Identity.Data;
 using webapi.DataAccess;
 
@@ -21,8 +22,11 @@ builder.Services.AddDefaultIdentity<webapiUser>(options =>
     options.SignIn.RequireConfirmedAccount = false;
     options.Password.RequireUppercase = false;
     options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+    options.User.RequireUniqueEmail = false;
+    
 })
    .AddEntityFrameworkStores<IdentityAppDbContext>();
+
 
 builder.Services.AddCors(options =>
 {

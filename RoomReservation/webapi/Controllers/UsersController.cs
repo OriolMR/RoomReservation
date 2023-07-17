@@ -1,9 +1,12 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using webapi.Areas.Identity.Data;
 using webapi.DataAccess;
+using webapi.Models;
 using webapi.Repositories;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace RoomReservation.Controllers
 {
@@ -57,44 +60,43 @@ namespace RoomReservation.Controllers
             }
 
             return NotFound();
-        }       
+        }
 
-        // PUT: api/Users/{id}
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUser(string id, [FromBody] webapiUser user)
+        public async Task<IActionResult> UpdateUser(string id, [FromBody] UpdateUserModel userModel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var existingUser = await identityAppDbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
+            var existingUser = await userManager.FindByIdAsync(id);
 
             if (existingUser != null)
             {
-                // Actualizar propiedades del usuario
-                existingUser.UserName = user.UserName;
-                existingUser.NormalizedUserName = user.NormalizedUserName;
-                existingUser.Email = user.Email;
-                existingUser.NormalizedEmail = user.NormalizedEmail;
-                existingUser.EmailConfirmed = user.EmailConfirmed;
-                existingUser.PasswordHash = user.PasswordHash;
-                existingUser.SecurityStamp = user.SecurityStamp;
-                existingUser.ConcurrencyStamp = user.ConcurrencyStamp;
-                existingUser.PhoneNumber = user.PhoneNumber;
-                existingUser.PhoneNumberConfirmed = user.PhoneNumberConfirmed;
-                existingUser.TwoFactorEnabled = user.TwoFactorEnabled;
-                existingUser.LockoutEnd = user.LockoutEnd;
-                existingUser.LockoutEnabled = user.LockoutEnabled;
-                existingUser.AccessFailedCount = user.AccessFailedCount;
+                // Actualizar solo las propiedades proporcionadas en el modelo
+                existingUser.UserName = userModel.newUserName ?? existingUser.UserName;
+                existingUser.Email = userModel.newEmail ?? existingUser.Email;
 
-                await identityAppDbContext.SaveChangesAsync();
+                // No es necesario encriptar la contraseña nuevamente
+                // UserManager se encarga de esto automáticamente al guardar los cambios
 
-                return Ok(existingUser);
+                var result = await userManager.UpdateAsync(existingUser);
+
+                if (result.Succeeded)
+                {
+                    return Ok(existingUser);
+                }
+                else
+                {
+                    // Hubo un error al actualizar el usuario
+                    return BadRequest(result.Errors);
+                }
             }
 
             return NotFound();
         }
+
 
         // DELETE: api/Users/{id}
         [HttpDelete("{id}")]
