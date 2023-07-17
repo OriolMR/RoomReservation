@@ -1,0 +1,97 @@
+
+
+/* Estilos generales para los contenedores de las salas de reuniones */
+.meeting-room {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 15px;
+  height: 150px;
+  border: 1px solid #ccc;
+  margin: 10px;
+  padding: 10px;
+  text-align: center;
+}
+
+/* Estilos para el contenedor de cada sala de reuniones */
+.meeting-room-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 200px; /* Ancho del cuadrado */
+  height: 150px; /* Altura del cuadrado */
+  border: 1px solid #ccc; /* Borde del cuadrado */
+  padding: 10px; /* Espacio interno del cuadrado */
+  margin: 10px; /* Margen entre cuadrados */
+
+  justify-content: center; /* Centrar el contenido horizontalmente */
+  align-items: center; /* Centrar el contenido verticalmente */
+  border-radius: 10px;
+  background: #a8c8dc;
+  box-shadow: 5px 5px 10px #1c2b34, -5px -5px 10px #6eabd0;
+}
+.meeting-rooms-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 40px;
+  
+}
+
+  /* Estilos para el texto del nombre de la sala de reuniones */
+  .meeting-rooms-container h3 {
+    font-size: 24px;
+    text-align: center;
+    margin: 5px 0;
+    
+  }
+
+.clear-selection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px; /* Agregar un margen superior para separar el botón de las salas de reuniones */
+}
+
+  .clear-selection button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+.home-container {
+  font-family: Arial, sans-serif;
+  color: #E2F6CA;
+  align-items: center;
+  margin-top: 10px; 
+  height: 60%; 
+  width: 830px;
+  padding: 20px;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 10px;
+  background: rgba(82, 97, 107, 0.8);
+  box-shadow: 5px 5px 10px #1c2b34, -5px -5px 10px #6eabd0;
+}
+
+
+.btn-reserve {
+  padding: 10px 20px;
+  background-color: #28a745; 
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 5px; 
+}
+
+  /* Estilos para el botón Reservar cuando se pasa el mouse por encima */
+  .btn-reserve:hover {
+    background-color: #0056b3;
+  }
+
+
+
+

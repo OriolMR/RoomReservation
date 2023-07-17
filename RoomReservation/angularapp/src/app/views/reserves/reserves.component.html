@@ -1,0 +1,8 @@
+<body>
+    <div class="listado" id="lista2">
+        <h3 id="myReserves">My Reserves: </h3>
+        <app-entrada-reserves *ngFor="let entradaReserves of reservesEntrada" [entradaReserves]="entradaReserves"></app-entrada-reserves>
+        <img id="plus-button" src="https://static.vecteezy.com/system/resources/previews/009/266/327/original/plus-sign-icon-free-png.png"
+        routerLink="/reservation">
+    </div>
+</body>

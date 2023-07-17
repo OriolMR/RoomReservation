@@ -1,0 +1,25 @@
+<div class="modal-overlay" (click)="cerrar()">
+  <div class="modal-content">
+    <h2>{{ data.salaReunion.meetingRoomName }}</h2>
+
+
+    <div class="form-group">
+      <label for="date-picker">Reserve date:</label>
+      <!--<input [ngModel]="selectedDate"
+             (ngModelChange)="onDateSelection($event)"
+             ngbDatepicker
+             #d="ngbDatepicker"
+             placeholder="Fecha de reserva"
+             (focus)="d.toggle()" />-->
+    </div>
+
+
+    <div class="button-container">
+      <button class="btn-reserve custom-button" (click)="reservarSalaReunion()" [disabled]="data.salaReunion.reservada">
+        {{ data.salaReunion.reservada ? 'Reservada' : 'Reserve' }}
+      </button>
+      <button class="btn-close custom-button" (click)="cerrar()">Close</button>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,24 @@
+<ul id="menu">
+  <div class="left-div">
+    <li routerLink="/home">
+      <span><img id="home-btn" src="https://cdn-icons-png.flaticon.com/256/25/25694.png"></span>
+    </li>
+    <li routerLink="/reserves">
+      <span>Reserves</span>
+    </li>
+    <li routerLink="/reservation">
+      <span>Reservation</span>
+    </li>
+  </div>
+  <div class="right-div">
+    <li>
+      <div class="dropdown">
+        <img id="profile-btn" src="https://cdn-icons-png.flaticon.com/512/3106/3106773.png">
+        <div class="dropdown-content">
+          <a routerLink="/profile">Profile</a>
+          <a routerLink="/logout" (click)="logout()">Logout</a>
+        </div>
+      </div>     
+    </li>
+  </div> 
+  </ul>

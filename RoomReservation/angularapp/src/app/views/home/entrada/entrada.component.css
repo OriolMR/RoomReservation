@@ -1,0 +1,24 @@
+#entrada {
+    background-color: aqua;
+    border-radius: 10px;
+    margin: 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    width: 500px;
+    height: 100px;
+  }
+  
+  #entrada * {
+    padding: 10px;  
+    margin: 10px;  
+  }
+
+  .entrada2 {
+    display: flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 600px;
+  }

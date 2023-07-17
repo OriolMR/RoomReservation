@@ -1,0 +1,24 @@
+<div class="title-container">
+  <h1 id="tableLabel" class="center-title">ACME</h1>
+  <h2 id="tableLabel" class="center-title">MEETING ROOM RESERVATION</h2>
+</div>
+
+<div class="home-container" style="width: 230px;">
+  <div class="form-group">
+    <label for="username">Username</label>
+    <br />
+    <input type="text" id="username" class="form-control" [(ngModel)]="UserName" />
+  </div>
+  <div class="form-group" style="margin-top: 10px;">
+    <label for="password">Password</label>
+    <br />
+    <input type="password" id="password" class="form-control" [(ngModel)]="PasswordHash" />
+  </div>
+  <div class="form-group" style="margin-top: 10px;">
+    <button class="btn btn-primary" style="margin: 5px ;" (click)="login()">Sign in</button>
+    <button class="btn btn-primary" style="margin: 5px ;" routerLink="/register">Sign up</button>
+  </div>
+
+  <div *ngIf="loginError" class="error-message">Incorrect username or password</div>
+  <router-outlet></router-outlet>
+</div>

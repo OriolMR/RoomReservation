@@ -1,0 +1,51 @@
+<body>
+  <div id="profile-container" *ngIf="div1">
+    <br><br>
+    <h2>Profile</h2>
+
+    <div>
+      <label>Username:</label>
+      <div>{{ newUserName }}</div>
+    </div>
+
+    <div>
+      <label>Email:</label>
+      <div>{{ newEmail }}</div>
+    </div>
+
+    <div>
+      <button (click)="div2Function()">Update</button>
+    </div>
+  </div>
+
+  <div id="edit-container" *ngIf="div2">
+    <br><br>
+    <h2>Update profile</h2>
+
+    <form role="form">
+      <div class="testClass">
+        <label>Username:</label>
+        <div>
+          <input type="text" name="newUserName" [(ngModel)]="newUserName">
+        </div>
+      </div>
+      <div class="testClass">
+        <label>Email:</label>
+        <div>
+          <input type="text" name="newEmail" [(ngModel)]="newEmail">
+        </div>
+      </div>
+      <div class="testClass">
+        <label>Password:</label>
+        <div>
+          <input type="password" name="newPasswordHash" [(ngModel)]="newPasswordHash">
+        </div>
+      </div>
+      <div class="testClass">
+        <button class="top_button" (click)="div1Function()">Back</button>
+        <button (click)="saveProfile()">Save</button>
+      </div>
+    </form>
+  </div>
+</body>
+
