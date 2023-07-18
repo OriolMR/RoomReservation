@@ -13,17 +13,17 @@ public homeEntradas: Entrada[];
   constructor() {
     this.homeEntradas = [
       {
-        titulo: 'Perfil',
+        titulo: 'Profile',
         resumen: 'Pulsa aquí para configurar tu perfil',
         link: '/profile'
       },
       {
-        titulo: 'Reservas',
+        titulo: 'Reserves',
         resumen: 'Pulsa aquí para ver tus reservas',
         link: '/reserves'
       },
       {
-        titulo: 'Reservar',
+        titulo: 'Reservation',
         resumen: 'Pulsa aquí para reservar',
         link: '/reservation'
       }

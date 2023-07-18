@@ -1,13 +1,13 @@
 #entrada {
-    background-color: aqua;
-    border-radius: 10px;
-    margin: 10px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    width: 500px;
-    height: 100px;
-  }
+  background-color: rgba(82, 97, 107, 0.8);
+  border-radius: 10px;
+  margin: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  width: 500px;
+  height: 100px;
+}
   
   #entrada * {
     padding: 10px;  

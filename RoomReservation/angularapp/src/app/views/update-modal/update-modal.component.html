@@ -1,6 +1,6 @@
 <div class="modal-overlay" (click)="onOverlayClick($event)">
   <div class="modal-content" (click)="onContentClick($event)">
-    <h2>{{ data.salaReunion.meetingRoomName }}</h2>
+    <h2>{{ data.meetingRoomName }}</h2>
     <mat-form-field class="example-full-width">
       <mat-label>Choose a date</mat-label>
       <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" [(ngModel)]="reserveDate">
@@ -8,29 +8,21 @@
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-
     <div class="title">Starting Hour</div>
-    <igx-time-picker #startingHourPicker format="hh:mm" mode="dropdown" [(ngModel)]="startingHour">
+    <igx-time-picker #picker format="hh:mm" mode="dropdown">
       <ng-template igxTimePickerActions>
       </ng-template>
     </igx-time-picker>
-
     <div class="title">Ending Hour</div>
-    <igx-time-picker #endingHourPicker format="hh:mm" mode="dropdown" [(ngModel)]="endingHour">
+    <igx-time-picker #picker2 format="hh:mm" mode="dropdown">
       <ng-template igxTimePickerActions>
       </ng-template>
     </igx-time-picker>
     <div class="button-container">
-      <button class="btn-reserve custom-button" (click)="reservarSalaReunion()" [disabled]="data.salaReunion.reservada">
-        Reserve
+      <button class="btn-update custom-button" (click)="actualizarSalaReunion()">
+        Update
       </button>
       <button class="btn-close custom-button" (click)="cerrar()">Close</button>
     </div>
   </div>
 </div>
-
-
-
-
-
-

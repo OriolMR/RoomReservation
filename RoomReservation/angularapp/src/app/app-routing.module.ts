@@ -14,8 +14,8 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthenticationGuard] }, // Protege la ruta "home" con el guardia de autenticación
   { path: 'profile', component: ProfileComponent, canActivate: [AuthenticationGuard] }, // Protege la ruta "profile" con el guardia de autenticación
-  { path: 'reserves', component: ReservesComponent},
-  { path: 'reservation', component: ReservationComponent },
+  { path: 'reserves', component: ReservesComponent, canActivate: [AuthenticationGuard] },
+  { path: 'reservation', component: ReservationComponent, canActivate: [AuthenticationGuard] },
   // Otras rutas a definir
 ];
 

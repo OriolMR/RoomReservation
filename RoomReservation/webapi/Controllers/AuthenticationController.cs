@@ -58,7 +58,7 @@ namespace webapi.Controllers
         }
 
         [HttpPost("login")]
-    
+
 
         public async Task<IActionResult> Login([FromBody] LoginViewModel loginData)
         {
@@ -70,10 +70,18 @@ namespace webapi.Controllers
 
             var user = await userManager.FindByNameAsync(loginData.UserName);
 
+            if(user == null)
+            {
+                return BadRequest(new { success = false, error = "usuario no encontrado" });
+            }
             if (user != null)
             {
                 var result = await signInManager.PasswordSignInAsync(user, loginData.PasswordHash, false, lockoutOnFailure: false);
 
+                if (result == null)
+                {
+                    return BadRequest(new { success = false, error = "result es: " +result});
+                }
                 if (result.Succeeded)
                 {
                     // Autenticación exitosa
@@ -88,7 +96,7 @@ namespace webapi.Controllers
                     }
 
                     // Devolver el token en la respuesta
-                    return Ok(new { success = true, token });
+                    return Ok(new { success = true, token, userId = user.Id });
                 }
             }
 
@@ -111,16 +119,22 @@ namespace webapi.Controllers
             {
                 Subject = new ClaimsIdentity(new[]
                 {
+                    //par clave-valor, donde la clave es un identificador único que define el tipo de información y
+                    //el valor es el dato asociado a ese tipo
             new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-            new Claim(ClaimTypes.Name, user.UserName)
-            // Puedes agregar más reclamaciones (claims) según tus necesidades
+            new Claim(ClaimTypes.Name, user.UserName)       
         }),
                 Expires = DateTime.UtcNow.AddHours(1), // Define la fecha de expiración del token
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+
+                // representa una clave secreta simétrica utilizada para firmar y verificar los tokens JWT
+                // Especifica el algoritmo de firma que utiliza funcion hash criptografica SHA-256 (Secure Hash Algorithm 256 bits)
+                // utilizado para firmar el token JWT
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature) 
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
         }
     }
 }
+
 

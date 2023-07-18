@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using webapi.DataAccess;
 using webapi.Repositories;
+using webapi.Models;
 
 namespace RoomReservation.Controllers
 {
@@ -28,13 +29,30 @@ namespace RoomReservation.Controllers
 
         // GET: api/Reserves/{id}
         [HttpGet("{id:int}")]
-        public async Task<IActionResult> GetReserveById([FromRoute] int id)
+        public async Task<IActionResult> GetReserveById(int id)
         {
             var reserve = await roomReservationDbContext.Reserves.FirstOrDefaultAsync(x => x.reserveId == id);
 
             if (reserve != null)
             {
                 return Ok(reserve);
+            }
+
+            return NotFound();
+        }
+
+
+        // GET: api/Reserves/user/{userId}
+        [HttpGet("user/{userId}")]
+        public async Task<IActionResult> GetReservesByUserId(string userId)
+        {
+            var reserves = await roomReservationDbContext.Reserves
+                .Where(x => x.userId == userId)
+                .ToListAsync();
+
+            if (reserves != null && reserves.Count > 0)
+            {
+                return Ok(reserves);
             }
 
             return NotFound();
@@ -56,28 +74,36 @@ namespace RoomReservation.Controllers
 
         // POST: api/Reserves
         [HttpPost]
-        public async Task<IActionResult> AddReserve([FromBody] Reserve reserve)
+        public async Task<IActionResult> AddReserve([FromBody] ReserveData reserveData)
         {
-            reserve.reserveId = 0; // Asignar valor inicial a ReserveId
-            await roomReservationDbContext.Reserves.AddAsync(reserve);
+            var newReserve = new Reserve
+            {
+                meetingRoomId = reserveData.MeetingRoomId,
+                userId = reserveData.UserId,
+                reserveDate = reserveData.ReserveDate,
+                startingHour = reserveData.StartingHour,
+                endingHour = reserveData.EndingHour
+            };
+
+            await roomReservationDbContext.Reserves.AddAsync(newReserve);
             await roomReservationDbContext.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetReserveById), new { id = reserve.reserveId }, reserve);
+            return Ok(newReserve);
         }
+
+
 
         // PUT: api/Reserves/{id}
         [HttpPut("{id:int}")]
-        public async Task<IActionResult> UpdateReserve(int id, [FromBody] Reserve reserve)
+        public async Task<IActionResult> UpdateReserve(int id, [FromBody] UpdateReserveModel reserve)
         {
             var existingReserve = await roomReservationDbContext.Reserves.FirstOrDefaultAsync(x => x.reserveId == id);
 
             if (existingReserve != null)
             {
-                existingReserve.meetingRoomId = reserve.meetingRoomId;
-                existingReserve.userId = reserve.userId;
-                existingReserve.reserveDate = reserve.reserveDate;
-                existingReserve.startingHour = reserve.startingHour;
-                existingReserve.endingHour = reserve.endingHour;
+                existingReserve.reserveDate = reserve.ReserveDate;
+                existingReserve.startingHour = reserve.StartingHour;
+                existingReserve.endingHour = reserve.EndingHour;
                 await roomReservationDbContext.SaveChangesAsync();
 
                 return Ok(existingReserve);

@@ -220,29 +220,6 @@ export class ReservationComponent implements OnInit {
 
 
 
-
-
-
-  reserveMeetingRoom(meetingRoomId: number): void {
-    // Aquí puedes implementar la lógica para reservar la sala de reuniones con el meetingRoomId proporcionado
-    // Por ejemplo, puedes hacer una solicitud HTTP para guardar la reserva en el servidor
-    // o mostrar un mensaje de éxito/fracaso de reserva, etc.
-
-    // Ejemplo de solicitud HTTP para guardar la reserva (usando HttpClient)
-    this.http.post<any>('https://tu-servidor-api.com/reserve-meeting-room', { meetingRoomId })
-      .subscribe(
-        (response) => {
-          // La reserva fue exitosa, aquí puedes mostrar un mensaje de éxito o realizar alguna otra acción
-          console.log('Meeting room reserved successfully:', response);
-        },
-        (error) => {
-          // Ocurrió un error durante la reserva, aquí puedes mostrar un mensaje de error o realizar alguna otra acción
-          console.error('Error reserving meeting room:', error);
-        }
-      );
-  }
-
-
   //getAllReserves(): void {
   //  this.http.get<any[]>('https://localhost:7281/api/Reserves').pipe(
   //    map((reservations) => reservations.map((reservation) => reservation.meetingRoomId))

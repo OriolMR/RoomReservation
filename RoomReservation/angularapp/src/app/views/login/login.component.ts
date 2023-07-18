@@ -34,8 +34,17 @@ export class LoginComponent {
           console.log('Respuesta de login:', response); // Verifica la respuesta del backend en la consola
 
           if (response.success) {
+         
             const token = response.token;
+       
             localStorage.setItem('token', token); // Almacenar el token usando el servicio de autenticación
+         
+
+            const userId = response.userId;
+            localStorage.setItem('userId', userId);
+           
+            console.log('User id es: ', localStorage.getItem('userId'));
+           
             this.authGuard.setToken(token);
             var tosken = localStorage.getItem('token');
 

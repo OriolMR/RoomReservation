@@ -6,18 +6,18 @@ import { IgxTimePickerComponent } from 'igniteui-angular/lib/time-picker/time-pi
 import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-modal-content',
-  templateUrl: './modal-content.component.html',
-  styleUrls: ['./modal-content.component.css'],
+  selector: 'app-update-modal',
+  templateUrl: './update-modal.component.html',
+  styleUrls: ['./update-modal.component.css']
 })
-export class ModalContentComponent {
+export class UpdateModalComponent {
   reserveDate: Date = new Date(); // Inicializar con la fecha actual
   startingHour: Date = new Date(); // Inicializar con la hora actual
   endingHour: Date = new Date(); // Inicializar con la hora actual
   form: FormGroup;
 
   constructor(
-    public dialogRef: MatDialogRef<ModalContentComponent>,
+    public dialogRef: MatDialogRef<UpdateModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private http: HttpClient,
     private fb: FormBuilder,
@@ -42,42 +42,40 @@ export class ModalContentComponent {
     timePicker.value = new Date();
     timePicker.close();
   }
- 
 
-  reservarSalaReunion(): void {
+  actualizarSalaReunion(): void {
     // Obtener los valores de la fecha y las horas ingresados por el usuario
-    
 
     // Obtener el userId y meetingRoomId desde los datos del modal
-    const meetingRoomId = this.data.salaReunion.meetingRoomId;
-    const userId = localStorage.getItem('userId');
 
+   
+
+    // Crear el objeto con los campos de reserva a actualizar
+    const reservaId = this.data.reserveId; // Suponiendo que tienes un campo "id" en el objeto de reserva recibido desde el modal
     const formattedReserveDate = this.datePipe.transform(this.reserveDate, 'yyyy-MM-dd');
     const formattedStartingHour = this.datePipe.transform(this.startingHour, 'HH:mm:ss');
     const formattedEndingHour = this.datePipe.transform(this.endingHour, 'HH:mm:ss');
 
-    console.log(formattedStartingHour);
     // Crear el objeto con los campos de reserva a actualizar
     const reservaData = {
-      UserId: userId,
-      MeetingRoomId: meetingRoomId,
+      ReserveId: reservaId,
       ReserveDate: formattedReserveDate,
       StartingHour: formattedStartingHour,
       EndingHour: formattedEndingHour,
     };
 
-    
+    console.log(reservaData);
 
-    // Hacer la solicitud POST al servidor para crear la reserva
-    this.http.post('https://localhost:7281/api/reserves', reservaData).subscribe(
+    // Hacer la solicitud PUT o PATCH al servidor para actualizar la reserva
+    this.http.put(`https://localhost:7281/api/reserves/${reservaId}`, reservaData).subscribe(
       (response) => {
-        console.log('Reserva creada:', response);
+        console.log('Reserva actualizada:', response);
         // Aquí puedes realizar acciones adicionales si es necesario
-        // Por ejemplo, cerrar el modal después de una reserva exitosa
+        // Por ejemplo, cerrar el modal después de una actualización exitosa
         this.dialogRef.close('reservada');
       },
       (error) => {
-        console.error('Error al crear la reserva:', error);
+        console.error('Error al actualizar la reserva:', error);
         // Aquí puedes manejar errores y mostrar mensajes al usuario si es necesario
       }
     );
@@ -98,6 +96,3 @@ export class ModalContentComponent {
     event.stopPropagation();
   }
 }
-
-
-
