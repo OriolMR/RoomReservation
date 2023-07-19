@@ -13,12 +13,12 @@
     cursor: pointer;
     padding-top: 5px;
   }
-  
-  #menu li span {
-    font-family: Arial;
-    float: left;
-    padding: 10px;
-  }
+
+    #menu li span {
+      font-family: Rubik;
+      float: left;
+      padding: 10px;
+    }
 
   .left-div {
     display: flex;

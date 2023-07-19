@@ -3,14 +3,17 @@
 }*/
 
 #profile-container {
-    height: 100vh;
-    width: 100vh;
-    background: linear-gradient(to bottom, #c5dff8, #4a55a2);
-  }
+  height: 100%;
+  width: 250px;
+  background-color: rgba(82, 97, 107, 0.8);
+  border: 2px solid black;
+}
 
-    #profile-container h1 {
-      text-align: center;
-    }
+  #profile-container h1 {
+    text-align: center;
+    font-family: Calibri;
+    color: #FFFFFF;
+  }
 
     #profile-container div {
       margin: auto;
@@ -19,19 +22,60 @@
       text-align: center;
     }
 
-  #edit-container {
-    height: 100vh;
-    width: 100vh;
-    background: linear-gradient(to bottom, #c5dff8, #4a55a2);
+  #profile-container label {
+    font-family: Rubik;
+    color: #FFFFFF;
   }
 
-  #edit-container h1{
-    text-align: center;
+  #profile-container button {
+    font-family: Rubik;
+    margin: 5px;
+    background-color: #4A55A2;
+    border-color: #7895CB;
+    font-family: Rubik;
+    border-radius: 10px;
+    color: #FFFFFF;
   }
 
-  #edit-container div{
-    margin: auto;
-    width: 80%;
-    padding: 10px;
-    text-align: center;
+    #profile-container button:hover {
+      border-color: #C5DFF8;
+    }
+
+#edit-container {
+  height: 100vh;
+  width: 100vh;
+  background-color: rgba(82, 97, 107, 0.8);
+  border: 2px solid black;
+}
+
+##edit-container h1 {
+  text-align: center;
+  font-family: Calibri;
+  color: #FFFFFF;
+}
+
+#edit-container div {
+  margin: auto;
+  width: 80%;
+  padding: 10px;
+  text-align: center;
+}
+
+#edit-container label {
+  font-family: Rubik;
+  color: #FFFFFF;
+}
+
+#edit-container button {
+  font-family: Rubik;
+  margin: 5px;
+  background-color: #4A55A2;
+  border-color: #7895CB;
+  font-family: Rubik;
+  border-radius: 10px;
+  color: #FFFFFF;
+}
+
+  #edit-container button:hover {
+    border-color: #C5DFF8;
   }

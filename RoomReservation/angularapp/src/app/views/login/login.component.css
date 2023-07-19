@@ -1,9 +1,9 @@
-  .home-container {
+.home-container {
     align-items: center;
     margin-top: 0px; /* Ajusta el valor del margen superior según tus necesidades */
     margin-bottom: 0px; /* Establece el margen inferior en cero */
     height: 100%; /* Establece la altura del contenedor en 100% */
-    width: 230px;
+    width: 100%;
     padding: 20px;
     margin: 0 auto;
     text-align: center;
@@ -18,33 +18,36 @@
     margin-top: 0px;
   }
 
-  .title-container h1 {
-    font-size: 56px;
-    font-weight: bold;
-    margin-bottom: 0;
-    font-size: 56px;
-  }
+    .title-container h1 {
+      font-size: 56px;
+      font-weight: bold;
+      margin-bottom: 0;
+      font-size: 56px;
+      font-family: Calibri;
+    }
 
-  .title-container h2 {
-    margin-top: 0;
+    .title-container h2 {
+      margin-top: 0;
+      font-family: Calibri;
+    }
 
-  }
+.input-container {
+  margin-bottom: 10px;
+  font-family: Rubik;
+}
 
-  .input-container {
-    margin-bottom: 10px;
-  }
+.home-container h2 {
+  margin-top: 100px;
+  font-family: Calibri;
+  color: #E2F6CA;
+}
 
-  .home-container h2 {
-    margin-top: 100px;
-
-    color: #E2F6CA;
-  }
-
-  .home-container button {
-    margin: 5px;
-    background-color: #4A55A2;
-    border-color: #7895CB
-  }
+.home-container button {
+  margin: 5px;
+  background-color: #4A55A2;
+  border-color: #7895CB;
+  font-family: Rubik;
+}
 
   .home-container button:hover {
     border-color: #C5DFF8;
@@ -54,6 +57,7 @@
     color: #E2F6CA;
   }
 
-  label {
-    color: #ffffff;
-  }
+label {
+  color: #ffffff;
+  font-family: Rubik;
+}

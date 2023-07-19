@@ -1,9 +1,12 @@
 body {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    height: 500px;
-    background-color: transparent;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  height: 500px;
+  margin-top: 50px;
+  background-color: rgba(82, 97, 107, 0.8);
+  border-radius: 10px;
+  border: 2px solid black;
 }
 
 #listado {
@@ -14,12 +17,13 @@ body {
     text-align: center;
 }
 
-#listado h3 {
+  #listado h3 {
     padding: 0px;
     text-align: center;
     font-size: 75px;
     height: 90px;
     margin: 10px;
-    margin-top: -200px
-}
+    margin-top: -200px;
+    font-family: Calibri;
+  }
 

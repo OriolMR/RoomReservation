@@ -19,21 +19,24 @@
 
   .register-container h2 {
     color: #FFFFFF;
+    font-family: Calibri;
   }
 
   .register-container button {
     margin: 5px;
     background-color: #4A55A2;
-    border-color: #7895CB
+    border-color: #7895CB;
+    font-family: Rubik;
   }
 
   .register-container button:hover {
     border-color: #C5DFF8;
   }
 
-  label {
+label {
   color: #ffffff;
-  }
+  font-family: Rubik;
+}
 
 .button-disabled {
   opacity: 0.6;

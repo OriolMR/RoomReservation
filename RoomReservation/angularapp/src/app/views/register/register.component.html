@@ -20,6 +20,8 @@
 
     <div *ngIf="registrationError && ConfirmPassword && ConfirmPassword.trim() !== ''" class="error-message">{{ registrationErrorMessage }}</div>
   </div>
+  <button type="button" class="btn btn-secondary" routerLink="/login">Back</button>
+
   <button type="button" class="btn btn-primary" (click)="registerUser()" [ngClass]="{'button-disabled': isButtonDisabled}" [disabled]="isButtonDisabled">Sign up</button>
   <div style="margin-top: 10px;"></div>
 </div>
