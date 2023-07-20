@@ -29,9 +29,9 @@
     font-family: Rubik;
   }
 
-  .register-container button:hover {
-    border-color: #C5DFF8;
-  }
+    .register-container button:hover {
+      border-color: #C5DFF8;
+    }
 
 label {
   color: #ffffff;

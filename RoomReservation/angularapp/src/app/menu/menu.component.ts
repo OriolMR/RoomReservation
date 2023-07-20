@@ -18,6 +18,7 @@ export class MenuComponent {
       () => {
         // Eliminar el token del almacenamiento local
         localStorage.removeItem('token');
+  
         this.toastr.success('Logout successful', 'Success');
         // Redirigir al usuario a la página de inicio de sesión
         this.router.navigate(['/login']);

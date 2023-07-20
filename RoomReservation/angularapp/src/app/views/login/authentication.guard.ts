@@ -42,6 +42,15 @@ export class AuthenticationGuard implements CanActivate {
     return decodedToken.nameid || null;
   }
 
+  getUsernameFromToken(token: string): string | null {
+    // Decodify the token and get the username
+    const decodedToken: any = jwt_decode(token);
+    console.log('Decoded Token:', decodedToken);
+    return decodedToken.unique_name || null;
+  }
+
+  
+
   logout(): Observable<any> {
     const url = `${this.baseUrl}/logout`;
     return this.http.post(url, {});

@@ -1,35 +1,35 @@
 .home-container {
-    align-items: center;
-    margin-top: 0px; /* Ajusta el valor del margen superior según tus necesidades */
-    margin-bottom: 0px; /* Establece el margen inferior en cero */
-    height: 100%; /* Establece la altura del contenedor en 100% */
-    width: 100%;
-    padding: 20px;
-    margin: 0 auto;
-    text-align: center;
-    background-color: rgba(82, 97, 107, 0.8);
-    border-radius: 10px;
-    border: 2px solid black;
+  align-items: center;
+  margin-top: 0px; /* Ajusta el valor del margen superior según tus necesidades */
+  margin-bottom: 0px; /* Establece el margen inferior en cero */
+  height: 100%; /* Establece la altura del contenedor en 100% */
+  width: 100%;
+  padding: 20px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: rgba(82, 97, 107, 0.8);
+  border-radius: 10px;
+  border: 2px solid black;
+}
+
+.title-container {
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 0px;
+}
+
+  .title-container h1 {
+    font-size: 56px;
+    font-weight: bold;
+    margin-bottom: 0;
+    font-size: 56px;
+    font-family: Calibri;
   }
 
-  .title-container {
-    text-align: center;
-    margin-bottom: 30px;
-    margin-top: 0px;
+  .title-container h2 {
+    margin-top: 0;
+    font-family: Calibri;
   }
-
-    .title-container h1 {
-      font-size: 56px;
-      font-weight: bold;
-      margin-bottom: 0;
-      font-size: 56px;
-      font-family: Calibri;
-    }
-
-    .title-container h2 {
-      margin-top: 0;
-      font-family: Calibri;
-    }
 
 .input-container {
   margin-bottom: 10px;
@@ -53,9 +53,9 @@
     border-color: #C5DFF8;
   }
 
-  form-group {
-    color: #E2F6CA;
-  }
+form-group {
+  color: #E2F6CA;
+}
 
 label {
   color: #ffffff;

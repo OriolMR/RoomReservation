@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
-import { UpdateModalComponent } from '../update-modal/update-modal.component'; 
+import { UpdateModalComponent } from '../update-modal/update-modal.component';
 @Component({
   selector: 'app-reserves',
   templateUrl: './reserves.component.html',
@@ -14,6 +14,7 @@ export class ReservesComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private dialog: MatDialog,
+    private changeDetectorRef: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -88,16 +89,32 @@ export class ReservesComponent implements OnInit {
     );
   }
 
-  
+  formatHour(time: string): string {
+    const [hours, minutes] = time.split(':');
+    return `${hours.padStart(2, '0')}:${minutes.padStart(2, '0')}`;
+  }
+
+
 
 
   openEditModal(reserve: any): void {
     // Asigna la reserva seleccionada a la propiedad 'selectedReserve'
     this.selectedReserve = reserve;
     console.log(this.selectedReserve);
+
     // Abre el modal con el componente del modal y pasándole la reserva seleccionada
-    this.dialog.open(UpdateModalComponent, {
+    const dialogRef = this.dialog.open(UpdateModalComponent, {
       data: this.selectedReserve // Puedes pasarle más datos al modal si es necesario
+    });
+
+    dialogRef.afterClosed().subscribe((updatedReserveData) => {
+      if (updatedReserveData) {
+        // Si se obtienen datos actualizados, actualiza la reserva en la lista de reservas
+        const index = this.reservesList.findIndex((r) => r.reserveId === updatedReserveData.reserveId);
+        if (index !== -1) {
+          this.reservesList[index] = updatedReserveData;
+        }
+      }
     });
   }
 

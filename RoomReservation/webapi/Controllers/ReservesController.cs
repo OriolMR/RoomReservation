@@ -76,6 +76,24 @@ namespace RoomReservation.Controllers
         [HttpPost]
         public async Task<IActionResult> AddReserve([FromBody] ReserveData reserveData)
         {
+            // Verificar si hay solapamiento de reservas en la base de datos
+            var existingReserves = await roomReservationDbContext.Reserves
+                .Where(r => r.meetingRoomId == reserveData.MeetingRoomId &&
+                            r.reserveDate == reserveData.ReserveDate)
+                .ToListAsync();
+
+            // Verificar solapamiento de reservas
+            foreach (var existingReserve in existingReserves)
+            {
+                if (((reserveData.StartingHour >= existingReserve.startingHour && reserveData.StartingHour < existingReserve.endingHour) ||
+        (reserveData.EndingHour > existingReserve.startingHour && reserveData.EndingHour <= existingReserve.endingHour) ||
+        (reserveData.StartingHour <= existingReserve.startingHour && reserveData.EndingHour >= existingReserve.startingHour)))
+                {
+                    return BadRequest("La reserva se solapa con otra reserva existente.");
+                }
+            }
+
+            // Si no hay solapamiento de reservas, crear la nueva reserva en la base de datos
             var newReserve = new Reserve
             {
                 meetingRoomId = reserveData.MeetingRoomId,

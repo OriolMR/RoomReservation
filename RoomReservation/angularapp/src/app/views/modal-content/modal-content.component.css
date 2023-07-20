@@ -11,12 +11,16 @@
   align-items: center;
 }
 
+.modal-content * {
+ 
+}
+
 .modal-content {
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 500px; 
-  height: 500px;
+  width: 500px;
+  height: 530px;
   transform: translate(-50%, -50%);
   padding: 20px;
   border-radius: 30px;
@@ -24,12 +28,16 @@
   border-radius: 10px;
   background: #a8c8dc;
   box-shadow: 5px 5px 49px, -5px -5px 49px;
+  display: flex;
   text-align: center;
+
+
 }
 
   .modal-content h2 {
     font-size: 24px;
-    margin-bottom: 10px;
+    margin-top: 0px;
+    margin-bottom: 0px;
   }
 
   .modal-content p {
@@ -37,9 +45,14 @@
     margin-bottom: 20px;
   }
 
+#current-label {
+margin-top: 15px;
+margin-bottom:15px;
+}
+
 .button-container {
   display: flex;
-  margin-top: 30px;
+  margin-top: 15px;
   flex-wrap: wrap;
   justify-content: center; /* Para centrar los botones horizontalmente */
 }
@@ -57,7 +70,7 @@
 
 /* Estilo para el mat-datepicker */
 .mat-form-field {
-  margin-bottom: 20px; /* Agregar margen inferior de 20px para separar el mat-datepicker */
+  margin-bottom: 10px; /* Agregar margen inferior de 20px para separar el mat-datepicker */
 }
 
 /* Estilo para los igx-time-picker */
@@ -73,20 +86,25 @@
   background-color: #dc3545; /* Rojo */
 }
 
+.time-pickers-container {
+  display: flex;
+  justify-content: space-between;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+#scrollable-container {
+  border: 1px solid #ccc; /* Opcional: agrega un borde para mejorar la apariencia */
+  padding: 5px; /* Opcional: agrega espaciado interno para mejorar la apariencia */
+  background-color: red; /* Establece el fondo rojo */
+  /* Ajustar el contenedor al ancho del "modal content" */
+  width: 150px;
+  height: 30px;
+  /* Asegurar que el texto no se desborde */
+  white-space: nowrap;
+  overflow-x: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 
 

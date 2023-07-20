@@ -1,3 +1,8 @@
+#myReserves {
+  text-align: center; /* Centra el texto horizontalmente */
+  margin-bottom: 10px; /* Opcional: agrega un margen superior para mejorar el espaciado */
+  /* Ajusta otros estilos según tus preferencias, como el tamaño de fuente, el color, etc. */
+}
 /* reserves.component.css */
 .reserves-container {
   display: flex;
@@ -13,7 +18,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 450px; /* Ajusta el ancho según tus necesidades */
+  width: 540px; /* Ajusta el ancho según tus necesidades */
   height: 80px; /* Ajusta la altura según tus necesidades */
   margin-left: 10px;
   border-radius: 10px;

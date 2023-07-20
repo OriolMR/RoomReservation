@@ -16,7 +16,7 @@
   top: 50%;
   left: 50%;
   width: 500px;
-  height: 500px;
+  height: 530px;
   transform: translate(-50%, -50%);
   padding: 20px;
   border-radius: 30px;
@@ -71,4 +71,22 @@
 
 .btn-close {
   background-color: #dc3545; /* Rojo */
+}
+#scrollable-container {
+  border: 1px solid #ccc; /* Opcional: agrega un borde para mejorar la apariencia */
+  padding: 5px; /* Opcional: agrega espaciado interno para mejorar la apariencia */
+  background-color: red; /* Establece el fondo rojo */
+  /* Ajustar el contenedor al ancho del "modal content" */
+  width: 150px;
+  height: 30px;
+  /* Asegurar que el texto no se desborde */
+  white-space: nowrap;
+  overflow-x: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-reserve {
+  background-color: #28a745; /* Verde */
 }

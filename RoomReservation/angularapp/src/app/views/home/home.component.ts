@@ -14,17 +14,17 @@ public homeEntradas: Entrada[];
     this.homeEntradas = [
       {
         titulo: 'Profile',
-        resumen: 'Pulsa aquí para configurar tu perfil',
+        resumen: 'Click here to configure your profile',
         link: '/profile'
       },
       {
         titulo: 'Reserves',
-        resumen: 'Pulsa aquí para ver tus reservas',
+        resumen: 'Click here to view your reservations',
         link: '/reserves'
       },
       {
         titulo: 'Reservation',
-        resumen: 'Pulsa aquí para reservar',
+        resumen: 'Click here to make a reservation',
         link: '/reservation'
       }
     ];

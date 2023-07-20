@@ -15,12 +15,12 @@
     color: #FFFFFF;
   }
 
-    #profile-container div {
-      margin: auto;
-      width: 80%;
-      padding: 10px;
-      text-align: center;
-    }
+  #profile-container div {
+    margin: auto;
+    width: 80%;
+    padding: 10px;
+    text-align: center;
+  }
 
   #profile-container label {
     font-family: Rubik;

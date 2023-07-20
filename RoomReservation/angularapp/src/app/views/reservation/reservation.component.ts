@@ -19,7 +19,7 @@ export class ReservationComponent implements OnInit {
   selectedCountryId: number | null = null;
   selectedCityId: number | null = null;
   selectedOfficeId: number | null = null;
-  selectedMeetingRoom: any;
+  selectedMeetingRoom: any = null;
 
 
   constructor(private http: HttpClient, private dialog: MatDialog) { }
@@ -250,14 +250,17 @@ export class ReservationComponent implements OnInit {
     console.log('Sala de reunión seleccionada:', salaReunion);
     const dialogRef = this.dialog.open(ModalContentComponent, {
       width: '400px',
-      data: { salaReunion },
-      
+      data: { salaReunion }
     });
-   
+
     // Obtener la sala de reuniones seleccionada del modal cuando se cierra (si es necesario)
     dialogRef.afterClosed().subscribe(result => {
       console.log('Modal closed:', result);
-      // Aquí puedes realizar acciones adicionales si es necesario
+
+      // Reiniciar la selección de la sala de reuniones solo si el resultado del modal es válido
+      if (result) {
+        salaReunion = null;
+      }
     });
   }
 

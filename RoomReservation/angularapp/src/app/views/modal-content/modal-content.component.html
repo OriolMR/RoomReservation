@@ -3,30 +3,60 @@
     <h2>{{ data.salaReunion.meetingRoomName }}</h2>
     <mat-form-field class="example-full-width">
       <mat-label>Choose a date</mat-label>
-      <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" [(ngModel)]="reserveDate">
+      <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" [(ngModel)]="reserveDate" (ngModelChange)="onDateSelected()">
       <mat-hint>DD/MM/AAAA</mat-hint>
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
     <div class="title">Starting Hour</div>
-    <igx-time-picker #startingHourPicker format="hh:mm" mode="dropdown" [(ngModel)]="startingHour">
-      <ng-template igxTimePickerActions>
-      </ng-template>
+    <igx-time-picker #startingHourPicker
+                     format="hh:mm tt"
+                     mode="dropdown"
+                     [(ngModel)]="startingHour"
+                     [itemsDelta]="{hours: 1, minutes: 30}"
+                     [headerOrientation]="'vertical'"
+                     (onValidationFailed)="onValidationFailed()">
     </igx-time-picker>
 
+
     <div class="title">Ending Hour</div>
-    <igx-time-picker #endingHourPicker format="hh:mm" mode="dropdown" [(ngModel)]="endingHour">
-      <ng-template igxTimePickerActions>
-      </ng-template>
+    <igx-time-picker #endingHourPicker
+                     format="hh:mm tt"
+                     mode="dropdown"
+                     [(ngModel)]="endingHour"
+                     [itemsDelta]="{hours: 1, minutes: 15}"
+                     [headerOrientation]="'vertical'"
+                     (onValidationFailed)="onValidationFailed()">
     </igx-time-picker>
+
+    <label id="current-label" for="current-reserves">Current reserves:</label>
+
+      <ng-container *ngIf="reserves.length > 0; else noReservations">
+        <select name="reserves-select" id="reserves-select" style="width: 160px; background-color: red; color: white;">
+          <option *ngFor="let reserve of reserves" [value]="reserve.id">
+            {{ formatHour(reserve.startingHour) }} - {{ formatHour(reserve.endingHour) }}
+          </option>
+        </select>
+      </ng-container>
+      <ng-template #noReservations>
+        <select name="reserves-select" id="reserves-select" style="width: 160px; background-color: red; color: white;">
+
+          <option value="">--------------</option>
+        </select>
+      </ng-template>
+
+
+
     <div class="button-container">
       <button class="btn-reserve custom-button" (click)="reservarSalaReunion()" [disabled]="data.salaReunion.reservada">
         Reserve
       </button>
       <button class="btn-close custom-button" (click)="cerrar()">Close</button>
     </div>
+
   </div>
+
 </div>
 
 

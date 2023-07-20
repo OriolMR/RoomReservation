@@ -20,12 +20,12 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { UpdateModalComponent } from './views/update-modal/update-modal.component';
-import { IgxTimePickerModule } from 'igniteui-angular';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { DatePipe } from '@angular/common';
+import { IgxTimePickerModule, IgxToastModule } from 'igniteui-angular';
 
 
 //I keep the new line
@@ -65,6 +65,7 @@ ToastrModule.forRoot({
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    IgxToastModule
   ],
   providers: [
     {

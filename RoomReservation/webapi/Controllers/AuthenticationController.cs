@@ -114,26 +114,24 @@ namespace webapi.Controllers
         private string GenerateToken(webapiUser user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(configuration.GetValue<string>("Jwt:SecretKey"));  // Obtiene la clave secreta de la configuración de la aplicación
+            var key = Encoding.ASCII.GetBytes(configuration.GetValue<string>("Jwt:SecretKey")); // Get the secret key from the application configuration
             var tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new[]
                 {
-                    //par clave-valor, donde la clave es un identificador único que define el tipo de información y
-                    //el valor es el dato asociado a ese tipo
             new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-            new Claim(ClaimTypes.Name, user.UserName)       
+            new Claim(ClaimTypes.Name, user.UserName),
+     
         }),
-                Expires = DateTime.UtcNow.AddHours(1), // Define la fecha de expiración del token
+                Expires = DateTime.UtcNow.AddHours(1), // Define the token's expiration time
 
-                // representa una clave secreta simétrica utilizada para firmar y verificar los tokens JWT
-                // Especifica el algoritmo de firma que utiliza funcion hash criptografica SHA-256 (Secure Hash Algorithm 256 bits)
-                // utilizado para firmar el token JWT
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature) 
+                // Specify the signing credentials using the symmetric key (HMAC-SHA256 algorithm)
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
         }
+
     }
 }
 

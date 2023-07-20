@@ -17,6 +17,29 @@ export class ProfileComponent {
 
   constructor(private http: HttpClient, private authGuard: AuthenticationGuard, private toastr: ToastrService) { }
 
+  ngOnInit() {
+    // Get the token from the AuthService
+    const token = this.authGuard.getToken();
+
+    if (token) {
+      // Get the current username and email from the token
+      const currentUsername = this.authGuard.getUsernameFromToken(token);
+ 
+
+      if (currentUsername) {
+        console.log('Current Username:', currentUsername);
+        this.newUserName = currentUsername;
+  
+
+        // Now you have the current username and email, and you can use them as needed in your component logic or display them in your template.
+      } else {
+        console.error('Unable to get current username and email from token.');
+      }
+    } else {
+      console.error('No authentication token found.');
+    }
+  }
+
   div1Function(){
       this.div1=true;
       this.div2=false
