@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ModalContentComponent } from '../modal-content/modal-content.component';
+import { ReservationModalComponent } from '../reservation-modal/reservation-modal.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ApiService } from '../../service/api.service';
 
 @Component({
   selector: 'app-reservation',
@@ -22,13 +23,13 @@ export class ReservationComponent implements OnInit {
   selectedMeetingRoom: any = null;
 
 
-  constructor(private http: HttpClient, private dialog: MatDialog) { }
+  constructor(private apiService: ApiService, private http: HttpClient, private dialog: MatDialog) { }
 
 
 
   ngOnInit(): void {
     // Realizar la solicitud para obtener los países
-    this.http.get<any[]>('https://localhost:7281/api/countries').subscribe(
+    this.apiService.getCountries().subscribe(
       (data) => {
         this.countries = data;
         console.log(data);
@@ -49,7 +50,7 @@ export class ReservationComponent implements OnInit {
 
   getAllCities(): void {
     // Llamada al método local para obtener todas las ciudades
-    this.http.get<any[]>('https://localhost:7281/api/cities').subscribe(
+    this.apiService.getCities().subscribe(
       (data) => {
         this.cities = data;
         console.log(data);
@@ -62,7 +63,7 @@ export class ReservationComponent implements OnInit {
 
   getAllOffices(): void {
     // Llamada al método local para obtener todas las ciudades
-    this.http.get<any[]>('https://localhost:7281/api/offices').subscribe(
+    this.apiService.getOffices().subscribe(
       (data) => {
         this.offices = data;
         console.log(data);
@@ -97,9 +98,7 @@ export class ReservationComponent implements OnInit {
   getCitiesByCountryId(): void {
     if (this.selectedCountryId) {
       // Llamada al método local para obtener las ciudades del país seleccionado
-      this.http
-        .get<any[]>(`https://localhost:7281/api/cities/getCitiesByCountryId/${this.selectedCountryId}`)
-        .subscribe(
+      this.apiService.getCitiesByCountryId(this.selectedCountryId).subscribe(
           (cities) => {
             this.cities = cities;
             // Si se selecciona un país, obtener todas las oficinas de las ciudades de ese país
@@ -125,9 +124,7 @@ export class ReservationComponent implements OnInit {
   getOfficesByCityId(): void {
     if (this.selectedCityId) {
       /* Llamada al método local para obtener las oficinas de la ciudad seleccionada */
-      this.http
-        .get<any[]>(`https://localhost:7281/api/offices/getOfficesByCityId/${this.selectedCityId}`)
-        .subscribe(
+      this.apiService.getOfficesByCityId(this.selectedCityId).subscribe(
           (offices) => {
             this.offices = offices;
   /*          this.filterMeetingRooms(); */// Actualizar las salas de reuniones basadas en la oficina seleccionada
@@ -184,9 +181,7 @@ export class ReservationComponent implements OnInit {
 
   getMeetingRoomsByOfficeId(): void {
     if (this.selectedOfficeId) {
-      this.http
-        .get<any[]>(`https://localhost:7281/api/meetingrooms/getMeetingRoomsByOfficeId/${this.selectedOfficeId}`)
-        .subscribe(
+      this.apiService.getMeetingRoomsByOfficeId(this.selectedOfficeId).subscribe(
           (meetingRooms) => {
             this.meetingRooms = meetingRooms;
             this.filteredMeetingRooms = meetingRooms;
@@ -248,7 +243,7 @@ export class ReservationComponent implements OnInit {
   openModal(salaReunion: any): void {
     // Pasar los datos de la sala de reuniones seleccionada al modal
     console.log('Sala de reunión seleccionada:', salaReunion);
-    const dialogRef = this.dialog.open(ModalContentComponent, {
+    const dialogRef = this.dialog.open(ReservationModalComponent, {
       width: '400px',
       data: { salaReunion }
     });

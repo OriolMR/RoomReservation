@@ -49,8 +49,6 @@ export class AuthenticationGuard implements CanActivate {
     return decodedToken.unique_name || null;
   }
 
-  
-
   logout(): Observable<any> {
     const url = `${this.baseUrl}/logout`;
     return this.http.post(url, {});

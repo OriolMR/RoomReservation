@@ -1,28 +1,33 @@
 <body>
   <div id="profile-container" *ngIf="div1">
+
     <br><br>
     <h2>Profile</h2>
 
     <div>
       <label>Username:</label>
-      <div>{{ newUserName }}</div>
+      <br>
+      <label>{{ newUserName }}</label>
     </div>
 
     <div>
       <label>Email:</label>
-      <div>{{ newEmail }}</div>
+      <br>
+      <label>{{ newEmail }}</label>
     </div>
-
     <div>
       <button (click)="div2Function()">Update</button>
     </div>
+
   </div>
 
   <div id="edit-container" *ngIf="div2">
+
     <br><br>
     <h2>Update profile</h2>
 
     <form role="form">
+
       <div class="testClass">
         <label>Username:</label>
         <div>
@@ -36,7 +41,13 @@
         </div>
       </div>
       <div class="testClass">
-        <label>Password:</label>
+        <label>Actual Password:</label>
+        <div>
+          <input type="password" name="currentPasswordHash" [(ngModel)]="currentPasswordHash">
+        </div>
+      </div>
+      <div class="testClass">
+        <label>New Password:</label>
         <div>
           <input type="password" name="newPasswordHash" [(ngModel)]="newPasswordHash">
         </div>
@@ -45,7 +56,8 @@
         <button class="top_button" (click)="div1Function()">Back</button>
         <button (click)="saveProfile()">Save</button>
       </div>
+
     </form>
+
   </div>
 </body>
-

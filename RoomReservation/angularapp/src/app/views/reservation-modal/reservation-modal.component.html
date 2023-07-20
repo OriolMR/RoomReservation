@@ -8,13 +8,14 @@
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-
     <div class="title">Starting Hour</div>
     <igx-time-picker #startingHourPicker
                      format="hh:mm tt"
                      mode="dropdown"
+                     [minValue]="'09:00'"
+                     [maxValue]="'21:00'"
                      [(ngModel)]="startingHour"
-                     [itemsDelta]="{hours: 1, minutes: 30}"
+                     [itemsDelta]="{hours: 1, minutes: 15}"
                      [headerOrientation]="'vertical'"
                      (onValidationFailed)="onValidationFailed()">
     </igx-time-picker>
@@ -24,6 +25,8 @@
     <igx-time-picker #endingHourPicker
                      format="hh:mm tt"
                      mode="dropdown"
+                     [minValue]="'09:00'"
+                     [maxValue]="'21:00'"
                      [(ngModel)]="endingHour"
                      [itemsDelta]="{hours: 1, minutes: 15}"
                      [headerOrientation]="'vertical'"
@@ -31,7 +34,7 @@
     </igx-time-picker>
 
     <label id="current-label" for="current-reserves">Current reserves:</label>
-
+    <div class="center-container">
       <ng-container *ngIf="reserves.length > 0; else noReservations">
         <select name="reserves-select" id="reserves-select" style="width: 160px; background-color: red; color: white;">
           <option *ngFor="let reserve of reserves" [value]="reserve.id">
@@ -41,13 +44,10 @@
       </ng-container>
       <ng-template #noReservations>
         <select name="reserves-select" id="reserves-select" style="width: 160px; background-color: red; color: white;">
-
           <option value="">--------------</option>
         </select>
       </ng-template>
-
-
-
+    </div>
     <div class="button-container">
       <button class="btn-reserve custom-button" (click)="reservarSalaReunion()" [disabled]="data.salaReunion.reservada">
         Reserve

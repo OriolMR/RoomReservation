@@ -2,6 +2,8 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { MatDialog } from '@angular/material/dialog';
 import { UpdateModalComponent } from '../update-modal/update-modal.component';
+import { ApiService } from '../../service/api.service';
+
 @Component({
   selector: 'app-reserves',
   templateUrl: './reserves.component.html',
@@ -12,6 +14,7 @@ export class ReservesComponent implements OnInit {
   selectedReserve: any;
 
   constructor(
+    private apiService: ApiService,
     private http: HttpClient,
     private dialog: MatDialog,
     private changeDetectorRef: ChangeDetectorRef
@@ -31,9 +34,7 @@ export class ReservesComponent implements OnInit {
   }
 
   getReservesByUserId(userId: string): void {
-    const url = `https://localhost:7281/api/reserves/user/${userId}`;
-
-    this.http.get<any[]>(url).subscribe(
+    this.apiService.getReservesByUserId(userId).subscribe(
       (reserves: any[]) => {
         // Asigna las reservas recibidas
         this.reservesList = reserves;
@@ -41,9 +42,7 @@ export class ReservesComponent implements OnInit {
         // Realiza una solicitud HTTP para obtener la información de la sala de reuniones para cada reserva
         this.reservesList.forEach((reserve: any) => {
           const meetingRoomId = reserve.meetingRoomId;
-          const meetingRoomUrl = `https://localhost:7281/api/meetingRooms/${meetingRoomId}`;
-
-          this.http.get<any>(meetingRoomUrl).subscribe(
+          this.apiService.getMeetingRoomById(meetingRoomId).subscribe(
             (meetingRoomInfo: any) => {
               console.log(meetingRoomInfo);
               reserve.meetingRoomName = meetingRoomInfo.meetingRoomName;
@@ -71,9 +70,7 @@ export class ReservesComponent implements OnInit {
       return;
     }
 
-    const url = `https://localhost:7281/api/reserves/${reserve.reserveId}`;
-
-    this.http.delete(url).subscribe(
+   this.apiService.deleteReserveById(reserve.reserveId).subscribe(
       (response) => {
         console.log('Reserva eliminada:', response);
         // Actualiza el array de reservas después de eliminar la reserva
@@ -100,11 +97,12 @@ export class ReservesComponent implements OnInit {
   openEditModal(reserve: any): void {
     // Asigna la reserva seleccionada a la propiedad 'selectedReserve'
     this.selectedReserve = reserve;
-    console.log(this.selectedReserve);
+    console.log('datos pasados: ',this.selectedReserve);
 
     // Abre el modal con el componente del modal y pasándole la reserva seleccionada
     const dialogRef = this.dialog.open(UpdateModalComponent, {
-      data: this.selectedReserve // Puedes pasarle más datos al modal si es necesario
+      width: '400px',
+      data: { reserve }
     });
 
     dialogRef.afterClosed().subscribe((updatedReserveData) => {
@@ -113,6 +111,9 @@ export class ReservesComponent implements OnInit {
         const index = this.reservesList.findIndex((r) => r.reserveId === updatedReserveData.reserveId);
         if (index !== -1) {
           this.reservesList[index] = updatedReserveData;
+          this.getReservesByUserId(updatedReserveData.userId);
+
+          
         }
       }
     });
