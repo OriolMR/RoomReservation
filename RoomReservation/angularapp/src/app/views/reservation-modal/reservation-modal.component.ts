@@ -6,13 +6,15 @@ import { IgxTimePickerComponent } from 'igniteui-angular/lib/time-picker/time-pi
 import { DatePipe } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { ViewChild } from '@angular/core';
+import { ApiService } from '../../service/api.service';
 
 @Component({
   selector: 'app-modal-content',
-  templateUrl: './modal-content.component.html',
-  styleUrls: ['./modal-content.component.css'],
+  templateUrl: './reservation-modal.component.html',
+  styleUrls: ['./reservation-modal.component.css'],
 })
-export class ModalContentComponent {
+export class ReservationModalComponent {
+  userId: string | null = null;
   reserves: any[] = [];
   selectedReserveId: number = 0;
   reserveDate: Date = new Date(); // Inicializar con la fecha actual
@@ -28,12 +30,13 @@ export class ModalContentComponent {
     this.toast.open();
   }
   constructor(
-    public dialogRef: MatDialogRef<ModalContentComponent>,
+    public dialogRef: MatDialogRef<ReservationModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
+    private apiService: ApiService,
     private http: HttpClient,
     private fb: FormBuilder,
     private datePipe: DatePipe,
-    private toastr: ToastrService
+    private toastr: ToastrService,
   ) {
     this.form = this.fb.group({
       timePicker: ['', Validators.required]
@@ -41,6 +44,7 @@ export class ModalContentComponent {
   }
 
   ngOnInit() {
+    this.userId = localStorage.getItem('userId');
     const defaultStartingHour = new Date();
     defaultStartingHour.setHours(9, 0); // Hora: 9, Minutos: 0
     this.startingHour = defaultStartingHour;
@@ -71,6 +75,7 @@ export class ModalContentComponent {
     timePicker.value = new Date();
     timePicker.close();
   }
+
  
 
   reservarSalaReunion(): void {
@@ -101,11 +106,8 @@ export class ModalContentComponent {
         EndingHour: formattedEndingHour,
       };
 
-
-
-
       // Hacer la solicitud POST al servidor para crear la reserva
-      this.http.post('https://localhost:7281/api/reserves', reservaData).subscribe(
+      this.apiService.createReservation(reservaData).subscribe(
         (response) => {
           console.log('Reserva creada:', response);
           this.toastr.success('Reserve created');
@@ -121,18 +123,13 @@ export class ModalContentComponent {
       );
     }
   }
-
-  currentReserves()
-  { }
-
   cerrar(): void {
     this.dialogRef.close();
   }
 
   getReservesByMeetingRoomId(selectedReserveId: number) {
-    this.http.get(`https://localhost:7281/api/Reserves/getReservesByMeetingRoomId/${selectedReserveId}`)
-      .subscribe(
-        (reserves: any) => {
+    this.apiService.getReservesByMeetingRoomId(selectedReserveId).subscribe(
+      (reserves: any) => {
           // Filtrar las reservas por la fecha seleccionada
           const formattedReserveDate = new Date(this.reserveDate.getFullYear(), this.reserveDate.getMonth(), this.reserveDate.getDate());
           const filteredReserves = reserves.filter((reserve: any) =>

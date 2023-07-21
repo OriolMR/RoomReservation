@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AuthenticationGuard } from '../login/authentication.guard';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
+import { ApiService } from '../../service/api.service';
 
 @Component({
   selector: 'app-profile',
@@ -13,9 +14,11 @@ export class ProfileComponent {
   div2: boolean = false;
   newUserName: string = '';
   newEmail: string = '';
+  currentPasswordHash: string = '';
+  currentEmail: string = '';
   newPasswordHash: string = '';
 
-  constructor(private http: HttpClient, private authGuard: AuthenticationGuard, private toastr: ToastrService) { }
+  constructor(private apiService: ApiService, private http: HttpClient, private authGuard: AuthenticationGuard, private toastr: ToastrService) { }
 
   ngOnInit() {
     // Get the token from the AuthService
@@ -24,12 +27,18 @@ export class ProfileComponent {
     if (token) {
       // Get the current username and email from the token
       const currentUsername = this.authGuard.getUsernameFromToken(token);
- 
+      const userId = this.authGuard.getUserIdFromToken(token);
+
+      if (userId) {
+
+        this.getEmail(userId);
+      }
+
 
       if (currentUsername) {
         console.log('Current Username:', currentUsername);
         this.newUserName = currentUsername;
-  
+
 
         // Now you have the current username and email, and you can use them as needed in your component logic or display them in your template.
       } else {
@@ -40,20 +49,39 @@ export class ProfileComponent {
     }
   }
 
-  div1Function(){
-      this.div1=true;
-      this.div2=false
+  getEmail(userId: string) {
+    this.apiService.getEmailFromUserId(userId).subscribe(
+      (response) => {
+    
+        console.log('Respuesta de getEmailFromUserId:', response);
+
+        // Aquí puedes manejar los datos de la respuesta, por ejemplo, obtener el correo electrónico del usuario.
+        this.newEmail = response.email; // Asegúrate de ajustar esto según el formato de la respuesta del servidor.
+       
+      },
+      (error) => {
+        console.error('Error al obtener el correo electrónico del usuario:', error);
+        // Aquí puedes manejar el error de acuerdo a tus necesidades.
+      }
+    );
   }
-  
-  div2Function(){
-      this.div1=false;
-      this.div2=true
+
+
+  div1Function() {
+    this.div1 = true;
+    this.div2 = false
+  }
+
+  div2Function() {
+    this.div1 = false;
+    this.div2 = true
   }
 
   saveProfile() {
     const profileData = {
       newUserName: this.newUserName,
       newEmail: this.newEmail,
+      currentPasswordHash: this.currentPasswordHash,
       newPasswordHash: this.newPasswordHash
     };
 
@@ -70,20 +98,20 @@ export class ProfileComponent {
       if (userId) {
         // Realiza la solicitud PUT al servidor para actualizar el perfil
         console.log(profileData);
-        this.http.put(`https://localhost:7281/api/users/${userId}`, profileData).subscribe(
-          response => {
+        this.apiService.updateUserProfile(userId, profileData).subscribe(
+          (response) => {
             // La actualización del perfil se completó correctamente
             console.log('Perfil actualizado:', response);
-            this.toastr.success('Profile updated success');
-         
+            this.toastr.success('Profile updated successfully');
 
             // Cambia las vistas para volver a la vista original (div1) y ocultar la vista de edición (div2)
             this.div1 = true;
-            this.div2 = false; 
+            this.div2 = false;
           },
-          error => {
+          (error) => {
             // Ocurrió un error al actualizar el perfil
             console.error('Error al actualizar el perfil:', error);
+            this.toastr.error('Error updating profile'); // Mostrar un mensaje de error usando ToastrService
             // Aquí puedes manejar el error de acuerdo a tus necesidades
           }
         );

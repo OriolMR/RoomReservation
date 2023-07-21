@@ -6,6 +6,8 @@ namespace webapi.Models
     {
         public int ReserveId { get; set; }
 
+        public int MeetingRoomId { get; set; }
+
         public DateTime ReserveDate { get; set; }
 
 

@@ -4,7 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IgxTimePickerComponent } from 'igniteui-angular/lib/time-picker/time-picker.component';
 import { DatePipe } from '@angular/common';
-import { ReservesComponent } from '../reserves/reserves.component';
+import { ToastrService } from 'ngx-toastr';
+import { ApiService } from '../../service/api.service';
 
 @Component({
   selector: 'app-update-modal',
@@ -13,6 +14,8 @@ import { ReservesComponent } from '../reserves/reserves.component';
 })
 export class UpdateModalComponent {
   reserves: any[] = [];
+  selectedReserveId: number = 0;
+  meetingRoomName: string | null = null;
   reserveDate: Date = new Date(); // Inicializar con la fecha actual
   startingHour: Date = new Date(); // Inicializar con la hora actual
   endingHour: Date = new Date(); // Inicializar con la hora actual
@@ -27,9 +30,11 @@ export class UpdateModalComponent {
   constructor(
     public dialogRef: MatDialogRef<UpdateModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
+    private apiService: ApiService,
     private http: HttpClient,
     private fb: FormBuilder,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private toastr: ToastrService
   ) {
     this.form = this.fb.group({
       timePicker: ['', Validators.required]
@@ -44,8 +49,9 @@ export class UpdateModalComponent {
     const defaultStartingHour = new Date();
     defaultStartingHour.setHours(9, 0); // Hora: 9, Minutos: 0
     this.startingHour = defaultStartingHour;
-   /* this.getReservesByMeetingRoomId(this.data.salaReunion.meetingRoomId);*/
-
+    /* this.getReservesByMeetingRoomId(this.data.salaReunion.meetingRoomId);*/
+    this.getMeetingRoomById(this.data.reserve.meetingRoomId);
+    this.getReservesByMeetingRoomId(this.data.reserve.meetingRoomId);
     const defaultEndingHour = new Date();
     defaultEndingHour.setHours(9, 0); // Hora: 9, Minutos: 0
     this.endingHour = defaultEndingHour;
@@ -63,49 +69,83 @@ export class UpdateModalComponent {
   }
 
   actualizarSalaReunion(): void {
-    // Obtener los valores de la fecha y las horas ingresados por el usuario
 
-    // Obtener el userId y meetingRoomId desde los datos del modal
-
-
-
-    // Crear el objeto con los campos de reserva a actualizar
-    const reservaId = this.data.reserveId; // Suponiendo que tienes un campo "id" en el objeto de reserva recibido desde el modal
+    const reservaId = this.data.reserve.reserveId; // Suponiendo que tienes un campo "id" en el objeto de reserva recibido desde el modal
     const formattedReserveDate = this.datePipe.transform(this.reserveDate, 'yyyy-MM-dd');
     const formattedStartingHour = this.datePipe.transform(this.startingHour, 'HH:mm:ss');
     const formattedEndingHour = this.datePipe.transform(this.endingHour, 'HH:mm:ss');
 
     console.log(formattedReserveDate, formattedStartingHour, formattedEndingHour);
-    // Crear el objeto con los campos de reserva a actualizar
-    const reservaData = {
-      ReserveId: reservaId,
-      ReserveDate: formattedReserveDate,
-      StartingHour: formattedStartingHour,
-      EndingHour: formattedEndingHour,
-    };
 
-    console.log(reservaData);
+    if (formattedStartingHour && formattedEndingHour && formattedStartingHour >= formattedEndingHour) {
+      // Mostrar mensaje de error o tomar alguna acción adecuada
+      this.toastr.error('The ending hour must be greater than the starting hour.', 'Error');
+    } else {
+      // Crear el objeto con los campos de reserva a actualizar
+      const reservaData = {
+        ReserveId: reservaId,
+        ReserveDate: formattedReserveDate,
+        StartingHour: formattedStartingHour,
+        EndingHour: formattedEndingHour,
+        MeetingRoomId: this.data.reserve.meetingRoomId
+      };
 
-    // Hacer la solicitud PUT o PATCH al servidor para actualizar la reserva
-    this.http.put(`https://localhost:7281/api/reserves/${reservaId}`, reservaData).subscribe(
-      (response) => {
-        console.log('Reserva actualizada:', response);
+      console.log(reservaData);
 
-        // Aquí puedes realizar acciones adicionales si es necesario
-        // Por ejemplo, cerrar el modal después de una actualización exitosa
+      // Hacer la solicitud PUT o PATCH al servidor para actualizar la reserva
+      this.apiService.updateReserveById(reservaId, reservaData).subscribe(
+        (response) => {
+          console.log('Reserva actualizada:', response);
+          this.toastr.success('Reserve updated');
 
-        this.dialogRef.close(response);
-      },
-      (error) => {
-        console.error('Error al actualizar la reserva:', error);
-        // Aquí puedes manejar errores y mostrar mensajes al usuario si es necesario
-      }
-    );
+          this.dialogRef.close(response);
+        },
+        (error) => {
+          console.error('Error al actualizar la reserva:', error);
+          this.toastr.error('You can not choose this time', 'Error');
+          // Aquí puedes manejar errores y mostrar mensajes al usuario si es necesario
+        }
+      );
 
+    }
   }
 
   getReservesByMeetingRoomId(selectedReserveId: number) {
+    this.apiService.getReservesByMeetingRoomId(selectedReserveId).subscribe(
+        (reserves: any) => {
+          // Filtrar las reservas por la fecha seleccionada
+          const formattedReserveDate = new Date(this.reserveDate.getFullYear(), this.reserveDate.getMonth(), this.reserveDate.getDate());
+          const filteredReserves = reserves.filter((reserve: any) =>
+            new Date(reserve.reserveDate).getTime() === formattedReserveDate.getTime()
+          );
 
+          this.reserves = filteredReserves;
+          // Ahora 'this.reserves' contiene solo las reservas para la fecha seleccionada
+
+          console.log('Reservas:', this.reserves);
+        },
+        (error) => {
+          console.error('Error al obtener las reservas:', error);
+        }
+      );
+  }
+
+  getMeetingRoomById(selectedReserveId: number) {
+    this.apiService.getMeetingRoomById(selectedReserveId).subscribe(
+        (meetingRoom: any) => {
+          if (meetingRoom && meetingRoom.meetingRoomName) {
+            this.meetingRoomName = meetingRoom.meetingRoomName;
+            console.log('Nombre de la sala de reuniones:', this.meetingRoomName);
+            // Aquí tienes el nombre de la sala de reuniones, puedes utilizarlo como desees
+          } else {
+            console.error('No se encontró el nombre de la sala de reuniones en la respuesta.');
+          }
+        },
+        (error) => {
+          console.error('Error al obtener la sala de reuniones:', error);
+          // Aquí puedes manejar el error, si es necesario
+        }
+      );
   }
 
   cerrar(): void {
@@ -114,7 +154,7 @@ export class UpdateModalComponent {
   }
 
   onDateSelected() {
-    this.getReservesByMeetingRoomId(this.data.salaReunion.meetingRoomId);
+    this.getReservesByMeetingRoomId(this.data.reserve.meetingRoomId);
   }
 
   formatHour(time: string): string {

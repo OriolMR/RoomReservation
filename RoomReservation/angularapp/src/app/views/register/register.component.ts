@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { ApiService } from '../../service/api.service';
 
 
 @Component({
@@ -25,13 +26,13 @@ export class RegisterComponent {
   passwordMatchError: boolean = false;
   passwordMatchErrorMessage: string = '';
 
-  constructor(private toastr: ToastrService, private http: HttpClient, private router: Router) { }
+  constructor(private apiService: ApiService, private toastr: ToastrService, private http: HttpClient, private router: Router) { }
 
   verifyUsername() {
     // Realizar la llamada a la API para verificar si el nombre de usuario está disponible
-    this.http.get(`https://localhost:7281/api/users/username/${this.UserName}`)
-      .subscribe(
-        response => {
+    this.apiService.getUserByUsername(this.UserName).subscribe(
+      (response) => {
+  
           // El nombre de usuario está disponible
           this.usernameError = true;
           this.usernameErrorMessage = 'Username is already taken';
@@ -128,9 +129,9 @@ export class RegisterComponent {
 
     console.log(userData);
 
-    this.http.post('https://localhost:7281/api/authentication/register', userData)
-      .subscribe(
-        response => {
+    this.apiService.registerUser(userData).subscribe(
+      (response) => {
+     
           console.log('Registro exitoso:', response);
           this.toastr.success('Registration successful');
           this.router.navigate(['/login']);

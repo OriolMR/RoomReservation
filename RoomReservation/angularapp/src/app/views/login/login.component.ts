@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { AuthenticationGuard } from './authentication.guard';
 import { Token } from '@angular/compiler';
+import { ApiService } from '../../service/api.service';
 
 
 
@@ -20,18 +21,17 @@ export class LoginComponent {
 
 
 
-  constructor(private http: HttpClient, private router: Router, private toastr: ToastrService, private authGuard: AuthenticationGuard) { }
+  constructor(private apiService: ApiService, private http: HttpClient, private router: Router, private toastr: ToastrService, private authGuard: AuthenticationGuard) { }
 
   login() {
     const userData = {
       UserName: this.UserName,
       PasswordHash: this.PasswordHash
     };
-    console.log(userData);
-    this.http.post('https://localhost:7281/api/authentication/login', userData)
-      .subscribe(
-        (response: any) => {
-          console.log('Respuesta de login:', response); // Verifica la respuesta del backend en la consola
+
+    this.apiService.login(userData).subscribe(
+      (response) => {
+        console.log('Respuesta de login:', response); // Verifica la respuesta del backend en la consola
 
           if (response.success) {
          

@@ -15,7 +15,6 @@ import { MenuComponent } from './menu/menu.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TokenInterceptor } from './views/login/token.interceptor';
 import { ToastrModule } from 'ngx-toastr';
-import { ModalContentComponent } from './views/modal-content/modal-content.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
@@ -26,6 +25,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { DatePipe } from '@angular/common';
 import { IgxTimePickerModule, IgxToastModule } from 'igniteui-angular';
+import { ReservationModalComponent } from './views/reservation-modal/reservation-modal.component';
+import { ApiService } from './service/api.service';
 
 
 //I keep the new line
@@ -46,7 +47,7 @@ ToastrModule.forRoot({
     ReservesComponent,
     ReservationComponent,
     MenuComponent,
-    ModalContentComponent,
+    ReservationModalComponent,
     UpdateModalComponent,
 
   ],
@@ -73,7 +74,8 @@ ToastrModule.forRoot({
       useClass: TokenInterceptor,
       multi: true
     },
-    DatePipe // Agrega DatePipe como proveedor
+    DatePipe,
+    ApiService,
   ],
   bootstrap: [AppComponent]
 })

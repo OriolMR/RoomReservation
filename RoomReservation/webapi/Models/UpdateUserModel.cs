@@ -5,5 +5,6 @@
         public string newUserName { get; set; }
         public string newEmail { get; set; }
         public string newPasswordHash { get; set; }
+        public string currentPasswordHash { get; set;}
     }
 }

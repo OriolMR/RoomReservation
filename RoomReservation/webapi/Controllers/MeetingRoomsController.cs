@@ -17,7 +17,7 @@ namespace RoomReservation.Controllers
             this.roomReservationDbContext = roomReservationDbContext;
         }
 
-        // GET: api/Rooms
+    
         [HttpGet]
         public async Task<IActionResult> GetAllRooms()
         {
@@ -26,7 +26,8 @@ namespace RoomReservation.Controllers
             return Ok(rooms);
         }
 
-        // GET: api/Rooms/{id}
+   
+
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetRoomById([FromRoute] int id)
         {

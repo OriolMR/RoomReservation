@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Text;
 using webapi.Areas.Identity.Data;
 using webapi.DataAccess;
 using webapi.Models;
@@ -13,7 +14,7 @@ namespace RoomReservation.Controllers
     [ApiController]
     [Route("api/[controller]")]
 
-   
+
     public class UsersController : ControllerBase, IUsersController
     {
         private readonly IdentityAppDbContext identityAppDbContext;
@@ -78,24 +79,35 @@ namespace RoomReservation.Controllers
                 existingUser.UserName = userModel.newUserName ?? existingUser.UserName;
                 existingUser.Email = userModel.newEmail ?? existingUser.Email;
 
-                // No es necesario encriptar la contraseña nuevamente
-                // UserManager se encarga de esto automáticamente al guardar los cambios
+                if (!string.IsNullOrEmpty(userModel.currentPasswordHash) && !string.IsNullOrEmpty(userModel.newPasswordHash))
+                {
+                    // Cambiar la contraseña solo si se proporciona la contraseña actual y la nueva contraseña
+                    var changePasswordResult = await userManager.ChangePasswordAsync(existingUser, userModel.currentPasswordHash, userModel.newPasswordHash);
 
-                var result = await userManager.UpdateAsync(existingUser);
+                    if (!changePasswordResult.Succeeded)
+                    {
+                        // Hubo un error al cambiar la contraseña
+                        return BadRequest(changePasswordResult.Errors);
+                    }
+                }
 
-                if (result.Succeeded)
+                var updateResult = await userManager.UpdateAsync(existingUser);
+
+                if (updateResult.Succeeded)
                 {
                     return Ok(existingUser);
                 }
                 else
                 {
                     // Hubo un error al actualizar el usuario
-                    return BadRequest(result.Errors);
+                    return BadRequest(updateResult.Errors);
                 }
             }
 
             return NotFound();
         }
+
+
 
 
         // DELETE: api/Users/{id}
@@ -116,3 +128,4 @@ namespace RoomReservation.Controllers
         }
     }
 }
+

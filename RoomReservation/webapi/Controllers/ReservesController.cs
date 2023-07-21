@@ -109,8 +109,6 @@ namespace RoomReservation.Controllers
             return Ok(newReserve);
         }
 
-
-
         // PUT: api/Reserves/{id}
         [HttpPut("{id:int}")]
         public async Task<IActionResult> UpdateReserve(int id, [FromBody] UpdateReserveModel reserve)
@@ -119,6 +117,23 @@ namespace RoomReservation.Controllers
 
             if (existingReserve != null)
             {
+                // Realizar verificación de solapamiento de reservas
+                var existingReserves = await roomReservationDbContext.Reserves
+                .Where(r => r.meetingRoomId == reserve.MeetingRoomId &&
+                            r.reserveDate == reserve.ReserveDate &&
+                            r.reserveId != id)
+                .ToListAsync();
+
+                foreach (var existing in existingReserves)
+                {
+                    if (((reserve.StartingHour >= existing.startingHour && reserve.StartingHour < existing.endingHour) ||
+                        (reserve.EndingHour > existing.startingHour && reserve.EndingHour <= existing.endingHour) ||
+                        (reserve.StartingHour <= existing.startingHour && reserve.EndingHour >= existing.startingHour)))
+                    {
+                        return BadRequest("La reserva se solapa con otra reserva existente.");
+                    }
+                }
+
                 existingReserve.reserveDate = reserve.ReserveDate;
                 existingReserve.startingHour = reserve.StartingHour;
                 existingReserve.endingHour = reserve.EndingHour;
