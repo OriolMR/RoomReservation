@@ -27,6 +27,8 @@ import { DatePipe } from '@angular/common';
 import { IgxTimePickerModule, IgxToastModule } from 'igniteui-angular';
 import { ReservationModalComponent } from './views/reservation-modal/reservation-modal.component';
 import { ApiService } from './service/api.service';
+import { AdminComponent } from './views/admin/admin.component';
+import { EntradaAdminComponent } from './views/admin/entrada-admin/entrada-admin.component';
 
 
 //I keep the new line
@@ -49,6 +51,8 @@ ToastrModule.forRoot({
     MenuComponent,
     ReservationModalComponent,
     UpdateModalComponent,
+    AdminComponent,
+    EntradaAdminComponent,
 
   ],
   imports: [

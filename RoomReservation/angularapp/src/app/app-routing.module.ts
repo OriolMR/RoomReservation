@@ -7,15 +7,19 @@ import { ProfileComponent } from './views/profile/profile.component';
 import { ReservesComponent } from './views/reserves/reserves.component';
 import { ReservationComponent } from './views/reservation/reservation.component';
 import { AuthenticationGuard } from './views/login/authentication.guard';
+import { AdminComponent } from './views/admin/admin.component';
+import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' }, 
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'home', component: HomeComponent, canActivate: [AuthenticationGuard] }, 
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthenticationGuard] }, 
-  { path: 'reserves', component: ReservesComponent, canActivate: [AuthenticationGuard] },
-  { path: 'reservation', component: ReservationComponent, canActivate: [AuthenticationGuard] },
+  { path: 'home', component: HomeComponent,/** canActivate: [AuthenticationGuard] */}, 
+  { path: 'profile', component: ProfileComponent,/**  canActivate: [AuthenticationGuard] */}, 
+  { path: 'reserves', component: ReservesComponent,/**  canActivate: [AuthenticationGuard] */},
+  { path: 'admin', component: AdminComponent },
+  { path: 'reservation', component: ReservationComponent,/**  canActivate: [AuthenticationGuard] */},
+  { path: '**', component: PageNotFoundComponent }
   // Otras rutas a definir
 ];
 
