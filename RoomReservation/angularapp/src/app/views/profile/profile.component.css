@@ -1,7 +1,14 @@
-/** {
-  border: 1px solid black;
-}*/
+/*
+    Para hacer referencia a una cosa de un archivo html, si es "class", se le pone un "." delante de su nombre.
+    Para hacer referencia a una cosa de un archivo html, si es "id", se le pone un "#" delante de su nombre.
+    Para hacer referencia a una cosa de un archivo html, si es una etiqueta predeterminada, directamente se escribe su nombre.
+*/
 
+
+
+/* #PROFILE-CONTAINER */
+
+/* Primer contenedor visible antes de darle al boton "Update". */
 #profile-container {
   height: 100%;
   width: 250px;
@@ -9,38 +16,48 @@
   border: 2px solid black;
 }
 
-  #profile-container h1 {
-    text-align: center;
-    font-family: Calibri;
-    color: #FFFFFF;
-  }
+/* Titulo de #profile-container. */
+#profile-container h1 {
+  text-align: center;
+  font-family: Calibri;
+  color: #FFFFFF;
+}
 
-  #profile-container div {
-    margin: auto;
-    width: 80%;
-    padding: 10px;
-    text-align: center;
-  }
+/* Todos los elementos "div" de #profile-container. */
+#profile-container div {
+  margin: auto;
+  width: 80%;
+  padding: 10px;
+  text-align: center;
+}
 
-  #profile-container label {
-    font-family: Rubik;
-    color: #FFFFFF;
-  }
+/* Todos los elementos "label" de #profile-container. */
+#profile-container label {
+  font-family: Rubik;
+  color: #FFFFFF;
+}
 
-  #profile-container button {
-    font-family: Rubik;
-    margin: 5px;
-    background-color: #4A55A2;
-    border-color: #7895CB;
-    font-family: Rubik;
-    border-radius: 10px;
-    color: #FFFFFF;
-  }
+/* Todos los elementos "button" de #profile-container. */
+#profile-container button {
+  font-family: Rubik;
+  margin: 5px;
+  background-color: #4A55A2;
+  border-color: #7895CB;
+  font-family: Rubik;
+  border-radius: 10px;
+  color: #FFFFFF;
+}
 
-    #profile-container button:hover {
-      border-color: #C5DFF8;
-    }
+/* Hover de los botones de #profile-container. */
+#profile-container button:hover {
+  border-color: #C5DFF8;
+}
 
+
+
+/* #EDIT-CONTAINER */
+
+/* Segundo contenedor visible despues de darle al boton "Update" de #profile-container. */
 #edit-container {
   height: 100vh;
   width: 100vh;
@@ -48,12 +65,14 @@
   border: 2px solid black;
 }
 
-##edit-container h1 {
+/* Titulo de #edit-container. */
+#edit-container h1 {
   text-align: center;
   font-family: Calibri;
   color: #FFFFFF;
 }
 
+/* Todos los elementos "div" de #edit-container. */
 #edit-container div {
   margin: auto;
   width: 80%;
@@ -61,11 +80,13 @@
   text-align: center;
 }
 
+/* Todos los elementos "label" de #edit-container. */
 #edit-container label {
   font-family: Rubik;
   color: #FFFFFF;
 }
 
+/* Todos los elementos "button" de #edit-container. */
 #edit-container button {
   font-family: Rubik;
   margin: 5px;
@@ -76,6 +97,7 @@
   color: #FFFFFF;
 }
 
+/* Hover de los botones de #edit-container. */
   #edit-container button:hover {
     border-color: #C5DFF8;
   }

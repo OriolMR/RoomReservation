@@ -1,3 +1,38 @@
+/*
+    Para hacer referencia a una cosa de un archivo html, si es "class", se le pone un "." delante de su nombre.
+    Para hacer referencia a una cosa de un archivo html, si es "id", se le pone un "#" delante de su nombre.
+    Para hacer referencia a una cosa de un archivo html, si es una etiqueta predeterminada, directamente se escribe su nombre.
+*/
+
+
+/* .TITLE-CONTAINER */
+
+/* Contenedor de los dos titulos (titulo y subtitulo). */
+.title-container {
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 0px;
+}
+
+/* Titulo de .title-container. */
+.title-container h1 {
+  font-size: 56px;
+  font-weight: bold;
+  margin-bottom: 0;
+  font-size: 56px;
+  font-family: Calibri;
+}
+
+/* Subtitulo de .title-container. */
+.title-container h2 {
+  margin-top: 0;
+  font-family: Calibri;
+}
+
+
+/* .HOME-CONTAINER*/
+
+/* Contenedor debajo de .title-container. */
 .home-container {
   align-items: center;
   margin-top: 0px; /* Ajusta el valor del margen superior según tus necesidades */
@@ -9,55 +44,29 @@
   text-align: center;
   background-color: rgba(82, 97, 107, 0.8);
   border-radius: 10px;
-  border: 2px solid black;
+  box-shadow: 5px 5px 10px #1c2b34, -5px -5px 10px #6eabd0;
 }
 
-.title-container {
-  text-align: center;
-  margin-bottom: 30px;
-  margin-top: 0px;
-}
-
-  .title-container h1 {
-    font-size: 56px;
-    font-weight: bold;
-    margin-bottom: 0;
-    font-size: 56px;
-    font-family: Calibri;
-  }
-
-  .title-container h2 {
-    margin-top: 0;
-    font-family: Calibri;
-  }
-
-.input-container {
-  margin-bottom: 10px;
-  font-family: Rubik;
-}
-
-.home-container h2 {
-  margin-top: 100px;
-  font-family: Calibri;
-  color: #E2F6CA;
-}
-
-.home-container button {
-  margin: 5px;
-  background-color: #4A55A2;
-  border-color: #7895CB;
-  font-family: Rubik;
-}
-
-  .home-container button:hover {
-    border-color: #C5DFF8;
-  }
-
-form-group {
-  color: #E2F6CA;
-}
-
+/* Todos los componentes "label" del archivo html predefinido. */
 label {
   color: #ffffff;
   font-family: Rubik;
 }
+
+/* Todos los componentes "button" de .home-container. */
+.home-container button {
+  margin: 5px;
+  font-family: Rubik;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Hover para los botones de .home-container. */
+.home-container button:hover {
+  border-color: #C5DFF8;
+}
+
+

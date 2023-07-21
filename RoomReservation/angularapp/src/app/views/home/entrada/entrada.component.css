@@ -1,3 +1,19 @@
+/*
+    Para hacer referencia a una cosa de un archivo html, si es "class", se le pone un "." delante de su nombre.
+    Para hacer referencia a una cosa de un archivo html, si es "id", se le pone un "#" delante de su nombre.
+    Para hacer referencia a una cosa de un archivo html, si es una etiqueta predeterminada, directamente se escribe su nombre.
+*/
+
+
+/* Componentes .ENTRADA */
+
+/* Aplica estos ajustes a todos los elementos #entrada. */
+#entrada * {
+  padding: 30px;
+  margin: 10px;
+}
+
+/* Cada una de las opciones del menu. */
 #entrada {
   background-color: #C5DFF8;
   border-radius: 10px;
@@ -13,11 +29,13 @@
   border-radius: 30px;
 }
 
-  #entrada * {
-    padding: 30px;
-    margin: 10px;
+/* Hover para cada #entrada*/
+  #entrada:hover {
+    border: 2px solid black;
+    box-shadow: none;
   }
 
+/* Cada uno de los elementos que contiene cada #entrada. */
 .entrada2 {
   display: flex;
   flex-direction: row;
@@ -25,9 +43,4 @@
   justify-content: center;
   text-align: center;
   width: 600px;
-}
-
-#entrada:hover {
-  border: 2px solid black;
-  box-shadow: none;
 }

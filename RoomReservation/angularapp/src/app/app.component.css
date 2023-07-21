@@ -1,10 +1,16 @@
+/*
+    Para hacer referencia a una cosa de un archivo html, si es "class", se le pone un "." delante de su nombre.
+    Para hacer referencia a una cosa de un archivo html, si es "id", se le pone un "#" delante de su nombre.
+    Para hacer referencia a una cosa de un archivo html, si es una etiqueta predeterminada, directamente se escribe su nombre.
+*/
+
 body {
   margin: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100%;
-  background: linear-gradient(to bottom, #c5dff8, #4a55a2); /* Color de fondo deseado */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background: linear-gradient(to bottom, #c5dff8, #4a55a2); /*  Color de fondo deseado */
   background-size: cover;
 }

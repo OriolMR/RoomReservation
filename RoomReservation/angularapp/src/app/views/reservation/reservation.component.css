@@ -1,19 +1,57 @@
+/*
+    Para hacer referencia a una cosa de un archivo html, si es "class", se le pone un "." delante de su nombre.
+    Para hacer referencia a una cosa de un archivo html, si es "id", se le pone un "#" delante de su nombre.
+    Para hacer referencia a una cosa de un archivo html, si es una etiqueta predeterminada, directamente se escribe su nombre.
+*/
 
 
-/* Estilos generales para los contenedores de las salas de reuniones */
-.meeting-room {
-  display: flex;
+/*.HOME-CONTAINER*/
+
+/*Contenedor para los desplegables y el boton de clear selection*/
+.home-container {
+  font-family: Arial, sans-serif;
+  color: #E2F6CA;
   align-items: center;
-  justify-content: center;
-  width: 15px;
-  height: 150px;
-  border: 1px solid #ccc;
-  margin: 10px;
-  padding: 10px;
+  margin-top: 10px;
+  height: 60%;
+  width: 830px;
+  padding: 20px;
+  margin: 0 auto;
   text-align: center;
+  border-radius: 10px;
+  background: rgba(82, 97, 107, 0.8);
+  box-shadow: 5px 5px 10px #1c2b34, -5px -5px 10px #6eabd0;
 }
 
-/* Estilos para el contenedor de cada sala de reuniones */
+/*Titulo de .home-container*/
+.meeting-rooms-container h3 {
+  font-size: 24px;
+  text-align: center;
+  margin: 5px 0;
+}
+
+/*Boton clear selection de .home-container*/
+.clear-selection button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+/*.MEETING-ROOMS-CONTAINER*/
+
+/*Contenedor que aparece debajo de .home-container con las salas de la oficina seleccionada.*/
+.meeting-rooms-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+/*Contenedor de cada sala de .meeting-rooms-container*/
 .meeting-room-container {
   display: flex;
   flex-wrap: wrap;
@@ -30,82 +68,8 @@
   box-shadow: 5px 5px 10px #1c2b34, -5px -5px 10px #6eabd0;
 }
 
-meeting-room-container {
-  position: relative;
-}
-
-.select-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
-  background-color: rgba(0, 0, 0, 0); /* Asegúrate de que el fondo sea transparente */
-}
-
-.meeting-rooms-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 40px;
-  
-}
-
-  /* Estilos para el texto del nombre de la sala de reuniones */
-  .meeting-rooms-container h3 {
-    font-size: 24px;
-    text-align: center;
-    margin: 5px 0;
-    
-  }
-
-.clear-selection {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px; /* Agregar un margen superior para separar el botón de las salas de reuniones */
-}
-
-  .clear-selection button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-
-.home-container {
-  font-family: Arial, sans-serif;
-  color: #E2F6CA;
-  align-items: center;
-  margin-top: 10px; 
-  height: 60%; 
-  width: 830px;
-  padding: 20px;
-  margin: 0 auto;
-  text-align: center;
-  border-radius: 10px;
-  background: rgba(82, 97, 107, 0.8);
-  box-shadow: 5px 5px 10px #1c2b34, -5px -5px 10px #6eabd0;
-}
 
 
-.btn-reserve {
-  padding: 10px 20px;
-  background-color: #28a745; 
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 5px; 
-}
-
-  /* Estilos para el botón Reservar cuando se pasa el mouse por encima */
-  .btn-reserve:hover {
-    background-color: #0056b3;
-  }
 
 
 

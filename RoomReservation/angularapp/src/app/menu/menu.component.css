@@ -1,3 +1,13 @@
+/*
+    Para hacer referencia a una cosa de un archivo html, si es "class", se le pone un "." delante de su nombre.
+    Para hacer referencia a una cosa de un archivo html, si es "id", se le pone un "#" delante de su nombre.
+    Para hacer referencia a una cosa de un archivo html, si es una etiqueta predeterminada, directamente se escribe su nombre.
+*/
+
+
+/* USUARIO */
+
+/* Simbolo de usuario */
 #profile-btn {
   margin-top: 0px;
   width: 40px;
@@ -6,7 +16,10 @@
   margin-left: auto;
 }
 
-/** DROPDOWN*/
+
+/* .DROPDOWN */
+
+/* Dropdown debajo del usuario cuando se pasa el raton por encima. */
 .dropdown {
   display: inline-block;
   position: relative;
@@ -14,6 +27,7 @@
   margin-right: 40px;
 }
 
+/* Contenido del dropdown. */
 .dropdown-content {
   display: none;
   position: absolute;
@@ -22,10 +36,12 @@
   box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.4);
 }
 
+/* Aparicion de la lista de opciones del dropdown.*/
 .dropdown:hover .dropdown-content {
   display: block;
 }
 
+/* Cada una de las opciones del dropdown. */
 .dropdown-content a {
   display: block;
   color: #000000;
@@ -33,7 +49,8 @@
   text-decoration: none;
 }
 
-  .dropdown-content a:hover {
-    color: #FFFFFF;
-    background-color: #00A4BD;
-  }
+/* Hover de las opciones del dropdown. */
+.dropdown-content a:hover {
+  color: #FFFFFF;
+  background-color: #00A4BD;
+}

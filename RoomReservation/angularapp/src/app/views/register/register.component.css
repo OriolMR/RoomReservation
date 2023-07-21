@@ -1,3 +1,12 @@
+/*
+    Para hacer referencia a una cosa de un archivo html, si es "class", se le pone un "." delante de su nombre.
+    Para hacer referencia a una cosa de un archivo html, si es "id", se le pone un "#" delante de su nombre.
+    Para hacer referencia a una cosa de un archivo html, si es una etiqueta predeterminada, directamente se escribe su nombre.
+*/
+
+/* .REGISTER-CONTAINER */
+
+/* Contenedor principal. */
 .register-container {
   align-items: center;
   margin-top: 0px; /* Ajusta el valor del margen superior según tus necesidades */
@@ -12,32 +21,38 @@
   text-align: center;
 }
 
-  .register-container .form-group {
-    margin-bottom: 10px;
-    color: #E2F6CA;
-  }
+/* Titutlo de .register-container. */
+.register-container h2 {
+  color: #FFFFFF;
+  font-family: Calibri;
+}
 
-  .register-container h2 {
-    color: #FFFFFF;
-    font-family: Calibri;
-  }
+/* Todos los .form-group de .register-container, que dentro tienen un elemento "label" y otro "input". */
+.register-container .form-group {
+  margin-bottom: 10px;
+  color: #E2F6CA;
+}
 
-  .register-container button {
-    margin: 5px;
-    background-color: #4A55A2;
-    border-color: #7895CB;
-    font-family: Rubik;
-  }
-
-    .register-container button:hover {
-      border-color: #C5DFF8;
-    }
-
+/* Todos los elementos "label" del archivo html predeterminado. */
 label {
   color: #ffffff;
   font-family: Rubik;
 }
 
+/* Todos los elementos "button" de .register-container. */
+.register-container button {
+  margin: 5px;
+  background-color: #4A55A2;
+  border-color: #7895CB;
+  font-family: Rubik;
+}
+
+/* Hover de los botones de .register-container. */
+.register-container button:hover {
+  border-color: #C5DFF8;
+}
+
+/* Hace que el boton este desactivado. */
 .button-disabled {
   opacity: 0.6;
   cursor: not-allowed;
