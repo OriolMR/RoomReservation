@@ -8,6 +8,7 @@ import { ReservesComponent } from './views/reserves/reserves.component';
 import { ReservationComponent } from './views/reservation/reservation.component';
 import { AdminComponent } from './views/admin/admin.component';
 import { AuthenticationGuard } from './views/login/authentication.guard';
+import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
 
 
 const routes: Routes = [
@@ -18,7 +19,8 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent,canActivate: [AuthenticationGuard]}, 
   { path: 'reserves', component: ReservesComponent,canActivate: [AuthenticationGuard]},
   { path: 'admin', component: AdminComponent },
-  { path: 'reservation', component: ReservationComponent,canActivate: [AuthenticationGuard]}
+  { path: 'reservation', component: ReservationComponent,canActivate: [AuthenticationGuard]},
+  { path:'**', component: PageNotFoundComponent }
   // Otras rutas a definir
 ];
 
