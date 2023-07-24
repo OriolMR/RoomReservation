@@ -1,0 +1,6 @@
+<body>
+    <div id="listado">
+        <h3 id="titulo">ACME</h3>
+        <app-entrada-admin *ngFor="let entrada of adminEntradas" [entrada]="entrada" routerLink="{{entrada.link}}" ></app-entrada-admin>
+    </div>
+</body>

@@ -12,8 +12,9 @@
 #profile-container {
   height: 100%;
   width: 250px;
-  background-color: rgba(82, 97, 107, 0.8);
-  border: 2px solid black;
+  border-radius: 10px;
+  background: rgba(82, 97, 107, 0.8);
+  box-shadow: 5px 5px 10px #dedede, -5px -5px 10px #6eabd0;
 }
 
 /* Titulo de #profile-container. */
@@ -61,8 +62,9 @@
 #edit-container {
   height: 100vh;
   width: 100vh;
-  background-color: rgba(82, 97, 107, 0.8);
-  border: 2px solid black;
+  border-radius: 10px;
+  background: rgba(82, 97, 107, 0.8);
+  box-shadow: 5px 5px 10px #dedede, -5px -5px 10px #6eabd0;
 }
 
 /* Titulo de #edit-container. */
