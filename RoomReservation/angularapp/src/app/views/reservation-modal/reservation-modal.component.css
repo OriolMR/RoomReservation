@@ -4,6 +4,10 @@
     Para hacer referencia a una cosa de un archivo html, si es una etiqueta predeterminada, directamente se escribe su nombre.
 */
 
+
+/* MODAL */
+
+/* Todo el MODAL en si. */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -17,10 +21,7 @@
   align-items: center;
 }
 
-.modal-content * {
- 
-}
-
+/* Contenido de .modal-content. */
 .modal-content {
   position: fixed;
   top: 50%;
@@ -39,30 +40,32 @@
 
 
 }
-
-  .modal-content h2 {
-    font-size: 24px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-  }
-
-  .modal-content p {
-    font-size: 16px;
-    margin-bottom: 20px;
-  }
-
-#current-label {
-margin-top: 15px;
-margin-bottom:15px;
-display: flex;
-justify-content: center;
+/* Titulo de .modal-content. */
+.modal-content h2 {
+  font-size: 24px;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
+/* Todos los elementos "p" de .modal-content. */
+.modal-content p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+/* Contenedor de los .time-pickers-container. */
+.time-pickers-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Contenedor para centrar el desplegable rojo. */
 .center-container {
   display: flex;
   justify-content: center;
 }
 
+/* Contenedor de los dos botones del modal. */
 .button-container {
   display: flex;
   margin-top: 15px;
@@ -70,15 +73,25 @@ justify-content: center;
   justify-content: center; /* Para centrar los botones horizontalmente */
 }
 
+/* Boton reservar de .button-container. */
+.btn-reserve {
+  background-color: #28a745; /* Verde */
+}
+
+/* Boton cerrar de .button-container. */
+.btn-close {
+  background-color: #dc3545; /* Rojo */
+}
+
 .custom-button {
-  width: 100px; /* Ajusta el ancho deseado */
-  height: 30px; /* Ajusta la altura deseada */
+  width: 100px; 
+  height: 30px;
   margin: 5px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   color: #fff;
-  font-size: 14px; /* Ajusta el tamaño de fuente deseado */
+  font-size: 14px; 
 }
 
 /* Estilo para el mat-datepicker */
@@ -90,21 +103,3 @@ justify-content: center;
 .title {
   margin-top: 20px; /* Agregar margen superior de 20px para separar los igx-time-picker */
 }
-
-.btn-reserve {
-  background-color: #28a745; /* Verde */
-}
-
-.btn-close {
-  background-color: #dc3545; /* Rojo */
-}
-
-.time-pickers-container {
-  display: flex;
-  justify-content: space-between;
-}
-
-
-
-
-

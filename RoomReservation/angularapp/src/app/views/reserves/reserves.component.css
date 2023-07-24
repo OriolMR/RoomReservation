@@ -1,9 +1,22 @@
+/*
+    Para hacer referencia a una cosa de un archivo html, si es "class", se le pone un "." delante de su nombre.
+    Para hacer referencia a una cosa de un archivo html, si es "id", se le pone un "#" delante de su nombre.
+    Para hacer referencia a una cosa de un archivo html, si es una etiqueta predeterminada, directamente se escribe su nombre.
+*/
+
+/* TITULO */
+
+/* Titulo de la pagina. */
 #myReserves {
   text-align: center; /* Centra el texto horizontalmente */
   margin-bottom: 10px; /* Opcional: agrega un margen superior para mejorar el espaciado */
   /* Ajusta otros estilos según tus preferencias, como el tamaño de fuente, el color, etc. */
 }
-/* reserves.component.css */
+
+
+/* RESERVES-CONTAINER */
+
+/* Contenedor .reserves-container dentro de "#entrada". Debajo del titulo. */
 .reserves-container {
   display: flex;
   flex-direction: column;
@@ -13,6 +26,10 @@
   gap: 20px; /* Espacio entre cada reserva */
 }
 
+/*
+    Contenedor de cada una de las reservas visibles una vez hechas.
+    Se encuentran entre el numero de reservas y el simbolo/boton "+". 
+*/
 .reserve-container {
   display: flex;
   flex-direction: row;
@@ -28,34 +45,40 @@
   cursor: pointer;
 }
 
+/* Fecha de reserva de la reserva de uno de los contenedores .reserve-container. */
 .reserve-date {
   /* Define el espacio horizontal entre los elementos <p> */
   margin-right: 15px;
   color: black;
 }
+
+/* Hora de inicio de reserva de la reserva de uno de los contenedores .reserve-container. */
 .starting-hour {
   /* Define el espacio horizontal entre los elementos <p> */
   margin-right: 15px;
   color: black;
 }
+
+/* Nombre de la sala de reserva de la reserva de uno de los contenedores .reserve-container. */
 .meetingRoomName {
   color: black;
 }
 
-/* Estilos para el botón "Update" */
+/* Botón "Update" de cada contenedor .reserve-container. */
 #edit-button {
   width: 30px; /* Ajustamos el ancho de la imagen */
   height: 30px; /* Ajustamos la altura de la imagen */
   margin-left: 30px; /* Espaciado a la derecha */
 }
 
-/* Estilos para el botón de reserva */
+/* Botón "Delete" de cada contenedor .reserve-container. */
 #delete-button {
   width: 30px; /* Ajustamos el ancho de la imagen */
   height: 30px; /* Ajustamos la altura de la imagen */
   margin-left: 15px; /* Espaciado a la derecha */
 }
 
+/* Boton añadir reserva dentro de .reserves-container al final del todo. */
 #plus-button {
   width: 50px; /* Ajustamos el ancho de la imagen */
   height: 50px; /* Ajustamos la altura de la imagen */

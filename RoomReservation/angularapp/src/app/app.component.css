@@ -4,6 +4,9 @@
     Para hacer referencia a una cosa de un archivo html, si es una etiqueta predeterminada, directamente se escribe su nombre.
 */
 
+/* BODY */
+
+/* El cuepo de todo el esqueleto de la pagina proveniente del archivo html correspondiente. */
 body {
   margin: auto;
   display: flex;
