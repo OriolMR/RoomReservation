@@ -3,6 +3,7 @@ import { AuthenticationGuard } from '../login/authentication.guard';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { ApiService } from '../../service/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -18,7 +19,7 @@ export class ProfileComponent {
   currentEmail: string = '';
   newPasswordHash: string = '';
 
-  constructor(private apiService: ApiService, private http: HttpClient, private authGuard: AuthenticationGuard, private toastr: ToastrService) { }
+  constructor(private apiService: ApiService, private router: Router, private http: HttpClient, private authGuard: AuthenticationGuard, private toastr: ToastrService) { }
 
   ngOnInit() {
     // Get the token from the AuthService
@@ -75,6 +76,10 @@ export class ProfileComponent {
   div2Function() {
     this.div1 = false;
     this.div2 = true
+  }
+
+  goBack() {
+    this.router.navigate(['/home']);
   }
 
   saveProfile() {

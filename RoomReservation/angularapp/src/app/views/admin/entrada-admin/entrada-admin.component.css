@@ -21,8 +21,8 @@
     cursor: pointer;
     display: flex;
     justify-content: center;
-    width: 500px;
-    height: 100px;
+    width: 400px;
+    height: 40px;
     background: #C5DFF8;
     font-family: Rubik;
     box-shadow: 5px 5px 0px #8a9cae; /*-5px -5px 0px #ffffff;*/
@@ -44,4 +44,3 @@
     text-align: center;
     width: 600px;
   }
-  

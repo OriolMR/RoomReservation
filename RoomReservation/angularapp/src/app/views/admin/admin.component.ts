@@ -13,32 +13,32 @@ export class AdminComponent {
       this.adminEntradas = [
         {
           titulo: 'Users',
-          resumen: 'Click here to administrate users',
+          resumen: 'Admin',
           link: '/admin-users'
         },
         {
           titulo: 'Countries',
-          resumen: 'Click here to administrate countries',
+          resumen: 'Admin',
           link: '/admin-countries'
         },
         {
           titulo: 'Cities',
-          resumen: 'Click here to administrate cities',
+          resumen: 'Admin',
           link: '/admin-cities'
         },
         {
           titulo: 'Offices',
-          resumen: 'Click here to administrate offices',
+          resumen: 'Admin',
           link: '/admin-offices'
         }, 
         {
-          titulo: 'Rooms',
-          resumen: 'Click here to administrate rooms',
+          titulo: 'Meeting Rooms',
+          resumen: 'Admin',
           link: 'admin-rooms'
         },
         {
           titulo: 'Reserves',
-          resumen: 'Click here to administrate reserves',
+          resumen: 'Admin',
           link: '/admin-reserves'
         }
       ];

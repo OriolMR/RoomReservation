@@ -25,14 +25,14 @@
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 500px;
+  width: 460px;
   height: 530px;
   transform: translate(-50%, -50%);
   padding: 20px;
   border-radius: 30px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  background: #a8c8dc;
+  background: white;
   box-shadow: 5px 5px 49px, -5px -5px 49px;
   display: flex;
   text-align: center;

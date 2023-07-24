@@ -42,7 +42,7 @@
   padding: 20px;
   margin: 0 auto;
   text-align: center;
-  background-color: rgba(82, 97, 107, 0.8);
+  background-color: lightslategrey;
   border-radius: 10px;
   box-shadow: 5px 5px 10px #1c2b34, -5px -5px 10px #6eabd0;
 }
