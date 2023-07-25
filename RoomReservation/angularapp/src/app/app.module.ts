@@ -29,6 +29,15 @@ import { ReservationModalComponent } from './views/reservation-modal/reservation
 import { ApiService } from './service/api.service';
 import { AdminComponent } from './views/admin/admin.component';
 import { EntradaAdminComponent } from './views/admin/entrada-admin/entrada-admin.component';
+import { CitiesComponent } from './views/admin/cities/cities.component';
+
+//Material UI
+import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
 
 
 //I keep the new line
@@ -53,7 +62,7 @@ ToastrModule.forRoot({
     UpdateModalComponent,
     AdminComponent,
     EntradaAdminComponent,
-
+    
   ],
   imports: [
     BrowserModule,
@@ -70,7 +79,13 @@ ToastrModule.forRoot({
     MatInputModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    IgxToastModule
+    IgxToastModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDividerModule
+    
   ],
   providers: [
     {
