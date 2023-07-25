@@ -8,17 +8,19 @@
 
 /* Contenedor principal. */
 .register-container {
-  align-items: center;
-  margin-top: 0px; /* Ajusta el valor del margen superior según tus necesidades */
-  margin-bottom: 0px; /* Establece el margen inferior en cero */
   height: 100%; /* Establece la altura del contenedor en 100% */
-  background-color: rgba(82, 97, 107, 0.8);
-  border-radius: 10px;
-  border: 2px solid black;
-  padding: 20px;
   width: 250px;
+  /**/
+  align-items: center;
+  margin-bottom: 0px; /* Establece el margen inferior en cero */
+  padding: 20px;
   margin: 0 auto;
   text-align: center;
+  color: #E2F6CA;
+  margin-top: 10px;
+  border-radius: 10px;
+  background: rgba(82, 97, 107, 0.8);
+  box-shadow: 5px 5px 10px #1c2b34, -5px -5px 10px #6eabd0;
 }
 
 /* Titutlo de .register-container. */
@@ -45,12 +47,19 @@ label {
   background-color: #4A55A2;
   border-color: #7895CB;
   font-family: Rubik;
+  /**/
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 /* Hover de los botones de .register-container. */
-.register-container button:hover {
-  border-color: #C5DFF8;
-}
+  .register-container button:hover {
+    background-color: #0b5ed7;
+  }
 
 /* Hace que el boton este desactivado. */
 .button-disabled {

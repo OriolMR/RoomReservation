@@ -17,6 +17,10 @@ body {
   background-color: rgba(82, 97, 107, 0.8);
   border-radius: 10px;
   box-shadow: 5px 5px 10px #1c2b34, -5px -5px 10px #6eabd0;
+  align-items: center;
+  margin-bottom: 0px; /* Establece el margen inferior en cero */
+  padding: 20px;
+  margin: 0 auto;
 }
 
 /* Titulo del body. */

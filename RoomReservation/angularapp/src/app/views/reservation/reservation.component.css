@@ -13,19 +13,20 @@
   color: #E2F6CA;
   align-items: center;
   margin-top: 10px;
-  height: 60%;
-  width: 830px;
   padding: 20px;
   margin: 0 auto;
   text-align: center;
   border-radius: 10px;
   background: rgba(82, 97, 107, 0.8);
   box-shadow: 5px 5px 10px #1c2b34, -5px -5px 10px #6eabd0;
+  height: 60%;
+  width: 830px;
 }
 
 /*Titulo de .home-container*/
 .meeting-rooms-container h3 {
   font-size: 24px;
+  font-family: Calibri;
   text-align: center;
   margin: 5px 0;
 }

@@ -20,10 +20,18 @@
 .reserves-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
   margin-top: 20px;
   gap: 20px; /* Espacio entre cada reserva */
+  /**/
+  color: #E2F6CA;
+  align-items: center;
+  padding: 20px;
+  margin: 0 auto;
+  text-align: center;
+  border-radius: 10px;
+  background: rgba(82, 97, 107, 0.8);
+  box-shadow: 5px 5px 10px #1c2b34, -5px -5px 10px #6eabd0;
 }
 
 /*
@@ -83,4 +91,18 @@
   width: 50px; /* Ajustamos el ancho de la imagen */
   height: 50px; /* Ajustamos la altura de la imagen */
 
+}
+
+.reserves-container button {
+  margin: 5px;
+  background-color: #4A55A2;
+  border-color: #7895CB;
+  font-family: Rubik;
+  /**/
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }

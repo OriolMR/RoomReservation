@@ -65,8 +65,8 @@ label {
 }
 
 /* Hover para los botones de .home-container. */
-.home-container button:hover {
-  border-color: #C5DFF8;
-}
+  .home-container button:hover {
+    background-color: #0b5ed7;
+  }
 
 

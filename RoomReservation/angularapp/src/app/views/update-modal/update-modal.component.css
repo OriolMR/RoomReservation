@@ -1,3 +1,13 @@
+/*
+    Para hacer referencia a una cosa de un archivo html, si es "class", se le pone un "." delante de su nombre.
+    Para hacer referencia a una cosa de un archivo html, si es "id", se le pone un "#" delante de su nombre.
+    Para hacer referencia a una cosa de un archivo html, si es una etiqueta predeterminada, directamente se escribe su nombre.
+*/
+
+
+/* MODAL-OVERLAY */
+
+/* Contiene toda la pagina una vez cliclado el boton de editar de la pagina superior. */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -11,14 +21,7 @@
   align-items: center;
 }
 
-.modal-content * {
-}
-
-.center-container {
-  display: flex;
-  justify-content: center;
-}
-
+/* Contenedor de las opciones de edicion de la pagina superpuesta. */
 .modal-content {
   position: fixed;
   top: 50%;
@@ -36,22 +39,48 @@
   text-align: center;
 }
 
-  .modal-content h2 {
-    font-size: 24px;
-    margin-top: 0px;
-    margin-bottom: 0px;
-  }
+/* Titulo de .modal-content. */
+.modal-content h2 {
+  font-size: 24px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
 
-  .modal-content p {
-    font-size: 16px;
-    margin-bottom: 20px;
-  }
+/* Contenedor de la parte de date-picker. */
+.mat-form-field {
+  margin-bottom: 10px; /* Agregar margen inferior de 20px para separar el mat-datepicker */
+}
 
+/* Todos os atributos "p" de .modal-content. */
+.modal-content p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+/* Todos los elementos class .title del archivo html predeterminado. (Mas concretamente starting hour y ending hour.) */
+.title {
+  margin-top: 20px; /* Agregar margen superior de 20px para separar los igx-time-picker */
+}
+
+/* Id de current-label (current reserves). */
 #current-label {
   margin-top: 15px;
   margin-bottom: 15px;
 }
 
+/* Contenedor de la parte de time-picker. */
+.time-pickers-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Contenedor debajo de #current-label. Para centrar el desplegable con las reservas de esa sala ocupadas. */
+.center-container {
+  display: flex;
+  justify-content: center;
+}
+
+/* Contenedor de los botones del .modal-update debajo de center container. */
 .button-container {
   display: flex;
   margin-top: 15px;
@@ -59,6 +88,7 @@
   justify-content: center; /* Para centrar los botones horizontalmente */
 }
 
+/* Cada uno de los botones de .button-container. */
 .custom-button {
   width: 100px; /* Ajusta el ancho deseado */
   height: 30px; /* Ajusta la altura deseada */
@@ -70,29 +100,17 @@
   font-size: 14px; /* Ajusta el tamaño de fuente deseado */
 }
 
-/* Estilo para el mat-datepicker */
-.mat-form-field {
-  margin-bottom: 10px; /* Agregar margen inferior de 20px para separar el mat-datepicker */
-}
-
-/* Estilo para los igx-time-picker */
-.title {
-  margin-top: 20px; /* Agregar margen superior de 20px para separar los igx-time-picker */
-}
-
+/* Boton actualizar verde del contenedor button-container. */
 .btn-update {
   background-color: #28a745; /* Verde */
 }
 
+/* Boton cerrar rojo del contenedor button-container. */
 .btn-close {
   background-color: #dc3545; /* Rojo */
 }
 
-.time-pickers-container {
-  display: flex;
-  justify-content: space-between;
-}
-
+/* */
 #scrollable-container {
   border: 1px solid #ccc; /* Opcional: agrega un borde para mejorar la apariencia */
   padding: 5px; /* Opcional: agrega espaciado interno para mejorar la apariencia */

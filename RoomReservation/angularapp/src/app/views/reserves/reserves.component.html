@@ -2,7 +2,7 @@
 <h3 id="myReserves">My Reserves: </h3>
 <div id="entrada">
   <!-- Utilizamos un div con la clase 'reserves-container' para contener todas las reservas -->
-  <div class="reserves-container">
+  <div class="reserves-container" style="width:auto">
     <p>Total reserves: {{ reservesList.length }}</p>
     <div *ngFor="let reserve of reservesList" class="reserve-item">
       <!-- Envuelve cada reserva en un div con la clase 'reserve-container' -->
@@ -24,6 +24,7 @@
              (click)="deleteReserve(reserve)">
       </div>
     </div>
+    <button type="button" class="btn btn-secondary" routerLink="/home">Back</button>
     <img id="plus-button" src="https://static.vecteezy.com/system/resources/previews/009/266/327/original/plus-sign-icon-free-png.png"
          routerLink="/reservation"
          style="cursor: pointer;">
