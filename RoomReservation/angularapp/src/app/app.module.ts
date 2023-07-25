@@ -38,6 +38,7 @@ import {MatTableDataSource, MatTableModule} from '@angular/material/table';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
+import { CitiesDeleteComponent } from './views/admin/cities/cities-delete/cities-delete.component';
 
 
 //I keep the new line
@@ -62,7 +63,7 @@ ToastrModule.forRoot({
     UpdateModalComponent,
     AdminComponent,
     EntradaAdminComponent,
-    
+    CitiesDeleteComponent,
   ],
   imports: [
     BrowserModule,

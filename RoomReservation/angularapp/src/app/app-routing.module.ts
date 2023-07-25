@@ -18,9 +18,9 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'home', component: HomeComponent,canActivate: [AuthenticationGuard]}, 
   { path: 'profile', component: ProfileComponent,canActivate: [AuthenticationGuard]}, 
-  { path: 'reserves', component: ReservesComponent,canActivate: [AuthenticationGuard]},
+  { path: 'reserves', component: ReservesComponent},
   { path: 'admin', component: AdminComponent },
-  { path: 'reservation', component: ReservationComponent,canActivate: [AuthenticationGuard]},
+  { path: 'reservation', component: ReservationComponent},
   { path: 'admin-cities', component: CitiesComponent },
   { path:'**', component: PageNotFoundComponent }
   // Otras rutas a definir
