@@ -12,6 +12,7 @@ import { PageNotFoundComponent } from './views/page-not-found/page-not-found.com
 import { CitiesComponent } from './views/admin/cities/cities.component';
 import { CountriesComponent } from './views/admin/countries/countries.component';
 import { officesComponent } from './views/admin/offices/offices.component';
+import { MeetingRoomsComponent } from './views/admin/meeting-rooms/meeting-rooms.component';
 
 
 const routes: Routes = [
@@ -23,9 +24,10 @@ const routes: Routes = [
   { path: 'reserves', component: ReservesComponent},
   { path: 'admin', component: AdminComponent},
   { path: 'reservation', component: ReservationComponent},
-  { path: 'admin-cities', component: CitiesComponent },
-  { path: 'admin-countries', component: CountriesComponent },
-  { path: 'admin-offices', component: officesComponent },
+  { path: 'admin/admin-cities', component: CitiesComponent },
+  { path: 'admin/admin-countries', component: CountriesComponent },
+  { path: 'admin/admin-offices', component: officesComponent },
+  { path: 'admin/admin-rooms', component: MeetingRoomsComponent },
   { path:'**', component: PageNotFoundComponent }
   // Otras rutas a definir
 ];

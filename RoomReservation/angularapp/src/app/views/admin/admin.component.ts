@@ -14,22 +14,22 @@ export class AdminComponent {
         {
           titulo: 'Users',
           resumen: 'Admin',
-          link: '/admin-users'
+          link: 'admin-users'
         },
         {
           titulo: 'Countries',
           resumen: 'Admin',
-          link: '/admin-countries'
+          link: 'admin-countries'
         },
         {
           titulo: 'Cities',
           resumen: 'Admin',
-          link: '/admin-cities'
+          link: 'admin-cities'
         },
         {
           titulo: 'Offices',
           resumen: 'Admin',
-          link: '/admin-offices'
+          link: 'admin-offices'
         }, 
         {
           titulo: 'Meeting Rooms',
@@ -39,7 +39,7 @@ export class AdminComponent {
         {
           titulo: 'Reserves',
           resumen: 'Admin',
-          link: '/admin-reserves'
+          link: 'admin-reserves'
         }
       ];
     }

@@ -56,6 +56,10 @@ export class ApiService {
     return this.get('offices');
   }
 
+  getMeetingRooms(): Observable<any[]> {
+    return this.get('meetingRooms');
+  }
+
   getEmailFromUserId(userId: string): Observable<any> {
     return this.get(`users/${userId}`);
   }
