@@ -41,6 +41,8 @@ import {MatDividerModule} from '@angular/material/divider';
 import { CitiesDeleteComponent } from './views/admin/cities/cities-delete/cities-delete.component';
 import { CountriesComponent } from './views/admin/countries/countries.component';
 import { CountriesDeleteComponent } from './views/admin/countries/countries-delete/countries-delete.component';
+import { OfficesDeleteComponent } from './views/admin/offices/offices-delete/offices-delete.component';
+import { officesComponent } from './views/admin/offices/offices.component';
 
 
 //I keep the new line
@@ -67,6 +69,7 @@ ToastrModule.forRoot({
     EntradaAdminComponent,
     CitiesDeleteComponent,
     CountriesDeleteComponent,
+    OfficesDeleteComponent,
   ],
   imports: [
     BrowserModule,

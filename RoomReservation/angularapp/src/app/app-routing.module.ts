@@ -11,6 +11,7 @@ import { AuthenticationGuard } from './views/login/authentication.guard';
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
 import { CitiesComponent } from './views/admin/cities/cities.component';
 import { CountriesComponent } from './views/admin/countries/countries.component';
+import { officesComponent } from './views/admin/offices/offices.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'reservation', component: ReservationComponent},
   { path: 'admin-cities', component: CitiesComponent },
   { path: 'admin-countries', component: CountriesComponent },
+  { path: 'admin-offices', component: officesComponent },
   { path:'**', component: PageNotFoundComponent }
   // Otras rutas a definir
 ];
