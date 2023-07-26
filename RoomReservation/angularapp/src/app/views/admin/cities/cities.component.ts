@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Test } from 'src/app/shared/interfaces/test';
+import { ICities } from 'src/app/shared/interfaces/iCities';
 import {AfterViewInit, ViewChild} from '@angular/core';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
@@ -25,7 +25,7 @@ import {MatIconModule} from '@angular/material/icon';
 
 export class CitiesComponent implements AfterViewInit {
   displayedColumns: string[] = ['cityId', 'countryId', 'cityName', 'symbols'];
-  dataSource = new MatTableDataSource<Test>([])
+  dataSource = new MatTableDataSource<ICities>([])
   constructor(
     private _liveAnnouncer: LiveAnnouncer,
     public dialog: MatDialog,

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Test } from 'src/app/shared/interfaces/test';
+import { ICountries } from 'src/app/shared/interfaces/icountries';
 import {AfterViewInit, ViewChild} from '@angular/core';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
@@ -10,25 +10,36 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDialog, MatDialogRef, MatDialogModule} from '@angular/material/dialog';
 import { CountriesDeleteComponent } from './countries-delete/countries-delete.component';
+import { ApiService } from '../../../service/api.service';
+import { HttpClientModule } from '@angular/common/http';
+import {MatIconModule} from '@angular/material/icon';
 
 @Component({
   selector: 'app-countries',
-  templateUrl: './countries.component.html',
   styleUrls: ['./countries.component.css'],
+  templateUrl: './countries.component.html',
   standalone: true,
-  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatInputModule, MatFormFieldModule, MatButtonModule, MatDialogModule]
+  imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatInputModule, MatFormFieldModule,
+    MatButtonModule, MatDialogModule, HttpClientModule, MatIconModule]
 })
-export class CountriesComponent implements AfterViewInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource<Test>(ELEMENT_DATA);
 
-  constructor(private _liveAnnouncer: LiveAnnouncer, public dialog: MatDialog) {}
+export class CountriesComponent implements AfterViewInit {
+  displayedColumns: string[] = ['countryId', 'countryName', 'symbols'];
+  dataSource = new MatTableDataSource<ICountries>([])
+  constructor(
+    private _liveAnnouncer: LiveAnnouncer,
+    public dialog: MatDialog,
+    private apiService: ApiService// Inyecta el servicio CityService
+  ) { }
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+
+    this.getAllCountries();
   }
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
@@ -37,6 +48,31 @@ export class CountriesComponent implements AfterViewInit {
       enterAnimationDuration,
       exitAnimationDuration,
     });
+  }
+
+  getAllCountries() {
+    this.apiService.getCountries().subscribe(
+      (data) => {
+        const adjustedData = data.map((country: any) => ({
+          countryId: country.countryId,
+          countryName: country.countryName,
+        }));
+
+        // Verificar que los objetos en el arreglo tengan las propiedades correctas
+        const isValidData = adjustedData.every((country) =>
+          'countryId' in country && 'countryName' in country
+        );
+
+        if (isValidData) {
+          this.dataSource.data = adjustedData; // Asigna los datos obtenidos desde el backend a la variable dataSource
+        } else {
+          console.error('Invalid data format:', adjustedData);
+        }
+      },
+      (error) => {
+        console.error('Error fetching cities:', error);
+      }
+    );
   }
 
   announceSortChange(sortState: Sort) {
@@ -57,9 +93,6 @@ export class CountriesComponent implements AfterViewInit {
   }
 
   addData() {
-    const randomElementIndex = Math.floor(Math.random() * ELEMENT_DATA.length);
+    const randomElementIndex = Math.floor(Math.random() * this.dataSource.data.length);
   }
 }
-
-const ELEMENT_DATA: Test[] = [
-];
