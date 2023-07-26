@@ -7,7 +7,7 @@ Microsoft Visual Studio
 
 **Lenguaje:**
 <br>
-C# con ASP.NET Core para la reserva de salas de reuniones de las diferentes oficinas de la empresa ACME. La aplicación esta diseñado con una API REST para gestionar las operaciones de reserva de salas y la parte cliente esta desarrollada utilizando Angular.
+C# con ASP.NET Core para la reserva de salas de reuniones de las diferentes oficinas de la empresa ACME (backend). La aplicación gestiona mediante una API REST las operaciones de reserva de salas. Angular como framework para la interficie de usuario (frontend).
 
 <!-- aaaaaaaaaaaaaaaa -->
 
@@ -64,6 +64,30 @@ lorem ipsum
 lorem ipsum
 
 ## Angular (Framework)
+
+**Esqueletos de las vistas (HTML):**
+<br>
+Cada pagina esta formada por un esqueleto (documento html) que en general sigue unas directrices: 
+- Tienen una cabezera (es la misma para todas, no se dublica en el codigo) con las opciones del usuario ("profile" y "log out") y las opciones para ver las reservas hechas, para hacerlas o para volver a la pagina principal ("home"). En caso de ser administrador tambien tendras la opcion "admin", la cual permite gestionar las diferentes entidades de la aplicacion.
+- Todas las paginas tienen un boton para volver a la pagina anterior aunque no indique explicitamente "atras", y otro boton, que por convencion, vendria a ser el boton "siguiente". Un ejemplo de ello es la vista login. Esta, tiene dos botones ubicados al final del archivo, donde uno indica "sign up" (referenciando al boton de "atras" y ubicado a la izquierda) y otro "sign in" (referenciando el boton de "siguiente" y ubicado a la derecha). Esto se ha decidio de esta forma debido a que en general cuando a un usuario se le presenta una serie de opciones en forma de botones, el boton que realiza el acto de "continuar", suele estar a la derecha y el de "cancelar" o "atras" a la izquierda.
+- La vista de los recuadros, opciones, textos, botones, etc esta centralizada.
+- Una vez se ha verificado tu identidad se te dirige automaticamente al home.
+
+Por ultimo cabe destacar que las paginas html de la aplicacion estan dentro de otro html que a su vez lo esta en otro, ya que esta es la forma de trabajar con angular.
+Encima de todos los documentos html esta "index" que luego utiliza a "app" que posteriormente utiliza los documentos html de los componentes que nosotros hayamos creado. Lo mismo ocurre con los archivos de estilos referenciados por cada uno de los archivos html correspondientes.
+
+**Estilos de las vistas (CSS):**
+<br>
+Cada pagina tiene un documento de estilos (CSS) que en general sigue unas directrices: 
+- La tipografia para los titulos es "Calibri".
+- La tipografia para el resto de textos, sean botones, labels, inputs, etc. Es "Rubik".
+- La cabecera que (que tiene sus propios estilos) ha sido hecha con bootstrap. El logo de usuario se ha ubicado a la drecha del todo mientras que el resto a la izquierda.
+- El fondo de la aplicacion es una imagen de formas triangulares, que parecieran estar en diferentes capas. En un principio hiba a ser un degradado de azules, pero luego se opto por algo mas convencional como el blanco y finalmente la imagen predeterminada que hay de fondo en todas las vistas.
+- Los colores (excluyendo el blanco y el fondo) son unas tonalidades de azules oscuros y claros. Los oscuros se utilizan de forma predeterminada para que cuando el usuario interactue con algun componente de la vista que lo permita se aclarezca con una de las tonalidades mas claras de azul que hayamos escogido.
+- Por otra parte para centrar la vista del usuario en el centro (donde se encuentra lo relevanete) hemos optado por un trasfondo oscuro con sombreado.
+- En cuanto a los botones todos tienen los mismos estilos. Cuando se pasa el raton por encima o se interactua con ellos gracias a la opcion "hover" cambiamos la tonalidad del color del boton. Estos estan redondeados y el texto de su interior es blanco.
+- Tienen una cabezera (refiriendonos al codigo y no a la vista como tal) donde se indica el contexto de cada una de las partes que forman el docuemnto html correspondiente. De esta forma es facil identificar que estilos se estan aplicando en un lugar y en que lugar.
+- Disponen de secciones ordenadas dentro del codigo por comentarios. Para una facil legibilidad y edicion.
 
 ### App component
 **app.component.html**
