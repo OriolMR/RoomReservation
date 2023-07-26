@@ -10,18 +10,20 @@ import { AdminComponent } from './views/admin/admin.component';
 import { AuthenticationGuard } from './views/login/authentication.guard';
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
 import { CitiesComponent } from './views/admin/cities/cities.component';
+import { CountriesComponent } from './views/admin/countries/countries.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' }, 
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'home', component: HomeComponent,canActivate: [AuthenticationGuard]}, 
-  { path: 'profile', component: ProfileComponent,canActivate: [AuthenticationGuard]}, 
+  { path: 'home', component: HomeComponent}, 
+  { path: 'profile', component: ProfileComponent}, 
   { path: 'reserves', component: ReservesComponent},
-  { path: 'admin', component: AdminComponent },
+  { path: 'admin', component: AdminComponent},
   { path: 'reservation', component: ReservationComponent},
   { path: 'admin-cities', component: CitiesComponent },
+  { path: 'admin-countries', component: CountriesComponent },
   { path:'**', component: PageNotFoundComponent }
   // Otras rutas a definir
 ];

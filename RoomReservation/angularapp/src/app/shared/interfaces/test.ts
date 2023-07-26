@@ -1,6 +1,5 @@
 export interface Test {
-    name: string;
-    position: number;
-    weight: number;
-    symbol: string;
-  }
+  cityId: number;
+  countryId: number;
+  cityName: string;
+}

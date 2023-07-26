@@ -39,6 +39,8 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
 import { CitiesDeleteComponent } from './views/admin/cities/cities-delete/cities-delete.component';
+import { CountriesComponent } from './views/admin/countries/countries.component';
+import { CountriesDeleteComponent } from './views/admin/countries/countries-delete/countries-delete.component';
 
 
 //I keep the new line
@@ -64,6 +66,7 @@ ToastrModule.forRoot({
     AdminComponent,
     EntradaAdminComponent,
     CitiesDeleteComponent,
+    CountriesDeleteComponent,
   ],
   imports: [
     BrowserModule,
