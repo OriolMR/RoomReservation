@@ -45,6 +45,8 @@ import { OfficesDeleteComponent } from './views/admin/offices/offices-delete/off
 import { officesComponent } from './views/admin/offices/offices.component';
 import { MeetingRoomsComponent } from './views/admin/meeting-rooms/meeting-rooms.component';
 import { MeetingRoomsDeleteComponent } from './views/admin/meeting-rooms/meeting-rooms-delete/meeting-rooms-delete.component';
+import { UsersComponent } from './views/admin/users/users.component';
+import { UsersDeleteComponent } from './views/admin/users/users-delete/users-delete.component';
 
 
 //I keep the new line
@@ -73,6 +75,7 @@ ToastrModule.forRoot({
     CountriesDeleteComponent,
     OfficesDeleteComponent,
     MeetingRoomsDeleteComponent,
+    UsersDeleteComponent,
   ],
   imports: [
     BrowserModule,

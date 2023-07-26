@@ -13,6 +13,7 @@ import { CitiesComponent } from './views/admin/cities/cities.component';
 import { CountriesComponent } from './views/admin/countries/countries.component';
 import { officesComponent } from './views/admin/offices/offices.component';
 import { MeetingRoomsComponent } from './views/admin/meeting-rooms/meeting-rooms.component';
+import { UsersComponent } from './views/admin/users/users.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'admin/admin-countries', component: CountriesComponent },
   { path: 'admin/admin-offices', component: officesComponent },
   { path: 'admin/admin-rooms', component: MeetingRoomsComponent },
+  { path: 'admin/admin-users', component: UsersComponent },
   { path:'**', component: PageNotFoundComponent }
   // Otras rutas a definir
 ];
