@@ -3,17 +3,65 @@
 ## Entorno de desarrollo:
 **Entorno de desarollo:**
 <br>
-lorem ipsum
+Microsoft Visual Studio
 
 **Lenguaje:**
 <br>
-lorem ipsum
+C# con ASP.NET Core para la reserva de salas de reuniones de las diferentes oficinas de la empresa ACME. La aplicación esta diseñado con una API REST para gestionar las operaciones de reserva de salas y la parte cliente esta desarrollada utilizando Angular.
 
 <!-- aaaaaaaaaaaaaaaa -->
 
 ## MySQL (Base de datos)
 **api.service.ts**
 <br>
+
+**dbo._EFMigrationsHistory**
+<br>
+lorem ipsum
+
+**dbo.AspNetRoleClaims**
+<br>
+lorem ipsum
+
+**dbo.AspNetRoles**
+<br>
+lorem ipsum
+
+**dbo.AspNetUserClaims**
+<br>
+lorem ipsum
+
+**dbo.AspNetUserLogins**
+<br>
+lorem ipsum
+
+**dbo.AspNetUsers**
+<br>
+lorem ipsum
+
+**dbo.AspNetUserTokens**
+<br>
+lorem ipsum
+
+**dbo.Cities**
+<br>
+lorem ipsum
+
+**dbo.Countries**
+<br>
+lorem ipsum
+
+**dbo.MeetingRooms**
+<br>
+lorem ipsum
+
+**dbo.Offices**
+<br>
+lorem ipsum
+
+**dbo.Reserves**
+<br>
+lorem ipsum
 
 ## Angular (Framework)
 
@@ -119,9 +167,13 @@ lorem ipsum
 #### Profile View:
 **profile.component.html**
 <br>
-lorem ipsum
+Los dos divs que se encargan de mostrar ambas vistas del perfil y de modificar perfil que tienen un *ngIf 
 
 **profile.component.css**
+<br>
+lorem ipsum
+
+**page-profile.component.ts**
 <br>
 lorem ipsum
 
