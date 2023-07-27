@@ -14,7 +14,7 @@
     <div class="form-group" style="margin-top: 10px;">
       <label for="password">Password</label>
       <br />
-      <input type="password" id="password" class="form-control" [(ngModel)]="PasswordHash" />
+      <input type="password" id="password" class="form-control" (keydown.enter)="login()" [(ngModel)]="PasswordHash" />
     </div>
     <div class="form-group" style="margin-top: 10px;">
       <button class="btn btn-primary" style="margin: 5px ;" routerLink="/register">Sign up</button>
