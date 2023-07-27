@@ -32,12 +32,12 @@ import { EntradaAdminComponent } from './views/admin/entrada-admin/entrada-admin
 import { CitiesComponent } from './views/admin/cities/cities.component';
 
 //Material UI
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
-import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
-import {MatTableDataSource, MatTableModule} from '@angular/material/table';
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
-import {MatDividerModule} from '@angular/material/divider';
+import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
 import { CitiesDeleteComponent } from './views/admin/cities/cities-delete/cities-delete.component';
 import { CountriesComponent } from './views/admin/countries/countries.component';
 import { CountriesDeleteComponent } from './views/admin/countries/countries-delete/countries-delete.component';
@@ -70,6 +70,11 @@ ToastrModule.forRoot({
     ReservationModalComponent,
     UpdateModalComponent,
     AdminComponent,
+    //CountriesComponent,
+    //CitiesComponent,
+    //officesComponent,
+    //MeetingRoomsComponent,
+    //UsersComponent,
     EntradaAdminComponent,
     CitiesDeleteComponent,
     CountriesDeleteComponent,
@@ -98,7 +103,7 @@ ToastrModule.forRoot({
     MatButtonModule,
     MatIconModule,
     MatDividerModule
-    
+
   ],
   providers: [
     {

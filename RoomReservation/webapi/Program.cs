@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Configuration;
 using webapi.Areas.Identity.Data;
@@ -23,10 +24,21 @@ builder.Services.AddDefaultIdentity<webapiUser>(options =>
     options.Password.RequireUppercase = false;
     options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
     options.User.RequireUniqueEmail = false;
-    
+
 })
+   .AddRoles<IdentityRole>()
    .AddEntityFrameworkStores<IdentityAppDbContext>();
 
+using (var serviceProvider = builder.Services.BuildServiceProvider())
+{
+    var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    var adminRoleExists = roleManager.RoleExistsAsync("ADMINISTRADOR").Result;
+    if (!adminRoleExists)
+    {
+        var adminRole = new IdentityRole("ADMINISTRADOR");
+        roleManager.CreateAsync(adminRole).Wait();
+    }
+}
 
 builder.Services.AddCors(options =>
 {

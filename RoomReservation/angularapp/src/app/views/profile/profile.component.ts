@@ -53,12 +53,12 @@ export class ProfileComponent {
   getEmail(userId: string) {
     this.apiService.getEmailFromUserId(userId).subscribe(
       (response) => {
-    
+
         console.log('Respuesta de getEmailFromUserId:', response);
 
         // Aquí puedes manejar los datos de la respuesta, por ejemplo, obtener el correo electrónico del usuario.
         this.newEmail = response.email; // Asegúrate de ajustar esto según el formato de la respuesta del servidor.
-       
+
       },
       (error) => {
         console.error('Error al obtener el correo electrónico del usuario:', error);

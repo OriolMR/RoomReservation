@@ -49,8 +49,8 @@
   text-decoration: none;
 }
 
-/* Hover de las opciones del dropdown. */
-.dropdown-content a:hover {
-  color: #FFFFFF;
-  background-color: #00A4BD;
-}
+  /* Hover de las opciones del dropdown. */
+  .dropdown-content a:hover {
+    color: #FFFFFF;
+    background-color: #00A4BD;
+  }

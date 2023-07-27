@@ -3,7 +3,6 @@ import { HttpClient } from '@angular/common/http';
 import { ReservationModalComponent } from '../reservation-modal/reservation-modal.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ApiService } from '../../service/api.service';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-reservation',
@@ -24,7 +23,7 @@ export class ReservationComponent implements OnInit {
   selectedMeetingRoom: any = null;
 
 
-  constructor(private apiService: ApiService, private router: Router, private http: HttpClient, private dialog: MatDialog) { }
+  constructor(private apiService: ApiService, private http: HttpClient, private dialog: MatDialog) { }
 
 
 
@@ -155,10 +154,6 @@ export class ReservationComponent implements OnInit {
   //  const selectedCity = this.cities.find((city) => city.cityId === cityId);
   //  this.selectedCountryId = selectedCity ? selectedCity.countryId : null;
   //}
-
-  goBack() {
-    this.router.navigate(['/home']);
-  }
 
   clearSelection(): void {
     this.selectedCountryId = null;

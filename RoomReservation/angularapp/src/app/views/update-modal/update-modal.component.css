@@ -39,12 +39,12 @@
   text-align: center;
 }
 
-/* Titulo de .modal-content. */
-.modal-content h2 {
-  font-size: 24px;
-  margin-top: 0px;
-  margin-bottom: 0px;
-}
+  /* Titulo de .modal-content. */
+  .modal-content h2 {
+    font-size: 24px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+  }
 
 /* Contenedor de la parte de date-picker. */
 .mat-form-field {

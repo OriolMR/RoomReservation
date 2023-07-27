@@ -7,5 +7,6 @@ namespace webapi.Repositories
     {
         Task<IActionResult> Register([FromBody] RegisterViewModel registerData);
         Task<IActionResult> Login([FromBody] LoginViewModel loginData);
+        Task<IActionResult> Logout();
     }
 }

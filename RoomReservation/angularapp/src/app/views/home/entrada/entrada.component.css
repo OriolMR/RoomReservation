@@ -29,7 +29,7 @@
   border-radius: 30px;
 }
 
-/* Hover para cada #entrada*/
+  /* Hover para cada #entrada*/
   #entrada:hover {
     border: 2px solid black;
     box-shadow: none;

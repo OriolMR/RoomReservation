@@ -23,17 +23,17 @@
   box-shadow: 5px 5px 10px #1c2b34, -5px -5px 10px #6eabd0;
 }
 
-/* Titutlo de .register-container. */
-.register-container h2 {
-  color: #FFFFFF;
-  font-family: Calibri;
-}
+  /* Titutlo de .register-container. */
+  .register-container h2 {
+    color: #FFFFFF;
+    font-family: Calibri;
+  }
 
-/* Todos los .form-group de .register-container, que dentro tienen un elemento "label" y otro "input". */
-.register-container .form-group {
-  margin-bottom: 10px;
-  color: #E2F6CA;
-}
+  /* Todos los .form-group de .register-container, que dentro tienen un elemento "label" y otro "input". */
+  .register-container .form-group {
+    margin-bottom: 10px;
+    color: #E2F6CA;
+  }
 
 /* Todos los elementos "label" del archivo html predeterminado. */
 label {
@@ -56,7 +56,7 @@ label {
   cursor: pointer;
 }
 
-/* Hover de los botones de .register-container. */
+  /* Hover de los botones de .register-container. */
   .register-container button:hover {
     background-color: #0b5ed7;
   }

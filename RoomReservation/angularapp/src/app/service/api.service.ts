@@ -7,12 +7,12 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ApiService {
-  private apiUrl = 'https://localhost:7281/api'; 
+  private apiUrl = 'https://localhost:7281/api';
 
   constructor(private http: HttpClient) { }
 
   private handleError(error: HttpErrorResponse) {
-   
+
     return throwError('Algo salió mal. Por favor, inténtalo de nuevo más tarde.');
   }
 
@@ -124,6 +124,11 @@ export class ApiService {
 
   deleteReserveById(reserveId: number): Observable<any> {
     return this.delete(`reserves/${reserveId}`);
+  }
+
+  deleteUserById(userId: string): Observable<any> {
+    const url = `${this.apiUrl}/Users/${userId}`;
+    return this.http.delete(url);
   }
 
 }

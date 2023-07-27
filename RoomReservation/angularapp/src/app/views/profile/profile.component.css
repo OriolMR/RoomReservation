@@ -24,28 +24,28 @@
   text-align: center;
 }
 
-/* Titulo de #profile-container. */
-#profile-container h1 {
-  text-align: center;
-  font-family: Calibri;
-  color: #FFFFFF;
-}
+  /* Titulo de #profile-container. */
+  #profile-container h1 {
+    text-align: center;
+    font-family: Calibri;
+    color: #FFFFFF;
+  }
 
-/* Todos los elementos "div" de #profile-container. */
-#profile-container div {
-  margin: auto;
-  width: 80%;
-  padding: 10px;
-  text-align: center;
-}
+  /* Todos los elementos "div" de #profile-container. */
+  #profile-container div {
+    margin: auto;
+    width: 80%;
+    padding: 10px;
+    text-align: center;
+  }
 
-/* Todos los elementos "label" de #profile-container. */
-#profile-container label {
-  font-family: Rubik;
-  color: #FFFFFF;
-}
+  /* Todos los elementos "label" de #profile-container. */
+  #profile-container label {
+    font-family: Rubik;
+    color: #FFFFFF;
+  }
 
-/* Todos los elementos "button" de #profile-container. */
+  /* Todos los elementos "button" de #profile-container. */
   #profile-container button {
     font-family: Rubik;
     margin: 5px;
@@ -60,7 +60,7 @@
     cursor: pointer;
   }
 
-/* Hover de los botones de #profile-container. */
+    /* Hover de los botones de #profile-container. */
     #profile-container button:hover {
       background-color: #0b5ed7;
     }
@@ -80,28 +80,28 @@
   color: #E2F6CA;
 }
 
-/* Titulo de #edit-container. */
-#edit-container h1 {
-  text-align: center;
-  font-family: Calibri;
-  color: #FFFFFF;
-}
+  /* Titulo de #edit-container. */
+  #edit-container h1 {
+    text-align: center;
+    font-family: Calibri;
+    color: #FFFFFF;
+  }
 
-/* Todos los elementos "div" de #edit-container. */
-#edit-container div {
-  margin: auto;
-  width: 80%;
-  padding: 10px;
-  text-align: center;
-}
+  /* Todos los elementos "div" de #edit-container. */
+  #edit-container div {
+    margin: auto;
+    width: 80%;
+    padding: 10px;
+    text-align: center;
+  }
 
-/* Todos los elementos "label" de #edit-container. */
-#edit-container label {
-  font-family: Rubik;
-  color: #FFFFFF;
-}
+  /* Todos los elementos "label" de #edit-container. */
+  #edit-container label {
+    font-family: Rubik;
+    color: #FFFFFF;
+  }
 
-/* Todos los elementos "button" de #edit-container. */
+  /* Todos los elementos "button" de #edit-container. */
   #edit-container button {
     font-family: Rubik;
     margin: 5px;
@@ -114,10 +114,10 @@
     cursor: pointer;
   }
 
-/* Hover de los botones de #edit-container. */
-  #edit-container button:hover {
-    background-color: #0b5ed7;
-  }
+    /* Hover de los botones de #edit-container. */
+    #edit-container button:hover {
+      background-color: #0b5ed7;
+    }
 
 label {
   color: #ffffff;

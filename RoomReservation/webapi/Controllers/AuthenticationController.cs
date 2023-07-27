@@ -7,6 +7,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.Text;
 using System.IdentityModel.Tokens.Jwt;
+using System.Data;
 
 namespace webapi.Controllers
 {
@@ -41,9 +42,12 @@ namespace webapi.Controllers
             };
 
             var result = await userManager.CreateAsync(newUser, registerData.PasswordHash);
+            await userManager.AddToRoleAsync(newUser, "Administrador");
+       
 
             if (result.Succeeded)
             {
+                
                 // Registro exitoso
                 return Ok(new { success = true });
             }
@@ -70,7 +74,7 @@ namespace webapi.Controllers
 
             var user = await userManager.FindByNameAsync(loginData.UserName);
 
-            if(user == null)
+            if (user == null)
             {
                 return BadRequest(new { success = false, error = "usuario no encontrado" });
             }
@@ -80,25 +84,28 @@ namespace webapi.Controllers
 
                 if (result == null)
                 {
-                    return BadRequest(new { success = false, error = "result es: " +result});
+                    return BadRequest(new { success = false, error = "result es: " + result });
                 }
-                if (result.Succeeded)
+                // Obtener los roles del usuario
+                var roles = await userManager.GetRolesAsync(user);
+
+                // Verificar si el usuario tiene algún rol específico que desees utilizar en el token
+                // Por ejemplo, si el usuario tiene el rol "Administrador", utilizamos ese rol, de lo contrario, utilizamos "Usuario"
+                var userRole = roles.Contains("ADMINISTRADOR") ? "Administrador" : "Usuario";
+
+                // Generar el token con el usuario y el rol
+                var token = GenerateToken(user, userRole);
+
+                if (token == null)
                 {
-                    // Autenticación exitosa
-
-                    // Generar el token
-                    var token = GenerateToken(user);
-
-                    if (token == null)
-                    {
-                        // Si el token es nulo, indica un error en la generación del token
-                        return BadRequest(new { success = false, error = "Error en la generación del token" });
-                    }
-
-                    // Devolver el token en la respuesta
-                    return Ok(new { success = true, token, userId = user.Id });
+                    // Si el token es nulo, indica un error en la generación del token
+                    return BadRequest(new { success = false, error = "Error en la generación del token" });
                 }
+
+                // Devolver el token en la respuesta
+                return Ok(new { success = true, token, userId = user.Id });
             }
+        
 
             // Autenticación fallida
             return BadRequest(new { success = false, error = "Nombre de usuario o contraseña incorrectos" });
@@ -111,7 +118,7 @@ namespace webapi.Controllers
             return Ok();
         }
 
-        private string GenerateToken(webapiUser user)
+        private string GenerateToken(webapiUser user, string role)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(configuration.GetValue<string>("Jwt:SecretKey")); // Get the secret key from the application configuration
@@ -121,7 +128,7 @@ namespace webapi.Controllers
                 {
             new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
             new Claim(ClaimTypes.Name, user.UserName),
-     
+            new Claim(ClaimTypes.Role, role) // Aquí se agrega el claim del rol del usuario
         }),
                 Expires = DateTime.UtcNow.AddHours(1), // Define the token's expiration time
 
@@ -134,5 +141,3 @@ namespace webapi.Controllers
 
     }
 }
-
-

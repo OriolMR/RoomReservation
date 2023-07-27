@@ -38,7 +38,7 @@ export class LoginComponent {
             const token = response.token;
        
             localStorage.setItem('token', token); // Almacenar el token usando el servicio de autenticación
-         
+            
 
             const userId = response.userId;
             localStorage.setItem('userId', userId);
@@ -57,6 +57,7 @@ export class LoginComponent {
             }
             this.authGuard.setAuthenticated(true); // Establecer el estado de autenticación en true
             this.router.navigate(['/home']); // Redirige a la vista de home en caso de éxito
+            console.log(this.authGuard.isAuthenticated);
           } else {
             console.error('Error en el login:', response);
             

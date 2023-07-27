@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using webapi.DataAccess;
 using webapi.Repositories;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace RoomReservation.Controllers
 {
@@ -42,6 +44,7 @@ namespace RoomReservation.Controllers
 
         // POST: api/Country
         [HttpPost]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> AddCountry([FromBody] Country country)
         {
             country.countryId = 0; // Asignar valor inicial a countryId
@@ -53,6 +56,7 @@ namespace RoomReservation.Controllers
 
         // PUT: api/Country/{id}
         [HttpPut("{id:guid}")]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> UpdateCountry(int id, [FromBody] Country country)
         {
             var existingCountry = await roomReservationDbContext.Countries.FirstOrDefaultAsync(x => x.countryId == id);
@@ -70,6 +74,7 @@ namespace RoomReservation.Controllers
 
         // DELETE: api/Country/{id}
         [HttpDelete("{id:int}")]
+        [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> DeleteCountry(int id)
         {
             var country = await roomReservationDbContext.Countries.FindAsync(id);

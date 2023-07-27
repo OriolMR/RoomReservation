@@ -12,7 +12,8 @@ import {MatDialog, MatDialogRef, MatDialogModule} from '@angular/material/dialog
 import { UsersDeleteComponent } from './users-delete/users-delete.component';
 import { ApiService } from '../../../service/api.service';
 import { HttpClientModule } from '@angular/common/http';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
+
 
 @Component({
   selector: 'app-users',
@@ -42,13 +43,25 @@ export class UsersComponent implements AfterViewInit {
     this.getAllUsers();
   }
 
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(UsersDeleteComponent, {
+  openDialog(userId: string): void {
+    console.log(userId);
+    const dialogRef = this.dialog.open(UsersDeleteComponent, {
       width: '250px',
-      enterAnimationDuration,
-      exitAnimationDuration,
+
+      data: { userId } // Pasa el userId como dato al diálogo UsersDeleteComponent
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === 'success') {
+
+        console.log(result);
+        // Realiza cualquier acción adicional después de eliminar el usuario y cerrar el modal.
+        // Por ejemplo, puedes actualizar la lista de usuarios para que se reflejen los cambios en la tabla.
+        this.getAllUsers(); // Vuelve a cargar los usuarios para que se actualice la tabla.
+      }
     });
   }
+
 
   getAllUsers() {
     this.apiService.getUsers().subscribe(
@@ -75,6 +88,14 @@ export class UsersComponent implements AfterViewInit {
         console.error('Error fetching cities:', error);
       }
     );
+  }
+
+  onRowClick(row: any) {
+    // Obtener el userId de la fila seleccionada
+    const userId = row.userId;
+
+    // Llamar a la función openDialog con el userId como parámetro
+    this.openDialog(userId);
   }
 
   announceSortChange(sortState: Sort) {

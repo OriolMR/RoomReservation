@@ -14,20 +14,20 @@
   margin-top: 0px;
 }
 
-/* Titulo de .title-container. */
-.title-container h1 {
-  font-size: 56px;
-  font-weight: bold;
-  margin-bottom: 0;
-  font-size: 56px;
-  font-family: Calibri;
-}
+  /* Titulo de .title-container. */
+  .title-container h1 {
+    font-size: 56px;
+    font-weight: bold;
+    margin-bottom: 0;
+    font-size: 56px;
+    font-family: Calibri;
+  }
 
-/* Subtitulo de .title-container. */
-.title-container h2 {
-  margin-top: 0;
-  font-family: Calibri;
-}
+  /* Subtitulo de .title-container. */
+  .title-container h2 {
+    margin-top: 0;
+    font-family: Calibri;
+  }
 
 
 /* .HOME-CONTAINER*/
@@ -64,9 +64,7 @@ label {
   cursor: pointer;
 }
 
-/* Hover para los botones de .home-container. */
+  /* Hover para los botones de .home-container. */
   .home-container button:hover {
     background-color: #0b5ed7;
   }
-
-
