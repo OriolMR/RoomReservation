@@ -62,7 +62,6 @@ export class UsersComponent implements AfterViewInit {
     });
   }
 
-
   getAllUsers() {
     this.apiService.getUsers().subscribe(
       (data) => {

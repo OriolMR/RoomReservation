@@ -9,7 +9,7 @@ import { Observable } from 'rxjs/internal/Observable';
 })
 export class AuthenticationGuard implements CanActivate {
   public isAuthenticated = false;
-  private baseUrl = 'https://localhost:7281/';
+  private baseUrl = 'https://localhost:7281/api/authentication';
   private token: string | null = null; // Variable para almacenar el token
 
   constructor(private router: Router, private http: HttpClient) { }
