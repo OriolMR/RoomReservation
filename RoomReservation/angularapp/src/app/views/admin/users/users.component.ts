@@ -13,6 +13,7 @@ import { UsersDeleteComponent } from './users-delete/users-delete.component';
 import { ApiService } from '../../../service/api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -30,7 +31,8 @@ export class UsersComponent implements AfterViewInit {
   constructor(
     private _liveAnnouncer: LiveAnnouncer,
     public dialog: MatDialog,
-    private apiService: ApiService// Inyecta el servicio CityService
+    private apiService: ApiService,// Inyecta el servicio CityService
+    private toastr: ToastrService,
   ) { }
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -43,8 +45,8 @@ export class UsersComponent implements AfterViewInit {
     this.getAllUsers();
   }
 
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string, userId: string): void {
-    console.log(userId);
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string, userId: string, userName: string): void {
+    console.log(userName);
     const dialogRef = this.dialog.open(UsersDeleteComponent, {
       width: '250px',
      
@@ -53,7 +55,7 @@ export class UsersComponent implements AfterViewInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'success') {
-
+        this.toastr.success(userName + ' ELIMINATED.');
         console.log("el resultado es:" + result);
         // Realiza cualquier acción adicional después de eliminar el usuario y cerrar el modal.
         // Por ejemplo, puedes actualizar la lista de usuarios para que se reflejen los cambios en la tabla.
@@ -92,6 +94,7 @@ export class UsersComponent implements AfterViewInit {
   onRowClick(row: any) {
     // Obtener el userId de la fila seleccionada
     const userId = row.userId;
+    const userName = row.userName;
 
     // Llamar a la función openDialog con el userId como parámetro
   }
