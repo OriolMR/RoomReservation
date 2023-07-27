@@ -109,11 +109,11 @@ lorem ipsum
 ### Menu component
 **menu.component.html**
 <br>
-El menu component, mas reconocido como header, es la cabecera de la aplicacion. Esta hecho con botstrap y aplica unos estilos para mantener el logo de usuario a la derecha del todo. Cuando se pasa el raton por encima del logo se desplegan unas opciones en forma de lista, que a su vez optienen un efecto hover. El resto de opciones estan a la izquierda del todo, separadas del logo de usuario a drede.
+Bastante parecido a su archivo .css el html de este componente consta de dos zonas. La de las opciones generales (home, reservas y reservar) y la relacionada con el usuario. En caso de ser admin junto a las opciones generales disponemos de una opcion "admin" para poder editar las instancias de la base de datos. Cada una de estas opciones nos llevara a su pagina correspondiente. En el caso de las opciones del usuario tenemos "profile" y "log out". Para ver y editar nuestro perfil y cerrar cesion respectivamente.
 
 **menu.component.css**
 <br>
-Bastante parecido a su archivo .css el html de este componente consta de dos zonas. La de las opciones generales (home, reservas y reservar) y la relacionada con el usuario. En caso de ser admin junto a las opciones generales disponemos de una opcion "admin" para poder editar las instancias de la base de datos. Cada una de estas opciones nos llevara a su pagina correspondiente. En el caso de las opciones del usuario tenemos "profile" y "log out". Para ver y editar nuestro perfil y cerrar cesion respectivamente.
+El menu component, mas reconocido como header, es la cabecera de la aplicacion. Esta hecho con botstrap y aplica unos estilos para mantener el logo de usuario a la derecha del todo. Cuando se pasa el raton por encima del logo se desplegan unas opciones en forma de lista, que a su vez optienen un efecto hover. El resto de opciones estan a la izquierda del todo, separadas del logo de usuario a drede.
 
 **menu.component.ts**
 <br>
@@ -152,11 +152,13 @@ lorem ipsum
 #### Home View:
 **home.component.html**
 <br>
-lorem ipsum
+La vista home esta compuesta por un listado de tres opciones: perfil, reservar y reservas. 
+Cada una de estas opciones tiene un pequeño texto al lado indicando brevemente para que sirve cada opcion.
 
 **home.component.css**
 <br>
-lorem ipsum
+Trasfondo redondeado, rectangular, oscuro y sombreado en el que se ven las 3 opciones antes mencionadas de color azul.
+Las opciones tienen sombreado bajo de color negro. Con el atributo hover el sombreado de sustitiye por un borde oscuro.
 
 **home.component.ts**
 <br>
@@ -165,37 +167,37 @@ lorem ipsum
 #### Login View:
 **login.component.html**
 <br>
-lorem ipsum
+Componente que actua de pagina principal cuando se intenta acceder a la aplicacion. Dispone de dos inputs para introducir tus credenciales y de dos botones. El boton de "sign up" que te dirige a la pagina register y el de "sign in" para iniciar sesion.
 
 **login.component.css**
 <br>
-lorem ipsum
+Titulo centrado encima del trasfondo.
+Trasfondo redondeado, rectangular, oscuro y sombreado con dos inputs que contienen un placeholder indicando que es lo que se espera del usuario.
+Estos inputs estan redondeados.
+Color del texto de los componentes blanco y con tipografia Rubik.
+2 botones de color azul redondeados. se aclarecen gracias al atributo hover.
+La tipografia de los textos es Rubik.
 
 **login.component.ts**
-<br>
-lorem ipsum
-
-#### Page-not-found View:
-**page-not-found.component.html**
-<br>
-lorem ipsum
-
-**page-not-found.component.css**
-<br>
-lorem ipsum
-
-**page-not-found.component.ts**
 <br>
 lorem ipsum
 
 #### Profile View:
 **profile.component.html**
 <br>
-Los dos divs que se encargan de mostrar ambas vistas del perfil y de modificar perfil que tienen un *ngIf 
+Pagina compuesta por dos grupos. Uno donde se ve la informacion y otro donde se edita.
+Para mostrar la informacion de hace uso de 4 labels. 2 indicando que es lo que representa el label que hay inmediatamente despues y estos ultimos mostrando la informacion que se precisa.
+Debajo de estos 4 labels se encuentran dos botones. Uno para ir atras "back" y otro para acceder a la vista de edicion "update".
+
+La vista update es similar pero los labels que antes indicaban lo que correspondia han sido sustituidos por dos inputs para poder editar la informacion.
+Los botones siguen siendo iguales, solo que el "update" actualiza la informacion y te devuelve a la pagina para verla.
 
 **profile.component.css**
 <br>
-lorem ipsum
+Trasfondo redondeado, rectangular, oscuro y sombreado.
+Color del texto de los componentes blanco y con tipografia Rubik.
+2 botones de color azul redondeados. se aclarecen gracias al atributo hover.
+2 inputs en la version "update". Cuadrados y de color blanco de fondo.
 
 **page-profile.component.ts**
 <br>
@@ -204,11 +206,16 @@ lorem ipsum
 #### Register View:
 **register.component.html**
 <br>
-lorem ipsum
+Componente que actua de pagina secundaria cuando se intenta registrar a la aplicacion. Dispone de 4 inputs para introducir tus credenciales y confirmarlos, y de dos botones. El boton de "sign up" que te registra si todo esta correcto y el de "sign in" para ir a la pagina de inicio de sesion.
 
 **register.component.css**
 <br>
-lorem ipsum
+Titulo centrado dentro, arriba del trasfondo.
+Trasfondo redondeado, rectangular, oscuro y sombreado con dos inputs que contienen un placeholder indicando que es lo que se espera del usuario.
+Estos inputs estan redondeados.
+Color del texto de los componentes blanco y con tipografia Rubik.
+2 botones de color azul redondeados. se aclarecen gracias al atributo hover.
+La tipografia de los textos es Rubik.
 
 **register.component.ts**
 <br>
