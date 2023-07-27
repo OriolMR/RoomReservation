@@ -25,7 +25,7 @@ import { MatIconModule } from '@angular/material/icon';
 })
 
 export class UsersComponent implements AfterViewInit {
-  displayedColumns: string[] = ['userId', 'userName', 'userEmail', 'userPassword','symbols'];
+  displayedColumns: string[] = ['userName', 'userEmail','symbols'];
   dataSource = new MatTableDataSource<IUsers>([])
   constructor(
     private _liveAnnouncer: LiveAnnouncer,
@@ -43,18 +43,18 @@ export class UsersComponent implements AfterViewInit {
     this.getAllUsers();
   }
 
-  openDialog(userId: string): void {
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string, userId: string): void {
     console.log(userId);
     const dialogRef = this.dialog.open(UsersDeleteComponent, {
       width: '250px',
-
-      data: { userId } // Pasa el userId como dato al diálogo UsersDeleteComponent
+     
+      data: { userId }, // Pasa el userId como dato al diálogo UsersDeleteComponent
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result === 'success') {
 
-        console.log(result);
+        console.log("el resultado es:" + result);
         // Realiza cualquier acción adicional después de eliminar el usuario y cerrar el modal.
         // Por ejemplo, puedes actualizar la lista de usuarios para que se reflejen los cambios en la tabla.
         this.getAllUsers(); // Vuelve a cargar los usuarios para que se actualice la tabla.
@@ -67,15 +67,13 @@ export class UsersComponent implements AfterViewInit {
     this.apiService.getUsers().subscribe(
       (data) => {
         const adjustedData = data.map((user: any) => ({
-          userId: user.id,
           userName: user.userName,
           userEmail: user.email,
-          userPassword: user.passwordHash,
         }));
 
         // Verificar que los objetos en el arreglo tengan las propiedades correctas
         const isValidData = adjustedData.every((user) =>
-          'userId' in user && 'userName' in user && 'userEmail' in user && 'userPassword' in user
+          'userName' in user && 'userEmail' in user
         );
 
         if (isValidData) {
@@ -95,7 +93,6 @@ export class UsersComponent implements AfterViewInit {
     const userId = row.userId;
 
     // Llamar a la función openDialog con el userId como parámetro
-    this.openDialog(userId);
   }
 
   announceSortChange(sortState: Sort) {
