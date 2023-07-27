@@ -13,6 +13,12 @@
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)">
 
+     <!-- User ID Column -->
+     <ng-container matColumnDef="userId">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Country Id"> User ID </th>
+      <td mat-cell *matCellDef="let element"> {{element.userId}} </td>
+    </ng-container>
+
     <!-- User Name Column -->
     <ng-container matColumnDef="userName">
       <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Country Id"> User Name </th>

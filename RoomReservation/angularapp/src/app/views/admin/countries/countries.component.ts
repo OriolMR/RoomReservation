@@ -42,12 +42,30 @@ export class CountriesComponent implements AfterViewInit {
     this.getAllCountries();
   }
 
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(CountriesDeleteComponent, {
+  openDialog(countryId: string): void {
+    console.log(countryId);
+    const dialogRef = this.dialog.open(CountriesDeleteComponent, {
       width: '250px',
-      enterAnimationDuration,
-      exitAnimationDuration,
+     
+      data: { countryId }, // Pasa el userId como dato al diálogo UsersDeleteComponent
     });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === 'success') {
+
+        console.log("el resultado es:" + result);
+        // Realiza cualquier acción adicional después de eliminar el usuario y cerrar el modal.
+        // Por ejemplo, puedes actualizar la lista de usuarios para que se reflejen los cambios en la tabla.
+        this.getAllCountries(); // Vuelve a cargar los usuarios para que se actualice la tabla.
+      }
+    });
+  }
+
+  onRowClick(row: any) {
+    // Obtener el userId de la fila seleccionada
+    const countryId = row.countryId;
+
+    // Llamar a la función openDialog con el userId como parámetro
   }
 
   getAllCountries() {

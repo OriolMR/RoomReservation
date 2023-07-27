@@ -25,7 +25,7 @@ import { MatIconModule } from '@angular/material/icon';
 })
 
 export class UsersComponent implements AfterViewInit {
-  displayedColumns: string[] = ['userName', 'userEmail','symbols'];
+  displayedColumns: string[] = ['userId' ,'userName', 'userEmail','symbols'];
   dataSource = new MatTableDataSource<IUsers>([])
   constructor(
     private _liveAnnouncer: LiveAnnouncer,
@@ -67,13 +67,14 @@ export class UsersComponent implements AfterViewInit {
     this.apiService.getUsers().subscribe(
       (data) => {
         const adjustedData = data.map((user: any) => ({
+          userId: user.id,
           userName: user.userName,
           userEmail: user.email,
         }));
 
         // Verificar que los objetos en el arreglo tengan las propiedades correctas
         const isValidData = adjustedData.every((user) =>
-          'userName' in user && 'userEmail' in user
+          'userId' in user && 'userName' in user && 'userEmail' in user
         );
 
         if (isValidData) {
