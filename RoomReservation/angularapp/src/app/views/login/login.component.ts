@@ -19,8 +19,6 @@ export class LoginComponent {
   Error: boolean = false;
   loginError: boolean = false;
 
-
-
   constructor(private apiService: ApiService, private http: HttpClient, private router: Router, private toastr: ToastrService, private authGuard: AuthenticationGuard) { }
 
   login() {
