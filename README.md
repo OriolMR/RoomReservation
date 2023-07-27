@@ -92,11 +92,11 @@ Cada pagina tiene un documento de estilos (CSS) que en general sigue unas direct
 ### App component
 **app.component.html**
 <br>
-lorem ipsum
+App.component.html tiene una referencia a router-outlet, una clase que se encarga de interpretar las rutas de la api para mostrar las vistas adecuadas (componentes).
 
 **app.component.css**
 <br>
-lorem ipsum
+Los estilos en este caso nos indican una serie de directrices acerca de que tan grande debe ser la pagina (centralizar textos etc.), el fondo de esta y poco mas, pues solo actua como pagina de fondo.
 
 **app.component.ts**
 <br>
@@ -106,14 +106,14 @@ lorem ipsum
 <br>
 lorem ipsum
 
-### Menu component Folder
+### Menu component
 **menu.component.html**
 <br>
-lorem ipsum
+El menu component, mas reconocido como header, es la cabecera de la aplicacion. Esta hecho con botstrap y aplica unos estilos para mantener el logo de usuario a la derecha del todo. Cuando se pasa el raton por encima del logo se desplegan unas opciones en forma de lista, que a su vez optienen un efecto hover. El resto de opciones estan a la izquierda del todo, separadas del logo de usuario a drede.
 
 **menu.component.css**
 <br>
-lorem ipsum
+Bastante parecido a su archivo .css el html de este componente consta de dos zonas. La de las opciones generales (home, reservas y reservar) y la relacionada con el usuario. En caso de ser admin junto a las opciones generales disponemos de una opcion "admin" para poder editar las instancias de la base de datos. Cada una de estas opciones nos llevara a su pagina correspondiente. En el caso de las opciones del usuario tenemos "profile" y "log out". Para ver y editar nuestro perfil y cerrar cesion respectivamente.
 
 **menu.component.ts**
 <br>
