@@ -12,11 +12,6 @@
 
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource" matSort (matSortChange)="announceSortChange($event)">
-    <!-- User Id Column -->
-    <ng-container matColumnDef="userId">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by City Id"> User ID </th>
-      <td mat-cell *matCellDef="let element"> {{element.userId}} </td>
-    </ng-container>
 
     <!-- User Name Column -->
     <ng-container matColumnDef="userName">
@@ -29,13 +24,6 @@
         <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Country Id"> User Email </th>
         <td mat-cell *matCellDef="let element"> {{element.userEmail}} </td>
       </ng-container>
-
-    <!-- User Password Column -->
-    <ng-container matColumnDef="userPassword">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header sortActionDescription="Sort by Country Id"> User Password </th>
-        <td mat-cell *matCellDef="let element"> {{element.userPassword}} </td>
-      </ng-container>
-
 
     <!-- Edit and Delete button -->
     <ng-container matColumnDef="symbols">
