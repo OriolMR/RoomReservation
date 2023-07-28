@@ -30,7 +30,8 @@
                      [(ngModel)]="endingHour"
                      [itemsDelta]="{hours: 1, minutes: 15}"
                      [headerOrientation]="'vertical'"
-                     (onValidationFailed)="onValidationFailed()">
+                     (onValidationFailed)="onValidationFailed()"
+                     (keydown.enter)="reservarSalaReunion()">
     </igx-time-picker>
 
     <label id="current-label" for="current-reserves">Unavailable hours:</label>
