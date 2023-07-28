@@ -33,17 +33,17 @@
                      (onValidationFailed)="onValidationFailed()">
     </igx-time-picker>
 
-    <label id="current-label" for="current-reserves">Current reserves:</label>
+    <label id="current-label" for="current-reserves">Unavailable hours:</label>
     <div class="center-container">
       <ng-container *ngIf="reserves.length > 0; else noReservations">
-        <select name="reserves-select" id="reserves-select" style="width: 160px; background-color: red; color: white;">
+        <select name="reserves-select" id="reserves-select" style="width: 160px; background-color: white;">
           <option *ngFor="let reserve of reserves" [value]="reserve.id">
             {{ formatHour(reserve.startingHour) }} - {{ formatHour(reserve.endingHour) }}
           </option>
         </select>
       </ng-container>
       <ng-template #noReservations>
-        <select name="reserves-select" id="reserves-select" style="width: 160px; background-color: red; color: white;">
+        <select name="reserves-select" id="reserves-select" style="width: 160px; background-color: white;">
           <option value="">--------------</option>
         </select>
       </ng-template>

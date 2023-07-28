@@ -41,6 +41,7 @@ export class AuthenticationGuard implements CanActivate {
         return true;
       }
     }
+    this.router.navigate(['/login']);
     return false;
   }
 
@@ -86,12 +87,7 @@ export class AuthenticationGuard implements CanActivate {
     } catch (error) {
       return false; // Si ocurre algún error al decodificar el token, el usuario no tiene el rol especificado
     }
-  }
-
-  logout(): Observable<any> {
-    const url = `${this.baseUrl}/logout`;
-    console.log('Loging  out...');
-    return this.http.post(url, {});
+  
   }
 }
 

@@ -19,11 +19,11 @@
           <a class="nav-link" routerLink="/admin">Admin</a>
         </li>
       </ul>
-      <div class="dropdown">
+      <div class="dropdown" *ngIf="isAuthenticated()" style="cursor: pointer;">
         <img id="profile-btn" src="https://cdn-icons-png.flaticon.com/512/3106/3106773.png">
         <div class="dropdown-content">
           <a routerLink="/profile">Profile</a>
-          <a routerLink="/login">Logout</a>
+          <a (click)="logout()" style="cursor: pointer;">Logout</a>
         </div>
       </div>
     </div>

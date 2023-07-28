@@ -110,6 +110,14 @@ export class ApiService {
     return this.post('authentication/login', userData);
   }
 
+  logout(): Observable<any> {
+    localStorage.removeItem('token');
+    const token = localStorage.getItem('token');
+    console.log('El token es: ' + token);
+    // Assuming there is a logout endpoint on the server
+    return this.post('authentication/logout', {});
+  }
+
   // PUT
 
   updateUserProfile(userId: string, profileData: any): Observable<any> {

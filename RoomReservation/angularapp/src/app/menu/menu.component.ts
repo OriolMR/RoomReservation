@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationGuard } from '../views/login/authentication.guard';
 import { ToastrService } from 'ngx-toastr';
+import { ApiService } from '../service/api.service';
 
 @Component({
   selector: 'app-menu',
@@ -14,7 +15,7 @@ export class MenuComponent implements OnInit {
 
   showAdminLink: boolean = false;
 
-  constructor(private authGuard: AuthenticationGuard, private toastr: ToastrService, private router: Router) { }
+  constructor(private authGuard: AuthenticationGuard,  private apiService: ApiService, private toastr: ToastrService, private router: Router) { }
 
   ngOnInit(): void {
 
@@ -31,23 +32,22 @@ export class MenuComponent implements OnInit {
 
 
 
-  logout(): void {
-    this.authGuard.logout().subscribe(
-      () => {
-        // Eliminar el token del almacenamiento local
-        localStorage.removeItem('token');
-        const tokenAfterDelete = localStorage.getItem('token'); // Intenta obtener el token (debería ser null)
-        console.log('Token después de eliminar:', tokenAfterDelete);
-
-        this.toastr.success('Logout successful', 'Success');
-        // Redirigir al usuario a la página de inicio de sesión
+  logout() {
+    this.apiService.logout().subscribe(
+      (response) => {
+        // Handle the successful logout response here
+        // For example, you might clear user session or redirect to the login page
+        console.log('Logout successful:', response);
+        this.toastr.success('Logout successful');
         this.router.navigate(['/login']);
       },
       (error) => {
-        console.log("Error en el logout");
+        // Handle any errors that occur during the logout process
+        console.error('Logout error:', error);
       }
     );
   }
+  
 }
 
 
