@@ -45,7 +45,7 @@ export class UsersComponent implements AfterViewInit {
     this.getAllUsers();
   }
 
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string, userId: string, userName: string): void {
+  openDialog(userId: string, userName: string): void {
     console.log(userName);
     const dialogRef = this.dialog.open(UsersDeleteComponent, {
       width: '250px',
