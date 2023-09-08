@@ -46,8 +46,7 @@ export class MenuComponent implements OnInit {
         console.error('Logout error:', error);
       }
     );
-  }
-  
+  }  
 }
 
 

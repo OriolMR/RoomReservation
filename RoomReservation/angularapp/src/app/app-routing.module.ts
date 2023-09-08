@@ -24,7 +24,9 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate: [AuthenticationGuard], data: { requireAdmin: false } },
   { path: 'reserves', component: ReservesComponent, canActivate: [AuthenticationGuard], data: { requireAdmin: false } },
   { path: 'reservation', component: ReservationComponent, canActivate: [AuthenticationGuard], data: { requireAdmin: false } },
-  { path: 'admin', component: AdminComponent, canActivate: [AuthenticationGuard], data: { requireAdmin: true } }, // Acceso solo para usuarios autenticados con el rol de "Administrador"
+
+  // Acceso solo para usuarios autenticados con el rol de "Administrador"
+  { path: 'admin', component: AdminComponent, canActivate: [AuthenticationGuard], data: { requireAdmin: true } }, 
   { path: 'admin/admin-cities', component: CitiesComponent, canActivate: [AuthenticationGuard], data: { requireAdmin: true } },
   { path: 'admin/admin-countries', component: CountriesComponent, canActivate: [AuthenticationGuard], data: { requireAdmin: true } },
   { path: 'admin/admin-offices', component: officesComponent, canActivate: [AuthenticationGuard], data: { requireAdmin: true } },

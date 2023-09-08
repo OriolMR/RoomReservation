@@ -130,9 +130,9 @@ namespace webapi.Controllers
             new Claim(ClaimTypes.Name, user.UserName),
             new Claim(ClaimTypes.Role, role) // Aquí se agrega el claim del rol del usuario
         }),
-                Expires = DateTime.UtcNow.AddHours(1), // Define the token's expiration time
+                Expires = DateTime.UtcNow.AddHours(1),
 
-                // Specify the signing credentials using the symmetric key (HMAC-SHA256 algorithm)
+           
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
             var token = tokenHandler.CreateToken(tokenDescriptor);

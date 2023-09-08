@@ -13,6 +13,7 @@ import { UsersDeleteComponent } from './users-delete/users-delete.component';
 import { ApiService } from '../../../service/api.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
+import { CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 
 
@@ -22,12 +23,13 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './users.component.html',
   standalone: true,
   imports: [MatTableModule, MatPaginatorModule, MatSortModule, MatInputModule, MatFormFieldModule,
-    MatButtonModule, MatDialogModule, HttpClientModule, MatIconModule]
+    MatButtonModule, MatDialogModule, HttpClientModule, MatIconModule, CommonModule]
 })
 
 export class UsersComponent implements AfterViewInit {
   displayedColumns: string[] = ['userId' ,'userName', 'userEmail','symbols'];
-  dataSource = new MatTableDataSource<IUsers>([])
+  dataSource = new MatTableDataSource<IUsers>([]);
+  editedRowIndex: number = -1;
   constructor(
     private _liveAnnouncer: LiveAnnouncer,
     public dialog: MatDialog,
@@ -116,6 +118,9 @@ export class UsersComponent implements AfterViewInit {
   }
 
   addData() {
-    const randomElementIndex = Math.floor(Math.random() * this.dataSource.data.length);
+    const newRow = { userId: '', userName: '', userEmail: '' };
+    this.dataSource.data.push(newRow); // Agregar la nueva fila al dataSource
+    this.dataSource.data = [...this.dataSource.data]; // Actualizar el dataSource para que Angular detecte los cambios
+    this.editedRowIndex = this.dataSource.data.length - 1; // Iniciar edición en la nueva fila agregada
   }
 }

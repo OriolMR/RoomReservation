@@ -25,8 +25,6 @@ export class ReservationComponent implements OnInit {
 
   constructor(private apiService: ApiService, private http: HttpClient, private dialog: MatDialog) { }
 
-
-
   ngOnInit(): void {
     // Realizar la solicitud para obtener los países
     this.apiService.getCountries().subscribe(
@@ -49,7 +47,6 @@ export class ReservationComponent implements OnInit {
   }
 
   getAllCities(): void {
-    // Llamada al método local para obtener todas las ciudades
     this.apiService.getCities().subscribe(
       (data) => {
         this.cities = data;

@@ -32,11 +32,9 @@ export class AuthenticationGuard implements CanActivate {
           return true; // Usuario autenticado y tiene el rol de "Administrador", permitir acceso a la ruta que requiere administrador
         } else {
           console.log(" Usuario autenticado y NO tiene el rol de admin");
-          return false;
-       
+          return false;     
         }
-      } else {
-     
+      } else {    
         // Si requireAdmin es false, permitir acceso a la ruta sin verificar el rol
         return true;
       }
