@@ -31,20 +31,20 @@
   margin: 5px 0;
 }
 
-
-/*Boton clear selection de .home-container*/
-.clear-selection button {
+/*Botones*/
+button {
   padding: 10px 20px;
   background-color: #007bff;
   color: #fff;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  height: 50px;
+  width: 150px;
+  margin-top: 25px;
 }
 
-
 /*.MEETING-ROOMS-CONTAINER*/
-
 /*Contenedor que aparece debajo de .home-container con las salas de la oficina seleccionada.*/
 .meeting-rooms-container {
   display: flex;
