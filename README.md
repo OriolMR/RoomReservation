@@ -334,8 +334,6 @@ Eliminar una Ciudad: La acción DeleteCity permite eliminar una ciudad de la bas
 
 Este controlador facilita la gestión de datos relacionados con las ciudades en la aplicación y se asegura de que estas operaciones estén protegidas mediante la autorización. Por ejemplo, se requiere el rol de "Administrador" para realizar operaciones de creación, actualización y eliminación de ciudades.
 
-
-
 **CountriesController.cs**
 <br>
 
@@ -432,7 +430,240 @@ Eliminar Usuario: La acción DeleteUser permite eliminar un usuario de la base d
 
 Este controlador proporciona una interfaz API para acceder y manipular información sobre los usuarios en la aplicación. Permite realizar operaciones como obtener, actualizar y eliminar usuarios, así como buscar usuarios por su nombre de usuario o ID. También proporciona funcionalidad de cambio de contraseña de usuario cuando se proporcionan tanto la contraseña actual como la nueva contraseña.
 
+#### DataAccess
+
+Este módulo contiene los contextos de bases de datos utilizados en la aplicación para administrar la persistencia de datos. Los contextos de bases de datos son componentes esenciales que facilitan la comunicación entre la aplicación y la base de datos subyacente. 
+
+**IdentityAppDbContext.cs**
+<br>
+
+Este contexto se basa en IdentityDbContext<webapiUser>, lo que significa que se utiliza para administrar la persistencia de datos relacionados con la autenticación y la autorización proporcionados por ASP.NET Identity.
+
+**RoomReservationDbContext.cs**
+<br>
+El contexto RoomReservationDbContext se encarga de gestionar la persistencia de datos relacionados con la aplicación de reserva de salas. Contiene propiedades DbSet que representan las tablas de la base de datos, como países, ciudades, oficinas, salas de reuniones y reservas. Además, proporciona un método SaveChangesAsync para guardar cambios en la base de datos de manera asincrónica.
+
+#### Models
+
+En la arquitectura Modelo-Vista-Controlador (MVC), los modelos son componentes que representan y gestionan los datos de la aplicación. Los modelos son responsables de interactuar con la capa de datos subyacente, validar la integridad de los datos y proporcionar métodos para acceder y modificar esos datos. Los modelos actúan como la capa de acceso a la base de datos y encapsulan la lógica relacionada con los datos.
+
+Definición de un Modelo
+
+Un modelo es una clase (o una entidad) que define la estructura de los datos que se manejarán en la aplicación
+
+Atributos de Datos: Los atributos como [Key] y [DatabaseGenerated] proporcionan información adicional sobre cómo se deben tratar las propiedades en la base de datos. Por ejemplo, [Key] indica que un atributo es la clave primaria de la tabla, y [DatabaseGenerated(DatabaseGeneratedOption.Identity)] indica que un atributo se genera automáticamente por la base de datos.
+
+Constructores: Los constructores son métodos especiales utilizados para crear instancias de la clase. 
+
+Funciones y Métodos Adicionales: Los modelos pueden incluir métodos adicionales para realizar operaciones específicas relacionadas con los datos. 
+
+**City.cs**
+<br>
+
+Este modelo representa una entidad de ciudad en la aplicación.
+
+cityId: Esta propiedad representa el identificador único de la ciudad.
+
+countryId: Representa el identificador del país al que pertenece esta ciudad.
+
+cityName: Almacena el nombre de la ciudad.
+
+**Country.cs**
+<br>
+
+Este modelo representa una entidad que almacena información sobre países. 
+
+countryId: Esta propiedad representa el identificador único del país.
+
+countryName: Almacena el nombre del país.
+
+**Office.cs**
+<br>
+
+Este modelo representa una entidad que almacena información sobre oficinas.
+
+officeId: Esta propiedad representa el identificador único de la oficina.
+
+cityId: Representa el identificador de la ciudad a la que pertenece esta oficina.
+
+officeName: Almacena el nombre de la oficina.
+
+**MeetingRoom.cs**
+<br>
+
+Este modelo representa una entidad que almacena información sobre salas de reuniones.
+
+meetingRoomId: Esta propiedad representa el identificador único de la sala de reuniones.
+
+officeId: Representa el identificador de la oficina a la que pertenece esta sala de reuniones.
+
+meetingRoomName: Almacena el nombre de la sala de reuniones.
+
+**Reserve.cs**
+<br>
+
+Este modelo representa una entidad que almacena información sobre reservas de salas.
+
+reserveId: Esta propiedad representa el identificador único de la reserva.
+
+meetingRoomId: Representa el identificador de la sala de reuniones que se ha reservado.
+
+userId: Almacena el identificador del usuario que realizó la reserva.
+
+reserveDate: Indica la fecha en la que se realiza la reserva.
+
+startingHour: Representa la hora de inicio de la reserva.
+
+endingHour: Indica la hora de finalización de la reserva.
+
+**LoginViewModel.cs**
+<br>
+
+Este modelo se utiliza para representar los datos de inicio de sesión de un usuario en la aplicación.
+
+UserName: Almacena el nombre de usuario con el que el usuario intenta iniciar sesión.
+
+PasswordHash: Contiene el valor hash de la contraseña proporcionada por el usuario para el inicio de sesión.
+
+ValidateUserInput(): Este método se utiliza para validar los datos de entrada del usuario antes de intentar el inicio de sesión. Verifica que ambos campos, UserName y PasswordHash, estén completos.
+
+Este modelo se utiliza para recopilar y validar la información de inicio de sesión proporcionada por un usuario antes de procesarla. La lógica relacionada con la autenticación y el inicio de sesión se implementa en otros componentes de la aplicación, como el controlador de autenticación.
+
+**RegisterViewModel.cs**
+<br>
+
+Este modelo se utiliza para representar los datos de registro de un usuario en la aplicación. 
+
+UserName: Almacena el nombre de usuario que el usuario desea registrar.
+
+Email: Contiene la dirección de correo electrónico del usuario que se utiliza para el registro.
+
+PasswordHash: Contiene el valor hash de la contraseña proporcionada por el usuario durante el registro.
+
+ValidateUserInput(): Este método se utiliza para validar los datos de entrada del usuario antes de procesar el registro. Verifica que todos los campos, UserName, Email y PasswordHash, estén completos.
+
+Este modelo se utiliza para recopilar y validar la información de registro proporcionada por un usuario antes de procesarla. La lógica relacionada con la creación de cuentas de usuario se implementa en otros componentes de la aplicación, como el controlador de autenticación.
+
+**ReserveData.cs**
+<br>
+
+Este modelose utiliza para reperesentar los datos al crear una reserva en la aplicación.
+
+ReserveDate: Esta propiedad almacena la fecha en la que se desea realizar la reserva. Indica el día en el que se planea utilizar la sala de reuniones.
+
+StartingHour: Contiene la hora de inicio de la reserva. Representa el momento en el que la reserva comienza y se puede acceder a la sala de reuniones.
+
+EndingHour: Almacena la hora de finalización de la reserva. Indica el momento en el que la reserva concluye y la sala de reuniones queda disponible para otros usuarios.
+
+MeetingRoomId: Representa el identificador único de la sala de reuniones para la cual se está creando la reserva. Este identificador se utiliza para asociar la reserva a una sala de reuniones específica.
+
+UserId: Contiene el identificador único del usuario que está realizando la reserva. Indica quién ha programado la reserva de la sala de reuniones.
+
+Este modelo se utiliza para transmitir información esencial al sistema sobre la reserva que un usuario desea realizar. Los controladores y la lógica de la aplicación procesarán esta información para crear una nueva reserva en la base de datos, asegurando que la sala de reuniones esté disponible durante el período especificado por el usuario
 
 
+------------------------
+**UpdateReserveModel.cs**
+<br>
+**UpdateCountryModel.cs**
+<br>
+**UpdateCityModel.cs**
+<br>
+**UpdateOfficeModel.cs**
+<br>
+**UpdateMeetingRoomModel.cs**
+<br>
+-------------------------
 
+
+#### Pages
+#### Repositories
+
+Este módulo se emplea para abstractizar y administrar la lógica de acceso a datos y las interacciones con la base de datos. Este repositorio contiene interfaces que definen las operaciones o métodos que pueden llevarse a cabo en la capa de acceso a datos, sin detallar cómo se implementan realmente esas operaciones. Representan controladores relacionados con la autenticación y la gestión de usuarios en la aplicación en el contexto de una aplicación web API.
+
+Al definir estas interfaces, se facilita la separación de preocupaciones y la modularidad del código, lo que permite un mejor mantenimiento y pruebas unitarias de las funcionalidades.
+
+
+**IAuthenticationController.cs**
+<br>
+
+Esta interfaz define un conjunto de métodos relacionados con la autenticación y la autorización de usuarios.
+
+**ICitiesController.cs**
+<br>
+
+Esta interfaz define un conjunto de métodos que representan operaciones relacionadas con la gestión de ciudades.
+
+**ICountriesController.cs**
+<br>
+
+Esta interfaz define un conjunto de métodos que representan operaciones relacionadas con la gestión de países.
+
+**IMeetingRoomsController.cs**
+<br>
+
+Esta interfaz define un conjunto de métodos que representan operaciones relacionadas con la gestión de salas.
+
+**IOfficesController.cs**
+<br>
+
+Esta interfaz define un conjunto de métodos que representan operaciones relacionadas con la gestión de oficinas.
+
+**IReservesController.cs**
+<br>
+
+Esta interfaz define un conjunto de métodos que representan operaciones relacionadas con la gestión de reservas.
+
+**IUsersController.cs**
+<br>
+
+Esta interfaz define un conjunto de métodos que representan operaciones relacionadas con la gestión de usuarios.
+
+
+**appsettings.json**
+<br>
+
+Este archivo se utiliza para configurar diferentes aspectos de la aplicación. Proporciona información de los niveles de registro, las cadenas de conexión a las bases de datos y la clave secreta para tokens JWT.
+
+Logging: Esta sección configura la información relacionada con el registro (logging) de la aplicación. Define los niveles de registro para diferentes componentes. El nivel de registro predeterminado (Default) está configurado en "Information", lo que significa que la aplicación registrará mensajes de información. El nivel de registro para los componentes de Microsoft.AspNetCore está configurado en "Warning", lo que significa que solo se registrarán mensajes de advertencia y errores relacionados con ASP.NET Core.
+
+AllowedHosts: Este valor permite especificar qué hosts están permitidos para acceder a la aplicación. En este caso, el asterisco (*) indica que se permite el acceso desde cualquier host.
+
+ConnectionStrings: Esta sección define las cadenas de conexión a las bases de datos utilizadas por la aplicación. Hay dos cadenas de conexión definidas:
+
+"RoomReservationConnection": Esta cadena de conexión está configurada para la base de datos "RoomReservation" en un servidor local. Utiliza la autenticación de Windows (Trusted_Connection=True) para la conexión.
+
+"IdentityConnection": Esta cadena de conexión está configurada para la misma base de datos "RoomReservation" en un servidor local diferente (posiblemente para una instancia diferente). También utiliza la autenticación de Windows y permite múltiples conjuntos de resultados activos (MultipleActiveResultSets=true).
+
+Jwt: Esta sección define una clave secreta (SecretKey) que se utiliza para la generación y validación de tokens JWT (JSON Web Tokens) en la aplicación.
+
+
+**Program.cs**
+<br>
+
+En este archivo, se configura y arranca la aplicación web ASP.NET Core, estableciendo servicios, bases de datos, autenticación, autorización y otras configuraciones necesarias para su funcionamiento.
+
+Se utiliza WebApplication.CreateBuilder(args) para crear una instancia de WebApplicationBuilder, que es la base para configurar y construir la aplicación web.
+
+Se obtienen las cadenas de conexión desde la configuración de la aplicación utilizando builder.Configuration.GetConnectionString. Estas cadenas de conexión se utilizan posteriormente para configurar los contextos de la base de datos.
+
+Se configuran los contextos de la base de datos utilizando Entity Framework Core. Se agregan los servicios de RoomReservationDbContext y IdentityAppDbContext con las respectivas cadenas de conexión. Estos contextos representan las bases de datos utilizadas por la aplicación.
+
+Se configura la autenticación y autorización utilizando el servicio AddDefaultIdentity. Se establecen varias opciones relacionadas con los requisitos de contraseña, como no requerir caracteres no alfanuméricos, no requerir confirmación de cuenta, no requerir mayúsculas, etc. Además, se configura la política de nombres de usuario permitidos y si se requiere un correo electrónico único.
+
+Se verifica si existe un rol llamado "ADMINISTRADOR" en la base de datos y, si no existe, se crea. Esto es importante para la gestión de roles y permisos en la aplicación.
+
+Se configura la política CORS con el nombre "AllowLocalhost4200", que permite las solicitudes desde el origen "https://localhost:4200". Esto es útil para permitir solicitudes desde un front-end alojado en ese origen.
+
+Se registran los controladores con builder.Services.AddControllers() y se agrega la documentación de Swagger con builder.Services.AddSwaggerGen().
+
+Se crea la instancia de la aplicación con builder.Build().
+
+Se configura el uso de CORS con app.UseCors("AllowLocalhost4200").
+
+Si la aplicación está en modo de desarrollo (app.Environment.IsDevelopment()), se habilita Swagger para documentar la API. De lo contrario, se habilita la redirección HTTPS y se sirven archivos estáticos.
+
+Se usa app.UseAuthorization() para habilitar la autorización en la aplicación.
+
+Finalmente, se mapean los controladores con app.MapControllers() y se inicia la aplicación con app.Run().
 
