@@ -63,7 +63,7 @@ lorem ipsum
 <br>
 lorem ipsum
 
-## Angular (Framework)
+FRONT-END CON Angular (Framework)
 
 **Esqueletos de las vistas (HTML):**
 <br>
@@ -272,3 +272,167 @@ lorem ipsum
 **update-modal.component.ts**
 <br>
 lorem ipsum
+
+
+
+
+
+
+BACKEND CON ASP.NET CORE (Framework)
+
+#### Identity:
+#### Data:
+**webapiContext.cs**
+...
+**webapiUser.cs**
+<br>
+Esta clase utiliza para definir la estructura de los usuarios de la aplicación web. ASP.NET Identity se encarga de la mayoría de las operaciones de autenticación y autorización, utilizando esta clase como base para representar a los usuarios.
+
+#### Controllers:
+
+Un controlador es una parte fundamental de una aplicación web que sigue el patrón de diseño Modelo-Vista-Controlador (MVC). Su función principal es manejar las solicitudes HTTP entrantes, procesar los datos, interactuar con el modelo de datos subyacente y devolver una respuesta adecuada al cliente. Los controladores actúan como intermediarios entre las solicitudes del usuario y la lógica de negocio de la aplicación.
+
+Recibe Solicitudes: Los controladores escuchan las solicitudes HTTP entrantes, como peticiones de página web o solicitudes de recursos estáticos.
+
+Procesa Datos: Los controladores procesan los datos proporcionados en la solicitud. Esto puede incluir la validación de datos o la realización de operaciones en la base de datos.
+
+Interactúa con el Modelo: Los controladores interactúan con el modelo de datos de la aplicación. El modelo representa la estructura y la lógica subyacente de la aplicación, como las entidades de la base de datos y las operaciones que se pueden realizar en ellas.
+
+Devuelve Respuestas: Una vez que se ha procesado la solicitud y se ha interactuado con el modelo (si es necesario), el controlador devuelve una respuesta al cliente. Esta respuesta puede ser una página HTML completa, datos en formato JSON para una API, una redirección a otra URL o un código de error.
+
+Gestión de Flujo: Los controladores también pueden tomar decisiones basadas en la solicitud y la lógica de la aplicación para determinar cómo responder. Por ejemplo, pueden realizar redirecciones, cargar diferentes vistas o realizar acciones específicas según la solicitud.
+
+**AuthenticationController.cs**
+<br>
+
+Esta clase cumple un papel esencial en la aplicación al encargarse de gestionar tanto la autenticación como la autorización de usuarios. Sus principales funciones incluyen:
+
+Registro de Usuarios: El controlador permite a los usuarios crear nuevas cuentas en la aplicación. Esta acción se encarga de validar y almacenar la información de registro proporcionada, como nombre de usuario, contraseña y correo electrónico. Un registro exitoso permite a los usuarios acceder a la aplicación con las credenciales recién creadas.
+
+Inicio de Sesión: La acción de inicio de sesión verifica las credenciales proporcionadas por el usuario (nombre de usuario y contraseña) y les concede acceso a la aplicación si son válidas. En caso de credenciales incorrectas, se muestra un mensaje de error.
+
+Cierre de Sesión: Esta acción permite a los usuarios cerrar su sesión actual en la aplicación, lo que implica que ya no están autenticados. Normalmente, se redirige al usuario a la página de inicio de sesión o al inicio de la aplicación.
+
+El AuthenticationController es una parte fundamental para garantizar la seguridad y la autenticación de los usuarios en la aplicación. Sus acciones clave facilitan la experiencia de registro y acceso, lo que a su vez permite a los usuarios disfrutar de las funcionalidades protegidas de la aplicación una vez que han iniciado sesión correctamente.
+
+**CitiesController.cs**
+<br>
+
+Este controlador se encarga de gestionar información relacionada con las ciudades. Las principales funciones de este controlador incluyen:
+
+Obtener Todas las Ciudades: La acción GetAllCities permite recuperar todas las ciudades disponibles en la base de datos y devuelve una respuesta con la lista de ciudades en formato JSON.
+
+Obtener Ciudad por ID: La acción GetCityById permite obtener detalles específicos de una ciudad por su identificador único. Si la ciudad existe, se devuelve una respuesta con los detalles de la ciudad en formato JSON; de lo contrario, se devuelve un código de respuesta "NotFound".
+
+Obtener Ciudades por ID de País: La acción GetCitiesByCountryId permite recuperar todas las ciudades asociadas a un país específico, identificado por su ID. Si existen ciudades para el país proporcionado, se devuelve una respuesta con la lista de ciudades en formato JSON; de lo contrario, se devuelve un código de respuesta "NotFound".
+
+Agregar una Ciudad: La acción AddCity permite agregar una nueva ciudad a la base de datos. Antes de agregar la ciudad, se valida y se asigna un valor inicial al cityId. Una vez agregada la ciudad, se devuelve una respuesta "Created" con los detalles de la ciudad agregada.
+
+Actualizar una Ciudad: La acción UpdateCity permite actualizar los detalles de una ciudad existente en la base de datos según su ID. Si la ciudad existe, se actualizan los datos proporcionados y se devuelve una respuesta con los detalles actualizados de la ciudad.
+
+Eliminar una Ciudad: La acción DeleteCity permite eliminar una ciudad de la base de datos según su ID. Si la ciudad existe, se elimina de la base de datos y se devuelve una respuesta "NoContent" para indicar que la operación se ha completado con éxito.
+
+Este controlador facilita la gestión de datos relacionados con las ciudades en la aplicación y se asegura de que estas operaciones estén protegidas mediante la autorización. Por ejemplo, se requiere el rol de "Administrador" para realizar operaciones de creación, actualización y eliminación de ciudades.
+
+
+
+**CountriesController.cs**
+<br>
+
+Este controlador se encarga de administrar la información relacionada con países en la aplicación. Sus acciones principales incluyen:
+
+Obtener Todos los Países: La acción GetAllCountries permite recuperar todos los países disponibles en la base de datos y devuelve una respuesta con la lista de países en formato JSON.
+
+Obtener País por ID: La acción GetCountryById permite obtener detalles específicos de un país por su identificador único. Si el país existe, se devuelve una respuesta con los detalles del país en formato JSON; de lo contrario, se devuelve un código de respuesta "NotFound".
+
+Agregar un País: La acción AddCountry permite agregar un nuevo país a la base de datos. Antes de agregar el país, se valida y se asigna un valor inicial al countryId. Una vez agregado el país, se devuelve una respuesta "Created" con los detalles del país agregado.
+
+Actualizar un País: La acción UpdateCountry permite actualizar los detalles de un país existente en la base de datos según su ID. Si el país existe, se actualizan los datos proporcionados y se devuelve una respuesta con los detalles actualizados del país.
+
+Eliminar un País: La acción DeleteCountry permite eliminar un país de la base de datos según su ID. Si el país existe, se elimina de la base de datos y se devuelve una respuesta "NoContent" para indicar que la operación se ha completado con éxito.
+
+Este controlador también asegura que las operaciones de creación, actualización y eliminación de países estén protegidas mediante la autorización. Se requiere el rol de "Administrador" para realizar estas operaciones.
+
+
+**MeetingRoomsController.cs**
+<br>
+
+Este controlador se encarga de administrar las operaciones relacionadas con las salas de reuniones en la aplicación. Sus acciones principales incluyen:
+
+Obtener Todas las Salas de Reuniones: La acción GetAllRooms permite recuperar todas las salas de reuniones disponibles en la base de datos y devuelve una respuesta con la lista de salas de reuniones en formato JSON.
+
+Obtener Sala de Reuniones por ID: La acción GetRoomById permite obtener detalles específicos de una sala de reuniones por su identificador único. Si la sala de reuniones existe, se devuelve una respuesta con los detalles de la sala en formato JSON; de lo contrario, se devuelve un código de respuesta "NotFound".
+
+Obtener Salas de Reuniones por ID de Oficina: La acción GetMeetingRoomsByOfficeId permite recuperar todas las salas de reuniones asociadas a una oficina específica, identificada por su ID. Si existen salas de reuniones para la oficina proporcionada, se devuelve una respuesta con la lista de salas de reuniones en formato JSON; de lo contrario, se devuelve un código de respuesta "NotFound".
+
+Agregar una Sala de Reuniones: La acción AddRoom permite agregar una nueva sala de reuniones a la base de datos. Antes de agregar la sala de reuniones, se valida y se asigna un valor inicial al meetingRoomId. Una vez agregada la sala de reuniones, se devuelve una respuesta "Created" con los detalles de la sala agregada.
+
+Actualizar una Sala de Reuniones: La acción UpdateRoom permite actualizar los detalles de una sala de reuniones existente en la base de datos según su ID. Si la sala de reuniones existe, se actualizan los datos proporcionados y se devuelve una respuesta con los detalles actualizados de la sala de reuniones.
+
+Eliminar una Sala de Reuniones: La acción DeleteRoom permite eliminar una sala de reuniones de la base de datos según su ID. Si la sala de reuniones existe, se elimina de la base de datos y se devuelve una respuesta "NoContent" para indicar que la operación se ha completado con éxito.
+
+Este controlador proporciona una interfaz API para acceder y manipular información sobre las salas de reuniones en la aplicación. Las operaciones de creación, actualización y eliminación de salas de reuniones no requieren autorización específica en este caso.
+
+
+**OfficesController.cs**
+<br>
+
+Este controlador se encarga de administrar las operaciones relacionadas con las oficinas en la aplicación. Las principales funciones de este controlador incluyen:
+
+Obtener Todas las Oficinas: La acción GetAllOffices permite recuperar todas las oficinas disponibles en la base de datos y devuelve una respuesta con la lista de oficinas en formato JSON.
+
+Obtener Oficina por ID: La acción GetOfficeById permite obtener detalles específicos de una oficina por su identificador único. Si la oficina existe, se devuelve una respuesta con los detalles de la oficina en formato JSON; de lo contrario, se devuelve un código de respuesta "NotFound".
+
+Obtener Oficinas por ID de Ciudad: La acción GetOfficesByCityId permite recuperar todas las oficinas asociadas a una ciudad específica, identificada por su ID. Si existen oficinas para la ciudad proporcionada, se devuelve una respuesta con la lista de oficinas en formato JSON; de lo contrario, se devuelve un código de respuesta "NotFound".
+
+Agregar una Oficina: La acción AddOffice permite agregar una nueva oficina a la base de datos. Antes de agregar la oficina, se valida y se asigna un valor inicial al officeId. Una vez agregada la oficina, se devuelve una respuesta "Created" con los detalles de la oficina agregada.
+
+Actualizar una Oficina: La acción UpdateOffice permite actualizar los detalles de una oficina existente en la base de datos según su ID. Si la oficina existe, se actualizan los datos proporcionados y se devuelve una respuesta con los detalles actualizados de la oficina.
+
+Eliminar una Oficina: La acción DeleteOffice permite eliminar una oficina de la base de datos según su ID. Si la oficina existe, se elimina de la base de datos y se devuelve una respuesta "NoContent" para indicar que la operación se ha completado con éxito.
+
+Este controlador proporciona una interfaz API para acceder y manipular información sobre las oficinas en la aplicación. Las operaciones de creación, actualización y eliminación de oficinas no requieren autorización específica en este caso.
+
+
+**ReservesController.cs**
+<br>
+
+Este controlador se encarga de gestionar las operaciones relacionadas con las reservas de salas de reuniones en la aplicación. Las acciones principales que realiza incluyen:
+
+Obtener Todas las Reservas: La acción GetAllReserves permite recuperar todas las reservas disponibles en la base de datos y devuelve una respuesta con la lista de reservas en formato JSON.
+
+Obtener Reserva por ID: La acción GetReserveById permite obtener detalles específicos de una reserva por su identificador único. Si la reserva existe, se devuelve una respuesta con los detalles de la reserva en formato JSON; de lo contrario, se devuelve un código de respuesta "NotFound".
+
+Obtener Reservas por ID de Usuario: La acción GetReservesByUserId permite recuperar todas las reservas asociadas a un usuario específico, identificado por su ID. Si existen reservas para el usuario proporcionado, se devuelve una respuesta con la lista de reservas en formato JSON; de lo contrario, se devuelve un código de respuesta "NotFound".
+
+Obtener Reservas por ID de Sala de Reuniones: La acción GetReservesByMeetingRoomId permite recuperar todas las reservas asociadas a una sala de reuniones específica, identificada por su ID. Si existen reservas para la sala de reuniones proporcionada, se devuelve una respuesta con la lista de reservas en formato JSON; de lo contrario, se devuelve un código de respuesta "NotFound".
+
+Agregar una Reserva: La acción AddReserve permite agregar una nueva reserva de sala de reuniones a la base de datos. Antes de agregar la reserva, se verifica si hay solapamientos con otras reservas existentes. Si no hay solapamientos, se crea la nueva reserva y se devuelve una respuesta "Ok". Si hay solapamientos, se devuelve un mensaje de error "BadRequest".
+
+Actualizar una Reserva: La acción UpdateReserve permite actualizar los detalles de una reserva existente en la base de datos según su ID. Antes de realizar la actualización, se verifica si la nueva reserva entra en conflicto con otras reservas existentes. Si no hay conflictos, se actualizan los detalles y se devuelve una respuesta "Ok". Si hay conflictos, se devuelve un mensaje de error "BadRequest".
+
+Eliminar una Reserva: La acción DeleteReserve permite eliminar una reserva de la base de datos según su ID. Si la reserva existe, se elimina de la base de datos y se devuelve una respuesta "NoContent" para indicar que la operación se ha completado con éxito.
+
+Este controlador proporciona una interfaz API para acceder y manipular información sobre las reservas de salas de reuniones en la aplicación, garantizando que se eviten conflictos de programación y se verifiquen las disponibilidades de las salas.
+
+**UsersController.cs**
+<br>
+
+Este controlador se encarga de administrar las operaciones relacionadas con los usuarios en la aplicación. Sus acciones principales incluyen:
+
+Obtener Todos los Usuarios: La acción GetAllUsers permite recuperar todos los usuarios disponibles en la base de datos y devuelve una respuesta con la lista de usuarios en formato JSON.
+
+Obtener Usuario por ID: La acción GetUserById permite obtener detalles específicos de un usuario por su identificador único. Si el usuario existe, se devuelve una respuesta con los detalles del usuario en formato JSON; de lo contrario, se devuelve un código de respuesta "NotFound".
+
+Obtener Usuario por Nombre de Usuario: La acción GetUserByUsername permite obtener detalles de un usuario por su nombre de usuario. Si el usuario existe, se devuelve una respuesta con los detalles del usuario en formato JSON; de lo contrario, se devuelve un código de respuesta "NotFound".
+
+Actualizar Usuario: La acción UpdateUser permite actualizar los detalles de un usuario existente en la base de datos según su ID. Se admite la actualización del nombre de usuario, el correo electrónico y la contraseña del usuario. La acción valida si se proporciona la contraseña actual y la nueva contraseña antes de cambiarla. Si la actualización es exitosa, se devuelve una respuesta "Ok" con los detalles actualizados del usuario. Si hay errores durante la actualización, se devuelve una respuesta "BadRequest" con los errores específicos.
+
+Eliminar Usuario: La acción DeleteUser permite eliminar un usuario de la base de datos según su ID. Si el usuario existe, se elimina de la base de datos y se devuelve una respuesta "NoContent" para indicar que la operación se ha completado con éxito.
+
+Este controlador proporciona una interfaz API para acceder y manipular información sobre los usuarios en la aplicación. Permite realizar operaciones como obtener, actualizar y eliminar usuarios, así como buscar usuarios por su nombre de usuario o ID. También proporciona funcionalidad de cambio de contraseña de usuario cuando se proporcionan tanto la contraseña actual como la nueva contraseña.
+
+
+
+
+
