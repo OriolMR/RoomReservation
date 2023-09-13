@@ -332,7 +332,7 @@ lorem ipsum
 ## BACKEND: ASP.NET CORE (Framework)
 
 > #### Identity:
-Z #### Data:
+> #### Data:
 **webapiContext.cs**
 ...
 **webapiUser.cs**
@@ -495,6 +495,7 @@ Este contexto se basa en IdentityDbContext<webapiUser> y se utiliza para adminis
 <br>
 
 Este contexto se encarga de gestionar la persistencia de datos relacionados con la aplicación de reserva de salas. Contiene propiedades DbSet que representan las tablas de la base de datos, como países, ciudades, oficinas, salas de reuniones y reservas. Además, proporciona un método SaveChangesAsync para guardar cambios en la base de datos de manera asincrónica.
+<br>
 
 > ### Models
 
