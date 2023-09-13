@@ -14,24 +14,26 @@ import { CountriesComponent } from './views/admin/countries/countries.component'
 import { officesComponent } from './views/admin/offices/offices.component';
 import { MeetingRoomsComponent } from './views/admin/meeting-rooms/meeting-rooms.component';
 import { UsersComponent } from './views/admin/users/users.component';
+import { ReservesAdminComponent } from './views/admin/reserves-admin/reserves-admin.component';
 
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'home', component: HomeComponent, canActivate: [AuthenticationGuard],  data: { requireAdmin: false } },
+  { path: 'home', component: HomeComponent, canActivate: [AuthenticationGuard], data: { requireAdmin: false } },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthenticationGuard], data: { requireAdmin: false } },
   { path: 'reserves', component: ReservesComponent, canActivate: [AuthenticationGuard], data: { requireAdmin: false } },
   { path: 'reservation', component: ReservationComponent, canActivate: [AuthenticationGuard], data: { requireAdmin: false } },
 
   // Acceso solo para usuarios autenticados con el rol de "Administrador"
-  { path: 'admin', component: AdminComponent, canActivate: [AuthenticationGuard], data: { requireAdmin: true } }, 
+  { path: 'admin', component: AdminComponent, canActivate: [AuthenticationGuard], data: { requireAdmin: true } },
   { path: 'admin/admin-cities', component: CitiesComponent, canActivate: [AuthenticationGuard], data: { requireAdmin: true } },
   { path: 'admin/admin-countries', component: CountriesComponent, canActivate: [AuthenticationGuard], data: { requireAdmin: true } },
   { path: 'admin/admin-offices', component: officesComponent, canActivate: [AuthenticationGuard], data: { requireAdmin: true } },
   { path: 'admin/admin-rooms', component: MeetingRoomsComponent, canActivate: [AuthenticationGuard], data: { requireAdmin: true } },
   { path: 'admin/admin-users', component: UsersComponent, canActivate: [AuthenticationGuard], data: { requireAdmin: true } },
+  { path: 'admin/admin-reserves', component: ReservesAdminComponent, canActivate: [AuthenticationGuard], data: { requireAdmin: true } },
   { path: '**', component: PageNotFoundComponent }
  
   // Otras rutas a definir
