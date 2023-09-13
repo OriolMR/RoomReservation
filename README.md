@@ -4,13 +4,13 @@
 **Entorno de desarollo:**
 <br>
 Microsoft Visual Studio
-<br>
+
 **Lenguaje:**
 <br>
 C# con ASP.NET Core para la reserva de salas de reuniones de las diferentes oficinas de la empresa ACME (backend). La aplicación gestiona mediante una API REST las operaciones de reserva de salas. Angular como framework para la interficie de usuario (frontend).
 
 <!-- aaaaaaaaaaaaaaaa -->
-<br>
+
 ## MySQL (Base de datos)
 **api.service.ts**
 <br>
@@ -18,27 +18,27 @@ C# con ASP.NET Core para la reserva de salas de reuniones de las diferentes ofic
 **dbo._EFMigrationsHistory**
 <br>
 lorem ipsum
-<br>
+
 **dbo.AspNetRoleClaims**
 <br>
 lorem ipsum
-<br>
+
 **dbo.AspNetRoles**
 <br>
 lorem ipsum
-<br>
+
 **dbo.AspNetUserClaims**
 <br>
 lorem ipsum
-<br>
+
 **dbo.AspNetUserLogins**
 <br>
 lorem ipsum
-<br>
+
 **dbo.AspNetUsers**
 <br>
 lorem ipsum
-<br>
+
 **dbo.AspNetUserTokens**
 <br>
 lorem ipsum
@@ -46,19 +46,19 @@ lorem ipsum
 **dbo.Cities**
 <br>
 lorem ipsum
-<br>
+
 **dbo.Countries**
 <br>
 lorem ipsum
-<br>
+
 **dbo.MeetingRooms**
 <br>
 lorem ipsum
-<br>
+
 **dbo.Offices**
 <br>
 lorem ipsum
-<br>
+
 **dbo.Reserves**
 <br>
 lorem ipsum
@@ -77,7 +77,7 @@ Cada pagina esta formada por un esqueleto (documento html) que en general sigue 
 
 Por ultimo cabe destacar que las paginas html de la aplicacion estan dentro de otro html que a su vez lo esta en otro, ya que esta es la forma de trabajar con angular.
 Encima de todos los documentos html esta "index" que luego utiliza a "app" que posteriormente utiliza los documentos html de los componentes que nosotros hayamos creado. Lo mismo ocurre con los archivos de estilos referenciados por cada uno de los archivos html correspondientes.
-<br>
+
 **Estilos de las vistas (CSS):**
 <br>
 Cada pagina tiene un documento de estilos (CSS) que en general sigue unas directrices: 
@@ -90,7 +90,7 @@ Cada pagina tiene un documento de estilos (CSS) que en general sigue unas direct
 - En cuanto a los botones todos tienen los mismos estilos. Cuando se pasa el raton por encima o se interactua con ellos gracias a la opcion "hover" cambiamos la tonalidad del color del boton. Estos estan redondeados y el texto de su interior es blanco.
 - Tienen una cabezera (refiriendonos al codigo y no a la vista como tal) donde se indica el contexto de cada una de las partes que forman el docuemnto html correspondiente. De esta forma es facil identificar que estilos se estan aplicando en un lugar y en que lugar.
 - Disponen de secciones ordenadas dentro del codigo por comentarios. Para una facil legibilidad y edicion.
-<br>
+
 ### App component
 **app.component.html**
 <br>
@@ -306,11 +306,11 @@ Gestión de Flujo: Los controladores también pueden tomar decisiones basadas en
 
 Esta clase cumple un papel esencial en la aplicación al encargarse de gestionar tanto la autenticación como la autorización de usuarios. Sus principales funciones incluyen:
 
-Registro de Usuarios: El controlador permite a los usuarios crear nuevas cuentas en la aplicación. Esta acción se encarga de validar y almacenar la información de registro proporcionada, como nombre de usuario, contraseña y correo electrónico. Un registro exitoso permite a los usuarios acceder a la aplicación con las credenciales recién creadas.
+ - Registro de Usuarios: El controlador permite a los usuarios crear nuevas cuentas en la aplicación. Esta acción se encarga de validar y almacenar la información de registro proporcionada, como nombre de usuario, contraseña y correo electrónico. Un registro exitoso permite a los usuarios acceder a la aplicación con las credenciales recién creadas.
 
-Inicio de Sesión: La acción de inicio de sesión verifica las credenciales proporcionadas por el usuario (nombre de usuario y contraseña) y les concede acceso a la aplicación si son válidas. En caso de credenciales incorrectas, se muestra un mensaje de error.
+ - Inicio de Sesión: La acción de inicio de sesión verifica las credenciales proporcionadas por el usuario (nombre de usuario y contraseña) y les concede acceso a la aplicación si son válidas. En caso de credenciales incorrectas, se muestra un mensaje de error.
 
-Cierre de Sesión: Esta acción permite a los usuarios cerrar su sesión actual en la aplicación, lo que implica que ya no están autenticados. Normalmente, se redirige al usuario a la página de inicio de sesión o al inicio de la aplicación.
+ - Cierre de Sesión: Esta acción permite a los usuarios cerrar su sesión actual en la aplicación, lo que implica que ya no están autenticados. Normalmente, se redirige al usuario a la página de inicio de sesión o al inicio de la aplicación.
 
 El AuthenticationController es una parte fundamental para garantizar la seguridad y la autenticación de los usuarios en la aplicación. Sus acciones clave facilitan la experiencia de registro y acceso, lo que a su vez permite a los usuarios disfrutar de las funcionalidades protegidas de la aplicación una vez que han iniciado sesión correctamente.
 
@@ -319,17 +319,17 @@ El AuthenticationController es una parte fundamental para garantizar la segurida
 
 Este controlador se encarga de gestionar información relacionada con las ciudades. Las principales funciones de este controlador incluyen:
 
-Obtener Todas las Ciudades: La acción GetAllCities permite recuperar todas las ciudades disponibles en la base de datos y devuelve una respuesta con la lista de ciudades en formato JSON.
+- Obtener Todas las Ciudades: La acción _GetAllCities_ permite recuperar todas las ciudades disponibles en la base de datos y devuelve una respuesta con la lista de ciudades en formato JSON.
 
-Obtener Ciudad por ID: La acción GetCityById permite obtener detalles específicos de una ciudad por su identificador único. Si la ciudad existe, se devuelve una respuesta con los detalles de la ciudad en formato JSON; de lo contrario, se devuelve un código de respuesta "NotFound".
+- Obtener Ciudad por ID: La acción _GetCityById_ permite obtener detalles específicos de una ciudad por su identificador único. Si la ciudad existe, se devuelve una respuesta con los detalles de la ciudad en formato JSON; de lo contrario, se devuelve un código de respuesta "NotFound".
 
-Obtener Ciudades por ID de País: La acción GetCitiesByCountryId permite recuperar todas las ciudades asociadas a un país específico, identificado por su ID. Si existen ciudades para el país proporcionado, se devuelve una respuesta con la lista de ciudades en formato JSON; de lo contrario, se devuelve un código de respuesta "NotFound".
+- Obtener Ciudades por ID de País: La acción _GetCitiesByCountryId_ permite recuperar todas las ciudades asociadas a un país específico, identificado por su ID. Si existen ciudades para el país proporcionado, se devuelve una respuesta con la lista de ciudades en formato JSON; de lo contrario, se devuelve un código de respuesta "NotFound".
 
-Agregar una Ciudad: La acción AddCity permite agregar una nueva ciudad a la base de datos. Antes de agregar la ciudad, se valida y se asigna un valor inicial al cityId. Una vez agregada la ciudad, se devuelve una respuesta "Created" con los detalles de la ciudad agregada.
+- Agregar una Ciudad: La acción _AddCity_ permite agregar una nueva ciudad a la base de datos. Antes de agregar la ciudad, se valida y se asigna un valor inicial al cityId. Una vez agregada la ciudad, se devuelve una respuesta "Created" con los detalles de la ciudad agregada.
 
-Actualizar una Ciudad: La acción UpdateCity permite actualizar los detalles de una ciudad existente en la base de datos según su ID. Si la ciudad existe, se actualizan los datos proporcionados y se devuelve una respuesta con los detalles actualizados de la ciudad.
+- Actualizar una Ciudad: La acción _UpdateCity_ permite actualizar los detalles de una ciudad existente en la base de datos según su ID. Si la ciudad existe, se actualizan los datos proporcionados y se devuelve una respuesta con los detalles actualizados de la ciudad.
 
-Eliminar una Ciudad: La acción DeleteCity permite eliminar una ciudad de la base de datos según su ID. Si la ciudad existe, se elimina de la base de datos y se devuelve una respuesta "NoContent" para indicar que la operación se ha completado con éxito.
+- Eliminar una Ciudad: La acción _DeleteCity_ permite eliminar una ciudad de la base de datos según su ID. Si la ciudad existe, se elimina de la base de datos y se devuelve una respuesta "NoContent" para indicar que la operación se ha completado con éxito.
 
 Este controlador facilita la gestión de datos relacionados con las ciudades en la aplicación y se asegura de que estas operaciones estén protegidas mediante la autorización. Por ejemplo, se requiere el rol de "Administrador" para realizar operaciones de creación, actualización y eliminación de ciudades.
 
@@ -338,15 +338,15 @@ Este controlador facilita la gestión de datos relacionados con las ciudades en 
 
 Este controlador se encarga de administrar la información relacionada con países en la aplicación. Sus acciones principales incluyen:
 
-Obtener Todos los Países: La acción GetAllCountries permite recuperar todos los países disponibles en la base de datos y devuelve una respuesta con la lista de países en formato JSON.
+- Obtener Todos los Países: La acción _GetAllCountries_ permite recuperar todos los países disponibles en la base de datos y devuelve una respuesta con la lista de países en formato JSON.
 
-Obtener País por ID: La acción GetCountryById permite obtener detalles específicos de un país por su identificador único. Si el país existe, se devuelve una respuesta con los detalles del país en formato JSON; de lo contrario, se devuelve un código de respuesta "NotFound".
+- Obtener País por ID: La acción _GetCountryById_ permite obtener detalles específicos de un país por su identificador único. Si el país existe, se devuelve una respuesta con los detalles del país en formato JSON; de lo contrario, se devuelve un código de respuesta "NotFound".
 
-Agregar un País: La acción AddCountry permite agregar un nuevo país a la base de datos. Antes de agregar el país, se valida y se asigna un valor inicial al countryId. Una vez agregado el país, se devuelve una respuesta "Created" con los detalles del país agregado.
+- Agregar un País: La acción _AddCountry_ permite agregar un nuevo país a la base de datos. Antes de agregar el país, se valida y se asigna un valor inicial al countryId. Una vez agregado el país, se devuelve una respuesta "Created" con los detalles del país agregado.
 
-Actualizar un País: La acción UpdateCountry permite actualizar los detalles de un país existente en la base de datos según su ID. Si el país existe, se actualizan los datos proporcionados y se devuelve una respuesta con los detalles actualizados del país.
+- Actualizar un País: La acción _UpdateCountry_ permite actualizar los detalles de un país existente en la base de datos según su ID. Si el país existe, se actualizan los datos proporcionados y se devuelve una respuesta con los detalles actualizados del país.
 
-Eliminar un País: La acción DeleteCountry permite eliminar un país de la base de datos según su ID. Si el país existe, se elimina de la base de datos y se devuelve una respuesta "NoContent" para indicar que la operación se ha completado con éxito.
+- Eliminar un País: La acción _DeleteCountry_ permite eliminar un país de la base de datos según su ID. Si el país existe, se elimina de la base de datos y se devuelve una respuesta "NoContent" para indicar que la operación se ha completado con éxito.
 
 Este controlador también asegura que las operaciones de creación, actualización y eliminación de países estén protegidas mediante la autorización. Se requiere el rol de "Administrador" para realizar estas operaciones.
 
@@ -356,17 +356,17 @@ Este controlador también asegura que las operaciones de creación, actualizaci�
 
 Este controlador se encarga de administrar las operaciones relacionadas con las salas de reuniones en la aplicación. Sus acciones principales incluyen:
 
-Obtener Todas las Salas de Reuniones: La acción GetAllRooms permite recuperar todas las salas de reuniones disponibles en la base de datos y devuelve una respuesta con la lista de salas de reuniones en formato JSON.
+Obtener Todas las Salas de Reuniones: La acción _GetAllRooms_ permite recuperar todas las salas de reuniones disponibles en la base de datos y devuelve una respuesta con la lista de salas de reuniones en formato JSON.
 
-Obtener Sala de Reuniones por ID: La acción GetRoomById permite obtener detalles específicos de una sala de reuniones por su identificador único. Si la sala de reuniones existe, se devuelve una respuesta con los detalles de la sala en formato JSON; de lo contrario, se devuelve un código de respuesta "NotFound".
+- Obtener Sala de Reuniones por ID: La acción GetRoomById permite obtener detalles específicos de una sala de reuniones por su identificador único. Si la sala de reuniones existe, se devuelve una respuesta con los detalles de la sala en formato JSON; de lo contrario, se devuelve un código de respuesta "NotFound".
 
-Obtener Salas de Reuniones por ID de Oficina: La acción GetMeetingRoomsByOfficeId permite recuperar todas las salas de reuniones asociadas a una oficina específica, identificada por su ID. Si existen salas de reuniones para la oficina proporcionada, se devuelve una respuesta con la lista de salas de reuniones en formato JSON; de lo contrario, se devuelve un código de respuesta "NotFound".
+- Obtener Salas de Reuniones por ID de Oficina: La acción _GetMeetingRoomsByOfficeId_ permite recuperar todas las salas de reuniones asociadas a una oficina específica, identificada por su ID. Si existen salas de reuniones para la oficina proporcionada, se devuelve una respuesta con la lista de salas de reuniones en formato JSON; de lo contrario, se devuelve un código de respuesta "NotFound".
 
-Agregar una Sala de Reuniones: La acción AddRoom permite agregar una nueva sala de reuniones a la base de datos. Antes de agregar la sala de reuniones, se valida y se asigna un valor inicial al meetingRoomId. Una vez agregada la sala de reuniones, se devuelve una respuesta "Created" con los detalles de la sala agregada.
+- Agregar una Sala de Reuniones: La acción _AddRoom_ permite agregar una nueva sala de reuniones a la base de datos. Antes de agregar la sala de reuniones, se valida y se asigna un valor inicial al meetingRoomId. Una vez agregada la sala de reuniones, se devuelve una respuesta "Created" con los detalles de la sala agregada.
 
-Actualizar una Sala de Reuniones: La acción UpdateRoom permite actualizar los detalles de una sala de reuniones existente en la base de datos según su ID. Si la sala de reuniones existe, se actualizan los datos proporcionados y se devuelve una respuesta con los detalles actualizados de la sala de reuniones.
+- Actualizar una Sala de Reuniones: La acción _UpdateRoom_ permite actualizar los detalles de una sala de reuniones existente en la base de datos según su ID. Si la sala de reuniones existe, se actualizan los datos proporcionados y se devuelve una respuesta con los detalles actualizados de la sala de reuniones.
 
-Eliminar una Sala de Reuniones: La acción DeleteRoom permite eliminar una sala de reuniones de la base de datos según su ID. Si la sala de reuniones existe, se elimina de la base de datos y se devuelve una respuesta "NoContent" para indicar que la operación se ha completado con éxito.
+- Eliminar una Sala de Reuniones: La acción _DeleteRoom_ permite eliminar una sala de reuniones de la base de datos según su ID. Si la sala de reuniones existe, se elimina de la base de datos y se devuelve una respuesta "NoContent" para indicar que la operación se ha completado con éxito.
 
 Este controlador proporciona una interfaz API para acceder y manipular información sobre las salas de reuniones en la aplicación. Las operaciones de creación, actualización y eliminación de salas de reuniones no requieren autorización específica en este caso.
 
@@ -376,17 +376,17 @@ Este controlador proporciona una interfaz API para acceder y manipular informaci
 
 Este controlador se encarga de administrar las operaciones relacionadas con las oficinas en la aplicación. Las principales funciones de este controlador incluyen:
 
-Obtener Todas las Oficinas: La acción GetAllOffices permite recuperar todas las oficinas disponibles en la base de datos y devuelve una respuesta con la lista de oficinas en formato JSON.
+- Obtener Todas las Oficinas: La acción _GetAllOffices_ permite recuperar todas las oficinas disponibles en la base de datos y devuelve una respuesta con la lista de oficinas en formato JSON.-
 
-Obtener Oficina por ID: La acción GetOfficeById permite obtener detalles específicos de una oficina por su identificador único. Si la oficina existe, se devuelve una respuesta con los detalles de la oficina en formato JSON; de lo contrario, se devuelve un código de respuesta "NotFound".
+- Obtener Oficina por ID: La acción _GetOfficeById_ permite obtener detalles específicos de una oficina por su identificador único. Si la oficina existe, se devuelve una respuesta con los detalles de la oficina en formato JSON; de lo contrario, se devuelve un código de respuesta "NotFound".
 
-Obtener Oficinas por ID de Ciudad: La acción GetOfficesByCityId permite recuperar todas las oficinas asociadas a una ciudad específica, identificada por su ID. Si existen oficinas para la ciudad proporcionada, se devuelve una respuesta con la lista de oficinas en formato JSON; de lo contrario, se devuelve un código de respuesta "NotFound".
+- Obtener Oficinas por ID de Ciudad: La acción GetOfficesByCityId permite recuperar todas las oficinas asociadas a una ciudad específica, identificada por su ID. Si existen oficinas para la ciudad proporcionada, se devuelve una respuesta con la lista de oficinas en formato JSON; de lo contrario, se devuelve un código de respuesta "NotFound".
 
-Agregar una Oficina: La acción AddOffice permite agregar una nueva oficina a la base de datos. Antes de agregar la oficina, se valida y se asigna un valor inicial al officeId. Una vez agregada la oficina, se devuelve una respuesta "Created" con los detalles de la oficina agregada.
+- Agregar una Oficina: La acción _AddOffice_ permite agregar una nueva oficina a la base de datos. Antes de agregar la oficina, se valida y se asigna un valor inicial al officeId. Una vez agregada la oficina, se devuelve una respuesta "Created" con los detalles de la oficina agregada.
 
-Actualizar una Oficina: La acción UpdateOffice permite actualizar los detalles de una oficina existente en la base de datos según su ID. Si la oficina existe, se actualizan los datos proporcionados y se devuelve una respuesta con los detalles actualizados de la oficina.
+- Actualizar una Oficina: La acción _UpdateOffice_ permite actualizar los detalles de una oficina existente en la base de datos según su ID. Si la oficina existe, se actualizan los datos proporcionados y se devuelve una respuesta con los detalles actualizados de la oficina.
 
-Eliminar una Oficina: La acción DeleteOffice permite eliminar una oficina de la base de datos según su ID. Si la oficina existe, se elimina de la base de datos y se devuelve una respuesta "NoContent" para indicar que la operación se ha completado con éxito.
+- Eliminar una Oficina: La acción _DeleteOffice_ permite eliminar una oficina de la base de datos según su ID. Si la oficina existe, se elimina de la base de datos y se devuelve una respuesta "NoContent" para indicar que la operación se ha completado con éxito.
 
 Este controlador proporciona una interfaz API para acceder y manipular información sobre las oficinas en la aplicación. Las operaciones de creación, actualización y eliminación de oficinas no requieren autorización específica en este caso.
 
@@ -396,19 +396,19 @@ Este controlador proporciona una interfaz API para acceder y manipular informaci
 
 Este controlador se encarga de gestionar las operaciones relacionadas con las reservas de salas de reuniones en la aplicación. Las acciones principales que realiza incluyen:
 
-Obtener Todas las Reservas: La acción GetAllReserves permite recuperar todas las reservas disponibles en la base de datos y devuelve una respuesta con la lista de reservas en formato JSON.
+- Obtener Todas las Reservas: La acción _GetAllReserves_ permite recuperar todas las reservas disponibles en la base de datos y devuelve una respuesta con la lista de reservas en formato JSON.
 
-Obtener Reserva por ID: La acción GetReserveById permite obtener detalles específicos de una reserva por su identificador único. Si la reserva existe, se devuelve una respuesta con los detalles de la reserva en formato JSON; de lo contrario, se devuelve un código de respuesta "NotFound".
+Obtener Reserva por ID: La acción _GetReserveById_ permite obtener detalles específicos de una reserva por su identificador único. Si la reserva existe, se devuelve una respuesta con los detalles de la reserva en formato JSON; de lo contrario, se devuelve un código de respuesta "NotFound".
 
-Obtener Reservas por ID de Usuario: La acción GetReservesByUserId permite recuperar todas las reservas asociadas a un usuario específico, identificado por su ID. Si existen reservas para el usuario proporcionado, se devuelve una respuesta con la lista de reservas en formato JSON; de lo contrario, se devuelve un código de respuesta "NotFound".
+Obtener Reservas por ID de Usuario: La acción _GetReservesByUserId_ permite recuperar todas las reservas asociadas a un usuario específico, identificado por su ID. Si existen reservas para el usuario proporcionado, se devuelve una respuesta con la lista de reservas en formato JSON; de lo contrario, se devuelve un código de respuesta "NotFound".
 
-Obtener Reservas por ID de Sala de Reuniones: La acción GetReservesByMeetingRoomId permite recuperar todas las reservas asociadas a una sala de reuniones específica, identificada por su ID. Si existen reservas para la sala de reuniones proporcionada, se devuelve una respuesta con la lista de reservas en formato JSON; de lo contrario, se devuelve un código de respuesta "NotFound".
+Obtener Reservas por ID de Sala de Reuniones: La acción _GetReservesByMeetingRoomId_ permite recuperar todas las reservas asociadas a una sala de reuniones específica, identificada por su ID. Si existen reservas para la sala de reuniones proporcionada, se devuelve una respuesta con la lista de reservas en formato JSON; de lo contrario, se devuelve un código de respuesta "NotFound".
 
-Agregar una Reserva: La acción AddReserve permite agregar una nueva reserva de sala de reuniones a la base de datos. Antes de agregar la reserva, se verifica si hay solapamientos con otras reservas existentes. Si no hay solapamientos, se crea la nueva reserva y se devuelve una respuesta "Ok". Si hay solapamientos, se devuelve un mensaje de error "BadRequest".
+- Agregar una Reserva: La acción _AddReserve_ permite agregar una nueva reserva de sala de reuniones a la base de datos. Antes de agregar la reserva, se verifica si hay solapamientos con otras reservas existentes. Si no hay solapamientos, se crea la nueva reserva y se devuelve una respuesta "Ok". Si hay solapamientos, se devuelve un mensaje de error "BadRequest".
 
-Actualizar una Reserva: La acción UpdateReserve permite actualizar los detalles de una reserva existente en la base de datos según su ID. Antes de realizar la actualización, se verifica si la nueva reserva entra en conflicto con otras reservas existentes. Si no hay conflictos, se actualizan los detalles y se devuelve una respuesta "Ok". Si hay conflictos, se devuelve un mensaje de error "BadRequest".
+- Actualizar una Reserva: La acción _UpdateReserve_ permite actualizar los detalles de una reserva existente en la base de datos según su ID. Antes de realizar la actualización, se verifica si la nueva reserva entra en conflicto con otras reservas existentes. Si no hay conflictos, se actualizan los detalles y se devuelve una respuesta "Ok". Si hay conflictos, se devuelve un mensaje de error "BadRequest".
 
-Eliminar una Reserva: La acción DeleteReserve permite eliminar una reserva de la base de datos según su ID. Si la reserva existe, se elimina de la base de datos y se devuelve una respuesta "NoContent" para indicar que la operación se ha completado con éxito.
+- Eliminar una Reserva: La acción _DeleteReserve_ permite eliminar una reserva de la base de datos según su ID. Si la reserva existe, se elimina de la base de datos y se devuelve una respuesta "NoContent" para indicar que la operación se ha completado con éxito.
 
 Este controlador proporciona una interfaz API para acceder y manipular información sobre las reservas de salas de reuniones en la aplicación, garantizando que se eviten conflictos de programación y se verifiquen las disponibilidades de las salas.
 
@@ -417,15 +417,15 @@ Este controlador proporciona una interfaz API para acceder y manipular informaci
 
 Este controlador se encarga de administrar las operaciones relacionadas con los usuarios en la aplicación. Sus acciones principales incluyen:
 
-Obtener Todos los Usuarios: La acción GetAllUsers permite recuperar todos los usuarios disponibles en la base de datos y devuelve una respuesta con la lista de usuarios en formato JSON.
+- Obtener Todos los Usuarios: La acción _GetAllUsers_ permite recuperar todos los usuarios disponibles en la base de datos y devuelve una respuesta con la lista de usuarios en formato JSON.
 
-Obtener Usuario por ID: La acción GetUserById permite obtener detalles específicos de un usuario por su identificador único. Si el usuario existe, se devuelve una respuesta con los detalles del usuario en formato JSON; de lo contrario, se devuelve un código de respuesta "NotFound".
+- Obtener Usuario por ID: La acción _GetUserById_ permite obtener detalles específicos de un usuario por su identificador único. Si el usuario existe, se devuelve una respuesta con los detalles del usuario en formato JSON; de lo contrario, se devuelve un código de respuesta "NotFound".
 
-Obtener Usuario por Nombre de Usuario: La acción GetUserByUsername permite obtener detalles de un usuario por su nombre de usuario. Si el usuario existe, se devuelve una respuesta con los detalles del usuario en formato JSON; de lo contrario, se devuelve un código de respuesta "NotFound".
+- Obtener Usuario por Nombre de Usuario: La acción _GetUserByUsername_ permite obtener detalles de un usuario por su nombre de usuario. Si el usuario existe, se devuelve una respuesta con los detalles del usuario en formato JSON; de lo contrario, se devuelve un código de respuesta "NotFound".
 
-Actualizar Usuario: La acción UpdateUser permite actualizar los detalles de un usuario existente en la base de datos según su ID. Se admite la actualización del nombre de usuario, el correo electrónico y la contraseña del usuario. La acción valida si se proporciona la contraseña actual y la nueva contraseña antes de cambiarla. Si la actualización es exitosa, se devuelve una respuesta "Ok" con los detalles actualizados del usuario. Si hay errores durante la actualización, se devuelve una respuesta "BadRequest" con los errores específicos.
+- Actualizar Usuario: La acción _UpdateUser_ permite actualizar los detalles de un usuario existente en la base de datos según su ID. Se admite la actualización del nombre de usuario, el correo electrónico y la contraseña del usuario. La acción valida si se proporciona la contraseña actual y la nueva contraseña antes de cambiarla. Si la actualización es exitosa, se devuelve una respuesta "Ok" con los detalles actualizados del usuario. Si hay errores durante la actualización, se devuelve una respuesta "BadRequest" con los errores específicos.
 
-Eliminar Usuario: La acción DeleteUser permite eliminar un usuario de la base de datos según su ID. Si el usuario existe, se elimina de la base de datos y se devuelve una respuesta "NoContent" para indicar que la operación se ha completado con éxito.
+- Eliminar Usuario: La acción _DeleteUser_ permite eliminar un usuario de la base de datos según su ID. Si el usuario existe, se elimina de la base de datos y se devuelve una respuesta "NoContent" para indicar que la operación se ha completado con éxito.
 
 Este controlador proporciona una interfaz API para acceder y manipular información sobre los usuarios en la aplicación. Permite realizar operaciones como obtener, actualizar y eliminar usuarios, así como buscar usuarios por su nombre de usuario o ID. También proporciona funcionalidad de cambio de contraseña de usuario cuando se proporcionan tanto la contraseña actual como la nueva contraseña.
 
@@ -436,25 +436,25 @@ Este módulo contiene los contextos de bases de datos utilizados en la aplicaci�
 **IdentityAppDbContext.cs**
 <br>
 
-Este contexto se basa en IdentityDbContext<webapiUser>, lo que significa que se utiliza para administrar la persistencia de datos relacionados con la autenticación y la autorización proporcionados por ASP.NET Identity.
+Este contexto se basa en IdentityDbContext<webapiUser> y se utiliza para administrar la persistencia de datos relacionados con la autenticación y la autorización proporcionados por ASP.NET Identity.
 
 **RoomReservationDbContext.cs**
 <br>
-El contexto RoomReservationDbContext se encarga de gestionar la persistencia de datos relacionados con la aplicación de reserva de salas. Contiene propiedades DbSet que representan las tablas de la base de datos, como países, ciudades, oficinas, salas de reuniones y reservas. Además, proporciona un método SaveChangesAsync para guardar cambios en la base de datos de manera asincrónica.
+Este contexto se encarga de gestionar la persistencia de datos relacionados con la aplicación de reserva de salas. Contiene propiedades DbSet que representan las tablas de la base de datos, como países, ciudades, oficinas, salas de reuniones y reservas. Además, proporciona un método SaveChangesAsync para guardar cambios en la base de datos de manera asincrónica.
 
 #### Models
 
 En la arquitectura Modelo-Vista-Controlador (MVC), los modelos son componentes que representan y gestionan los datos de la aplicación. Los modelos son responsables de interactuar con la capa de datos subyacente, validar la integridad de los datos y proporcionar métodos para acceder y modificar esos datos. Los modelos actúan como la capa de acceso a la base de datos y encapsulan la lógica relacionada con los datos.
 
-Definición de un Modelo
+Definición de un Modelo:
 
-Un modelo es una clase (o una entidad) que define la estructura de los datos que se manejarán en la aplicación
+Un modelo es una clase (o una entidad) que define la estructura de los datos que se manejarán en la aplicación, se compone de:
 
-Atributos de Datos: Los atributos como [Key] y [DatabaseGenerated] proporcionan información adicional sobre cómo se deben tratar las propiedades en la base de datos. Por ejemplo, [Key] indica que un atributo es la clave primaria de la tabla, y [DatabaseGenerated(DatabaseGeneratedOption.Identity)] indica que un atributo se genera automáticamente por la base de datos.
+- Atributos de Datos: Los atributos como [Key] y [DatabaseGenerated] proporcionan información adicional sobre cómo se deben tratar las propiedades en la base de datos. Por ejemplo, [Key] indica que un atributo es la clave primaria de la tabla, y [DatabaseGenerated(DatabaseGeneratedOption.Identity)] indica que un atributo se genera automáticamente por la base de datos.
 
-Constructores: Los constructores son métodos especiales utilizados para crear instancias de la clase. 
+- Constructores: Los constructores son métodos especiales utilizados para crear instancias de la clase. 
 
-Funciones y Métodos Adicionales: Los modelos pueden incluir métodos adicionales para realizar operaciones específicas relacionadas con los datos. 
+- Funciones y Métodos Adicionales: Los modelos pueden incluir métodos adicionales para realizar operaciones específicas relacionadas con los datos. 
 
 **City.cs**
 <br>
@@ -546,7 +546,7 @@ Este modelo se utiliza para recopilar y validar la información de registro prop
 **ReserveData.cs**
 <br>
 
-Este modelose utiliza para reperesentar los datos al crear una reserva en la aplicación.
+Este modelo se utiliza para reperesentar los datos al crear una reserva en la aplicación.
 
 ReserveDate: Esta propiedad almacena la fecha en la que se desea realizar la reserva. Indica el día en el que se planea utilizar la sala de reuniones.
 
@@ -558,7 +558,7 @@ MeetingRoomId: Representa el identificador único de la sala de reuniones para l
 
 UserId: Contiene el identificador único del usuario que está realizando la reserva. Indica quién ha programado la reserva de la sala de reuniones.
 
-Este modelo se utiliza para transmitir información esencial al sistema sobre la reserva que un usuario desea realizar. Los controladores y la lógica de la aplicación procesarán esta información para crear una nueva reserva en la base de datos, asegurando que la sala de reuniones esté disponible durante el período especificado por el usuario
+Se utiliza para transmitir información al sistema sobre la reserva que un usuario desea realizar. Los controladores y la lógica de la aplicación procesarán esta información para crear una nueva reserva en la base de datos, asegurando que la sala de reuniones esté disponible durante el período especificado por el usuario.
 
 
 ------------------------
@@ -578,45 +578,36 @@ Este modelo se utiliza para transmitir información esencial al sistema sobre la
 #### Pages
 #### Repositories
 
-Este módulo se emplea para abstractizar y administrar la lógica de acceso a datos y las interacciones con la base de datos. Este repositorio contiene interfaces que definen las operaciones o métodos que pueden llevarse a cabo en la capa de acceso a datos, sin detallar cómo se implementan realmente esas operaciones. Representan controladores relacionados con la autenticación y la gestión de usuarios en la aplicación en el contexto de una aplicación web API.
+Este módulo se emplea para abstraer y administrar la lógica de acceso a datos y las interacciones con la base de datos. Este repositorio contiene interfaces que definen las operaciones o métodos que pueden llevarse a cabo en la capa de acceso a datos, sin detallar cómo se implementan realmente esas operaciones. Representan controladores relacionados con la autenticación y la gestión de usuarios en la aplicación en el contexto de una aplicación web API.
 
 Al definir estas interfaces, se facilita la separación de preocupaciones y la modularidad del código, lo que permite un mejor mantenimiento y pruebas unitarias de las funcionalidades.
 
-
 **IAuthenticationController.cs**
 <br>
-
-Esta interfaz define un conjunto de métodos relacionados con la autenticación y la autorización de usuarios.
+Esta interfaz define un conjunto de métodos relacionados con la autenticación y la autorización de **usuarios**.
 
 **ICitiesController.cs**
 <br>
-
-Esta interfaz define un conjunto de métodos que representan operaciones relacionadas con la gestión de ciudades.
-
+Esta interfaz define un conjunto de métodos que representan operaciones relacionadas con la gestión de **ciudades**.
 **ICountriesController.cs**
 <br>
-
-Esta interfaz define un conjunto de métodos que representan operaciones relacionadas con la gestión de países.
+Esta interfaz define un conjunto de métodos que representan operaciones relacionadas con la gestión de **países**.
 
 **IMeetingRoomsController.cs**
 <br>
-
-Esta interfaz define un conjunto de métodos que representan operaciones relacionadas con la gestión de salas.
+Esta interfaz define un conjunto de métodos que representan operaciones relacionadas con la gestión de **salas**.
 
 **IOfficesController.cs**
 <br>
-
-Esta interfaz define un conjunto de métodos que representan operaciones relacionadas con la gestión de oficinas.
+Esta interfaz define un conjunto de métodos que representan operaciones relacionadas con la gestión de **oficinas**.
 
 **IReservesController.cs**
 <br>
-
-Esta interfaz define un conjunto de métodos que representan operaciones relacionadas con la gestión de reservas.
+Esta interfaz define un conjunto de métodos que representan operaciones relacionadas con la gestión de **reserva**s.
 
 **IUsersController.cs**
 <br>
-
-Esta interfaz define un conjunto de métodos que representan operaciones relacionadas con la gestión de usuarios.
+Esta interfaz define un conjunto de métodos que representan operaciones relacionadas con la gestión de **usuarios**.
 
 
 **appsettings.json**
@@ -624,17 +615,17 @@ Esta interfaz define un conjunto de métodos que representan operaciones relacio
 
 Este archivo se utiliza para configurar diferentes aspectos de la aplicación. Proporciona información de los niveles de registro, las cadenas de conexión a las bases de datos y la clave secreta para tokens JWT.
 
-Logging: Esta sección configura la información relacionada con el registro (logging) de la aplicación. Define los niveles de registro para diferentes componentes. El nivel de registro predeterminado (Default) está configurado en "Information", lo que significa que la aplicación registrará mensajes de información. El nivel de registro para los componentes de Microsoft.AspNetCore está configurado en "Warning", lo que significa que solo se registrarán mensajes de advertencia y errores relacionados con ASP.NET Core.
+- Logging: Esta sección configura la información relacionada con el registro (logging) de la aplicación. Define los niveles de registro para diferentes componentes. El nivel de registro predeterminado (Default) está configurado en "Information", lo que significa que la aplicación registrará mensajes de información. El nivel de registro para los componentes de Microsoft.AspNetCore está configurado en "Warning", lo que significa que solo se registrarán mensajes de advertencia y errores relacionados con ASP.NET Core.
 
-AllowedHosts: Este valor permite especificar qué hosts están permitidos para acceder a la aplicación. En este caso, el asterisco (*) indica que se permite el acceso desde cualquier host.
+- AllowedHosts: Este valor permite especificar qué hosts están permitidos para acceder a la aplicación. En este caso, el asterisco (*) indica que se permite el acceso desde cualquier host.
 
-ConnectionStrings: Esta sección define las cadenas de conexión a las bases de datos utilizadas por la aplicación. Hay dos cadenas de conexión definidas:
+- ConnectionStrings: Esta sección define las cadenas de conexión a las bases de datos utilizadas por la aplicación. Hay dos cadenas de conexión definidas:
 
-"RoomReservationConnection": Esta cadena de conexión está configurada para la base de datos "RoomReservation" en un servidor local. Utiliza la autenticación de Windows (Trusted_Connection=True) para la conexión.
+- "RoomReservationConnection": Esta cadena de conexión está configurada para la base de datos "RoomReservation" en un servidor local. Utiliza la autenticación de Windows (Trusted_Connection=True) para la conexión.
 
-"IdentityConnection": Esta cadena de conexión está configurada para la misma base de datos "RoomReservation" en un servidor local diferente (posiblemente para una instancia diferente). También utiliza la autenticación de Windows y permite múltiples conjuntos de resultados activos (MultipleActiveResultSets=true).
+- "IdentityConnection": Esta cadena de conexión está configurada para la misma base de datos "RoomReservation" en un servidor local diferente (posiblemente para una instancia diferente). También utiliza la autenticación de Windows y permite múltiples conjuntos de resultados activos (MultipleActiveResultSets=true).
 
-Jwt: Esta sección define una clave secreta (SecretKey) que se utiliza para la generación y validación de tokens JWT (JSON Web Tokens) en la aplicación.
+- Jwt: Esta sección define una clave secreta (SecretKey) que se utiliza para la generación y validación de tokens JWT (JSON Web Tokens) en la aplicación.
 
 
 **Program.cs**
@@ -642,27 +633,28 @@ Jwt: Esta sección define una clave secreta (SecretKey) que se utiliza para la g
 
 En este archivo, se configura y arranca la aplicación web ASP.NET Core, estableciendo servicios, bases de datos, autenticación, autorización y otras configuraciones necesarias para su funcionamiento.
 
-Se utiliza WebApplication.CreateBuilder(args) para crear una instancia de WebApplicationBuilder, que es la base para configurar y construir la aplicación web.
+Se utiliza _WebApplication.CreateBuilder(args)_ para crear una instancia de **WebApplicationBuilder**, que es la base para configurar y construir la aplicación web.
 
-Se obtienen las cadenas de conexión desde la configuración de la aplicación utilizando builder.Configuration.GetConnectionString. Estas cadenas de conexión se utilizan posteriormente para configurar los contextos de la base de datos.
+Se obtienen las cadenas de conexión desde la configuración de la aplicación utilizando _builder.Configuration.GetConnectionString_. Estas cadenas de conexión se utilizan posteriormente para configurar los contextos de la base de datos.
 
-Se configuran los contextos de la base de datos utilizando Entity Framework Core. Se agregan los servicios de RoomReservationDbContext y IdentityAppDbContext con las respectivas cadenas de conexión. Estos contextos representan las bases de datos utilizadas por la aplicación.
+Se configuran los contextos de la base de datos utilizando Entity Framework Core. Se agregan los servicios de **RoomReservationDbContext** y **IdentityAppDbContext** con las respectivas cadenas de conexión. Estos contextos representan las bases de datos utilizadas por la aplicación.
 
-Se configura la autenticación y autorización utilizando el servicio AddDefaultIdentity. Se establecen varias opciones relacionadas con los requisitos de contraseña, como no requerir caracteres no alfanuméricos, no requerir confirmación de cuenta, no requerir mayúsculas, etc. Además, se configura la política de nombres de usuario permitidos y si se requiere un correo electrónico único.
+Se configura la autenticación y autorización utilizando el servicio _AddDefaultIdentity_. Se establecen varias opciones relacionadas con los requisitos de contraseña, como no requerir caracteres no alfanuméricos, no requerir confirmación de cuenta, no requerir mayúsculas, etc. Además, se configura la política de nombres de usuario permitidos y si se requiere un correo electrónico único.
 
 Se verifica si existe un rol llamado "ADMINISTRADOR" en la base de datos y, si no existe, se crea. Esto es importante para la gestión de roles y permisos en la aplicación.
 
 Se configura la política CORS con el nombre "AllowLocalhost4200", que permite las solicitudes desde el origen "https://localhost:4200". Esto es útil para permitir solicitudes desde un front-end alojado en ese origen.
 
-Se registran los controladores con builder.Services.AddControllers() y se agrega la documentación de Swagger con builder.Services.AddSwaggerGen().
+Se registran los controladores con _builder.Services.AddControllers()_ y se agrega la documentación de **Swagger** con _builder.Services.AddSwaggerGen()_.
 
-Se crea la instancia de la aplicación con builder.Build().
+Se crea la instancia de la aplicación con _builder.Build()_.
 
-Se configura el uso de CORS con app.UseCors("AllowLocalhost4200").
+Se configura el uso de CORS con _app.UseCors("AllowLocalhost4200")_.
 
-Si la aplicación está en modo de desarrollo (app.Environment.IsDevelopment()), se habilita Swagger para documentar la API. De lo contrario, se habilita la redirección HTTPS y se sirven archivos estáticos.
+Si la aplicación está en modo de desarrollo (_app.Environment.IsDevelopment()_), se habilita **Swagger** para documentar la API. De lo contrario, se habilita la redirección HTTPS y se sirven archivos estáticos.
 
-Se usa app.UseAuthorization() para habilitar la autorización en la aplicación.
+Se usa _app.UseAuthorization()_ para habilitar la autorización en la aplicación.
 
-Finalmente, se mapean los controladores con app.MapControllers() y se inicia la aplicación con app.Run().
+Finalmente, se mapean los controladores con _app.MapControllers()_ y se inicia la aplicación con _app.Run()_.
 
+==========================================================================================================================================================
