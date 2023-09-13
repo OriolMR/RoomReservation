@@ -1,4 +1,4 @@
-<span style="color:blue;"># DOCUMENTACIÓN TÉCNICA</span>
+# DOCUMENTACIÓN TÉCNICA
 
 ## Entorno de desarrollo:
 **Entorno de desarollo:**
@@ -63,7 +63,7 @@ lorem ipsum
 <br>
 lorem ipsum
 
-FRONT-END CON Angular (Framework)
+## FRONT-END CON Angular (Framework)
 
 **Esqueletos de las vistas (HTML):**
 <br>
@@ -278,7 +278,7 @@ lorem ipsum
 
 
 
-BACKEND CON ASP.NET CORE (Framework)
+## BACKEND CON ASP.NET CORE (Framework)
 
 #### Identity:
 #### Data:
