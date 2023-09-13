@@ -4,13 +4,13 @@
 **Entorno de desarollo:**
 <br>
 Microsoft Visual Studio
-
+<br>
 **Lenguaje:**
 <br>
 C# con ASP.NET Core para la reserva de salas de reuniones de las diferentes oficinas de la empresa ACME (backend). La aplicación gestiona mediante una API REST las operaciones de reserva de salas. Angular como framework para la interficie de usuario (frontend).
 
 <!-- aaaaaaaaaaaaaaaa -->
-
+<br>
 ## MySQL (Base de datos)
 **api.service.ts**
 <br>
@@ -18,27 +18,27 @@ C# con ASP.NET Core para la reserva de salas de reuniones de las diferentes ofic
 **dbo._EFMigrationsHistory**
 <br>
 lorem ipsum
-
+<br>
 **dbo.AspNetRoleClaims**
 <br>
 lorem ipsum
-
+<br>
 **dbo.AspNetRoles**
 <br>
 lorem ipsum
-
+<br>
 **dbo.AspNetUserClaims**
 <br>
 lorem ipsum
-
+<br>
 **dbo.AspNetUserLogins**
 <br>
 lorem ipsum
-
+<br>
 **dbo.AspNetUsers**
 <br>
 lorem ipsum
-
+<br>
 **dbo.AspNetUserTokens**
 <br>
 lorem ipsum
@@ -46,25 +46,25 @@ lorem ipsum
 **dbo.Cities**
 <br>
 lorem ipsum
-
+<br>
 **dbo.Countries**
 <br>
 lorem ipsum
-
+<br>
 **dbo.MeetingRooms**
 <br>
 lorem ipsum
-
+<br>
 **dbo.Offices**
 <br>
 lorem ipsum
-
+<br>
 **dbo.Reserves**
 <br>
 lorem ipsum
 
 
-<br><br><br>
+<br><br>
 ## FRONT-END Angular (Framework)
 
 **Esqueletos de las vistas (HTML):**
@@ -77,7 +77,7 @@ Cada pagina esta formada por un esqueleto (documento html) que en general sigue 
 
 Por ultimo cabe destacar que las paginas html de la aplicacion estan dentro de otro html que a su vez lo esta en otro, ya que esta es la forma de trabajar con angular.
 Encima de todos los documentos html esta "index" que luego utiliza a "app" que posteriormente utiliza los documentos html de los componentes que nosotros hayamos creado. Lo mismo ocurre con los archivos de estilos referenciados por cada uno de los archivos html correspondientes.
-
+<br>
 **Estilos de las vistas (CSS):**
 <br>
 Cada pagina tiene un documento de estilos (CSS) que en general sigue unas directrices: 
@@ -90,7 +90,7 @@ Cada pagina tiene un documento de estilos (CSS) que en general sigue unas direct
 - En cuanto a los botones todos tienen los mismos estilos. Cuando se pasa el raton por encima o se interactua con ellos gracias a la opcion "hover" cambiamos la tonalidad del color del boton. Estos estan redondeados y el texto de su interior es blanco.
 - Tienen una cabezera (refiriendonos al codigo y no a la vista como tal) donde se indica el contexto de cada una de las partes que forman el docuemnto html correspondiente. De esta forma es facil identificar que estilos se estan aplicando en un lugar y en que lugar.
 - Disponen de secciones ordenadas dentro del codigo por comentarios. Para una facil legibilidad y edicion.
-
+<br>
 ### App component
 **app.component.html**
 <br>
