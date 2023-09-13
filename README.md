@@ -1,6 +1,6 @@
-=================================================================================================================================================================================================================================
+-------------------------------------------------------------------------------------------
 # DOCUMENTACIÓN TÉCNICA
-=================================================================================================================================================================================================================================
+-------------------------------------------------------------------------------------------
 
 ## Entorno de desarrollo:
 **Entorno de desarollo:**
@@ -65,7 +65,7 @@ lorem ipsum
 <br>
 lorem ipsum
 
-=================================================================================================================================================================================================================================
+-------------------------------------------------------------------------------------------
 
 <br>
 ## FRONT-END Angular (Framework)
@@ -211,10 +211,12 @@ lorem ipsum
 #### Register View:
 **register.component.html**
 <br>
+
 Componente que actua de pagina secundaria cuando se intenta registrar a la aplicacion. Dispone de 4 inputs para introducir tus credenciales y confirmarlos, y de dos botones. El boton de "sign up" que te registra si todo esta correcto y el de "sign in" para ir a la pagina de inicio de sesion.
 
 **register.component.css**
 <br>
+
 Titulo centrado dentro, arriba del trasfondo.
 Trasfondo redondeado, rectangular, oscuro y sombreado con dos inputs que contienen un placeholder indicando que es lo que se espera del usuario.
 Estos inputs estan redondeados.
@@ -278,10 +280,10 @@ lorem ipsum
 <br>
 lorem ipsum
 
-========================================================================================================================================
+-----------------------------------------------------------------------------------------------------
 
 <br>
-## BACKEND CON ASP.NET CORE (Framework)
+##### BACKEND CON ASP.NET CORE (Framework)
 
 #### Identity:
 #### Data:
@@ -289,6 +291,7 @@ lorem ipsum
 ...
 **webapiUser.cs**
 <br>
+
 Esta clase utiliza para definir la estructura de los usuarios de la aplicación web. ASP.NET Identity se encarga de la mayoría de las operaciones de autenticación y autorización, utilizando esta clase como base para representar a los usuarios.
 
 #### Controllers:
@@ -307,6 +310,7 @@ Un controlador es una parte fundamental de una aplicación web que sigue el patr
 
 **AuthenticationController.cs**
 <br>
+
 Esta clase se encarga de gestionar tanto la autenticación como la autorización de usuarios. Sus funciones incluyen:
 
  - **Registro de Usuarios**: El controlador permite a los usuarios crear nuevas cuentas en la aplicación. Esta acción se encarga de validar y almacenar la información de registro proporcionada, como nombre de usuario, contraseña y correo electrónico. Un registro exitoso permite a los usuarios acceder a la aplicación con las credenciales recién creadas.
@@ -319,6 +323,7 @@ El AuthenticationController es una parte fundamental para garantizar la segurida
 
 **CitiesController.cs**
 <br>
+
 Este controlador se encarga de gestionar información relacionada con las ciudades. Las principales funciones de este controlador incluyen:
 
 - **Obtener Todas las Ciudades**: La acción _GetAllCities_ permite recuperar todas las ciudades disponibles en la base de datos y devuelve una respuesta con la lista de ciudades en formato JSON.
@@ -337,6 +342,7 @@ Este controlador facilita la gestión de datos relacionados con las ciudades en 
 
 **CountriesController.cs**
 <br>
+
 Este controlador se encarga de administrar la información relacionada con países en la aplicación. Sus acciones principales incluyen:
 
 - **Obtener Todos los Países**: La acción _GetAllCountries_ permite recuperar todos los países disponibles en la base de datos y devuelve una respuesta con la lista de países en formato JSON.
@@ -354,6 +360,7 @@ Este controlador también asegura que las operaciones de creación, actualizaci�
 
 **MeetingRoomsController.cs**
 <br>
+
 Este controlador se encarga de administrar las operaciones relacionadas con las salas de reuniones en la aplicación. Sus acciones principales incluyen:
 
 Obtener Todas las Salas de Reuniones: La acción _GetAllRooms_ permite recuperar todas las salas de reuniones disponibles en la base de datos y devuelve una respuesta con la lista de salas de reuniones en formato JSON.
@@ -373,6 +380,7 @@ Este controlador proporciona una interfaz API para acceder y manipular informaci
 
 **OfficesController.cs**
 <br>
+
 Este controlador se encarga de administrar las operaciones relacionadas con las oficinas en la aplicación. Las principales funciones de este controlador incluyen:
 
 - **Obtener Todas las Oficinas**: La acción _GetAllOffices_ permite recuperar todas las oficinas disponibles en la base de datos y devuelve una respuesta con la lista de oficinas en formato JSON.-
@@ -392,6 +400,7 @@ Este controlador proporciona una interfaz API para acceder y manipular informaci
 
 **ReservesController.cs**
 <br>
+
 Este controlador se encarga de gestionar las operaciones relacionadas con las reservas de salas de reuniones en la aplicación. Las acciones principales que realiza incluyen:
 
 - **Obtener Todas las Reservas**: La acción _GetAllReserves_ permite recuperar todas las reservas disponibles en la base de datos y devuelve una respuesta con la lista de reservas en formato JSON.
@@ -412,6 +421,7 @@ Este controlador proporciona una interfaz API para acceder y manipular informaci
 
 **UsersController.cs**
 <br>
+
 Este controlador se encarga de administrar las operaciones relacionadas con los usuarios en la aplicación. Sus acciones principales incluyen:
 
 - **Obtener Todos los Usuarios**: La acción _GetAllUsers_ permite recuperar todos los usuarios disponibles en la base de datos y devuelve una respuesta con la lista de usuarios en formato JSON.
@@ -432,10 +442,12 @@ Este módulo contiene los contextos de bases de datos utilizados en la aplicaci�
 
 **IdentityAppDbContext.cs**
 <br>
+
 Este contexto se basa en IdentityDbContext<webapiUser> y se utiliza para administrar la persistencia de datos relacionados con la autenticación y la autorización proporcionados por ASP.NET Identity.
 
 **RoomReservationDbContext.cs**
 <br>
+
 Este contexto se encarga de gestionar la persistencia de datos relacionados con la aplicación de reserva de salas. Contiene propiedades DbSet que representan las tablas de la base de datos, como países, ciudades, oficinas, salas de reuniones y reservas. Además, proporciona un método SaveChangesAsync para guardar cambios en la base de datos de manera asincrónica.
 
 #### Models
@@ -454,6 +466,7 @@ Un modelo es una clase (o una entidad) que define la estructura de los datos que
 
 **City.cs**
 <br>
+
 Este modelo representa una entidad que almacena información sobre **ciudades**.
 
 - **cityId**: Esta propiedad representa el identificador único de la ciudad.
@@ -464,6 +477,7 @@ Este modelo representa una entidad que almacena información sobre **ciudades**.
 
 **Country.cs**
 <br>
+
 Este modelo representa una entidad que almacena información sobre **países**. 
 
 - **countryId**: Esta propiedad representa el identificador único del país.
@@ -472,6 +486,7 @@ Este modelo representa una entidad que almacena información sobre **países**.
 
 **Office.cs**
 <br>
+
 Este modelo representa una entidad que almacena información sobre **oficinas**.
 
 - **officeId**: Esta propiedad representa el identificador único de la oficina.
@@ -482,6 +497,7 @@ Este modelo representa una entidad que almacena información sobre **oficinas**.
 
 **MeetingRoom.cs**
 <br>
+
 Este modelo representa una entidad que almacena información sobre **salas de reuniones**.
 
 - **meetingRoomId**: Esta propiedad representa el identificador único de la sala de reuniones.
@@ -492,6 +508,7 @@ Este modelo representa una entidad que almacena información sobre **salas de re
 
 **Reserve.cs**
 <br>
+
 Este modelo representa una entidad que almacena información sobre **reservas de salas**.
 
 - **reserveId**: Esta propiedad representa el identificador único de la reserva.
@@ -508,6 +525,7 @@ Este modelo representa una entidad que almacena información sobre **reservas de
 
 **LoginViewModel.cs**
 <br>
+
 Este modelo se utiliza para representar los datos de **inicio de sesión** de un usuario en la aplicación.
 
 - **UserName**: Almacena el nombre de usuario con el que el usuario intenta iniciar sesión.
@@ -520,6 +538,7 @@ Este modelo se utiliza para recopilar y validar la información de inicio de ses
 
 **RegisterViewModel.cs**
 <br>
+
 Este modelo se utiliza para representar los datos de **registro de un usuario** en la aplicación. 
 
 - **UserName**: Almacena el nombre de usuario que el usuario desea registrar.
@@ -534,6 +553,7 @@ Este modelo se utiliza para recopilar y validar la información de registro prop
 
 **ReserveData.cs**
 <br>
+
 Este modelo se utiliza para reperesentar los datos al crear una **reserva** en la aplicación.
 
 - **ReserveDate**: Esta propiedad almacena la fecha en la que se desea realizar la reserva. Indica el día en el que se planea utilizar la sala de reuniones.
@@ -572,29 +592,37 @@ Al definir estas interfaces, se facilita la separación de preocupaciones y la m
 
 **IAuthenticationController.cs**
 <br>
+
 Esta interfaz define un conjunto de métodos relacionados con la autenticación y la autorización de **usuarios**.
 
 **ICitiesController.cs**
 <br>
+
 Esta interfaz define un conjunto de métodos que representan operaciones relacionadas con la gestión de **ciudades**.
+
 **ICountriesController.cs**
 <br>
+
 Esta interfaz define un conjunto de métodos que representan operaciones relacionadas con la gestión de **países**.
 
 **IMeetingRoomsController.cs**
 <br>
+
 Esta interfaz define un conjunto de métodos que representan operaciones relacionadas con la gestión de **salas**.
 
 **IOfficesController.cs**
 <br>
+
 Esta interfaz define un conjunto de métodos que representan operaciones relacionadas con la gestión de **oficinas**.
 
 **IReservesController.cs**
 <br>
+
 Esta interfaz define un conjunto de métodos que representan operaciones relacionadas con la gestión de **reserva**s.
 
 **IUsersController.cs**
 <br>
+
 Esta interfaz define un conjunto de métodos que representan operaciones relacionadas con la gestión de **usuarios**.
 
 
@@ -618,6 +646,7 @@ Este archivo se utiliza para configurar diferentes aspectos de la aplicación. P
 
 **Program.cs**
 <br>
+
 En este archivo, se configura y arranca la aplicación web ASP.NET Core, estableciendo servicios, bases de datos, autenticación, autorización y otras configuraciones necesarias para su funcionamiento.
 
 - Se utiliza _WebApplication.CreateBuilder(args)_ para crear una instancia de **WebApplicationBuilder**, que es la base para configurar y construir la aplicación web.
@@ -644,4 +673,4 @@ En este archivo, se configura y arranca la aplicación web ASP.NET Core, estable
 
 - Finalmente, se mapean los controladores con _app.MapControllers()_ y se inicia la aplicación con _app.Run()_.
 
-=================================================================================================================================================================================================================================
+-------------------------------------------------------------------------------------------
