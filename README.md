@@ -3,7 +3,6 @@
 -------------------------------------------------------------------------------------------
 
 ## Entorno de desarrollo:
--------------------------------------------------------------------------------------------
 **Entorno de desarollo:**
 <br>
 Microsoft Visual Studio
@@ -18,7 +17,6 @@ C# con ASP.NET Core para la reserva de salas de reuniones de las diferentes ofic
 
 ## MySQL (Base de datos)
 
--------------------------------------------------------------------------------------------
 **api.service.ts**
 <br>
 
