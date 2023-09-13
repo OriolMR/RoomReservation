@@ -64,7 +64,7 @@ lorem ipsum
 lorem ipsum
 
 
-
+<br><br><br>
 ## FRONT-END Angular (Framework)
 
 **Esqueletos de las vistas (HTML):**
@@ -276,7 +276,7 @@ lorem ipsum
 lorem ipsum
 
 
-
+<br><br><br>
 ## BACKEND CON ASP.NET CORE (Framework)
 
 #### Identity:
