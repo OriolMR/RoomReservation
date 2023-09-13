@@ -340,7 +340,7 @@ lorem ipsum
 
 Esta clase utiliza para definir la estructura de los usuarios de la aplicación web. ASP.NET Identity se encarga de la mayoría de las operaciones de autenticación y autorización, utilizando esta clase como base para representar a los usuarios.
 
-#### Controllers:
+### Controllers:
 
 Un controlador es una parte fundamental de una aplicación web que sigue el patrón de diseño Modelo-Vista-Controlador (MVC). Su función principal es manejar las solicitudes HTTP entrantes, procesar los datos, interactuar con el modelo de datos subyacente y devolver una respuesta adecuada al cliente. Los controladores actúan como intermediarios entre las solicitudes del usuario y la lógica de negocio de la aplicación.
 
@@ -482,7 +482,7 @@ Este controlador se encarga de administrar las operaciones relacionadas con los 
 
 Este controlador proporciona una interfaz API para acceder y manipular información sobre los usuarios en la aplicación. Permite realizar operaciones como obtener, actualizar y eliminar usuarios, así como buscar usuarios por su nombre de usuario o ID. También proporciona funcionalidad de cambio de contraseña de usuario cuando se proporcionan tanto la contraseña actual como la nueva contraseña.
 
-#### DataAccess
+### DataAccess
 
 Este módulo contiene los contextos de bases de datos utilizados en la aplicación para administrar la persistencia de datos. Los contextos de bases de datos son componentes esenciales que facilitan la comunicación entre la aplicación y la base de datos subyacente. 
 
@@ -496,7 +496,7 @@ Este contexto se basa en IdentityDbContext<webapiUser> y se utiliza para adminis
 
 Este contexto se encarga de gestionar la persistencia de datos relacionados con la aplicación de reserva de salas. Contiene propiedades DbSet que representan las tablas de la base de datos, como países, ciudades, oficinas, salas de reuniones y reservas. Además, proporciona un método SaveChangesAsync para guardar cambios en la base de datos de manera asincrónica.
 
-#### Models
+### Models
 
 En la arquitectura Modelo-Vista-Controlador (MVC), los modelos son componentes que representan y gestionan los datos de la aplicación. Los modelos son responsables de interactuar con la capa de datos subyacente, validar la integridad de los datos y proporcionar métodos para acceder y modificar esos datos. Los modelos actúan como la capa de acceso a la base de datos y encapsulan la lógica relacionada con los datos.
 
@@ -629,8 +629,8 @@ Se utiliza para transmitir información al sistema sobre la reserva que un usuar
 -------------------------
 
 
-#### Pages
-#### Repositories
+### Pages
+### Repositories
 
 Este módulo se emplea para abstraer y administrar la lógica de acceso a datos y las interacciones con la base de datos. Este repositorio contiene interfaces que definen las operaciones o métodos que pueden llevarse a cabo en la capa de acceso a datos, sin detallar cómo se implementan realmente esas operaciones. Representan controladores relacionados con la autenticación y la gestión de usuarios en la aplicación en el contexto de una aplicación web API.
 
@@ -670,7 +670,6 @@ Esta interfaz define un conjunto de métodos que representan operaciones relacio
 <br>
 
 Esta interfaz define un conjunto de métodos que representan operaciones relacionadas con la gestión de **usuarios**.
-
 
 **appsettings.json**
 <br>
