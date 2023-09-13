@@ -63,7 +63,9 @@ lorem ipsum
 <br>
 lorem ipsum
 
-## FRONT-END CON Angular (Framework)
+
+
+## FRONT-END Angular (Framework)
 
 **Esqueletos de las vistas (HTML):**
 <br>
@@ -272,9 +274,6 @@ lorem ipsum
 **update-modal.component.ts**
 <br>
 lorem ipsum
-
-
-
 
 
 
