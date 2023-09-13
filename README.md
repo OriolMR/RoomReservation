@@ -3,6 +3,7 @@
 -------------------------------------------------------------------------------------------
 
 ## Entorno de desarrollo:
+-------------------------------------------------------------------------------------------
 **Entorno de desarollo:**
 <br>
 Microsoft Visual Studio
@@ -13,62 +14,77 @@ C# con ASP.NET Core para la reserva de salas de reuniones de las diferentes ofic
 
 <!-- aaaaaaaaaaaaaaaa -->
 
+-------------------------------------------------------------------------------------------
+
 ## MySQL (Base de datos)
+
+-------------------------------------------------------------------------------------------
 **api.service.ts**
 <br>
 
 **dbo._EFMigrationsHistory**
 <br>
+
 lorem ipsum
 
 **dbo.AspNetRoleClaims**
 <br>
+
 lorem ipsum
 
 **dbo.AspNetRoles**
 <br>
+
 lorem ipsum
 
 **dbo.AspNetUserClaims**
 <br>
+
 lorem ipsum
 
 **dbo.AspNetUserLogins**
 <br>
+
 lorem ipsum
 
 **dbo.AspNetUsers**
 <br>
+
 lorem ipsum
 
 **dbo.AspNetUserTokens**
 <br>
+
 lorem ipsum
 
 **dbo.Cities**
 <br>
+
 lorem ipsum
 
 **dbo.Countries**
 <br>
+
 lorem ipsum
 
 **dbo.MeetingRooms**
 <br>
+
 lorem ipsum
 
-**dbo.Offices**
+**dboffices**
 <br>
+
 lorem ipsum
 
 **dbo.Reserves**
 <br>
+
 lorem ipsum
 
 -------------------------------------------------------------------------------------------
 
-<br>
-## FRONT-END Angular (Framework)
+## FRONT-END: Angular (Framework)
 
 **Esqueletos de las vistas (HTML):**
 <br>
@@ -315,8 +331,7 @@ lorem ipsum
 
 -----------------------------------------------------------------------------------------------------
 
-<br>
-##### BACKEND CON ASP.NET CORE (Framework)
+## BACKEND: ASP.NET CORE (Framework)
 
 #### Identity:
 #### Data:
