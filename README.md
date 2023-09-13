@@ -1,4 +1,4 @@
-# DOCUMENTACIÓN TÉCNICA
+<span style="color:blue;"># DOCUMENTACIÓN TÉCNICA</span>
 
 ## Entorno de desarrollo:
 **Entorno de desarollo:**
