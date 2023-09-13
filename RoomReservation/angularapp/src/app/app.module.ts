@@ -49,6 +49,7 @@ import { UsersComponent } from './views/admin/users/users.component';
 import { UsersDeleteComponent } from './views/admin/users/users-delete/users-delete.component';
 import { ReservesAdminComponent } from './views/admin/reserves-admin/reserves-admin.component';
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
+import { ReservesDeleteComponent } from './views/admin/reserves-admin/reserves-delete/reserves-delete.component';
 
 
 //I keep the new line
@@ -83,8 +84,9 @@ ToastrModule.forRoot({
     OfficesDeleteComponent,
     MeetingRoomsDeleteComponent,
     UsersDeleteComponent,
-    ReservesAdminComponent,
-    PageNotFoundComponent
+    //ReservesAdminComponent,
+    PageNotFoundComponent,
+    ReservesDeleteComponent
   ],
   imports: [
     BrowserModule,
