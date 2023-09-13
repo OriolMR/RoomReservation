@@ -72,6 +72,7 @@ lorem ipsum
 
 **Esqueletos de las vistas (HTML):**
 <br>
+
 Cada pagina esta formada por un esqueleto (documento html) que en general sigue unas directrices: 
 - Tienen una cabezera (es la misma para todas, no se dublica en el codigo) con las opciones del usuario ("profile" y "log out") y las opciones para ver las reservas hechas, para hacerlas o para volver a la pagina principal ("home"). En caso de ser administrador tambien tendras la opcion "admin", la cual permite gestionar las diferentes entidades de la aplicacion.
 - Todas las paginas tienen un boton para volver a la pagina anterior aunque no indique explicitamente "atras", y otro boton, que por convencion, vendria a ser el boton "siguiente". Un ejemplo de ello es la vista login. Esta, tiene dos botones ubicados al final del archivo, donde uno indica "sign up" (referenciando al boton de "atras" y ubicado a la izquierda) y otro "sign in" (referenciando el boton de "siguiente" y ubicado a la derecha). Esto se ha decidio de esta forma debido a que en general cuando a un usuario se le presenta una serie de opciones en forma de botones, el boton que realiza el acto de "continuar", suele estar a la derecha y el de "cancelar" o "atras" a la izquierda.
@@ -83,6 +84,7 @@ Encima de todos los documentos html esta "index" que luego utiliza a "app" que p
 
 **Estilos de las vistas (CSS):**
 <br>
+
 Cada pagina tiene un documento de estilos (CSS) que en general sigue unas directrices: 
 - La tipografia para los titulos es "Calibri".
 - La tipografia para el resto de textos, sean botones, labels, inputs, etc. Es "Rubik".
@@ -97,14 +99,17 @@ Cada pagina tiene un documento de estilos (CSS) que en general sigue unas direct
 ### App component
 **app.component.html**
 <br>
+
 App.component.html tiene una referencia a router-outlet, una clase que se encarga de interpretar las rutas de la api para mostrar las vistas adecuadas (componentes).
 
 **app.component.css**
 <br>
+
 Los estilos en este caso nos indican una serie de directrices acerca de que tan grande debe ser la pagina (centralizar textos etc.), el fondo de esta y poco mas, pues solo actua como pagina de fondo.
 
 **app.component.ts**
 <br>
+
 lorem ipsum
 
 **app.module.ts**
@@ -114,29 +119,35 @@ lorem ipsum
 ### Menu component
 **menu.component.html**
 <br>
+
 Bastante parecido a su archivo .css el html de este componente consta de dos zonas. La de las opciones generales (home, reservas y reservar) y la relacionada con el usuario. En caso de ser admin junto a las opciones generales disponemos de una opcion "admin" para poder editar las instancias de la base de datos. Cada una de estas opciones nos llevara a su pagina correspondiente. En el caso de las opciones del usuario tenemos "profile" y "log out". Para ver y editar nuestro perfil y cerrar cesion respectivamente.
 
 **menu.component.css**
 <br>
+
 El menu component, mas reconocido como header, es la cabecera de la aplicacion. Esta hecho con botstrap y aplica unos estilos para mantener el logo de usuario a la derecha del todo. Cuando se pasa el raton por encima del logo se desplegan unas opciones en forma de lista, que a su vez optienen un efecto hover. El resto de opciones estan a la izquierda del todo, separadas del logo de usuario a drede.
 
 **menu.component.ts**
 <br>
+
 lorem ipsum
 
 ### Service folder
 **api.service.ts**
 <br>
+
 lorem ipsum
 
 ### Shared folder
 #### Interfaces
 **interfaces.ts**
 <br>
+
 lorem ipsum
 
 **ireserves.ts**
 <br>
+
 lorem ipsum
 
 ### Views folder
@@ -144,38 +155,46 @@ lorem ipsum
 #### Admin View:
 **admin .component.html**
 <br>
+
 lorem ipsum
 
 **admin.component.css**
 <br>
+
 lorem ipsum
 
 **admin.component.ts**
 <br>
+
 lorem ipsum
 
 #### Home View:
 **home.component.html**
 <br>
+
 La vista home esta compuesta por un listado de tres opciones: perfil, reservar y reservas. 
 Cada una de estas opciones tiene un pequeño texto al lado indicando brevemente para que sirve cada opcion.
 
 **home.component.css**
 <br>
+
 Trasfondo redondeado, rectangular, oscuro y sombreado en el que se ven las 3 opciones antes mencionadas de color azul.
 Las opciones tienen sombreado bajo de color negro. Con el atributo hover el sombreado de sustitiye por un borde oscuro.
 
 **home.component.ts**
 <br>
+
 lorem ipsum
 
 #### Login View:
 **login.component.html**
 <br>
+
 Componente que actua de pagina principal cuando se intenta acceder a la aplicacion. Dispone de dos inputs para introducir tus credenciales y de dos botones. El boton de "sign up" que te dirige a la pagina register y el de "sign in" para iniciar sesion.
 
 **login.component.css**
 <br>
+
 Titulo centrado encima del trasfondo.
 Trasfondo redondeado, rectangular, oscuro y sombreado con dos inputs que contienen un placeholder indicando que es lo que se espera del usuario.
 Estos inputs estan redondeados.
@@ -185,11 +204,13 @@ La tipografia de los textos es Rubik.
 
 **login.component.ts**
 <br>
+
 lorem ipsum
 
 #### Profile View:
 **profile.component.html**
 <br>
+
 Pagina compuesta por dos grupos. Uno donde se ve la informacion y otro donde se edita.
 Para mostrar la informacion de hace uso de 4 labels. 2 indicando que es lo que representa el label que hay inmediatamente despues y estos ultimos mostrando la informacion que se precisa.
 Debajo de estos 4 labels se encuentran dos botones. Uno para ir atras "back" y otro para acceder a la vista de edicion "update".
@@ -199,6 +220,7 @@ Los botones siguen siendo iguales, solo que el "update" actualiza la informacion
 
 **profile.component.css**
 <br>
+
 Trasfondo redondeado, rectangular, oscuro y sombreado.
 Color del texto de los componentes blanco y con tipografia Rubik.
 2 botones de color azul redondeados. se aclarecen gracias al atributo hover.
@@ -206,6 +228,7 @@ Color del texto de los componentes blanco y con tipografia Rubik.
 
 **page-profile.component.ts**
 <br>
+
 lorem ipsum
 
 #### Register View:
@@ -226,32 +249,39 @@ La tipografia de los textos es Rubik.
 
 **register.component.ts**
 <br>
+
 lorem ipsum
 
 #### Reservation View:
 **reservation.component.html**
 <br>
+
 lorem ipsum
 
 **reservation.component.css**
 <br>
+
 lorem ipsum
 
 **reservation.component.ts**
 <br>
+
 lorem ipsum
 
 #### Reservation-modal View:
 **reservation-modal.component.html**
 <br>
+
 lorem ipsum
 
 **reservation-modal.component.css**
 <br>
+
 lorem ipsum
 
 **reservation-modal.component.ts**
 <br>
+
 lorem ipsum
 
 #### Reserves View:
@@ -265,15 +295,18 @@ lorem ipsum
 
 **reserves.component.ts**
 <br>
+
 lorem ipsum
 
 #### Update-modal View:
 **update-modal.component.html**
 <br>
+
 lorem ipsum
 
 **update-modal.component.css**
 <br>
+
 lorem ipsum
 
 **update-modal.component.ts**
