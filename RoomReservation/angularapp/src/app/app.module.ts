@@ -47,6 +47,7 @@ import { MeetingRoomsComponent } from './views/admin/meeting-rooms/meeting-rooms
 import { MeetingRoomsDeleteComponent } from './views/admin/meeting-rooms/meeting-rooms-delete/meeting-rooms-delete.component';
 import { UsersComponent } from './views/admin/users/users.component';
 import { UsersDeleteComponent } from './views/admin/users/users-delete/users-delete.component';
+import { ForgotPasswordComponent } from './views/forgot-password/forgot-password.component';
 
 
 //I keep the new line
@@ -81,6 +82,7 @@ ToastrModule.forRoot({
     OfficesDeleteComponent,
     MeetingRoomsDeleteComponent,
     UsersDeleteComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     BrowserModule,
