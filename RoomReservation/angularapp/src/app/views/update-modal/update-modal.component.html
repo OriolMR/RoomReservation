@@ -3,7 +3,7 @@
     <h2>{{ meetingRoomName }}</h2>
     <mat-form-field class="example-full-width">
       <mat-label>Choose a date</mat-label>
-      <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" [(ngModel)]="reserveDate" (ngModelChange)="onDateSelected()">
+      <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" [(ngModel)]="reserveDate" (keydown.enter)="actualizarSalaReunion()" (ngModelChange)="onDateSelected()">
       <mat-hint>DD/MM/AAAA</mat-hint>
       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
@@ -18,7 +18,8 @@
                      [(ngModel)]="startingHour"
                      [itemsDelta]="{hours: 1, minutes: 15}"
                      [headerOrientation]="'vertical'"
-                     (onValidationFailed)="onValidationFailed()">
+                     (onValidationFailed)="onValidationFailed()"
+                     (keydown.enter)="actualizarSalaReunion()">
     </igx-time-picker>
 
 
@@ -31,7 +32,8 @@
                      [(ngModel)]="endingHour"
                      [itemsDelta]="{hours: 1, minutes: 15}"
                      [headerOrientation]="'vertical'"
-                     (onValidationFailed)="onValidationFailed()">
+                     (onValidationFailed)="onValidationFailed()"
+                     (keydown.enter)="actualizarSalaReunion()">
     </igx-time-picker>
 
     <label id="current-label" for="current-reserves">Unavailable hours:</label>

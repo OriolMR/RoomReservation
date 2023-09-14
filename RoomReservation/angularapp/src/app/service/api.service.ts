@@ -64,6 +64,10 @@ export class ApiService {
     return this.get('users');
   }
 
+  getReserves(): Observable<any[]> {
+    return this.get('reserves');
+  }
+
   getEmailFromUserId(userId: string): Observable<any> {
     return this.get(`users/${userId}`);
   }
