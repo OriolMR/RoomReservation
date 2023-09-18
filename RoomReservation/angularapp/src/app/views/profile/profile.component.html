@@ -1,5 +1,5 @@
 <body>
-  <div id="profile-container" style="width: 350px" *ngIf="div1">
+  <div id="profile-container" style="width: 350px" *ngIf="showProfile">
 
     <br><br>
     <h2>Profile</h2>
@@ -17,12 +17,12 @@
     </div>
     <div>
       <button class="top_button" (click)="goBack()">Back</button>
-      <button (click)="div2Function()">Update</button>
+      <button (click)="editProfileWindow()">Update</button>
     </div>
 
   </div>
 
-  <div id="edit-container" *ngIf="div2">
+  <div id="edit-container" *ngIf="showEditProfile">
 
     <br><br>
     <h2>Update profile</h2>
@@ -54,7 +54,7 @@
         </div>
       </div>
       <div class="testClass">
-        <button class="top_button" (click)="div1Function()">Back</button>
+        <button class="top_button" (click)="profileWindow()">Back</button>
         <button (click)="saveProfile()">Save</button>
       </div>
 

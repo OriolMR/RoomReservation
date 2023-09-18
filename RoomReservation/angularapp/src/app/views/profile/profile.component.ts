@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent {
-  div1: boolean = true;
-  div2: boolean = false;
+  showProfile: boolean = true;
+  showEditProfile: boolean = false;
   newUserName: string = '';
   newEmail: string = '';
   currentPasswordHash: string = '';
@@ -68,14 +68,14 @@ export class ProfileComponent {
   }
 
 
-  div1Function() {
-    this.div1 = true;
-    this.div2 = false
+  profileWindow() {
+    this.showProfile = true;
+    this.showEditProfile = false
   }
 
-  div2Function() {
-    this.div1 = false;
-    this.div2 = true
+  editProfileWindow() {
+    this.showProfile = false;
+    this.showEditProfile = true
   }
 
   goBack() {
@@ -110,8 +110,8 @@ export class ProfileComponent {
             this.toastr.success('Profile updated successfully');
 
             // Cambia las vistas para volver a la vista original (div1) y ocultar la vista de edición (div2)
-            this.div1 = true;
-            this.div2 = false;
+            this.showProfile = true;
+            this.showEditProfile = false;
           },
           (error) => {
             // Ocurrió un error al actualizar el perfil
