@@ -28,27 +28,6 @@ export class RegisterComponent {
 
   constructor(private apiService: ApiService, private toastr: ToastrService, private http: HttpClient, private router: Router) { }
 
-  verifyUsername() {
-    // Realizar la llamada a la API para verificar si el nombre de usuario está disponible
-    this.apiService.getUserByUsername(this.UserName).subscribe(
-      (response) => {
-  
-          // El nombre de usuario está disponible
-          this.usernameError = true;
-          this.usernameErrorMessage = 'Username is already taken';
-          this.checkRegistrationValidity(); // Verificar la validez del registro después de obtener la respuesta de la API
-
-        },
-        error => {
-          // El nombre de usuario ya existe
-          this.usernameError = false;
-          this.usernameErrorMessage = '';
-          this.checkRegistrationValidity(); // Verificar la validez del registro después de obtener la respuesta de la API
-
-        }
-      );
-  }
-
   checkUsername() {
     if (this.UserName.length > 4) {
       this.verifyUsername();
@@ -57,6 +36,32 @@ export class RegisterComponent {
       this.usernameErrorMessage = '';
       this.checkRegistrationValidity(); // Verificar la validez del registro cuando el nombre de usuario está vacío
     }
+  }
+
+  verifyUsername() {
+    // Realizar la llamada a la API para verificar si el nombre de usuario está disponible
+    this.apiService.getUserByUsername(this.UserName).subscribe(
+      (response) => {
+
+        // El nombre de usuario está disponible
+        this.usernameError = true;
+        this.usernameErrorMessage = 'Username is already taken';
+        this.checkRegistrationValidity(); // Verificar la validez del registro después de obtener la respuesta de la API
+
+      },
+      error => {
+        // El nombre de usuario ya existe
+        this.usernameError = false;
+        this.usernameErrorMessage = '';
+        this.checkRegistrationValidity(); // Verificar la validez del registro después de obtener la respuesta de la API
+
+      }
+    );
+  }
+
+  checkPassword() {
+    this.verifyPassword();
+    this.checkRegistrationValidity(); // Verificar la validez del registro después de verificar la contraseña
   }
 
   verifyPassword() {
@@ -83,9 +88,15 @@ export class RegisterComponent {
     this.isButtonDisabled = this.usernameError || this.passwordError || this.passwordMatchError;
   }
 
-  checkPassword() {
-    this.verifyPassword();
-    this.checkRegistrationValidity(); // Verificar la validez del registro después de verificar la contraseña
+  checkPasswordMatch() {
+    // Verificar si las contraseñas coinciden
+    if (this.PasswordHash !== this.ConfirmPassword) {
+      this.passwordMatchError = true;
+      this.passwordMatchErrorMessage = 'Passwords do not match';
+    } else {
+      this.passwordMatchError = false;
+      this.passwordMatchErrorMessage = '';
+    }
   }
 
   checkRegistrationValidity() {
@@ -99,17 +110,6 @@ export class RegisterComponent {
     } else {
       this.registrationError = false;
       this.registrationErrorMessage = '';
-    }
-  }
-
-  checkPasswordMatch() {
-    // Verificar si las contraseñas coinciden
-    if (this.PasswordHash !== this.ConfirmPassword) {
-      this.passwordMatchError = true;
-      this.passwordMatchErrorMessage = 'Passwords do not match';
-    } else {
-      this.passwordMatchError = false;
-      this.passwordMatchErrorMessage = '';
     }
   }
 

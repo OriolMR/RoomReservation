@@ -15,6 +15,7 @@ import { officesComponent } from './views/admin/offices/offices.component';
 import { MeetingRoomsComponent } from './views/admin/meeting-rooms/meeting-rooms.component';
 import { UsersComponent } from './views/admin/users/users.component';
 import { ReservesAdminComponent } from './views/admin/reserves-admin/reserves-admin.component';
+import { ForgotPasswordComponent } from './views/forgot-password/forgot-password.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent, canActivate: [AuthenticationGuard], data: { requireAdmin: false } },
   { path: 'reserves', component: ReservesComponent, canActivate: [AuthenticationGuard], data: { requireAdmin: false } },
   { path: 'reservation', component: ReservationComponent, canActivate: [AuthenticationGuard], data: { requireAdmin: false } },
+  { path: 'forgot-password', component: ForgotPasswordComponent },
 
   // Acceso solo para usuarios autenticados con el rol de "Administrador"
   { path: 'admin', component: AdminComponent, canActivate: [AuthenticationGuard], data: { requireAdmin: true } },

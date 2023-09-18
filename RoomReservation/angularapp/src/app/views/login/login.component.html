@@ -20,6 +20,7 @@
       <button class="btn btn-primary" style="margin: 5px ;" routerLink="/register">Sign up</button>
       <button class="btn btn-primary" style="margin: 5px ;" (click)="login()">Sign in</button>
     </div>
+    <a routerLink="/forgot-password">Forgot password?</a>
 
     <div *ngIf="loginError" class="error-message">Incorrect username or password</div>
     <router-outlet></router-outlet>
