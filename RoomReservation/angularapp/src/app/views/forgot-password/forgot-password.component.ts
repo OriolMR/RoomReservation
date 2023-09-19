@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-forgot-password',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./forgot-password.component.css']
 })
 export class ForgotPasswordComponent {
+  constructor(private router: Router) { }
 
+  backToLogin() {
+    this.router.navigate(['/login']); // Cambia '/login' por la ruta que desees
+  }
 }
