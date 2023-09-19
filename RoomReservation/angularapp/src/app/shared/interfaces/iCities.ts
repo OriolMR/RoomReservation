@@ -1,5 +1,5 @@
 export interface ICities {
-  cityId: number;
-  countryId: number;
-  cityName: string;
+    cityId: number;
+    countryId: number;
+    cityName: string;
 }

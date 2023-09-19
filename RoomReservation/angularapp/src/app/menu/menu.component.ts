@@ -15,10 +15,12 @@ export class MenuComponent implements OnInit {
 
   showAdminLink: boolean = false;
 
-  constructor(private authGuard: AuthenticationGuard,  private apiService: ApiService, private toastr: ToastrService, private router: Router) { }
+  constructor(private authGuard: AuthenticationGuard,
+    private apiService: ApiService,
+    private router: Router,
+    private toastr: ToastrService) { }
 
   ngOnInit(): void {
-
     console.log('Autenticado: ' + this.isAuthenticated);
   }
 
@@ -30,19 +32,14 @@ export class MenuComponent implements OnInit {
     return this.authGuard.isAdmin();
   }
 
-
-
   logout() {
     this.apiService.logout().subscribe(
       (response) => {
-        // Handle the successful logout response here
-        // For example, you might clear user session or redirect to the login page
         console.log('Logout successful:', response);
         this.toastr.success('Logout successful');
         this.router.navigate(['/login']);
       },
       (error) => {
-        // Handle any errors that occur during the logout process
         console.error('Logout error:', error);
       }
     );

@@ -44,8 +44,6 @@ import { UsersDeleteComponent } from './views/admin/users/users-delete/users-del
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
 import { ReservesDeleteComponent } from './views/admin/reserves-admin/reserves-delete/reserves-delete.component';
 
-
-//I keep the new line
 ToastrModule.forRoot({
   positionClass: 'toast-top-center',
   toastClass: 'custom-toast',

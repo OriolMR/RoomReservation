@@ -29,7 +29,7 @@ export class ReservesComponent implements OnInit {
       // Realiza la petición para obtener todas las reservas asociadas al userId
       this.getReservesByUserId(userId);
     } else {
-      console.error('No se proporcionó un userId válido.');
+      console.error('Valid userId was not provided.');
     }
   }
 
@@ -51,13 +51,13 @@ export class ReservesComponent implements OnInit {
               });
             },
             (error) => {
-              console.error('Error al obtener la información de la sala de reuniones:', error);
+              console.error('Error while retrieving meeting room data', error);
             }
           );
         });
       },
       (error) => {
-        console.error('Error al obtener las reservas:', error);
+        console.error('Error while retrieveing reserves:', error);
       }
     );
   }
@@ -66,7 +66,7 @@ export class ReservesComponent implements OnInit {
     // Verificar si el userId existe antes de usarlo
     const userId = localStorage.getItem('userId');
     if (!userId) {
-      console.error('El userId no está definido.');
+      console.error(' userId is not defined.');
       return;
     }
 

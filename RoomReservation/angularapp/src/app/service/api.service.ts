@@ -12,8 +12,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   private handleError(error: HttpErrorResponse) {
-
-    return throwError('Algo salió mal. Por favor, inténtalo de nuevo más tarde.');
+    return throwError('Something went wrong. Please, try again.');
   }
 
   // CRUD
@@ -118,7 +117,6 @@ export class ApiService {
     localStorage.removeItem('token');
     const token = localStorage.getItem('token');
     console.log('El token es: ' + token);
-    // Assuming there is a logout endpoint on the server
     return this.post('authentication/logout', {});
   }
 
@@ -142,5 +140,4 @@ export class ApiService {
     const url = `${this.apiUrl}/Users/${userId}`;
     return this.http.delete(url);
   }
-
 }

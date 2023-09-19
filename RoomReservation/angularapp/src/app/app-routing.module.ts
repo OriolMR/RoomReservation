@@ -17,18 +17,16 @@ import { UsersComponent } from './views/admin/users/users.component';
 import { ReservesAdminComponent } from './views/admin/reserves-admin/reserves-admin.component';
 import { ForgotPasswordComponent } from './views/forgot-password/forgot-password.component';
 
-
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
-  { path: 'forgot-password', component: ForgotPasswordComponent }
+  { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'home', component: HomeComponent, canActivate: [AuthenticationGuard], data: { requireAdmin: false } },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthenticationGuard], data: { requireAdmin: false } },
   { path: 'reserves', component: ReservesComponent, canActivate: [AuthenticationGuard], data: { requireAdmin: false } },
   { path: 'reservation', component: ReservationComponent, canActivate: [AuthenticationGuard], data: { requireAdmin: false } },
   
-
   // Acceso solo para usuarios autenticados con el rol de "Administrador"
   { path: 'admin', component: AdminComponent, canActivate: [AuthenticationGuard], data: { requireAdmin: true } },
   { path: 'admin/admin-cities', component: CitiesComponent, canActivate: [AuthenticationGuard], data: { requireAdmin: true } },
@@ -43,7 +41,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forRoot(routes)],
+    exports: [RouterModule]
 })
 export class AppRoutingModule { }

@@ -19,7 +19,11 @@ export class ProfileComponent {
   currentEmail: string = '';
   newPasswordHash: string = '';
 
-  constructor(private apiService: ApiService, private router: Router, private http: HttpClient, private authGuard: AuthenticationGuard, private toastr: ToastrService) { }
+  constructor(private apiService: ApiService,
+    private router: Router,
+    private http: HttpClient,
+    private authGuard: AuthenticationGuard,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
     // Get the token from the AuthService
@@ -31,17 +35,12 @@ export class ProfileComponent {
       const userId = this.authGuard.getUserIdFromToken(token);
 
       if (userId) {
-
         this.getEmail(userId);
       }
-
 
       if (currentUsername) {
         console.log('Current Username:', currentUsername);
         this.newUserName = currentUsername;
-
-
-        // Now you have the current username and email, and you can use them as needed in your component logic or display them in your template.
       } else {
         console.error('Unable to get current username and email from token.');
       }
@@ -56,17 +55,13 @@ export class ProfileComponent {
 
         console.log('Respuesta de getEmailFromUserId:', response);
 
-        // Aquí puedes manejar los datos de la respuesta, por ejemplo, obtener el correo electrónico del usuario.
         this.newEmail = response.email; // Asegúrate de ajustar esto según el formato de la respuesta del servidor.
-
       },
       (error) => {
         console.error('Error al obtener el correo electrónico del usuario:', error);
-        // Aquí puedes manejar el error de acuerdo a tus necesidades.
       }
     );
   }
-
 
   profileWindow() {
     this.showProfile = true;

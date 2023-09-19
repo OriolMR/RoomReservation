@@ -17,18 +17,17 @@ export class ReservationModalComponent {
   userId: string | null = null;
   reserves: any[] = [];
   selectedReserveId: number = 0;
-  reserveDate: Date = new Date(); // Inicializar con la fecha actual
-  startingHour: Date = new Date(); // Inicializar con la hora actual
+  reserveDate: Date = new Date(); 
+  startingHour: Date = new Date(); 
   endingHour: Date = new Date();
   @ViewChild('toast', { static: true })
   private toast!: { open: () => void; };
   form: FormGroup;
 
-  
-
   public onValidationFailed() {
     this.toast.open();
   }
+
   constructor(
     public dialogRef: MatDialogRef<ReservationModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -46,28 +45,21 @@ export class ReservationModalComponent {
   ngOnInit() {
     this.userId = localStorage.getItem('userId');
     const defaultStartingHour = new Date();
-    defaultStartingHour.setHours(9, 0); // Hora: 9, Minutos: 0
+    defaultStartingHour.setHours(9, 0); 
     this.startingHour = defaultStartingHour;
     this.getReservesByMeetingRoomId(this.data.salaReunion.meetingRoomId);
 
     const defaultEndingHour = new Date();
-    defaultEndingHour.setHours(9, 0); // Hora: 9, Minutos: 0
+    defaultEndingHour.setHours(9, 0); 
     this.endingHour = defaultEndingHour;
-    // Filtrar las horas disponibles para mostrar solo las que terminan en '00' o '30'
-    
-
   }
 
   onDateSelected() {
     this.getReservesByMeetingRoomId(this.data.salaReunion.meetingRoomId);
   }
 
-  
-
-
   myFilter = (d: Date | null): boolean => {
     const day = (d || new Date()).getDay();
-    // Impedir que se seleccionen sábado y domingo.
     return day !== 0 && day !== 6;
   };
 
@@ -76,18 +68,12 @@ export class ReservationModalComponent {
     timePicker.close();
   }
 
- 
-
   reservarSalaReunion(): void {
-    // Obtener los valores de la fecha y las horas ingresados por el usuario
 
-
-    // Obtener el userId y meetingRoomId desde los datos del modal
     const meetingRoomId = this.data.salaReunion.meetingRoomId;
     const userId = localStorage.getItem('userId');
 
-    const formattedReserveDate = this.datePipe.transform(this.reserveDate, 'yyyy-MM-dd');
-    
+    const formattedReserveDate = this.datePipe.transform(this.reserveDate, 'yyyy-MM-dd');   
     const formattedStartingHour = this.datePipe.transform(this.startingHour, 'HH:mm:ss');
     const formattedEndingHour = this.datePipe.transform(this.endingHour, 'HH:mm:ss');
 
@@ -123,6 +109,7 @@ export class ReservationModalComponent {
       );
     }
   }
+
   cerrar(): void {
     this.dialogRef.close();
   }
@@ -146,7 +133,6 @@ export class ReservationModalComponent {
         }
       );
   }
-
 
   formatHour(time: string): string {
     const [hours, minutes] = time.split(':');

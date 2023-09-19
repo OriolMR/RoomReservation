@@ -16,16 +16,15 @@ export class UpdateModalComponent {
   reserves: any[] = [];
   selectedReserveId: number = 0;
   meetingRoomName: string | null = null;
-  reserveDate: Date = new Date(); // Inicializar con la fecha actual
-  startingHour: Date = new Date(); // Inicializar con la hora actual
-  endingHour: Date = new Date(); // Inicializar con la hora actual
+  reserveDate: Date = new Date();
+  startingHour: Date = new Date();
+  endingHour: Date = new Date();
 
   @ViewChild('toast', { static: true })
   private toast!: { open: () => void; };
   public min = '00:00';
   public max = '09:00';
   form: FormGroup;
-
 
   constructor(
     public dialogRef: MatDialogRef<UpdateModalComponent>,
@@ -47,19 +46,18 @@ export class UpdateModalComponent {
 
   ngOnInit() {
     const defaultStartingHour = new Date();
-    defaultStartingHour.setHours(9, 0); // Hora: 9, Minutos: 0
+    defaultStartingHour.setHours(9, 0);
     this.startingHour = defaultStartingHour;
-    /* this.getReservesByMeetingRoomId(this.data.salaReunion.meetingRoomId);*/
     this.getMeetingRoomById(this.data.reserve.meetingRoomId);
     this.getReservesByMeetingRoomId(this.data.reserve.meetingRoomId);
     const defaultEndingHour = new Date();
-    defaultEndingHour.setHours(9, 0); // Hora: 9, Minutos: 0
+    defaultEndingHour.setHours(9, 0);
     this.endingHour = defaultEndingHour;
   }
 
   myFilter = (d: Date | null): boolean => {
     const day = (d || new Date()).getDay();
-    // Impedir que se seleccionen sábado y domingo.
+
     return day !== 0 && day !== 6;
   };
 
@@ -68,9 +66,8 @@ export class UpdateModalComponent {
     timePicker.close();
   }
 
-  actualizarSalaReunion(): void {
-
-    const reservaId = this.data.reserve.reserveId; // Suponiendo que tienes un campo "id" en el objeto de reserva recibido desde el modal
+  updateMeetingRoom(): void {
+    const reservaId = this.data.reserve.reserveId;
     const formattedReserveDate = this.datePipe.transform(this.reserveDate, 'yyyy-MM-dd');
     const formattedStartingHour = this.datePipe.transform(this.startingHour, 'HH:mm:ss');
     const formattedEndingHour = this.datePipe.transform(this.endingHour, 'HH:mm:ss');
@@ -78,10 +75,11 @@ export class UpdateModalComponent {
     console.log(formattedReserveDate, formattedStartingHour, formattedEndingHour);
 
     if (formattedStartingHour && formattedEndingHour && formattedStartingHour >= formattedEndingHour) {
-      // Mostrar mensaje de error o tomar alguna acción adecuada
+
       this.toastr.error('The ending hour must be greater than the starting hour.', 'Error');
+
     } else {
-      // Crear el objeto con los campos de reserva a actualizar
+
       const reservaData = {
         ReserveId: reservaId,
         ReserveDate: formattedReserveDate,
@@ -92,10 +90,9 @@ export class UpdateModalComponent {
 
       console.log(reservaData);
 
-      // Hacer la solicitud PUT o PATCH al servidor para actualizar la reserva
       this.apiService.updateReserveById(reservaId, reservaData).subscribe(
         (response) => {
-          console.log('Reserva actualizada:', response);
+          console.log('Updated reserve:', response);
           this.toastr.success('Reserve updated');
 
           this.dialogRef.close(response);
@@ -103,54 +100,53 @@ export class UpdateModalComponent {
         (error) => {
           console.error('Error al actualizar la reserva:', error);
           this.toastr.error('You can not choose this time', 'Error');
-          // Aquí puedes manejar errores y mostrar mensajes al usuario si es necesario
         }
       );
-
     }
   }
 
   getReservesByMeetingRoomId(selectedReserveId: number) {
     this.apiService.getReservesByMeetingRoomId(selectedReserveId).subscribe(
-        (reserves: any) => {
-          // Filtrar las reservas por la fecha seleccionada
-          const formattedReserveDate = new Date(this.reserveDate.getFullYear(), this.reserveDate.getMonth(), this.reserveDate.getDate());
-          const filteredReserves = reserves.filter((reserve: any) =>
-            new Date(reserve.reserveDate).getTime() === formattedReserveDate.getTime()
-          );
+      (reserves: any) => {
+        const formattedReserveDate = new Date(
+          this.reserveDate.getFullYear(),
+          this.reserveDate.getMonth(),
+          this.reserveDate.getDate()
+        );
 
-          this.reserves = filteredReserves;
-          // Ahora 'this.reserves' contiene solo las reservas para la fecha seleccionada
+        const filteredReserves = reserves.filter((reserve: any) =>
+          new Date(reserve.reserveDate).getTime() === formattedReserveDate.getTime()
+        );
 
-          console.log('Reservas:', this.reserves);
-        },
-        (error) => {
-          console.error('Error al obtener las reservas:', error);
-        }
-      );
+        this.reserves = filteredReserves;
+
+        console.log('Reservas:', this.reserves);
+      },
+      (error) => {
+        console.error('Error al obtener las reservas:', error);
+      }
+    );
   }
 
   getMeetingRoomById(selectedReserveId: number) {
-    this.apiService.getMeetingRoomById(selectedReserveId).subscribe(
-        (meetingRoom: any) => {
-          if (meetingRoom && meetingRoom.meetingRoomName) {
-            this.meetingRoomName = meetingRoom.meetingRoomName;
-            console.log('Nombre de la sala de reuniones:', this.meetingRoomName);
-            // Aquí tienes el nombre de la sala de reuniones, puedes utilizarlo como desees
-          } else {
-            console.error('No se encontró el nombre de la sala de reuniones en la respuesta.');
-          }
-        },
-        (error) => {
-          console.error('Error al obtener la sala de reuniones:', error);
-          // Aquí puedes manejar el error, si es necesario
+    this.apiService
+      .getMeetingRoomById(selectedReserveId).subscribe(
+      (meetingRoom: any) => {
+        if (meetingRoom && meetingRoom.meetingRoomName) {
+          this.meetingRoomName = meetingRoom.meetingRoomName;
+          console.log('Nombre de la sala de reuniones:', this.meetingRoomName);
+        } else {
+          console.error('No se encontró el nombre de la sala de reuniones en la respuesta.');
         }
-      );
+      },
+      (error) => {
+        console.error('Error while fecthing meeting rooms:', error);
+      }
+    );
   }
 
-  cerrar(): void {
+  close(): void {
     this.dialogRef.close();
-
   }
 
   onDateSelected() {
@@ -162,14 +158,12 @@ export class UpdateModalComponent {
     return `${hours.padStart(2, '0')}:${minutes.padStart(2, '0')}`;
   }
 
-
   onOverlayClick(event: MouseEvent): void {
-    // Evita que el evento se propague hacia el contenido del modal
     event.stopPropagation();
   }
 
   onContentClick(event: MouseEvent): void {
-    // Evita que el evento se propague hacia el fondo del modal
     event.stopPropagation();
   }
 }
+
