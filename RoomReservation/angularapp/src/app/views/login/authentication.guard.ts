@@ -22,12 +22,12 @@ export class AuthenticationGuard implements CanActivate {
       // Obtener el token almacenado en el servicio de autenticación
       const token = this.getToken();
       console.log('El token en canActivate es ' + token);
-      console.log('El rol es Administrador: ' + this.isUserInRole(token, 'Administrador'));
+      console.log('El rol es Administrador: ' + this.isUserInRole(token, 'administrador'));
 
       // Verificar si el usuario tiene el rol de "Administrador"
       if (requireAdmin) {
         // Verificar si el usuario tiene el rol de "Administrador" solo si requireAdmin es true
-        if (token && this.isUserInRole(token, 'Administrador')) {
+        if (token && this.isUserInRole(token, 'administrador')) {
           console.log(" Usuario autenticado y tiene el rol de admin");
           return true; // Usuario autenticado y tiene el rol de "Administrador", permitir acceso a la ruta que requiere administrador
         } else {
@@ -45,7 +45,7 @@ export class AuthenticationGuard implements CanActivate {
 
   isAdmin(): boolean {
     const token = this.getToken();
-    return this.isUserInRole(token, 'Administrador');
+    return this.isUserInRole(token, 'administrador');
   }
 
   setAuthenticated(value: boolean) {

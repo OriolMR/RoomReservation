@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using webapi.DataAccess;
 using webapi.Repositories;
 using Microsoft.AspNetCore.Authorization;
-using System.Data;
+
 
 namespace RoomReservation.Controllers
 {
@@ -23,7 +23,9 @@ namespace RoomReservation.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllCountries()
         {
-            var countries = await roomReservationDbContext.Countries.ToListAsync();
+            var countries = await roomReservationDbContext
+                                .Countries
+                                .ToListAsync();
 
             return Ok(countries);
         }
@@ -32,7 +34,9 @@ namespace RoomReservation.Controllers
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetCountryById([FromRoute] int id)
         {
-            var country = await roomReservationDbContext.Countries.FirstOrDefaultAsync(x => x.countryId == id);
+            var country = await roomReservationDbContext
+                          .Countries
+                          .FirstOrDefaultAsync(x => x.countryId == id);
 
             if (country != null)
             {
@@ -47,8 +51,12 @@ namespace RoomReservation.Controllers
         [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> AddCountry([FromBody] Country country)
         {
-            country.countryId = 0; // Asignar valor inicial a countryId
-            await roomReservationDbContext.Countries.AddAsync(country);
+            country.countryId = 0;
+
+            await roomReservationDbContext
+                .Countries
+                .AddAsync(country);
+
             await roomReservationDbContext.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetCountryById), new { id = country.countryId }, country);
@@ -59,12 +67,16 @@ namespace RoomReservation.Controllers
         [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> UpdateCountry(int id, [FromBody] Country country)
         {
-            var existingCountry = await roomReservationDbContext.Countries.FirstOrDefaultAsync(x => x.countryId == id);
+            var existingCountry = await roomReservationDbContext
+                                      .Countries
+                                      .FirstOrDefaultAsync(x => x.countryId == id);
 
             if (existingCountry != null)
             {
                 existingCountry.countryName = country.countryName;
-                await roomReservationDbContext.SaveChangesAsync();
+
+                await roomReservationDbContext
+                    .SaveChangesAsync();
 
                 return Ok(existingCountry);
             }
@@ -77,11 +89,16 @@ namespace RoomReservation.Controllers
         [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> DeleteCountry(int id)
         {
-            var country = await roomReservationDbContext.Countries.FindAsync(id);
+            var country = await roomReservationDbContext
+                              .Countries
+                              .FindAsync(id);
 
             if (country != null)
             {
-                roomReservationDbContext.Countries.Remove(country);
+                roomReservationDbContext
+                    .Countries
+                    .Remove(country);
+
                 await roomReservationDbContext.SaveChangesAsync();
 
                 return NoContent();

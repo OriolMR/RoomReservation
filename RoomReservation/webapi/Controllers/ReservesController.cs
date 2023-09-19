@@ -22,7 +22,9 @@ namespace RoomReservation.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllReserves()
         {
-            var reserves = await roomReservationDbContext.Reserves.ToListAsync();
+            var reserves = await roomReservationDbContext
+                               .Reserves
+                               .ToListAsync();
 
             return Ok(reserves);
         }
@@ -31,7 +33,9 @@ namespace RoomReservation.Controllers
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetReserveById(int id)
         {
-            var reserve = await roomReservationDbContext.Reserves.FirstOrDefaultAsync(x => x.reserveId == id);
+            var reserve = await roomReservationDbContext
+                              .Reserves
+                              .FirstOrDefaultAsync(x => x.reserveId == id);
 
             if (reserve != null)
             {
@@ -46,9 +50,10 @@ namespace RoomReservation.Controllers
         [HttpGet("user/{userId}")]
         public async Task<IActionResult> GetReservesByUserId(string userId)
         {
-            var reserves = await roomReservationDbContext.Reserves
-                .Where(x => x.userId == userId)
-                .ToListAsync();
+            var reserves = await roomReservationDbContext
+                               .Reserves
+                               .Where(x => x.userId == userId)
+                               .ToListAsync();
 
             if (reserves != null && reserves.Count > 0)
             {
@@ -62,7 +67,10 @@ namespace RoomReservation.Controllers
         [HttpGet("getReservesByMeetingRoomId/{meetingRoomId:int}")]
         public async Task<IActionResult> GetReservesByMeetingRoomId(int meetingRoomId)
         {
-            var reserves = await roomReservationDbContext.Reserves.Where(x => x.meetingRoomId == meetingRoomId).ToListAsync();
+            var reserves = await roomReservationDbContext
+                               .Reserves
+                               .Where(x => x.meetingRoomId == meetingRoomId)
+                               .ToListAsync();
 
             if (reserves != null && reserves.Count > 0)
             {
@@ -77,17 +85,21 @@ namespace RoomReservation.Controllers
         public async Task<IActionResult> AddReserve([FromBody] ReserveData reserveData)
         {
             // Verificar si hay solapamiento de reservas en la base de datos
-            var existingReserves = await roomReservationDbContext.Reserves
-                .Where(r => r.meetingRoomId == reserveData.MeetingRoomId &&
-                            r.reserveDate == reserveData.ReserveDate)
-                .ToListAsync();
+            var existingReserves = await roomReservationDbContext
+                                   .Reserves
+                                   .Where(r => r.meetingRoomId == reserveData.MeetingRoomId 
+                                       && r.reserveDate == reserveData.ReserveDate)
+                                   .ToListAsync();
 
             // Verificar solapamiento de reservas
             foreach (var existingReserve in existingReserves)
             {
-                if (((reserveData.StartingHour >= existingReserve.startingHour && reserveData.StartingHour < existingReserve.endingHour) ||
-        (reserveData.EndingHour > existingReserve.startingHour && reserveData.EndingHour <= existingReserve.endingHour) ||
-        (reserveData.StartingHour <= existingReserve.startingHour && reserveData.EndingHour >= existingReserve.startingHour)))
+                if ((reserveData.StartingHour >= existingReserve.startingHour 
+                       && reserveData.StartingHour < existingReserve.endingHour) 
+                   || (reserveData.EndingHour > existingReserve.startingHour 
+                       && reserveData.EndingHour <= existingReserve.endingHour) 
+                   || (reserveData.StartingHour <= existingReserve.startingHour 
+                       && reserveData.EndingHour >= existingReserve.startingHour))
                 {
                     return BadRequest("La reserva se solapa con otra reserva existente.");
                 }
@@ -103,7 +115,10 @@ namespace RoomReservation.Controllers
                 endingHour = reserveData.EndingHour
             };
 
-            await roomReservationDbContext.Reserves.AddAsync(newReserve);
+            await roomReservationDbContext
+                .Reserves
+                .AddAsync(newReserve);
+
             await roomReservationDbContext.SaveChangesAsync();
 
             return Ok(newReserve);
@@ -113,22 +128,28 @@ namespace RoomReservation.Controllers
         [HttpPut("{id:int}")]
         public async Task<IActionResult> UpdateReserve(int id, [FromBody] UpdateReserveModel reserve)
         {
-            var existingReserve = await roomReservationDbContext.Reserves.FirstOrDefaultAsync(x => x.reserveId == id);
+            var existingReserve = await roomReservationDbContext
+                                      .Reserves
+                                      .FirstOrDefaultAsync(x => x.reserveId == id);
 
             if (existingReserve != null)
             {
                 // Realizar verificación de solapamiento de reservas
-                var existingReserves = await roomReservationDbContext.Reserves
-                .Where(r => r.meetingRoomId == reserve.MeetingRoomId &&
-                            r.reserveDate == reserve.ReserveDate &&
-                            r.reserveId != id)
-                .ToListAsync();
+                var existingReserves = await roomReservationDbContext
+                                           .Reserves
+                                           .Where(r => r.meetingRoomId == reserve.MeetingRoomId 
+                                               && r.reserveDate == reserve.ReserveDate
+                                               && r.reserveId != id)
+                                           .ToListAsync();
 
                 foreach (var existing in existingReserves)
                 {
-                    if (((reserve.StartingHour >= existing.startingHour && reserve.StartingHour < existing.endingHour) ||
-                        (reserve.EndingHour > existing.startingHour && reserve.EndingHour <= existing.endingHour) ||
-                        (reserve.StartingHour <= existing.startingHour && reserve.EndingHour >= existing.startingHour)))
+                    if ((reserve.StartingHour >= existing.startingHour 
+                            && reserve.StartingHour < existing.endingHour) 
+                        || (reserve.EndingHour > existing.startingHour 
+                            && reserve.EndingHour <= existing.endingHour)
+                        || (reserve.StartingHour <= existing.startingHour 
+                            && reserve.EndingHour >= existing.startingHour))
                     {
                         return BadRequest("La reserva se solapa con otra reserva existente.");
                     }
@@ -137,6 +158,7 @@ namespace RoomReservation.Controllers
                 existingReserve.reserveDate = reserve.ReserveDate;
                 existingReserve.startingHour = reserve.StartingHour;
                 existingReserve.endingHour = reserve.EndingHour;
+
                 await roomReservationDbContext.SaveChangesAsync();
 
                 return Ok(existingReserve);
@@ -149,11 +171,16 @@ namespace RoomReservation.Controllers
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteReserve(int id)
         {
-            var reserve = await roomReservationDbContext.Reserves.FindAsync(id);
+            var reserve = await roomReservationDbContext
+                .Reserves
+                .FindAsync(id);
 
             if (reserve != null)
             {
-                roomReservationDbContext.Reserves.Remove(reserve);
+                roomReservationDbContext
+                    .Reserves
+                    .Remove(reserve);
+
                 await roomReservationDbContext.SaveChangesAsync();
 
                 return NoContent();

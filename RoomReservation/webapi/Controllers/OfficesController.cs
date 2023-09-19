@@ -21,7 +21,9 @@ namespace RoomReservation.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllOffices()
         {
-            var offices = await roomReservationDbContext.Offices.ToListAsync();
+            var offices = await roomReservationDbContext
+                              .Offices
+                              .ToListAsync();
 
             return Ok(offices);
         }
@@ -30,7 +32,9 @@ namespace RoomReservation.Controllers
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetOfficeById([FromRoute] int id)
         {
-            var office = await roomReservationDbContext.Offices.FirstOrDefaultAsync(x => x.officeId == id);
+            var office = await roomReservationDbContext
+                             .Offices
+                             .FirstOrDefaultAsync(x => x.officeId == id);
 
             if (office != null)
             {
@@ -44,7 +48,10 @@ namespace RoomReservation.Controllers
         [HttpGet("getOfficesByCityId/{cityId:int}")]
         public async Task<IActionResult> GetOfficesByCityId(int cityId)
         {
-            var offices = await roomReservationDbContext.Offices.Where(x => x.cityId == cityId).ToListAsync();
+            var offices = await roomReservationDbContext
+                              .Offices
+                              .Where(x => x.cityId == cityId)
+                              .ToListAsync();
 
             if (offices != null && offices.Count > 0)
             {
@@ -58,8 +65,12 @@ namespace RoomReservation.Controllers
         [HttpPost]
         public async Task<IActionResult> AddOffice([FromBody] Office office)
         {
-            office.officeId = 0; // Asignar valor inicial a OfficeId
-            await roomReservationDbContext.Offices.AddAsync(office);
+            office.officeId = 0; 
+
+            await roomReservationDbContext
+                .Offices
+                .AddAsync(office);
+
             await roomReservationDbContext.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetOfficeById), new { id = office.officeId }, office);
@@ -69,12 +80,15 @@ namespace RoomReservation.Controllers
         [HttpPut("{id:int}")]
         public async Task<IActionResult> UpdateOffice(int id, [FromBody] Office office)
         {
-            var existingOffice = await roomReservationDbContext.Offices.FirstOrDefaultAsync(x => x.officeId == id);
+            var existingOffice = await roomReservationDbContext
+                                     .Offices
+                                     .FirstOrDefaultAsync(x => x.officeId == id);
 
             if (existingOffice != null)
             {
                 existingOffice.officeName = office.officeName;
                 existingOffice.cityId = office.cityId;
+
                 await roomReservationDbContext.SaveChangesAsync();
 
                 return Ok(existingOffice);
@@ -87,11 +101,16 @@ namespace RoomReservation.Controllers
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeleteOffice(int id)
         {
-            var office = await roomReservationDbContext.Offices.FindAsync(id);
+            var office = await roomReservationDbContext
+                             .Offices
+                             .FindAsync(id);
 
             if (office != null)
             {
-                roomReservationDbContext.Offices.Remove(office);
+                roomReservationDbContext
+                    .Offices
+                    .Remove(office);
+
                 await roomReservationDbContext.SaveChangesAsync();
 
                 return NoContent();

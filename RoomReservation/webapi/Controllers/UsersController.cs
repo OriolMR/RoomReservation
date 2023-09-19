@@ -2,12 +2,11 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System.Text;
 using webapi.Areas.Identity.Data;
 using webapi.DataAccess;
 using webapi.Models;
 using webapi.Repositories;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+
 
 namespace RoomReservation.Controllers
 {
@@ -30,7 +29,9 @@ namespace RoomReservation.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllUsers()
         {
-            var users = await identityAppDbContext.Users.ToListAsync();
+            var users = await identityAppDbContext
+                           .Users
+                           .ToListAsync();
 
             return Ok(users);
         }
@@ -39,7 +40,9 @@ namespace RoomReservation.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUserById(string id)
         {
-            var user = await identityAppDbContext.Users.FirstOrDefaultAsync(x => x.Id == id);
+            var user = await identityAppDbContext
+                           .Users
+                           .FirstOrDefaultAsync(x => x.Id == id);
 
             if (user != null)
             {
@@ -53,7 +56,9 @@ namespace RoomReservation.Controllers
         [HttpGet("username/{username}")]
         public async Task<IActionResult> GetUserByUsername(string username)
         {
-            var user = await identityAppDbContext.Users.FirstOrDefaultAsync(x => x.UserName == username);
+            var user = await identityAppDbContext
+                           .Users
+                           .FirstOrDefaultAsync(x => x.UserName == username);
 
             if (user != null)
             {
@@ -79,10 +84,13 @@ namespace RoomReservation.Controllers
                 existingUser.UserName = userModel.newUserName ?? existingUser.UserName;
                 existingUser.Email = userModel.newEmail ?? existingUser.Email;
 
-                if (!string.IsNullOrEmpty(userModel.currentPasswordHash) && !string.IsNullOrEmpty(userModel.newPasswordHash))
+                if (!string.IsNullOrEmpty(userModel.currentPasswordHash) 
+                        && !string.IsNullOrEmpty(userModel.newPasswordHash))
                 {
                     // Cambiar la contraseña solo si se proporciona la contraseña actual y la nueva contraseña
-                    var changePasswordResult = await userManager.ChangePasswordAsync(existingUser, userModel.currentPasswordHash, userModel.newPasswordHash);
+                    var changePasswordResult = await userManager
+                                                   .ChangePasswordAsync(existingUser, userModel.currentPasswordHash,
+                                                                            userModel.newPasswordHash);
 
                     if (!changePasswordResult.Succeeded)
                     {
@@ -107,18 +115,20 @@ namespace RoomReservation.Controllers
             return NotFound();
         }
 
-
-
-
         // DELETE: api/Users/{id}
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(string id)
         {
-            var user = await identityAppDbContext.Users.FindAsync(id);
+            var user = await identityAppDbContext
+                           .Users
+                           .FindAsync(id);
 
             if (user != null)
             {
-                identityAppDbContext.Users.Remove(user);
+                identityAppDbContext
+                    .Users
+                    .Remove(user);
+
                 await identityAppDbContext.SaveChangesAsync();
 
                 return NoContent();

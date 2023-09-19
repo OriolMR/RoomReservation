@@ -14,8 +14,6 @@ namespace RoomReservation.Models
             if (string.IsNullOrEmpty(UserName) || string.IsNullOrEmpty(PasswordHash))
                 return false;
 
-            // Realizar cualquier otra validación necesaria
-
             return true;
         }
     }

@@ -16,10 +16,5 @@ namespace RoomReservation.Models
         public City()
         {
         }
-
-        public City(string cityName)
-        {
-            this.cityName = cityName;
-        }
     }
 }

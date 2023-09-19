@@ -29,25 +29,18 @@ import { ReservationModalComponent } from './views/reservation-modal/reservation
 import { ApiService } from './service/api.service';
 import { AdminComponent } from './views/admin/admin.component';
 import { EntradaAdminComponent } from './views/admin/entrada-admin/entrada-admin.component';
-import { CitiesComponent } from './views/admin/cities/cities.component';
 
 //Material UI
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { CitiesDeleteComponent } from './views/admin/cities/cities-delete/cities-delete.component';
-import { CountriesComponent } from './views/admin/countries/countries.component';
 import { CountriesDeleteComponent } from './views/admin/countries/countries-delete/countries-delete.component';
 import { OfficesDeleteComponent } from './views/admin/offices/offices-delete/offices-delete.component';
-import { officesComponent } from './views/admin/offices/offices.component';
-import { MeetingRoomsComponent } from './views/admin/meeting-rooms/meeting-rooms.component';
 import { MeetingRoomsDeleteComponent } from './views/admin/meeting-rooms/meeting-rooms-delete/meeting-rooms-delete.component';
-import { UsersComponent } from './views/admin/users/users.component';
 import { UsersDeleteComponent } from './views/admin/users/users-delete/users-delete.component';
-import { ReservesAdminComponent } from './views/admin/reserves-admin/reserves-admin.component';
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
 import { ReservesDeleteComponent } from './views/admin/reserves-admin/reserves-delete/reserves-delete.component';
 
@@ -73,18 +66,12 @@ ToastrModule.forRoot({
     ReservationModalComponent,
     UpdateModalComponent,
     AdminComponent,
-    //CountriesComponent,
-    //CitiesComponent,
-    //officesComponent,
-    //MeetingRoomsComponent,
-    //UsersComponent,
     EntradaAdminComponent,
     CitiesDeleteComponent,
     CountriesDeleteComponent,
     OfficesDeleteComponent,
     MeetingRoomsDeleteComponent,
     UsersDeleteComponent,
-    //ReservesAdminComponent,
     PageNotFoundComponent,
     ReservesDeleteComponent
   ],

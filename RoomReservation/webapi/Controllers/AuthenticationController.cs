@@ -91,7 +91,7 @@ namespace webapi.Controllers
 
                 // Verificar si el usuario tiene algún rol específico que desees utilizar en el token
                 // Por ejemplo, si el usuario tiene el rol "Administrador", utilizamos ese rol, de lo contrario, utilizamos "Usuario"
-                var userRole = roles.Contains("ADMINISTRADOR") ? "Administrador" : "Usuario";
+                var userRole = roles.Contains("ADMINISTRADOR") ? "administrador" : "Usuario";
 
                 // Generar el token con el usuario y el rol
                 var token = GenerateToken(user, userRole);

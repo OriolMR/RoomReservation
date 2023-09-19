@@ -19,20 +19,21 @@ namespace RoomReservation.Controllers
             this.roomReservationDbContext = roomReservationDbContext;
         }
 
-        // GET: api/Cities
         [HttpGet]
         public async Task<IActionResult> GetAllCities()
         {
-            var cities = await roomReservationDbContext.Cities.ToListAsync();
+            var cities = await roomReservationDbContext
+                .Cities
+                .ToListAsync();
 
             return Ok(cities);
         }
 
-        // GET: api/Cities/{id}
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetCityById([FromRoute] int id)
         {
-            var city = await roomReservationDbContext.Cities.FirstOrDefaultAsync(x => x.cityId == id);
+            var city = await roomReservationDbContext.Cities
+                .FirstOrDefaultAsync(x => x.cityId == id);
 
             if (city != null)
             {
@@ -42,11 +43,13 @@ namespace RoomReservation.Controllers
             return NotFound();
         }
 
-        // GET: api/Cities/{countryId}
         [HttpGet("getCitiesByCountryId/{countryId:int}")]
         public async Task<IActionResult> GetCitiesByCountryId(int countryId)
         {
-            var cities = await roomReservationDbContext.Cities.Where(x => x.countryId == countryId).ToListAsync();
+            var cities = await roomReservationDbContext
+                .Cities
+                .Where(x => x.countryId == countryId)
+                .ToListAsync();
 
             if (cities != null && cities.Count > 0)
             {
@@ -56,24 +59,27 @@ namespace RoomReservation.Controllers
             return NotFound();
         }
 
-        // POST: api/Cities
         [HttpPost]
         [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> AddCity([FromBody] City city)
         {
-            city.cityId = 0; // Asignar valor inicial a CityId
-            await roomReservationDbContext.Cities.AddAsync(city);
-            await roomReservationDbContext.SaveChangesAsync();
+            city.cityId = 0;
+            await roomReservationDbContext
+                 .Cities
+                 .AddAsync(city);
+            await roomReservationDbContext
+                 .SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetCityById), new { id = city.cityId }, city);
         }
 
-        // PUT: api/Cities/{id}
         [HttpPut("{id:int}")]
         [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> UpdateCity(int id, [FromBody] City city)
         {
-            var existingCity = await roomReservationDbContext.Cities.FirstOrDefaultAsync(x => x.cityId == id);
+            var existingCity = await roomReservationDbContext
+                .Cities
+                .FirstOrDefaultAsync(x => x.cityId == id);
 
             if (existingCity != null)
             {
@@ -87,7 +93,6 @@ namespace RoomReservation.Controllers
             return NotFound();
         }
 
-        // DELETE: api/Cities/{id}
         [HttpDelete("{id:int}")]
         [Authorize(Roles = "Administrador")]
         public async Task<IActionResult> DeleteCity(int id)
@@ -96,8 +101,11 @@ namespace RoomReservation.Controllers
 
             if (city != null)
             {
-                roomReservationDbContext.Cities.Remove(city);
-                await roomReservationDbContext.SaveChangesAsync();
+                roomReservationDbContext
+                    .Cities
+                    .Remove(city);
+                await roomReservationDbContext
+                    .SaveChangesAsync();
 
                 return NoContent();
             }
@@ -106,5 +114,7 @@ namespace RoomReservation.Controllers
         }
     }
 }
+
+
 
 
