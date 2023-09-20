@@ -12,12 +12,14 @@ import { ApiService } from '../../service/api.service';
 })
 export class RegisterComponent {
   UserName: string = '';
-  Email: string = '';
+  UserEmail: string = '';
   PasswordHash: string = '';
   ConfirmPassword: string = '';
   passwordEntered: boolean = false;
   usernameError: boolean = false;
   usernameErrorMessage: string = '';
+  useremailError: boolean = false;
+  useremailErrorMessage: string = '';
   passwordError: boolean = false;
   passwordErrorMessage: string = '';
   registrationError: boolean = false;
@@ -32,8 +34,8 @@ export class RegisterComponent {
     if (this.UserName.length > 4) {
       this.verifyUsername();
     } else {
-      this.usernameError = false;
-      this.usernameErrorMessage = '';
+      this.usernameError = true;
+      this.usernameErrorMessage = 'Username must be at least 5 characters';
       this.checkRegistrationValidity(); // Verificar la validez del registro cuando el nombre de usuario está vacío
     }
   }
@@ -43,14 +45,14 @@ export class RegisterComponent {
     this.apiService.getUserByUsername(this.UserName).subscribe(
       (response) => {
 
-        // El nombre de usuario está disponible
+        // El nombre de usuario ya existe
         this.usernameError = true;
         this.usernameErrorMessage = 'Username is already taken';
         this.checkRegistrationValidity(); // Verificar la validez del registro después de obtener la respuesta de la API
 
       },
       error => {
-        // El nombre de usuario ya existe
+        // El nombre de usuario está disponible
         this.usernameError = false;
         this.usernameErrorMessage = '';
         this.checkRegistrationValidity(); // Verificar la validez del registro después de obtener la respuesta de la API
@@ -58,6 +60,38 @@ export class RegisterComponent {
       }
     );
   }
+
+  checkUsermail() {
+    if (this.UserEmail.length > 4) {
+      this.verifyUserEmail();
+    } else {
+      this.useremailError = false;
+      this.useremailErrorMessage = '';
+      this.checkRegistrationValidity();
+    }
+  }
+
+  verifyUserEmail() {
+    // Realizar la llamada a la API para verificar si el nombre de usuario está disponible
+    this.apiService.getUserByUseremail(this.UserEmail).subscribe(
+      (response) => {
+
+        // El nombre de usuario ya existe
+        this.useremailError = true;
+        this.useremailErrorMessage = 'Useremail is already taken';
+        this.checkRegistrationValidity(); // Verificar la validez del registro después de obtener la respuesta de la API
+
+      },
+      error => {
+        // El nombre de usuario está disponible
+        this.usernameError = false;
+        this.usernameErrorMessage = '';
+        this.checkRegistrationValidity(); // Verificar la validez del registro después de obtener la respuesta de la API
+
+      }
+    );
+  }
+
 
   checkPassword() {
     this.verifyPassword();
@@ -104,7 +138,7 @@ export class RegisterComponent {
     if (this.PasswordHash !== this.ConfirmPassword) {
       this.registrationError = true;
       this.registrationErrorMessage = 'Passwords do not match';
-    } else if (this.usernameError || this.passwordError) {
+    } else if (this.usernameError || this.passwordError || this.useremailError) {
       this.registrationError = true;
       this.registrationErrorMessage = 'Registration data is invalid';
     } else {
@@ -123,7 +157,7 @@ export class RegisterComponent {
 
     const userData = {
       UserName: this.UserName,
-      Email: this.Email,
+      Email: this.UserEmail,
       PasswordHash: this.PasswordHash
     };
 
@@ -134,7 +168,8 @@ export class RegisterComponent {
      
           console.log('Registro exitoso:', response);
           this.toastr.success('Registration successful');
-          this.router.navigate(['/login']);
+        this.router.navigate(['/login']);
+        console.log(response);
         },
         error => {
           const validationErrors = error.error;

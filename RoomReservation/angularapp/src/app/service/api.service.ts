@@ -63,6 +63,11 @@ export class ApiService {
     return this.get('users');
   }
 
+  //-----//
+  getUserByUseremail(useremail: string): Observable<any> {
+    return this.get(`users/useremail/${useremail}`);
+  }
+
   getReserves(): Observable<any[]> {
     return this.get('reserves');
   }

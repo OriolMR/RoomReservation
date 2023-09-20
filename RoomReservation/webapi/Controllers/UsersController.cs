@@ -68,6 +68,22 @@ namespace RoomReservation.Controllers
             return NotFound();
         }
 
+        // GET: api/Users/{useremail}
+        [HttpGet("useremail/{useremail}")]
+        public async Task<IActionResult> GetUserByUseremail(string useremail)
+        {
+            var user = await identityAppDbContext
+                           .Users
+                           .FirstOrDefaultAsync(x => x.Email == useremail);
+
+            if (user != null)
+            {
+                return Ok(user);
+            }
+
+            return NotFound();
+        }
+
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUser(string id, [FromBody] UpdateUserModel userModel)
         {
