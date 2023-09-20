@@ -11,7 +11,6 @@
     <BuildOutputFolder>$(MSBuildProjectDirectory)\dist\angularapp</BuildOutputFolder>
   </PropertyGroup>
   <ItemGroup>
-    <Folder Include="src\app\service\" />
     <Folder Include="src\assets\swagger\" />
   </ItemGroup>
 </Project>

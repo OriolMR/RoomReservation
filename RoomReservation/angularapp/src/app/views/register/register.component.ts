@@ -155,7 +155,6 @@ export class RegisterComponent {
           } else {
             this.toastr.error('Error en el registro', 'Error');
           }
-
         }
       );
 
