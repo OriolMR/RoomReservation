@@ -73,6 +73,7 @@ export class RegisterComponent {
 
   verifyUserEmail() {
     // Realizar la llamada a la API para verificar si el nombre de usuario está disponible
+    console.log(this.UserEmail);
     this.apiService.getUserByUseremail(this.UserEmail).subscribe(
       (response) => {
 
