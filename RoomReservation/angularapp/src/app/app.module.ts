@@ -43,6 +43,7 @@ import { MeetingRoomsDeleteComponent } from './views/admin/meeting-rooms/meeting
 import { UsersDeleteComponent } from './views/admin/users/users-delete/users-delete.component';
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
 import { ReservesDeleteComponent } from './views/admin/reserves-admin/reserves-delete/reserves-delete.component';
+import { UsersaddModalComponent } from './views/admin/usersadd-modal/usersadd-modal.component';
 
 ToastrModule.forRoot({
   positionClass: 'toast-top-center',
@@ -71,7 +72,8 @@ ToastrModule.forRoot({
     MeetingRoomsDeleteComponent,
     UsersDeleteComponent,
     PageNotFoundComponent,
-    ReservesDeleteComponent
+    ReservesDeleteComponent,
+    UsersaddModalComponent
   ],
   imports: [
     BrowserModule,
