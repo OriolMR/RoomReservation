@@ -10,7 +10,6 @@ namespace webapi.Models
 
         public DateTime ReserveDate { get; set; }
 
-
         public TimeSpan StartingHour { get; set; }
 
         public TimeSpan EndingHour { get; set; }

@@ -1,16 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, Inject, ViewChild } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IgxTimePickerComponent } from 'igniteui-angular/lib/time-picker/time-picker.component';
+import { DatePipe } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
-import { ApiService } from '../../service/api.service';
-
+import { ApiService } from '../../../service/api.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-usersadd-modal',
+  templateUrl: './usersadd-modal.component.html',
+  styleUrls: ['./usersadd-modal.component.css']
 })
-export class RegisterComponent {
+export class UsersaddModalComponent {
+  /* Create user */ 
   UserName: string = '';
   UserEmail: string = '';
   PasswordHash: string = '';
@@ -28,7 +32,24 @@ export class RegisterComponent {
   passwordMatchError: boolean = false;
   passwordMatchErrorMessage: string = '';
 
-  constructor(private apiService: ApiService, private toastr: ToastrService, private http: HttpClient, private router: Router) { }
+  @ViewChild('toast', { static: true })
+  private toast!: { open: () => void; };
+  form: FormGroup;
+
+  constructor(
+    public dialogRef: MatDialogRef<UsersaddModalComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private apiService: ApiService,
+    private http: HttpClient,
+    private fb: FormBuilder,
+    private datePipe: DatePipe,
+    private toastr: ToastrService,
+    private router: Router
+  ) {
+    this.form = this.fb.group({
+      timePicker: ['', Validators.required]
+    });
+  }
 
   checkUsername() {
     if (this.UserName.length > 4) {
@@ -60,7 +81,6 @@ export class RegisterComponent {
       }
     );
   }
-
   checkUsermail() {
     if (this.UserEmail.length > 4) {
       this.verifyUserEmail();
@@ -76,8 +96,8 @@ export class RegisterComponent {
     console.log(this.UserEmail);
     this.apiService.getUserByUseremail(this.UserEmail).subscribe(
       (response) => {
-        console.log("response is: " + response);
-   
+
+        // El nombre de usuario ya existe
         this.useremailError = true;
         this.useremailErrorMessage = 'Useremail is already taken';
         this.checkRegistrationValidity(); // Verificar la validez del registro después de obtener la respuesta de la API
@@ -166,33 +186,44 @@ export class RegisterComponent {
 
     this.apiService.registerUser(userData).subscribe(
       (response) => {
-     
-          console.log('Registro exitoso:', response);
-          this.toastr.success('Registration successful');
-        this.router.navigate(['/login']);
+
+        console.log('Registro exitoso:', response);
+        this.toastr.success('Registration successful');
+        this.close();
         console.log(response);
-        },
-        error => {
-          const validationErrors = error.error;
-          console.log('Errores de validación:', validationErrors);
+      },
+      error => {
+        const validationErrors = error.error;
+        console.log('Errores de validación:', validationErrors);
 
 
-          if (validationErrors[''] && validationErrors[''].length > 0) {
-            const error = validationErrors[''][0];
-            if (error.includes("Passwords must have at least one digit ('0'-'9').")) {
-              this.toastr.error("Passwords must have at least one digit ('0'-'9').", 'Error');
-            } else if (error.includes("Passwords must have at least one lowercase ('a'-'z').")) {
-              this.toastr.error("Passwords must have at least one lowercase ('a'-'z').", 'Error');
-            } else if (error.includes("Username '" + this.UserName + "' is invalid, can only contain letters or digits.")) {
-              this.toastr.error("Username cannot contain spaces.", 'Error');
-            } else {
-              this.toastr.error('Error en el registro', 'Error');
-            }
+        if (validationErrors[''] && validationErrors[''].length > 0) {
+          const error = validationErrors[''][0];
+          if (error.includes("Passwords must have at least one digit ('0'-'9').")) {
+            this.toastr.error("Passwords must have at least one digit ('0'-'9').", 'Error');
+          } else if (error.includes("Passwords must have at least one lowercase ('a'-'z').")) {
+            this.toastr.error("Passwords must have at least one lowercase ('a'-'z').", 'Error');
+          } else if (error.includes("Username '" + this.UserName + "' is invalid, can only contain letters or digits.")) {
+            this.toastr.error("Username cannot contain spaces.", 'Error');
           } else {
             this.toastr.error('Error en el registro', 'Error');
           }
+        } else {
+          this.toastr.error('Error en el registro', 'Error');
         }
-      );
+      }
+    );
+  }
 
+  close(): void {
+    this.dialogRef.close();
+  }
+
+  onOverlayClick(event: MouseEvent): void {
+    event.stopPropagation();
+  }
+
+  onContentClick(event: MouseEvent): void {
+    event.stopPropagation();
   }
 }

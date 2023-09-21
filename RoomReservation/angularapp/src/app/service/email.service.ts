@@ -11,6 +11,6 @@ export class EmailService {
   constructor(private http: HttpClient) { }
 
   requestPasswordReset(emailData: any) {
-    return this.http.post('${this.apiUrl}/send', emailData);
+    return this.http.post(`${this.apiUrl}/password/reset`, emailData);
   }
 }

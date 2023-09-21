@@ -8,12 +8,13 @@ import { EmailService } from '../../service/email.service';
   styleUrls: ['./forgot-password.component.css']
 })
 export class ForgotPasswordComponent {
+  UserEmail: string = '';
   constructor(private emailService: EmailService, private router: Router) { }
 
-  email: string = '';
-
   requestPasswordReset() {
-    this.emailService.requestPasswordReset(this.email).subscribe(
+    
+    console.log("Email is :" + this.UserEmail);
+    this.emailService.requestPasswordReset(this.UserEmail).subscribe(
       response => {
         console.log('Solicitud de restablecimiento de contraseña enviada con éxito', response);
       },

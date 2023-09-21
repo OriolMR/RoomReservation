@@ -25,7 +25,7 @@ export class UpdateModalComponent {
   public min = '00:00';
   public max = '09:00';
   form: FormGroup;
-
+ 
   constructor(
     public dialogRef: MatDialogRef<UpdateModalComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
