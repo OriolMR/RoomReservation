@@ -7,7 +7,6 @@ using Microsoft.IdentityModel.Tokens;
 using System.Security.Claims;
 using System.Text;
 using System.IdentityModel.Tokens.Jwt;
-using System.Data;
 
 namespace webapi.Controllers
 {
@@ -62,8 +61,6 @@ namespace webapi.Controllers
         }
 
         [HttpPost("login")]
-
-
         public async Task<IActionResult> Login([FromBody] LoginViewModel loginData)
         {
             if (!loginData.ValidateUserInput())

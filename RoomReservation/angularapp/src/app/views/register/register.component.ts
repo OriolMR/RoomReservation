@@ -76,8 +76,8 @@ export class RegisterComponent {
     console.log(this.UserEmail);
     this.apiService.getUserByUseremail(this.UserEmail).subscribe(
       (response) => {
-
-        // El nombre de usuario ya existe
+        console.log("response is: " + response);
+   
         this.useremailError = true;
         this.useremailErrorMessage = 'Useremail is already taken';
         this.checkRegistrationValidity(); // Verificar la validez del registro después de obtener la respuesta de la API
