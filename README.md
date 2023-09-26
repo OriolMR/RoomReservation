@@ -124,11 +124,30 @@ Los estilos en este caso nos indican una serie de directrices acerca de que tan 
 **app.component.ts**
 <br>
 
-lorem ipsum
+La clase AppComponent se utiliza como el componente raíz de la aplicación Angular. Es el componente principal que representa la página principal de la aplicación.
+
+- **Selector**: El componente se utiliza en el HTML de la aplicación utilizando el selector <app-root></app-root>. Cualquier contenido definido en este componente se renderizará en el lugar donde se coloque <app-root></app-root> en el HTML.
+
+- **Plantilla y Estilos**: La propiedad templateUrl especifica la ubicación de la plantilla HTML que se utiliza para renderizar el contenido del componente. La propiedad styleUrls especifica la ubicación de un archivo CSS que se utiliza para aplicar estilos al componente.
+
+- **Datos del Componente**: En este caso, la clase AppComponent tiene una única propiedad llamada title, que tiene el valor 'AngularFrontend'.
+
+- **Interpolación**: La propiedad title se puede usar en la plantilla HTML del componente para mostrar su valor en la página. 
 
 **app.module.ts**
 <br>
-lorem ipsum
+
+La clase AppModule se utiliza para configurar y definir los módulos y componentes que forman parte de la aplicación.
+
+- **Importación de módulos**: La sección imports de AppModule lista todos los módulos que se utilizan en la aplicación. Estos módulos se importan desde bibliotecas o archivos locales y proporcionan funcionalidades adicionales a la aplicación. 
+
+- **Declaración de componentes**: La sección declarations enumera todos los componentes que forman parte de la aplicación. Cada componente debe declararse aquí para que Angular los conozca y pueda usarlos. 
+
+- **Configuración de proveedores de servicios**: La sección providers se utiliza para configurar los proveedores de servicios que se utilizarán en toda la aplicación. Por ejemplo, se ha configurado un interceptor HTTP llamado TokenInterceptor, que puede manipular las solicitudes HTTP antes de enviarlas. 
+
+- **Bootstrap**: La propiedad bootstrap se utiliza para especificar el componente raíz de la aplicación. En este caso, el componente raíz es AppComponent, lo que significa que este componente se carga cuando se inicia la aplicación Angular.
+
+- **Configuración de ToastrModule**: Dentro de la sección imports, se ha utilizado ToastrModule.forRoot(...) para configurar Toastr, que es una librería de notificaciones en la aplicación. Esto permite configurar opciones como la posición de las notificaciones (positionClass) y las clases CSS personalizadas (toastClass) que se aplicarán a las notificaciones
 
 ### Menu component
 **menu.component.html**
@@ -144,13 +163,86 @@ El menu component, mas reconocido como header, es la cabecera de la aplicacion. 
 **menu.component.ts**
 <br>
 
-lorem ipsum
+Esta clase define un componente de interfaz de usuario. El componente representa y controla la funcionalidad relacionada con el menú de la aplicación.
+
+- **Inicialización**: En el método _ngOnInit()_, se realiza la inicialización del componente, verifica si el usuario está autenticado mediante el uso de la función isAuthenticated().
+
+- **Control de Autenticación**: La función _isAuthenticated()_ verifica si el usuario está autenticado. Esto se hace utilizando el servicio AuthenticationGuard para determinar si el usuario ha iniciado sesión.
+
+- **Control de Rol de Administrador**: La función _isAdmin()_ verifica si el usuario tiene el rol de administrador. Esto también se hace utilizando el servicio AuthenticationGuard.
+
+- **Cierre de Sesión**: El método _logout()_ se utiliza para cerrar la sesión del usuario. Envía una solicitud al servicio ApiService para realizar la acción de cierre de sesión. En caso de éxito, redirige al usuario a la página de inicio de sesión.
 
 > ### Service folder
 **api.service.ts**
 <br>
 
-lorem ipsum
+El servicio ApiService es una clase en una aplicación Angular que se utiliza para realizar solicitudes HTTP a una API en el servidor. Aquí está un resumen de lo que hace esta clase:
+
+- **URL de la API**: La clase tiene una propiedad privada llamada apiUrl que almacena la URL base de la API a la que se realizarán las solicitudes HTTP. En este caso, la URL base es 'https://localhost:7281/api'.
+
+- **Constructor**: El constructor de la clase inyecta el servicio HttpClient, que se utiliza para realizar las solicitudes HTTP.
+
+- **Manejo de Errores**: La clase contiene un método privado llamado handleError que se utiliza para manejar los errores que puedan ocurrir durante las solicitudes HTTP. En caso de error, este método devuelve un mensaje genérico de error.
+
+- **Métodos CRUD**: La clase ApiService proporciona métodos para realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) en la API. Estos métodos son get, post, put, y delete. Cada uno de estos métodos toma un endpoint (una ruta específica de la API) y opcionalmente datos para enviar en la solicitud. Realizan la solicitud HTTP correspondiente a la API y manejan los errores utilizando el método handleError.
+
+Además de los métodos CRUD genéricos, la clase ApiService proporciona métodos específicos para obtener datos de la API:
+
+- Métodos GET:
+
+_**getCountries()**_: Obtiene una lista de países desde la API.
+
+_**getCities()**_: Obtiene una lista de ciudades desde la API.
+
+_**getOffices()**_: Obtiene una lista de oficinas desde la API.
+
+_**getMeetingRooms()**_: Obtiene una lista de salas de reuniones desde la API.
+
+_**getUsers()**_: Obtiene una lista de usuarios desde la API.
+
+_**getUserByUseremail(useremail: string)**_: Obtiene un usuario por su dirección de correo electrónico.
+
+_**getReserves()**_: Obtiene una lista de reservas desde la API.
+
+_**getEmailFromUserId(userId: string)**_: Obtiene la dirección de correo electrónico de un usuario por su identificador de usuario.
+
+_**getReservesByMeetingRoomId(meetingRoomId: number)**_: Obtiene las reservas asociadas a una sala de reuniones específica.
+
+_**getReservesByUserId(userId: string)**_: Obtiene las reservas asociadas a un usuario específico.
+
+_**getUserByUsername(username: string)**_: Obtiene un usuario por su nombre de usuario.
+
+_**getCitiesByCountryId(countryId: number)**_: Obtiene una lista de ciudades asociadas a un país específico.
+
+_**getOfficesByCityId(cityId: number)**_: Obtiene una lista de oficinas asociadas a una ciudad específica.
+
+_**getMeetingRoomsByOfficeId(officeId: number)**_: Obtiene una lista de salas de reuniones asociadas a una oficina específica.
+
+_**getMeetingRoomById(meetingRoomId: number)**_: Obtiene una sala de reuniones por su identificador.
+
+- Métodos POST:
+
+_**registerUser(userData: any)**_: Registra un nuevo usuario enviando datos de usuario a la API.
+
+_**createReservation(reservaData: any)**_: Crea una nueva reserva enviando datos de reserva a la API.
+
+_**login(userData: any)**_: Inicia sesión de usuario enviando datos de inicio de sesión a la API.
+
+_**logout()**_: Cierra la sesión del usuario y elimina el token de autenticación del almacenamiento local.
+
+- Métodos PUT:
+
+_**updateUserProfile(userId: string, profileData: any)**_: Actualiza el perfil de un usuario específico enviando los datos del perfil a la API. 
+
+_**updateReserveById(reservaId: number, reservaData: any)**_: Actualiza una reserva específica enviando los datos de la reserva a la API.
+
+- Métodos DELETE:
+
+_**deleteReserveById(reserveId: number)**_: Elimina una reserva específica enviando una solicitud de eliminación a la API. 
+
+_**deleteUserById(userId: string)**_: Elimina un usuario específico enviando una solicitud de eliminación a la API.
+
 
 > ### Shared folder
 > #### Interfaces
@@ -198,7 +290,7 @@ Las opciones tienen sombreado bajo de color negro. Con el atributo hover el somb
 **home.component.ts**
 <br>
 
-lorem ipsum
+Este componente muestra una lista de elementos (homeEntradas) con títulos, resúmenes y enlaces a diferentes partes de la aplicación. Cuando se selecciona una entrada, se muestra un cuadro de alerta con el título de la entrada. Se utiliza para proporcionar enlaces y una experiencia de navegación básica en la página de inicio de la aplicación.
 
 > #### Login View:
 **login.component.html**
@@ -219,7 +311,13 @@ La tipografia de los textos es Rubik.
 **login.component.ts**
 <br>
 
-lorem ipsum
+Este componente se utiliza para gestionar el proceso de inicio de sesión en la aplicación.
+
+- _**login()**_: Dentro de este método, después de almacenar el token de autenticación y redirigir al usuario, se realiza una comprobación adicional para verificar si el token se almacenó correctamente en el localStorage. Si el token se encuentra en el localStorage, se registra un mensaje en la consola indicando su presencia.
+
+- **Estado de Autenticación**: El componente también interactúa con **AuthenticationGuard**. Después de un inicio de sesión exitoso, se establece el estado de autenticación en **true** utilizando this.authGuard.setAuthenticated(true). 
+
+- **Manejo de Errores**: En caso de que ocurra un error en la solicitud de inicio de sesión, se utiliza el servicio toastr para mostrar un mensaje de error en la interfaz de usuario.
 
 > #### Profile View:
 **profile.component.html**
