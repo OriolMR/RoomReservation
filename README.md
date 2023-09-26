@@ -126,13 +126,13 @@ Los estilos en este caso nos indican una serie de directrices acerca de que tan 
 
 La clase AppComponent se utiliza como el componente raíz de la aplicación Angular. Es el componente principal que representa la página principal de la aplicación.
 
-Selector: El componente se utiliza en el HTML de la aplicación utilizando el selector <app-root></app-root>. Cualquier contenido definido en este componente se renderizará en el lugar donde se coloque <app-root></app-root> en el HTML.
+**Selector**: El componente se utiliza en el HTML de la aplicación utilizando el selector <app-root></app-root>. Cualquier contenido definido en este componente se renderizará en el lugar donde se coloque <app-root></app-root> en el HTML.
 
-Plantilla y Estilos: La propiedad templateUrl especifica la ubicación de la plantilla HTML que se utiliza para renderizar el contenido del componente. La propiedad styleUrls especifica la ubicación de un archivo CSS que se utiliza para aplicar estilos al componente.
+**Plantilla y Estilos**: La propiedad templateUrl especifica la ubicación de la plantilla HTML que se utiliza para renderizar el contenido del componente. La propiedad styleUrls especifica la ubicación de un archivo CSS que se utiliza para aplicar estilos al componente.
 
-Datos del Componente: En este caso, la clase AppComponent tiene una única propiedad llamada title, que tiene el valor 'AngularFrontend'.
+**Datos del Componente**: En este caso, la clase AppComponent tiene una única propiedad llamada title, que tiene el valor 'AngularFrontend'.
 
-Interpolación: La propiedad title se puede usar en la plantilla HTML del componente para mostrar su valor en la página. Por ejemplo, <h1>{{ title }}</h1> se traducirá en un encabezado con el texto "AngularFrontend" en la página principal de la aplicación.
+**Interpolación**: La propiedad title se puede usar en la plantilla HTML del componente para mostrar su valor en la página. Por ejemplo, <h1>{{ title }}</h1> se traducirá en un encabezado con el texto "AngularFrontend" en la página principal de la aplicación.
 
 **app.module.ts**
 <br>
@@ -177,7 +177,80 @@ Cierre de Sesión: El método logout() se utiliza para cerrar la sesión del usu
 **api.service.ts**
 <br>
 
-lorem ipsum
+El servicio ApiService es una clase en una aplicación Angular que se utiliza para realizar solicitudes HTTP a una API en el servidor. Aquí está un resumen de lo que hace esta clase:
+
+**URL de la API**: La clase tiene una propiedad privada llamada apiUrl que almacena la URL base de la API a la que se realizarán las solicitudes HTTP. En este caso, la URL base es 'https://localhost:7281/api'.
+
+**Constructor**: El constructor de la clase inyecta el servicio HttpClient, que se utiliza para realizar las solicitudes HTTP.
+
+**Manejo de Errores**: La clase contiene un método privado llamado handleError que se utiliza para manejar los errores que puedan ocurrir durante las solicitudes HTTP. En caso de error, este método devuelve un mensaje genérico de error.
+
+**Métodos CRUD**: La clase ApiService proporciona métodos para realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) en la API. Estos métodos son get, post, put, y delete. Cada uno de estos métodos toma un endpoint (una ruta específica de la API) y opcionalmente datos para enviar en la solicitud. Realizan la solicitud HTTP correspondiente a la API y manejan los errores utilizando el método handleError.
+
+**Métodos Específicos de Obtención de Datos**: Además de los métodos CRUD genéricos, la clase ApiService proporciona métodos específicos para obtener datos de la API:
+
+- Métodos GET:
+
+_**getCountries()**_: Obtiene una lista de países desde la API.
+
+_**getCities()**_: Obtiene una lista de ciudades desde la API.
+
+_**getOffices()**_: Obtiene una lista de oficinas desde la API.
+
+_**getMeetingRooms()**_: Obtiene una lista de salas de reuniones desde la API.
+
+_**getUsers()**_: Obtiene una lista de usuarios desde la API.
+
+_**getUserByUseremail(useremail: string)**_: Obtiene un usuario por su dirección de correo electrónico.
+
+_**getReserves()**_: Obtiene una lista de reservas desde la API.
+
+_**getEmailFromUserId(userId: string)**_: Obtiene la dirección de correo electrónico de un usuario por su identificador de usuario.
+
+_**getReservesByMeetingRoomId(meetingRoomId: number)**_: Obtiene las reservas asociadas a una sala de reuniones específica.
+
+_**getReservesByUserId(userId: string)**_: Obtiene las reservas asociadas a un usuario específico.
+
+_**getUserByUsername(username: string)**_: Obtiene un usuario por su nombre de usuario.
+
+_**getCitiesByCountryId(countryId: number)**_: Obtiene una lista de ciudades asociadas a un país específico.
+
+_**getOfficesByCityId(cityId: number)**_: Obtiene una lista de oficinas asociadas a una ciudad específica.
+
+_**getMeetingRoomsByOfficeId(officeId: number)**_: Obtiene una lista de salas de reuniones asociadas a una oficina específica.
+
+_**getMeetingRoomById(meetingRoomId: number)**_: Obtiene una sala de reuniones por su identificador.
+
+- Métodos POST:
+
+_**registerUser(userData: any)**_: Registra un nuevo usuario enviando datos de usuario a la API.
+
+_**createReservation(reservaData: any)**_: Crea una nueva reserva enviando datos de reserva a la API.
+
+_**login(userData: any)**_: Inicia sesión de usuario enviando datos de inicio de sesión a la API.
+
+_**logout()**_: Cierra la sesión del usuario y elimina el token de autenticación del almacenamiento local.
+
+- Métodos PUT:
+
+_**updateUserProfile(userId: string, profileData: any)**_: Actualiza el perfil de un usuario específico enviando los datos del perfil a la API. 
+
+_**updateReserveById(reservaId: number, reservaData: any)**_: Actualiza una reserva específica enviando los datos de la reserva a la API.
+
+- Métodos DELETE:
+
+_**deleteReserveById(reserveId: number)**_: Elimina una reserva específica enviando una solicitud de eliminación a la API. 
+
+_**deleteUserById(userId: string)**_: Elimina un usuario específico enviando una solicitud de eliminación a la API.
+
+
+
+
+
+
+
+
+
 
 > ### Shared folder
 > #### Interfaces
