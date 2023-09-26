@@ -1,13 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Net;
 using System.Net.Mail;
-using System.Threading.Tasks;
 using webapi.Models;
 
 namespace webapi.Controllers
 {
-    [Route("api")]
     [ApiController]
+    [Route("api/[controller]")]
+   
     public class EmailController : ControllerBase
     {
         private readonly IConfiguration configuration;
@@ -17,7 +17,7 @@ namespace webapi.Controllers
             this.configuration = configuration;
         }
 
-        [HttpPost("password/reset")]
+        [HttpPost]
         public async Task<IActionResult> RequestPasswordReset([FromBody] EmailDataModel emailData)
         {
             try

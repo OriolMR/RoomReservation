@@ -16,7 +16,6 @@ namespace RoomReservation.Controllers
         {
             this.roomReservationDbContext = roomReservationDbContext;
         }
-
     
         [HttpGet]
         public async Task<IActionResult> GetAllRooms()
@@ -27,8 +26,6 @@ namespace RoomReservation.Controllers
 
             return Ok(rooms);
         }
-
-   
 
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetRoomById([FromRoute] int id)
@@ -61,7 +58,6 @@ namespace RoomReservation.Controllers
 
             return NotFound();
         }
-
 
         // POST: api/Rooms
         [HttpPost]

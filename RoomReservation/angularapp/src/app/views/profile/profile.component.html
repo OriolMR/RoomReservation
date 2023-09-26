@@ -1,7 +1,10 @@
 <body>
-  <div id="profile-container" style="width: 350px" *ngIf="showProfile">
+  <div id="profile-container"
+       style="width: 350px"
+       *ngIf="showProfile">
 
     <br><br>
+
     <h2>Profile</h2>
 
     <div>
@@ -15,50 +18,75 @@
       <br>
       <label>{{ newEmail }}</label>
     </div>
+
     <div>
-      <button class="top_button" (click)="goBack()">Back</button>
+      <button class="top_button"
+              (click)="goBack()">Back
+      </button>
       <button (click)="editProfileWindow()">Update</button>
     </div>
-
   </div>
 
   <div id="edit-container" *ngIf="showEditProfile">
 
     <br><br>
+
     <h2>Update profile</h2>
 
     <form role="form">
 
       <div class="testClass">
+
         <label>Username:</label>
+
         <div>
-          <input type="text" name="newUserName" [(ngModel)]="newUserName">
+          <input type="text"
+                 name="newUserName"
+                 [(ngModel)]="newUserName">
         </div>
       </div>
+
       <div class="testClass">
+
         <label>Email:</label>
+
         <div>
-          <input type="text" name="newEmail" [(ngModel)]="newEmail">
+          <input type="text"
+                 name="newEmail"
+                 [(ngModel)]="newEmail">
         </div>
       </div>
+
       <div class="testClass">
+
         <label>Actual Password:</label>
+
         <div>
-          <input type="password" name="currentPasswordHash" [(ngModel)]="currentPasswordHash">
+          <input type="password"
+                 name="currentPasswordHash"
+                 [(ngModel)]="currentPasswordHash">
         </div>
       </div>
+
       <div class="testClass">
+
         <label>New Password:</label>
+
         <div>
-          <input type="password" name="newPasswordHash" [(ngModel)]="newPasswordHash">
+          <input type="password"
+                 name="newPasswordHash"
+                 [(ngModel)]="newPasswordHash">
         </div>
       </div>
+
       <div class="testClass">
-        <button class="top_button" (click)="profileWindow()">Back</button>
+
+        <button class="top_button"
+                (click)="profileWindow()">Back
+        </button>
+
         <button (click)="saveProfile()">Save</button>
       </div>
-
     </form>
-
   </div>
 </body>

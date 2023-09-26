@@ -1,48 +1,92 @@
-
-
 <div class="home-container" style="width: 630px; display: flex; flex-direction: column;">
-  <div class="title-container">
 
-    <h2 id="tableLabel" class="center-title">New reservation</h2>
+  <div class="title-container">
+    <h2 id="tableLabel"
+        class="center-title">New reservation
+    </h2>
   </div>
 
   <div class="row align-items-center">
+
     <div class="col-md-4 title-container">
+
       <label for="country-names">Country:</label>
-      <select class="form-control" name="country-names" id="country-names" [(ngModel)]="selectedCountryId" (ngModelChange)="getCitiesByCountryId()">
+
+      <select class="form-control"
+              name="country-names"
+              id="country-names"
+              [(ngModel)]="selectedCountryId"
+              (ngModelChange)="getCitiesByCountryId()">
+
         <option value=""></option>
-        <option *ngFor="let country of countries" [value]="country.countryId">{{ country.countryName }}</option>
+
+        <option *ngFor="let country of countries"
+                [value]="country.countryId">{{ country.countryName }}
+        </option>
       </select>
     </div>
 
     <div class="col-md-4 title-container">
+
       <label for="city-names">City:</label>
-      <select class="form-control" name="city-names" id="city-names" [(ngModel)]="selectedCityId" (ngModelChange)="getOfficesByCityId()">
+
+      <select class="form-control"
+              name="city-names"
+              id="city-names"
+              [(ngModel)]="selectedCityId"
+              (ngModelChange)="getOfficesByCityId()">
+
         <option value=""></option>
-        <option *ngFor="let city of cities" [value]="city.cityId">{{ city.cityName }}</option>
+
+        <option *ngFor="let city of cities"
+                [value]="city.cityId">{{ city.cityName }}
+        </option>
       </select>
     </div>
 
     <div class="col-md-4 title-container">
       <label for="office-names">Office:</label>
-      <select class="form-control" name="office-names" id="office-names" [(ngModel)]="selectedOfficeId" (ngModelChange)="getMeetingRoomsByOfficeId()">
+      <select class="form-control"
+              name="office-names"
+              id="office-names"
+              [(ngModel)]="selectedOfficeId"
+              (ngModelChange)="getMeetingRoomsByOfficeId()">
+
         <option value=""></option>
-        <option *ngFor="let office of offices" [value]="office.officeId">{{ office.officeName }}</option>
+
+        <option *ngFor="let office of offices"
+                [value]="office.officeId">{{ office.officeName }}
+        </option>
       </select>
     </div>
   </div>
 
-  <div class="button-container" style="display: flex; justify-content: center; margin-top: 10px;">
-    <button type="button" class="btn btn-primary btn-block" routerLink="/home">Back</button>
-    <button type="button" class="btn btn-primary btn-block" style="margin-left: 50px;" (click)="clearSelection()">Clear Selection</button>
+  <div class="button-container"
+       style="display: flex;
+       justify-content: center;
+       margin-top: 10px;">
+
+    <button type="button"
+            class="btn btn-primary btn-block"
+            routerLink="/home">Back
+    </button>
+
+    <button type="button"
+            class="btn btn-primary btn-block"
+            style="margin-left: 50px;"
+            (click)="clearSelection()">Clear Selection
+    </button>
   </div>
 </div>
 
 <div class="meeting-rooms-container">
-  <div *ngFor="let room of filteredMeetingRooms" class="meeting-room-container"
+
+  <div *ngFor="let room of filteredMeetingRooms"
+       class="meeting-room-container"
        [ngClass]="{'available': room.available, 'unavailable': !room.available, 'selected': room.selected}"
        (click)="openModal(room)"
        style="cursor: pointer;">
+
     <h3>{{ room.meetingRoomName }}</h3>
   </div>
 </div>
