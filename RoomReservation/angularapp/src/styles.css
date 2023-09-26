@@ -9,11 +9,3 @@
 @import '~node_modules/ngx-toastr/toastr.css';
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
-/* TOAST */
-.custom-toast {
-  /* Tus estilos personalizados aquí */
-  top: 12px;
-  margin: 0 auto;
-  left: 50%;
-  background-color: blue;
-}

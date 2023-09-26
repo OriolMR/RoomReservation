@@ -45,6 +45,7 @@ import { PageNotFoundComponent } from './views/page-not-found/page-not-found.com
 import { ReservesDeleteComponent } from './views/admin/reserves-admin/reserves-delete/reserves-delete.component';
 import { UsersaddModalComponent } from './views/admin/usersadd-modal/usersadd-modal.component';
 import { ForgotPasswordComponent } from './views/forgot-password/forgot-password.component';
+import { UserseditModalComponent } from './views/admin/usersedit-modal/usersedit-modal.component';
 
 ToastrModule.forRoot({
   positionClass: 'toast-top-center',
@@ -75,7 +76,8 @@ ToastrModule.forRoot({
     PageNotFoundComponent,
     ReservesDeleteComponent,
     UsersaddModalComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    UserseditModalComponent
   ],
   imports: [
     BrowserModule,

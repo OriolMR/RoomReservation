@@ -14,7 +14,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./usersadd-modal.component.css']
 })
 export class UsersaddModalComponent {
-  /* Create user */ 
   UserName: string = '';
   UserEmail: string = '';
   PasswordHash: string = '';
