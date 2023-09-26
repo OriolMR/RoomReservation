@@ -126,28 +126,28 @@ Los estilos en este caso nos indican una serie de directrices acerca de que tan 
 
 La clase AppComponent se utiliza como el componente raíz de la aplicación Angular. Es el componente principal que representa la página principal de la aplicación.
 
-**Selector**: El componente se utiliza en el HTML de la aplicación utilizando el selector <app-root></app-root>. Cualquier contenido definido en este componente se renderizará en el lugar donde se coloque <app-root></app-root> en el HTML.
+- **Selector**: El componente se utiliza en el HTML de la aplicación utilizando el selector <app-root></app-root>. Cualquier contenido definido en este componente se renderizará en el lugar donde se coloque <app-root></app-root> en el HTML.
 
-**Plantilla y Estilos**: La propiedad templateUrl especifica la ubicación de la plantilla HTML que se utiliza para renderizar el contenido del componente. La propiedad styleUrls especifica la ubicación de un archivo CSS que se utiliza para aplicar estilos al componente.
+- **Plantilla y Estilos**: La propiedad templateUrl especifica la ubicación de la plantilla HTML que se utiliza para renderizar el contenido del componente. La propiedad styleUrls especifica la ubicación de un archivo CSS que se utiliza para aplicar estilos al componente.
 
-**Datos del Componente**: En este caso, la clase AppComponent tiene una única propiedad llamada title, que tiene el valor 'AngularFrontend'.
+- **Datos del Componente**: En este caso, la clase AppComponent tiene una única propiedad llamada title, que tiene el valor 'AngularFrontend'.
 
-**Interpolación**: La propiedad title se puede usar en la plantilla HTML del componente para mostrar su valor en la página. 
+- **Interpolación**: La propiedad title se puede usar en la plantilla HTML del componente para mostrar su valor en la página. 
 
 **app.module.ts**
 <br>
 
 La clase AppModule se utiliza para configurar y definir los módulos y componentes que forman parte de la aplicación.
 
-**Importación de módulos**: La sección imports de AppModule lista todos los módulos que se utilizan en la aplicación. Estos módulos se importan desde bibliotecas o archivos locales y proporcionan funcionalidades adicionales a la aplicación. 
+- **Importación de módulos**: La sección imports de AppModule lista todos los módulos que se utilizan en la aplicación. Estos módulos se importan desde bibliotecas o archivos locales y proporcionan funcionalidades adicionales a la aplicación. 
 
-**Declaración de componentes**: La sección declarations enumera todos los componentes que forman parte de la aplicación. Cada componente debe declararse aquí para que Angular los conozca y pueda usarlos. 
+- **Declaración de componentes**: La sección declarations enumera todos los componentes que forman parte de la aplicación. Cada componente debe declararse aquí para que Angular los conozca y pueda usarlos. 
 
-**Configuración de proveedores de servicios**: La sección providers se utiliza para configurar los proveedores de servicios que se utilizarán en toda la aplicación. Por ejemplo, se ha configurado un interceptor HTTP llamado TokenInterceptor, que puede manipular las solicitudes HTTP antes de enviarlas. 
+- **Configuración de proveedores de servicios**: La sección providers se utiliza para configurar los proveedores de servicios que se utilizarán en toda la aplicación. Por ejemplo, se ha configurado un interceptor HTTP llamado TokenInterceptor, que puede manipular las solicitudes HTTP antes de enviarlas. 
 
-**Bootstrap**: La propiedad bootstrap se utiliza para especificar el componente raíz de la aplicación. En este caso, el componente raíz es AppComponent, lo que significa que este componente se carga cuando se inicia la aplicación Angular.
+- **Bootstrap**: La propiedad bootstrap se utiliza para especificar el componente raíz de la aplicación. En este caso, el componente raíz es AppComponent, lo que significa que este componente se carga cuando se inicia la aplicación Angular.
 
-**Configuración de ToastrModule**: Dentro de la sección imports, se ha utilizado ToastrModule.forRoot(...) para configurar Toastr, que es una librería de notificaciones en la aplicación. Esto permite configurar opciones como la posición de las notificaciones (positionClass) y las clases CSS personalizadas (toastClass) que se aplicarán a las notificaciones
+- **Configuración de ToastrModule**: Dentro de la sección imports, se ha utilizado ToastrModule.forRoot(...) para configurar Toastr, que es una librería de notificaciones en la aplicación. Esto permite configurar opciones como la posición de las notificaciones (positionClass) y las clases CSS personalizadas (toastClass) que se aplicarán a las notificaciones
 
 ### Menu component
 **menu.component.html**
@@ -163,15 +163,15 @@ El menu component, mas reconocido como header, es la cabecera de la aplicacion. 
 **menu.component.ts**
 <br>
 
-**Componente de Interfaz de Usuario**: Esta clase define un componente de interfaz de usuario que forma parte de la aplicación Angular. El componente representa y controla la funcionalidad relacionada con el menú de la aplicación.
+Esta clase define un componente de interfaz de usuario. El componente representa y controla la funcionalidad relacionada con el menú de la aplicación.
 
-**Inicialización**: En el método _ngOnInit()_, se realiza la inicialización del componente, verifica si el usuario está autenticado mediante el uso de la función isAuthenticated().
+- **Inicialización**: En el método _ngOnInit()_, se realiza la inicialización del componente, verifica si el usuario está autenticado mediante el uso de la función isAuthenticated().
 
-**Control de Autenticación**: La función _isAuthenticated()_ verifica si el usuario está autenticado. Esto se hace utilizando el servicio AuthenticationGuard para determinar si el usuario ha iniciado sesión.
+- **Control de Autenticación**: La función _isAuthenticated()_ verifica si el usuario está autenticado. Esto se hace utilizando el servicio AuthenticationGuard para determinar si el usuario ha iniciado sesión.
 
-**Control de Rol de Administrador**: La función _isAdmin()_ verifica si el usuario tiene el rol de administrador. Esto también se hace utilizando el servicio AuthenticationGuard.
+- **Control de Rol de Administrador**: La función _isAdmin()_ verifica si el usuario tiene el rol de administrador. Esto también se hace utilizando el servicio AuthenticationGuard.
 
-**Cierre de Sesión**: El método _logout()_ se utiliza para cerrar la sesión del usuario. Envía una solicitud al servicio ApiService para realizar la acción de cierre de sesión. En caso de éxito, redirige al usuario a la página de inicio de sesión.
+- **Cierre de Sesión**: El método _logout()_ se utiliza para cerrar la sesión del usuario. Envía una solicitud al servicio ApiService para realizar la acción de cierre de sesión. En caso de éxito, redirige al usuario a la página de inicio de sesión.
 
 > ### Service folder
 **api.service.ts**
@@ -179,15 +179,15 @@ El menu component, mas reconocido como header, es la cabecera de la aplicacion. 
 
 El servicio ApiService es una clase en una aplicación Angular que se utiliza para realizar solicitudes HTTP a una API en el servidor. Aquí está un resumen de lo que hace esta clase:
 
-**URL de la API**: La clase tiene una propiedad privada llamada apiUrl que almacena la URL base de la API a la que se realizarán las solicitudes HTTP. En este caso, la URL base es 'https://localhost:7281/api'.
+- **URL de la API**: La clase tiene una propiedad privada llamada apiUrl que almacena la URL base de la API a la que se realizarán las solicitudes HTTP. En este caso, la URL base es 'https://localhost:7281/api'.
 
-**Constructor**: El constructor de la clase inyecta el servicio HttpClient, que se utiliza para realizar las solicitudes HTTP.
+- **Constructor**: El constructor de la clase inyecta el servicio HttpClient, que se utiliza para realizar las solicitudes HTTP.
 
-**Manejo de Errores**: La clase contiene un método privado llamado handleError que se utiliza para manejar los errores que puedan ocurrir durante las solicitudes HTTP. En caso de error, este método devuelve un mensaje genérico de error.
+- **Manejo de Errores**: La clase contiene un método privado llamado handleError que se utiliza para manejar los errores que puedan ocurrir durante las solicitudes HTTP. En caso de error, este método devuelve un mensaje genérico de error.
 
-**Métodos CRUD**: La clase ApiService proporciona métodos para realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) en la API. Estos métodos son get, post, put, y delete. Cada uno de estos métodos toma un endpoint (una ruta específica de la API) y opcionalmente datos para enviar en la solicitud. Realizan la solicitud HTTP correspondiente a la API y manejan los errores utilizando el método handleError.
+- **Métodos CRUD**: La clase ApiService proporciona métodos para realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) en la API. Estos métodos son get, post, put, y delete. Cada uno de estos métodos toma un endpoint (una ruta específica de la API) y opcionalmente datos para enviar en la solicitud. Realizan la solicitud HTTP correspondiente a la API y manejan los errores utilizando el método handleError.
 
-**Métodos Específicos de Obtención de Datos**: Además de los métodos CRUD genéricos, la clase ApiService proporciona métodos específicos para obtener datos de la API:
+Además de los métodos CRUD genéricos, la clase ApiService proporciona métodos específicos para obtener datos de la API:
 
 - Métodos GET:
 
@@ -313,11 +313,11 @@ La tipografia de los textos es Rubik.
 
 Este componente se utiliza para gestionar el proceso de inicio de sesión en la aplicación.
 
-_**login()**_: Dentro de este método, después de almacenar el token de autenticación y redirigir al usuario, se realiza una comprobación adicional para verificar si el token se almacenó correctamente en el localStorage. Si el token se encuentra en el localStorage, se registra un mensaje en la consola indicando su presencia.
+- _**login()**_: Dentro de este método, después de almacenar el token de autenticación y redirigir al usuario, se realiza una comprobación adicional para verificar si el token se almacenó correctamente en el localStorage. Si el token se encuentra en el localStorage, se registra un mensaje en la consola indicando su presencia.
 
-**Estado de Autenticación**: El componente también interactúa con **AuthenticationGuard**. Después de un inicio de sesión exitoso, se establece el estado de autenticación en **true** utilizando this.authGuard.setAuthenticated(true). 
+- **Estado de Autenticación**: El componente también interactúa con **AuthenticationGuard**. Después de un inicio de sesión exitoso, se establece el estado de autenticación en **true** utilizando this.authGuard.setAuthenticated(true). 
 
-**Manejo de Errores**: En caso de que ocurra un error en la solicitud de inicio de sesión, se utiliza el servicio toastr para mostrar un mensaje de error en la interfaz de usuario.
+- **Manejo de Errores**: En caso de que ocurra un error en la solicitud de inicio de sesión, se utiliza el servicio toastr para mostrar un mensaje de error en la interfaz de usuario.
 
 > #### Profile View:
 **profile.component.html**
