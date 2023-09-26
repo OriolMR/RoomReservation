@@ -27,7 +27,8 @@
            class="form-control"
            placeholder="Enter your email"
            (keydown.enter)="registerUser()"
-           [(ngModel)]="UserEmail" (input)="checkUsermail()">
+           [(ngModel)]="UserEmail"
+           (input)="checkUsermail()">
 
     <div *ngIf="useremailError"
          class="error-message">{{ useremailErrorMessage }}

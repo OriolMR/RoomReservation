@@ -31,6 +31,7 @@ export class RegisterComponent {
   constructor(private apiService: ApiService, private toastr: ToastrService, private http: HttpClient, private router: Router) { }
 
   checkUsername() {
+    console.log('username is ' + this.UserName);
     if (this.UserName.length > 4) {
       this.verifyUsername();
     } else {
@@ -56,7 +57,6 @@ export class RegisterComponent {
         this.usernameError = false;
         this.usernameErrorMessage = '';
         this.checkRegistrationValidity(); // Verificar la validez del registro después de obtener la respuesta de la API
-
       }
     );
   }

@@ -12,7 +12,6 @@ import { ApiService } from '../service/api.service';
 
 export class MenuComponent implements OnInit {
 
-
   showAdminLink: boolean = false;
 
   constructor(private authGuard: AuthenticationGuard,
