@@ -54,3 +54,8 @@
     color: #FFFFFF;
     background-color: #00A4BD;
   }
+
+  #menu {
+      position: fixed;
+      width: 100%;
+  }
