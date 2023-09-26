@@ -73,16 +73,15 @@ namespace webapi.Controllers
 
             if (user == null)
             {
-                return BadRequest(new { success = false, error = "usuario no encontrado" });
+                return BadRequest(new { success = false, error = "Usuario no encontrado" });
             }
-            if (user != null)
-            {
-                var result = await signInManager.PasswordSignInAsync(user, loginData.PasswordHash, false, lockoutOnFailure: false);
 
-                if (result == null)
-                {
-                    return BadRequest(new { success = false, error = "result es: " + result });
-                }
+            var result = await signInManager.PasswordSignInAsync(user, loginData.PasswordHash, false, lockoutOnFailure: false);
+
+            if (result.Succeeded)
+            {
+                // El inicio de sesión fue exitoso
+
                 // Obtener los roles del usuario
                 var roles = await userManager.GetRolesAsync(user);
 
@@ -102,11 +101,21 @@ namespace webapi.Controllers
                 // Devolver el token en la respuesta
                 return Ok(new { success = true, token, userId = user.Id });
             }
-        
-
-            // Autenticación fallida
-            return BadRequest(new { success = false, error = "Nombre de usuario o contraseña incorrectos" });
+            else if (result.IsLockedOut)
+            {
+                return BadRequest(new { success = false, error = "La cuenta está bloqueada debido a intentos de inicio de sesión fallidos" });
+            }
+            else if (result.IsNotAllowed)
+            {
+                return BadRequest(new { success = false, error = "El usuario no está permitido para iniciar sesión" });
+            }
+            else
+            {
+                // Autenticación fallida
+                return BadRequest(new { success = false, error = "Nombre de usuario o contraseña incorrectos" });
+            }
         }
+
 
         [HttpPost("logout")]
         public async Task<IActionResult> Logout()
