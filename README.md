@@ -124,11 +124,30 @@ Los estilos en este caso nos indican una serie de directrices acerca de que tan 
 **app.component.ts**
 <br>
 
-lorem ipsum
+La clase AppComponent se utiliza como el componente raíz de la aplicación Angular. Es el componente principal que representa la página principal de la aplicación.
+
+Selector: El componente se utiliza en el HTML de la aplicación utilizando el selector <app-root></app-root>. Cualquier contenido definido en este componente se renderizará en el lugar donde se coloque <app-root></app-root> en el HTML.
+
+Plantilla y Estilos: La propiedad templateUrl especifica la ubicación de la plantilla HTML que se utiliza para renderizar el contenido del componente. La propiedad styleUrls especifica la ubicación de un archivo CSS que se utiliza para aplicar estilos al componente.
+
+Datos del Componente: En este caso, la clase AppComponent tiene una única propiedad llamada title, que tiene el valor 'AngularFrontend'.
+
+Interpolación: La propiedad title se puede usar en la plantilla HTML del componente para mostrar su valor en la página. Por ejemplo, <h1>{{ title }}</h1> se traducirá en un encabezado con el texto "AngularFrontend" en la página principal de la aplicación.
 
 **app.module.ts**
 <br>
-lorem ipsum
+
+La clase AppModule se utiliza para configurar y definir los módulos y componentes que forman parte de la aplicación.
+
+Importación de módulos: La sección imports de AppModule lista todos los módulos que se utilizan en la aplicación. Estos módulos se importan desde bibliotecas o archivos locales y proporcionan funcionalidades adicionales a la aplicación. 
+
+Declaración de componentes: La sección declarations enumera todos los componentes que forman parte de la aplicación. Cada componente debe declararse aquí para que Angular los conozca y pueda usarlos. 
+
+Configuración de proveedores de servicios: La sección providers se utiliza para configurar los proveedores de servicios que se utilizarán en toda la aplicación. Por ejemplo, se ha configurado un interceptor HTTP llamado TokenInterceptor, que puede manipular las solicitudes HTTP antes de enviarlas. 
+
+Bootstrap: La propiedad bootstrap se utiliza para especificar el componente raíz de la aplicación. En este caso, el componente raíz es AppComponent, lo que significa que este componente se carga cuando se inicia la aplicación Angular.
+
+Configuración de ToastrModule: Dentro de la sección imports, se ha utilizado ToastrModule.forRoot(...) para configurar Toastr, que es una librería de notificaciones en la aplicación. Esto permite configurar opciones como la posición de las notificaciones (positionClass) y las clases CSS personalizadas (toastClass) que se aplicarán a las notificaciones
 
 ### Menu component
 **menu.component.html**
@@ -144,7 +163,15 @@ El menu component, mas reconocido como header, es la cabecera de la aplicacion. 
 **menu.component.ts**
 <br>
 
-lorem ipsum
+Componente de Interfaz de Usuario: Esta clase define un componente de interfaz de usuario que forma parte de la aplicación Angular. El componente representa y controla la funcionalidad relacionada con el menú de la aplicación.
+
+Inicialización: En el método ngOnInit(), se realiza la inicialización del componente, verifica si el usuario está autenticado mediante el uso de la función isAuthenticated().
+
+Control de Autenticación: La función isAuthenticated() verifica si el usuario está autenticado. Esto se hace utilizando el servicio AuthenticationGuard para determinar si el usuario ha iniciado sesión.
+
+Control de Rol de Administrador: La función isAdmin() verifica si el usuario tiene el rol de administrador. Esto también se hace utilizando el servicio AuthenticationGuard.
+
+Cierre de Sesión: El método logout() se utiliza para cerrar la sesión del usuario. Envía una solicitud al servicio ApiService para realizar la acción de cierre de sesión. En caso de éxito, redirige al usuario a la página de inicio de sesión.
 
 > ### Service folder
 **api.service.ts**
