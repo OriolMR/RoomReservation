@@ -17,68 +17,65 @@ C# con ASP.NET Core para la reserva de salas de reuniones de las diferentes ofic
 
 ## MySQL (Base de datos)
 
-**api.service.ts**
-<br>
-
 **dbo._EFMigrationsHistory**
 <br>
 
-lorem ipsum
+La tabla dbo._EFMigrationsHistory se utiliza para realizar un seguimiento de las migraciones de la base de datos en ASP.NET Core Identity. Esta tabla almacena información sobre las versiones de la base de datos y las migraciones aplicadas.
 
 **dbo.AspNetRoleClaims**
 <br>
 
-lorem ipsum
+La tabla dbo.AspNetRoleClaims almacena los reclamos (claims) asociados a los roles en tu sistema de autenticación. Los reclamos son afirmaciones sobre un usuario o entidad que pueden utilizarse para autorizar o denegar acceso a ciertas partes de la aplicación.
 
 **dbo.AspNetRoles**
 <br>
 
-lorem ipsum
+La tabla dbo.AspNetRoles almacena los roles de usuario en el sistema de autenticación. Los roles son una parte esencial de ASP.NET Core Identity y se utilizan para agrupar a los usuarios en categorías o roles específicos que definen sus permisos y acceso dentro de la aplicación.
 
 **dbo.AspNetUserClaims**
 <br>
 
-lorem ipsum
+La tabla dbo.AspNetUserClaims almacena los reclamos (claims) asociados a los usuarios en el sistema de autenticación.
 
 **dbo.AspNetUserLogins**
 <br>
 
-lorem ipsum
+La tabla dbo.AspNetUserLogins se utiliza para mantener un registro de los proveedores de inicio de sesión externos asociados a los usuarios en el sistema de autenticación.
 
 **dbo.AspNetUsers**
 <br>
 
-lorem ipsum
+La tabla dbo.AspNetUsers es una de las tablas centrales en ASP.NET Core Identity y almacena información sobre los usuarios registrados en el sistema de autenticación.
 
 **dbo.AspNetUserTokens**
 <br>
 
-lorem ipsum
+La tabla dbo.AspNetUserTokens se utiliza para almacenar tokens de seguridad asociados a los usuarios en el sistema de autenticación. Estos tokens son utilizados para la autenticación de dos factores y la recuperación de cuentas.
 
 **dbo.Cities**
 <br>
 
-lorem ipsum
+La tabla dbo.Cities almacena información sobre las ciudades dentro de cada país. Cada ciudad está asociada a un país a través de la columna **CountryId**.
 
 **dbo.Countries**
 <br>
 
-lorem ipsum
+La tabla dbo.Countries almacena información sobre los países disponibles en el sistema.
 
 **dbo.MeetingRooms**
 <br>
 
-lorem ipsum
+La tabla dbo.MeetingRooms almacena información sobre las salas de reuniones en cada oficina.
 
-**dboffices**
+**db.Offices**
 <br>
 
-lorem ipsum
+La tabla dbo.Offices almacena información sobre las oficinas en cada ciudad. Cada oficina está relacionada con una ciudad a través de la columna **CityId**.
 
 **dbo.Reserves**
 <br>
 
-lorem ipsum
+La tabla dbo.Reserves almacena información sobre las reservas de las salas de reuniones. Cada reserva se asocia a una sala de reuniones a través de la columna **MeetingRoomId** y a un usuario a través de la columna **UserId**.
 
 -------------------------------------------------------------------------------------------
 
