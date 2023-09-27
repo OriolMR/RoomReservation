@@ -146,6 +146,18 @@ La clase AppModule se utiliza para configurar y definir los módulos y component
 
 - **Configuración de ToastrModule**: Dentro de la sección imports, se ha utilizado ToastrModule.forRoot(...) para configurar Toastr, que es una librería de notificaciones en la aplicación. Esto permite configurar opciones como la posición de las notificaciones (positionClass) y las clases CSS personalizadas (toastClass) que se aplicarán a las notificaciones
 
+### Forgot-password component
+**forgot-password.component.html**
+<br>
+
+Forgot-password tiene un documento html en el que se presenta un recuadro con una unica caja de texto donde introducir el correo electronico, seguida verticalmente y dentro del recueadro de dos botones. Uno para enviar el correo a la derecha del todo y otro para ir hacia atras a la izquierda del todo. Se accede a esta vista desde un hipertexto que se necuentra en la vista de login que dice tal que asi: forgot password?
+Por ultimo dispone de dos titulos, el principal y el secundaria indicando la empresa y para que sirve esta pagina.
+
+**forgot-password.component.css**
+<br>
+
+Contiene una serie de estilos de "forgot-password.component.html". Entre ellos principalmente el recuadro blanco donde se encuentra toda la accion. Con un sombreado fino y de color gris. En cuanto a los titulos siguen las directrices de todos los CSSs de esta aplicacion como se ha mencionado anteriormente al principio de esta seccion del fronted. Los botones son blancos con sierto sombreado que se accentua junto con un color mas oscuro al pasar el raton por encima.
+
 ### Menu component
 **menu.component.html**
 <br>
