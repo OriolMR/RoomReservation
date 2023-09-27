@@ -65,7 +65,7 @@ La tabla dbo.Countries almacena información sobre los países disponibles en el
 **dbo.MeetingRooms**
 <br>
 
-La tabla dbo.MeetingRooms almacena información sobre las salas de reuniones en cada oficina.
+La tabla dbo.MeetingRooms almacena información sobre las salas de reuniones en cada oficina. Cada sala está relacionada con una oficina a través de la columna **OfficeId**.
 
 **db.Offices**
 <br>
