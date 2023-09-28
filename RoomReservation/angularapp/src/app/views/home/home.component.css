@@ -14,9 +14,9 @@ body {
   text-align: center;
   height: 400px;
   margin-top: 50px;
-  background-color: rgba(82, 97, 107, 0.8);
-  border-radius: 10px;
-  box-shadow: 5px 5px 10px #1c2b34, -5px -5px 10px #6eabd0;
+  color: black;
+  background-color: white;
+  box-shadow: 1px 1px 10px #999999, -1px -1px 10px #999999;
   align-items: center;
   margin-bottom: 0px; /* Establece el margen inferior en cero */
   padding: 20px;

@@ -4,17 +4,22 @@
     Para hacer referencia a una cosa de un archivo html, si es una etiqueta predeterminada, directamente se escribe su nombre.
 */
 
+/* TITULO*/
 
+.title-container {
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 0px;
+}
 
 /* #PROFILE-CONTAINER */
 
 /* Primer contenedor visible antes de darle al boton "Update". */
 #profile-container {
   height: 100%;
-  width: 250px;
-  border-radius: 10px;
-  background: rgba(82, 97, 107, 0.8);
-  box-shadow: 5px 5px 10px #dedede, -5px -5px 10px #6eabd0;
+  width: 350px;
+  background: white;
+  box-shadow: 1px 1px 10px #999999, -1px -1px 10px #999999;
   /**/
   color: #E2F6CA;
   align-items: center;
@@ -23,13 +28,6 @@
   margin: 0 auto;
   text-align: center;
 }
-
-  /* Titulo de #profile-container. */
-  #profile-container h1 {
-    text-align: center;
-    font-family: Calibri;
-    color: #FFFFFF;
-  }
 
   /* Todos los elementos "div" de #profile-container. */
   #profile-container div {
@@ -42,27 +40,26 @@
   /* Todos los elementos "label" de #profile-container. */
   #profile-container label {
     font-family: Rubik;
-    color: #FFFFFF;
+    color: black;
   }
 
   /* Todos los elementos "button" de #profile-container. */
   #profile-container button {
-    font-family: Rubik;
     margin: 5px;
+    background-color: white;
     font-family: Rubik;
-    color: #FFFFFF;
     /**/
     padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
+    color: black;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
+    box-shadow: 1px 1px 10px #999999, -1px -1px 10px #999999;
   }
 
     /* Hover de los botones de #profile-container. */
     #profile-container button:hover {
-      background-color: #0b5ed7;
+      background-color: #f3f6f4;
+      box-shadow: 3px 3px 10px #999999, -3px -3px 10px #999999;
     }
 
 
@@ -71,20 +68,19 @@
 
 /* Segundo contenedor visible despues de darle al boton "Update" de #profile-container. */
 #edit-container {
-  height: 100vh;
-  width: 100vh;
-  border-radius: 10px;
-  background: rgba(82, 97, 107, 0.8);
-  box-shadow: 5px 5px 10px #dedede, -5px -5px 10px #6eabd0;
+  height: 100%;
+  width: 350px;
+  background: white;
+  box-shadow: 1px 1px 10px #999999, -1px -1px 10px #999999;
   text-align: center;
   color: #E2F6CA;
 }
 
   /* Titulo de #edit-container. */
-  #edit-container h1 {
+  #edit-container h2 {
     text-align: center;
     font-family: Calibri;
-    color: #FFFFFF;
+    color: black;
   }
 
   /* Todos los elementos "div" de #edit-container. */
@@ -98,7 +94,7 @@
   /* Todos los elementos "label" de #edit-container. */
   #edit-container label {
     font-family: Rubik;
-    color: #FFFFFF;
+    color: black;
   }
 
   /* Todos los elementos "button" de #edit-container. */
@@ -107,16 +103,16 @@
     margin: 5px;
     /**/
     padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
+    background-color: white;
+    color: black;
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
+    box-shadow: 1px 1px 10px #999999, -1px -1px 10px #999999;
   }
 
     /* Hover de los botones de #edit-container. */
     #edit-container button:hover {
-      background-color: #0b5ed7;
+      background-color: #f3f6f4;
+      box-shadow: 3px 3px 10px #999999, -3px -3px 10px #999999;
     }
 
 label {

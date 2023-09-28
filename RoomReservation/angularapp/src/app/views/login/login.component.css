@@ -4,7 +4,6 @@
     Para hacer referencia a una cosa de un archivo html, si es una etiqueta predeterminada, directamente se escribe su nombre.
 */
 
-
 /* .TITLE-CONTAINER */
 
 /* Contenedor de los dos titulos (titulo y subtitulo). */
@@ -42,14 +41,13 @@
   padding: 20px;
   margin: 0 auto;
   text-align: center;
-  background-color: lightslategrey;
-  border-radius: 10px;
-  box-shadow: 5px 5px 10px #1c2b34, -5px -5px 10px #6eabd0;
+  background-color: white;
+  box-shadow: 1px 1px 10px #999999, -1px -1px 10px #999999;
 }
 
 /* Todos los componentes "label" del archivo html predefinido. */
 label {
-  color: #ffffff;
+  color: black;
   font-family: Rubik;
 }
 
@@ -58,13 +56,14 @@ label {
   margin: 5px;
   font-family: Rubik;
   padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border-radius: 5px;
-  cursor: pointer;
+  background-color: white;
+  color: black;
+  box-shadow: 1px 1px 10px #999999, -1px -1px 10px #999999;
+  border: none;
 }
 
   /* Hover para los botones de .home-container. */
   .home-container button:hover {
-    background-color: #0b5ed7;
+    background-color: #f3f6f4;
+    box-shadow: 3px 3px 10px #999999, -3px -3px 10px #999999;
   }
