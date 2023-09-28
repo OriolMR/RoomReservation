@@ -85,8 +85,8 @@ export class RegisterComponent {
       },
       error => {
         // El nombre de usuario está disponible
-        this.usernameError = false;
-        this.usernameErrorMessage = '';
+        this.useremailError = false;
+        this.useremailErrorMessage = '';
         this.checkRegistrationValidity(); // Verificar la validez del registro después de obtener la respuesta de la API
 
       }
@@ -120,7 +120,7 @@ export class RegisterComponent {
       this.passwordMatchErrorMessage = '';
     }
 
-    this.isButtonDisabled = this.usernameError || this.passwordError || this.passwordMatchError;
+    this.isButtonDisabled = this.useremailError || this.usernameError || this.passwordError || this.passwordMatchError;
   }
 
   checkPasswordMatch() {
@@ -146,6 +146,8 @@ export class RegisterComponent {
       this.registrationError = false;
       this.registrationErrorMessage = '';
     }
+
+    this.isButtonDisabled = this.usernameError || this.passwordError || this.useremailError;
   }
 
 
@@ -153,6 +155,11 @@ export class RegisterComponent {
 
     if (!this.ConfirmPassword) {
       this.toastr.error('Please confirm your password', 'Error');
+      return;
+    }
+
+    if (this.useremailError) {
+      this.toastr.error('This Email is alreasy taken', 'Error');
       return;
     }
 
@@ -167,9 +174,9 @@ export class RegisterComponent {
     this.apiService.registerUser(userData).subscribe(
       (response) => {
      
-          console.log('Registro exitoso:', response);
-          this.toastr.success('Registration successful');
-        this.router.navigate(['/login']);
+         console.log('Registro exitoso:', response);
+         this.toastr.success('Registration successful');
+         this.router.navigate(['/login']);
         console.log(response);
         },
         error => {

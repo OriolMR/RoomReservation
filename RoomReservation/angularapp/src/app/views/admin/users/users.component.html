@@ -7,18 +7,10 @@
 </mat-form-field>
 
 <div class="demo-button-container">
-<<<<<<< HEAD
-  <button mat-raised-button (click)="addData()"
-          class="demo-button">
+  <button mat-raised-button (click)="openAddUserModal()" class="demo-button">
     Add User
   </button>
 </div>
-=======
-    <button mat-raised-button (click)="openAddUserModal()" class="demo-button">
-      Add User
-    </button>
-  </div>
->>>>>>> 8e2ca70b2677305d9fc7e78acb42e26d02a51c21
 
 <div class="mat-elevation-z8">
   <table mat-table [dataSource]="dataSource"
@@ -88,6 +80,7 @@
         <mat-icon id="edit-btn"
                   aria-hidden="false"
                   aria-label="edit-btn"
+                  (click)="openEditUserModal()"
                   fontIcon="edit">
         </mat-icon>
         <mat-icon id="delete-btn"

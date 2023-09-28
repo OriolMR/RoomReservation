@@ -3,10 +3,7 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 import { AuthenticationGuard } from './authentication.guard';
-import { Token } from '@angular/compiler';
 import { ApiService } from '../../service/api.service';
-
-
 
 @Component({
   selector: 'app-login',

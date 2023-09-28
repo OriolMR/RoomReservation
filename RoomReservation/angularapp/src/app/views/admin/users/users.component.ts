@@ -16,6 +16,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { UsersaddModalComponent } from '../usersadd-modal/usersadd-modal.component';
+import { UserseditModalComponent } from '../usersedit-modal/usersedit-modal.component';
 
 
 @Component({
@@ -119,25 +120,33 @@ export class UsersComponent implements AfterViewInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  addData() {
-    const newRow = { userId: '', userName: '', userEmail: '' };
-    this.dataSource.data.push(newRow); // Agregar la nueva fila al dataSource
-    this.dataSource.data = [...this.dataSource.data]; // Actualizar el dataSource para que Angular detecte los cambios
-    this.editedRowIndex = this.dataSource.data.length - 1; // Iniciar edición en la nueva fila agregada
-  }
-
   openAddUserModal(user: any): void {
     // Pasar los datos de la sala de reuniones seleccionada al modal
     const dialogRef = this.dialog.open(UsersaddModalComponent, {
       width: '400px',
       data: { user }
     });
-
     // Obtener la sala de reuniones seleccionada del modal cuando se cierra (si es necesario)
     dialogRef.afterClosed().subscribe(result => {
       console.log('Modal closed:', result);
 
       // Reiniciar la selección de la sala de reuniones solo si el resultado del modal es válido
+      if (result) {
+        user = null;
+      }
+    });
+  }
+
+  openEditUserModal(user: any): void {
+    // Pasar los datos de la sala de reuniones seleccionada al modal
+    const dialogRef = this.dialog.open(UserseditModalComponent, {
+      width: '400px',
+      data: { user }
+    });
+    // Obtener la sala de reuniones seleccionada del modal cuando se cierra (si es necesario)
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Modal closed:', result);
+    // Reiniciar la selección de la sala de reuniones solo si el resultado del modal es válido
       if (result) {
         user = null;
       }
