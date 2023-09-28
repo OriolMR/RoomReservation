@@ -101,9 +101,9 @@ Cada pagina tiene un documento de estilos (CSS) que en general sigue unas direct
 - La tipografia para el resto de textos, sean botones, labels, inputs, etc. Es "Rubik".
 - La cabecera que (que tiene sus propios estilos) ha sido hecha con bootstrap. El logo de usuario se ha ubicado a la drecha del todo mientras que el resto a la izquierda.
 - El fondo de la aplicacion es una imagen de formas triangulares, que parecieran estar en diferentes capas. En un principio hiba a ser un degradado de azules, pero luego se opto por algo mas convencional como el blanco y finalmente la imagen predeterminada que hay de fondo en todas las vistas.
-- Los colores (excluyendo el blanco y el fondo) son unas tonalidades de azules oscuros y claros. Los oscuros se utilizan de forma predeterminada para que cuando el usuario interactue con algun componente de la vista que lo permita se aclarezca con una de las tonalidades mas claras de azul que hayamos escogido.
-- Por otra parte para centrar la vista del usuario en el centro (donde se encuentra lo relevanete) hemos optado por un trasfondo oscuro con sombreado.
-- En cuanto a los botones todos tienen los mismos estilos. Cuando se pasa el raton por encima o se interactua con ellos gracias a la opcion "hover" cambiamos la tonalidad del color del boton. Estos estan redondeados y el texto de su interior es blanco.
+- Los colores (excluyendo el blanco y el fondo) son unas tonalidades de blancos. Los oscuros se utilizan de forma predeterminada para que cuando el usuario interactue con algun componente de la vista que lo permita se oscurezca sutilmente.
+- Por otra parte para centrar la vista del usuario en el centro (donde se encuentra lo relevanete) hemos optado por un trasfondo blanco delimitado por un breve sombreado.
+- En cuanto a los botones todos tienen los mismos estilos. Cuando se pasa el raton por encima o se interactua con ellos gracias a la opcion "hover" cambiamos la tonalidad del color del boton. Estos estan redondeados y el texto de su interior es Negro.
 - Tienen una cabezera (refiriendonos al codigo y no a la vista como tal) donde se indica el contexto de cada una de las partes que forman el docuemnto html correspondiente. De esta forma es facil identificar que estilos se estan aplicando en un lugar y en que lugar.
 - Disponen de secciones ordenadas dentro del codigo por comentarios. Para una facil legibilidad y edicion.
 
@@ -293,8 +293,8 @@ Cada una de estas opciones tiene un pequeño texto al lado indicando brevemente 
 **home.component.css**
 <br>
 
-Trasfondo redondeado, rectangular, oscuro y sombreado en el que se ven las 3 opciones antes mencionadas de color azul.
-Las opciones tienen sombreado bajo de color negro. Con el atributo hover el sombreado de sustitiye por un borde oscuro.
+Trasfondo redondeado, rectangular, blanco y sombreado en el que se ven las 3 opciones antes mencionadas de color blanco.
+Las opciones tienen sombreado  de color gris. Con el atributo hover el sombreado de sustitiye por un borde oscuro.
 
 **home.component.ts**
 <br>
@@ -311,10 +311,10 @@ Componente que actua de pagina principal cuando se intenta acceder a la aplicaci
 <br>
 
 Titulo centrado encima del trasfondo.
-Trasfondo redondeado, rectangular, oscuro y sombreado con dos inputs que contienen un placeholder indicando que es lo que se espera del usuario.
+Trasfondo rectangular, blanco y sombreado con dos inputs que contienen un placeholder indicando que es lo que se espera del usuario.
 Estos inputs estan redondeados.
-Color del texto de los componentes blanco y con tipografia Rubik.
-2 botones de color azul redondeados. se aclarecen gracias al atributo hover.
+Color del texto de los componentes negro y con tipografia Rubik.
+2 botones de color blanco con sombreado. Se oscurecen minimamente gracias al atributo hover.
 La tipografia de los textos es Rubik.
 
 **login.component.ts**
@@ -342,9 +342,9 @@ Los botones siguen siendo iguales, solo que el "update" actualiza la informacion
 **profile.component.css**
 <br>
 
-Trasfondo redondeado, rectangular, oscuro y sombreado.
+Trasfondo rectangular, blanco y sombreado.
 Color del texto de los componentes blanco y con tipografia Rubik.
-2 botones de color azul redondeados. se aclarecen gracias al atributo hover.
+2 botones de color blanco son sombreado. Se oscurecen un poco gracias al atributo hover.
 2 inputs en la version "update". Cuadrados y de color blanco de fondo.
 
 **page-profile.component.ts**
@@ -362,10 +362,9 @@ Componente que actua de pagina secundaria cuando se intenta registrar a la aplic
 <br>
 
 Titulo centrado dentro, arriba del trasfondo.
-Trasfondo redondeado, rectangular, oscuro y sombreado con dos inputs que contienen un placeholder indicando que es lo que se espera del usuario.
-Estos inputs estan redondeados.
-Color del texto de los componentes blanco y con tipografia Rubik.
-2 botones de color azul redondeados. se aclarecen gracias al atributo hover.
+Trasfondo rectangular, blanco y sombreado con dos inputs que contienen un placeholder indicando que es lo que se espera del usuario.
+Color del texto de los componentes negro y con tipografia Rubik.
+2 botones de color blanco con sombreado. se oscurecen deliberadamente gracias al atributo hover.
 La tipografia de los textos es Rubik.
 
 **register.component.ts**
