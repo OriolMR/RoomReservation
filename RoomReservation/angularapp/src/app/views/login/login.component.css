@@ -51,6 +51,10 @@ label {
   font-family: Rubik;
 }
 
+.home-container input {
+  background-color: #f3f6f4;
+}
+
 /* Todos los componentes "button" de .home-container. */
 .home-container button {
   margin: 5px;

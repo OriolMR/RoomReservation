@@ -1,94 +1,92 @@
-  <div class="title-container">
+<div class="title-container">
   <h2 id="tableLabel"
       class="center-title">
     Profile
   </h2>
 </div>
-  <div *ngIf="showProfile">
+<div *ngIf="showProfile">
 
-    <div id="profile-container">
+  <div id="profile-container">
+
+    <div>
+      <label>Username:</label>
+      <br>
+      <label>{{ newUserName }}</label>
+    </div>
+
+    <div>
+      <label>Email:</label>
+      <br>
+      <label>{{ newEmail }}</label>
+    </div>
+
+    <button class="top_button"
+            (click)="goBack()">
+      Back
+    </button>
+    <button (click)="editProfileWindow()">Update</button>
+
+  </div>
+
+</div>
+
+<div *ngIf="showEditProfile">
+
+  <div id="edit-container">
+
+    <form role="form">
 
       <div>
         <label>Username:</label>
-        <br>
-        <label>{{ newUserName }}</label>
+
+        <input type="text"
+               name="newUserName"
+               class="form-control"
+               [(ngModel)]="newUserName">
       </div>
 
       <div>
         <label>Email:</label>
-        <br>
-        <label>{{ newEmail }}</label>
+
+        <input type="text"
+               name="newEmail"
+               class="form-control"
+               [(ngModel)]="newEmail">
       </div>
 
-      <button class="top_button"
-              (click)="goBack()">
+      <div>
+        <label>Actual Password:</label>
+
+        <input type="password"
+               name="currentPasswordHash"
+               class="form-control"
+               placeholder="Actual password"
+               [(ngModel)]="currentPasswordHash">
+      </div>
+
+      <div>
+        <label>New Password:</label>
+
+        <input type="password"
+               name="newPasswordHash"
+               class="form-control"
+               placeholder="Old password"
+               [(ngModel)]="newPasswordHash">
+      </div>
+
+      <div class="testClass">
+
+        <button class="top_button"
+        (click)="profileWindow()">
         Back
-      </button>
-      <button (click)="editProfileWindow()">Update</button>
+        </button>
 
-    </div>
-  </div>
+        <button (click)="saveProfile()">Save</button>
 
-  <div *ngIf="showEditProfile">
+      </div>
 
-    <div id="edit-container">
-
-      <form role="form">
-
-        <div>
-
-          <label>Username:</label>
-
-          <div>
-            <input type="text"
-                   name="newUserName"
-                   [(ngModel)]="newUserName">
-          </div>
-        </div>
-
-        <div>
-
-          <label>Email:</label>
-
-          <div>
-            <input type="text"
-                   name="newEmail"
-                   [(ngModel)]="newEmail">
-          </div>
-        </div>
-
-        <div>
-
-          <label>Actual Password:</label>
-
-          <div>
-            <input type="password"
-                   name="currentPasswordHash"
-                   [(ngModel)]="currentPasswordHash">
-          </div>
-        </div>
-
-        <div>
-
-          <label>New Password:</label>
-
-          <div>
-            <input type="password"
-                   name="newPasswordHash"
-                   [(ngModel)]="newPasswordHash">
-          </div>
-        </div>
-
-        <div class="testClass">
-
-          <button class="top_button"
-                  (click)="profileWindow()">
-            Back
-          </button>
-
-          <button (click)="saveProfile()">Save</button>
-        </div>
-      </form>
-    </div>
+    </form>
 
   </div>
+
+</div>

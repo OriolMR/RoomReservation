@@ -96,6 +96,10 @@
     font-family: Rubik;
     color: black;
   }
+  /* Todos los elementos "input" de #edit-container */
+  #edit-container input {
+    background-color: #f3f6f4;
+  }
 
   /* Todos los elementos "button" de #edit-container. */
   #edit-container button {
