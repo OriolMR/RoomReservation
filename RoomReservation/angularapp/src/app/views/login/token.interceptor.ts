@@ -15,7 +15,7 @@ export class TokenInterceptor implements HttpInterceptor {
         }
       });
     } else {
-      console.log('El token no es válido.');
+      console.log('');
     }
 
     return next.handle(request);
