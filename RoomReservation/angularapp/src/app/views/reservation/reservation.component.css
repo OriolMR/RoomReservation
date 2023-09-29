@@ -34,6 +34,10 @@ h2{
   margin: 5px 0;
 }
 
+.meeting-rooms-container input {
+  background-color: #f3f6f4;
+}
+
 /*Botones*/
 button {
   padding: 10px 20px;
