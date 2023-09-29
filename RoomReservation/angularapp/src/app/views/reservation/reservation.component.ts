@@ -11,6 +11,19 @@ import { ApiService } from '../../service/api.service';
 })
 export class ReservationComponent implements OnInit {
 
+  predefinedCountries: any[] = [
+    { id: 1, name: 'United States' },
+    { id: 2, name: 'United Kingdom' },
+    { id: 3, name: 'France' },
+    { id: 4, name: 'Germany' },
+    { id: 5, name: 'Spain' },
+    { id: 6, name: 'Italy' },
+    { id: 7, name: 'Japan' },
+    { id: 8, name: 'Australia' },
+    { id: 9, name: 'Canada' },
+    { id: 10, name: 'Mexico' },
+  ];
+
   countries: any[] = [];
   cities: any[] = [];
   offices: any[] = [];
@@ -22,20 +35,33 @@ export class ReservationComponent implements OnInit {
   selectedOfficeId: number | null = null;
   selectedMeetingRoom: any = null;
 
-
   constructor(private apiService: ApiService, private http: HttpClient, private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    // Realizar la solicitud para obtener los países
-    this.apiService.getCountries().subscribe(
-      (data) => {
-        this.countries = data;
-        console.log(data);
-      },
-      (error) => {
-        console.error('Error fetching countries:', error);
+    // Verificar si hay conexión a internet
+    if (navigator.onLine) {
+      // Si hay conexión, intenta cargar los datos desde el localStorage
+      const storedCountries = localStorage.getItem('countries');
+      if (storedCountries) {
+        this.countries = JSON.parse(storedCountries);
+        console.log('Countries loaded from localStorage:', this.countries);
+      } else {
+        // Si no hay datos en el localStorage, usa los países predefinidos
+        this.countries = this.predefinedCountries;
+        console.log('Using predefined countries:', this.countries);
       }
-    );
+    } else {
+      // Si no hay conexión, intenta cargar los datos desde el localStorage
+      const storedCountries = localStorage.getItem('countries');
+      if (storedCountries) {
+        this.countries = JSON.parse(storedCountries);
+        console.log('Countries loaded from localStorage (offline):', this.countries);
+      } else {
+        // Si no hay datos en el localStorage, usa los países predefinidos
+        this.countries = this.predefinedCountries;
+        console.log('Using predefined countries (offline):', this.countries);
+      }
+    };
 
     // Obtener todas las ciudades
     this.getAllCities();
