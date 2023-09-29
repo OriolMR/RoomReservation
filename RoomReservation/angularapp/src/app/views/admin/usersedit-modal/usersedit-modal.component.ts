@@ -15,8 +15,6 @@ import { AuthenticationGuard } from '../../login/authentication.guard';
   styleUrls: ['./usersedit-modal.component.css']
 })
 export class UserseditModalComponent {
-  showProfile: boolean = true;
-  showEditProfile: boolean = false;
   newUserName: string = '';
   newEmail: string = '';
 
@@ -70,7 +68,40 @@ export class UserseditModalComponent {
   saveProfile() {
     const profileData = {
       newUserName: this.newUserName,
-      newEmail: this.newEmail
+      newEmail: this.newEmail,
     };
+
+    // Obtén el token de autenticación del servicio AuthService
+    const token = this.authGuard.getToken();
+    console.log(token);
+
+    if (token) {
+      // Decodifica el token para obtener la información del usuario
+      console.log('Token obtenido del servicio:', this.authGuard.getToken());
+      const userId = this.authGuard.getUserIdFromToken(token);
+      console.log(userId);
+
+      if (userId) {
+        // Realiza la solicitud PUT al servidor para actualizar el perfil
+        console.log(profileData);
+        this.apiService.updateUserProfile(userId, profileData).subscribe(
+          (response) => {
+            // La actualización del perfil se completó correctamente
+            console.log('Perfil actualizado:', response);
+            this.toastr.success('Profile updated successfully');
+          },
+          (error) => {
+            // Ocurrió un error al actualizar el perfil
+            console.error('Error al actualizar el perfil:', error);
+            this.toastr.error('Error updating profile'); // Mostrar un mensaje de error usando ToastrService
+            // Aquí puedes manejar el error de acuerdo a tus necesidades
+          }
+        );
+      } else {
+        console.error('No se pudo obtener el ID de usuario del token.');
+      }
+    } else {
+      console.error('No se encontró un token de autenticación.');
+    }
   }
 }

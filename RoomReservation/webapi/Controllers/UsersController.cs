@@ -127,9 +127,54 @@ namespace RoomReservation.Controllers
                     return BadRequest(updateResult.Errors);
                 }
             }
-
             return NotFound();
         }
+
+        //[HttpPut("{id}")]
+        //public async Task<IActionResult> UpdateUserAdmin(string id, [FromBody] UpdateUsersAdminModel userModel)
+        //{
+        //    if (!ModelState.IsValid)
+        //    {
+        //        return BadRequest(ModelState);
+        //    }
+
+        //    var existingUser = await userManager.FindByIdAsync(id);
+
+        //    if (existingUser != null)
+        //    {
+        //        // Actualizar solo las propiedades proporcionadas en el modelo
+        //        existingUser.UserName = userModel.newUserName ?? existingUser.UserName;
+        //        existingUser.Email = userModel.newEmail ?? existingUser.Email;
+
+        //        //if (!string.IsNullOrEmpty(userModel.currentPasswordHash)
+        //        //        && !string.IsNullOrEmpty(userModel.newPasswordHash))
+        //        //{
+        //        //    // Cambiar la contraseña solo si se proporciona la contraseña actual y la nueva contraseña
+        //        //    var changePasswordResult = await userManager
+        //        //                                   .ChangePasswordAsync(existingUser, userModel.currentPasswordHash,
+        //        //                                                            userModel.newPasswordHash);
+
+        //        //    if (!changePasswordResult.Succeeded)
+        //        //    {
+        //        //        // Hubo un error al cambiar la contraseña
+        //        //        return BadRequest(changePasswordResult.Errors);
+        //        //    }
+        //        //}
+
+        //        var updateResult = await userManager.UpdateAsync(existingUser);
+
+        //        if (updateResult.Succeeded)
+        //        {
+        //            return Ok(existingUser);
+        //        }
+        //        else
+        //        {
+        //            // Hubo un error al actualizar el usuario
+        //            return BadRequest(updateResult.Errors);
+        //        }
+        //    }
+        //    return NotFound();
+        //}
 
         // DELETE: api/Users/{id}
         [HttpDelete("{id}")]
