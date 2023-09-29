@@ -14,26 +14,23 @@
   }
   
   /* Cada una de las opciones del menu. */
-  #entrada {
-    background-color: #C5DFF8;
-    border-radius: 10px;
-    margin: 10px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    width: 400px;
-    height: 75px;
-    background: #C5DFF8;
-    font-family: Rubik;
-    box-shadow: 5px 5px 0px #8a9cae; /*-5px -5px 0px #ffffff;*/
-    border-radius: 30px;
-  }
+#entrada {
+  background-color: white;
+  margin: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  width: 400px;
+  height: 75px;
+  font-family: Rubik;
+  box-shadow: 1px 1px 10px #999999, -1px -1px 10px #999999;
+}
   
   /* Hover para cada #entrada*/
-    #entrada:hover {
-      border: 2px solid black;
-      box-shadow: none;
-    }
+  #entrada:hover {
+    background-color: #f3f6f4;
+    box-shadow: 3px 3px 10px #999999, -3px -3px 10px #999999;
+  }
   
   /* Cada uno de los elementos que contiene cada #entrada. */
   .entrada2 {

@@ -17,68 +17,65 @@ C# con ASP.NET Core para la reserva de salas de reuniones de las diferentes ofic
 
 ## MySQL (Base de datos)
 
-**api.service.ts**
-<br>
-
 **dbo._EFMigrationsHistory**
 <br>
 
-lorem ipsum
+La tabla dbo._EFMigrationsHistory se utiliza para realizar un seguimiento de las migraciones de la base de datos en ASP.NET Core Identity. Esta tabla almacena información sobre las versiones de la base de datos y las migraciones aplicadas.
 
 **dbo.AspNetRoleClaims**
 <br>
 
-lorem ipsum
+La tabla dbo.AspNetRoleClaims almacena los reclamos (claims) asociados a los roles en tu sistema de autenticación. Los reclamos son afirmaciones sobre un usuario o entidad que pueden utilizarse para autorizar o denegar acceso a ciertas partes de la aplicación.
 
 **dbo.AspNetRoles**
 <br>
 
-lorem ipsum
+La tabla dbo.AspNetRoles almacena los roles de usuario en el sistema de autenticación. Los roles son una parte esencial de ASP.NET Core Identity y se utilizan para agrupar a los usuarios en categorías o roles específicos que definen sus permisos y acceso dentro de la aplicación.
 
 **dbo.AspNetUserClaims**
 <br>
 
-lorem ipsum
+La tabla dbo.AspNetUserClaims almacena los reclamos (claims) asociados a los usuarios en el sistema de autenticación.
 
 **dbo.AspNetUserLogins**
 <br>
 
-lorem ipsum
+La tabla dbo.AspNetUserLogins se utiliza para mantener un registro de los proveedores de inicio de sesión externos asociados a los usuarios en el sistema de autenticación.
 
 **dbo.AspNetUsers**
 <br>
 
-lorem ipsum
+La tabla dbo.AspNetUsers es una de las tablas centrales en ASP.NET Core Identity y almacena información sobre los usuarios registrados en el sistema de autenticación.
 
 **dbo.AspNetUserTokens**
 <br>
 
-lorem ipsum
+La tabla dbo.AspNetUserTokens se utiliza para almacenar tokens de seguridad asociados a los usuarios en el sistema de autenticación. Estos tokens son utilizados para la autenticación de dos factores y la recuperación de cuentas.
 
 **dbo.Cities**
 <br>
 
-lorem ipsum
+La tabla dbo.Cities almacena información sobre las ciudades dentro de cada país. Cada ciudad está asociada a un país a través de la columna **CountryId**.
 
 **dbo.Countries**
 <br>
 
-lorem ipsum
+La tabla dbo.Countries almacena información sobre los países disponibles en el sistema.
 
 **dbo.MeetingRooms**
 <br>
 
-lorem ipsum
+La tabla dbo.MeetingRooms almacena información sobre las salas de reuniones en cada oficina. Cada sala está relacionada con una oficina a través de la columna **OfficeId**.
 
-**dboffices**
+**db.Offices**
 <br>
 
-lorem ipsum
+La tabla dbo.Offices almacena información sobre las oficinas en cada ciudad. Cada oficina está relacionada con una ciudad a través de la columna **CityId**.
 
 **dbo.Reserves**
 <br>
 
-lorem ipsum
+La tabla dbo.Reserves almacena información sobre las reservas de las salas de reuniones. Cada reserva se asocia a una sala de reuniones a través de la columna **MeetingRoomId** y a un usuario a través de la columna **UserId**.
 
 -------------------------------------------------------------------------------------------
 
@@ -104,9 +101,9 @@ Cada pagina tiene un documento de estilos (CSS) que en general sigue unas direct
 - La tipografia para el resto de textos, sean botones, labels, inputs, etc. Es "Rubik".
 - La cabecera que (que tiene sus propios estilos) ha sido hecha con bootstrap. El logo de usuario se ha ubicado a la drecha del todo mientras que el resto a la izquierda.
 - El fondo de la aplicacion es una imagen de formas triangulares, que parecieran estar en diferentes capas. En un principio hiba a ser un degradado de azules, pero luego se opto por algo mas convencional como el blanco y finalmente la imagen predeterminada que hay de fondo en todas las vistas.
-- Los colores (excluyendo el blanco y el fondo) son unas tonalidades de azules oscuros y claros. Los oscuros se utilizan de forma predeterminada para que cuando el usuario interactue con algun componente de la vista que lo permita se aclarezca con una de las tonalidades mas claras de azul que hayamos escogido.
-- Por otra parte para centrar la vista del usuario en el centro (donde se encuentra lo relevanete) hemos optado por un trasfondo oscuro con sombreado.
-- En cuanto a los botones todos tienen los mismos estilos. Cuando se pasa el raton por encima o se interactua con ellos gracias a la opcion "hover" cambiamos la tonalidad del color del boton. Estos estan redondeados y el texto de su interior es blanco.
+- Los colores (excluyendo el blanco y el fondo) son unas tonalidades de blancos. Los oscuros se utilizan de forma predeterminada para que cuando el usuario interactue con algun componente de la vista que lo permita se oscurezca sutilmente.
+- Por otra parte para centrar la vista del usuario en el centro (donde se encuentra lo relevanete) hemos optado por un trasfondo blanco delimitado por un breve sombreado.
+- En cuanto a los botones todos tienen los mismos estilos. Cuando se pasa el raton por encima o se interactua con ellos gracias a la opcion "hover" cambiamos la tonalidad del color del boton. Estos estan redondeados y el texto de su interior es Negro.
 - Tienen una cabezera (refiriendonos al codigo y no a la vista como tal) donde se indica el contexto de cada una de las partes que forman el docuemnto html correspondiente. De esta forma es facil identificar que estilos se estan aplicando en un lugar y en que lugar.
 - Disponen de secciones ordenadas dentro del codigo por comentarios. Para una facil legibilidad y edicion.
 
@@ -148,6 +145,18 @@ La clase AppModule se utiliza para configurar y definir los módulos y component
 - **Bootstrap**: La propiedad bootstrap se utiliza para especificar el componente raíz de la aplicación. En este caso, el componente raíz es AppComponent, lo que significa que este componente se carga cuando se inicia la aplicación Angular.
 
 - **Configuración de ToastrModule**: Dentro de la sección imports, se ha utilizado ToastrModule.forRoot(...) para configurar Toastr, que es una librería de notificaciones en la aplicación. Esto permite configurar opciones como la posición de las notificaciones (positionClass) y las clases CSS personalizadas (toastClass) que se aplicarán a las notificaciones
+
+### Forgot-password component
+**forgot-password.component.html**
+<br>
+
+Forgot-password tiene un documento html en el que se presenta un recuadro con una unica caja de texto donde introducir el correo electronico, seguida verticalmente y dentro del recueadro de dos botones. Uno para enviar el correo a la derecha del todo y otro para ir hacia atras a la izquierda del todo. Se accede a esta vista desde un hipertexto que se necuentra en la vista de login que dice tal que asi: forgot password?
+Por ultimo dispone de dos titulos, el principal y el secundaria indicando la empresa y para que sirve esta pagina.
+
+**forgot-password.component.css**
+<br>
+
+Contiene una serie de estilos de "forgot-password.component.html". Entre ellos principalmente el recuadro blanco donde se encuentra toda la accion. Con un sombreado fino y de color gris. En cuanto a los titulos siguen las directrices de todos los CSSs de esta aplicacion como se ha mencionado anteriormente al principio de esta seccion del fronted. Los botones son blancos con sierto sombreado que se accentua junto con un color mas oscuro al pasar el raton por encima.
 
 ### Menu component
 **menu.component.html**
@@ -284,8 +293,8 @@ Cada una de estas opciones tiene un pequeño texto al lado indicando brevemente 
 **home.component.css**
 <br>
 
-Trasfondo redondeado, rectangular, oscuro y sombreado en el que se ven las 3 opciones antes mencionadas de color azul.
-Las opciones tienen sombreado bajo de color negro. Con el atributo hover el sombreado de sustitiye por un borde oscuro.
+Trasfondo redondeado, rectangular, blanco y sombreado en el que se ven las 3 opciones antes mencionadas de color blanco.
+Las opciones tienen sombreado  de color gris. Con el atributo hover el sombreado de sustitiye por un borde oscuro.
 
 **home.component.ts**
 <br>
@@ -302,10 +311,10 @@ Componente que actua de pagina principal cuando se intenta acceder a la aplicaci
 <br>
 
 Titulo centrado encima del trasfondo.
-Trasfondo redondeado, rectangular, oscuro y sombreado con dos inputs que contienen un placeholder indicando que es lo que se espera del usuario.
+Trasfondo rectangular, blanco y sombreado con dos inputs que contienen un placeholder indicando que es lo que se espera del usuario.
 Estos inputs estan redondeados.
-Color del texto de los componentes blanco y con tipografia Rubik.
-2 botones de color azul redondeados. se aclarecen gracias al atributo hover.
+Color del texto de los componentes negro y con tipografia Rubik.
+2 botones de color blanco con sombreado. Se oscurecen minimamente gracias al atributo hover.
 La tipografia de los textos es Rubik.
 
 **login.component.ts**
@@ -333,9 +342,9 @@ Los botones siguen siendo iguales, solo que el "update" actualiza la informacion
 **profile.component.css**
 <br>
 
-Trasfondo redondeado, rectangular, oscuro y sombreado.
+Trasfondo rectangular, blanco y sombreado.
 Color del texto de los componentes blanco y con tipografia Rubik.
-2 botones de color azul redondeados. se aclarecen gracias al atributo hover.
+2 botones de color blanco son sombreado. Se oscurecen un poco gracias al atributo hover.
 2 inputs en la version "update". Cuadrados y de color blanco de fondo.
 
 **page-profile.component.ts**
@@ -353,10 +362,9 @@ Componente que actua de pagina secundaria cuando se intenta registrar a la aplic
 <br>
 
 Titulo centrado dentro, arriba del trasfondo.
-Trasfondo redondeado, rectangular, oscuro y sombreado con dos inputs que contienen un placeholder indicando que es lo que se espera del usuario.
-Estos inputs estan redondeados.
-Color del texto de los componentes blanco y con tipografia Rubik.
-2 botones de color azul redondeados. se aclarecen gracias al atributo hover.
+Trasfondo rectangular, blanco y sombreado con dos inputs que contienen un placeholder indicando que es lo que se espera del usuario.
+Color del texto de los componentes negro y con tipografia Rubik.
+2 botones de color blanco con sombreado. se oscurecen deliberadamente gracias al atributo hover.
 La tipografia de los textos es Rubik.
 
 **register.component.ts**

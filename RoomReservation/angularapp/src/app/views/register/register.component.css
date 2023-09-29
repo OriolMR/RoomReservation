@@ -4,6 +4,13 @@
     Para hacer referencia a una cosa de un archivo html, si es una etiqueta predeterminada, directamente se escribe su nombre.
 */
 
+/* Titutlo*/
+h2 {
+  color: black;
+  font-family: Calibri;
+  text-align: center;
+}
+
 /* .REGISTER-CONTAINER */
 
 /* Contenedor principal. */
@@ -18,16 +25,9 @@
   text-align: center;
   color: #E2F6CA;
   margin-top: 10px;
-  border-radius: 10px;
-  background: rgba(82, 97, 107, 0.8);
-  box-shadow: 5px 5px 10px #1c2b34, -5px -5px 10px #6eabd0;
+  background: white;
+  box-shadow: 1px 1px 10px #999999, -1px -1px 10px #999999;
 }
-
-  /* Titutlo de .register-container. */
-  .register-container h2 {
-    color: #FFFFFF;
-    font-family: Calibri;
-  }
 
   /* Todos los .form-group de .register-container, que dentro tienen un elemento "label" y otro "input". */
   .register-container .form-group {
@@ -37,28 +37,27 @@
 
 /* Todos los elementos "label" del archivo html predeterminado. */
 label {
-  color: #ffffff;
+  color: black;
   font-family: Rubik;
 }
 
 /* Todos los elementos "button" de .register-container. */
 .register-container button {
   margin: 5px;
-  background-color: #4A55A2;
-  border-color: #7895CB;
+  background-color: white;
   font-family: Rubik;
   /**/
   padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
+  color: black;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
+  box-shadow: 1px 1px 10px #999999, -1px -1px 10px #999999;
 }
 
   /* Hover de los botones de .register-container. */
   .register-container button:hover {
-    background-color: #0b5ed7;
+    background-color: #f3f6f4;
+    box-shadow: 3px 3px 10px #999999, -3px -3px 10px #999999;
   }
 
 /* Hace que el boton este desactivado. */
