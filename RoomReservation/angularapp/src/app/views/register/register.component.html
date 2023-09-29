@@ -1,6 +1,6 @@
-<div class="register-container">
+<h2>Register</h2>
 
-  <h2>Register</h2>
+<div class="register-container">
 
   <div class="form-group">
 
@@ -15,7 +15,8 @@
            (input)="checkUsername()">
 
     <div *ngIf="usernameError"
-         class="error-message">{{ usernameErrorMessage }}
+         class="error-message">
+      {{ usernameErrorMessage }}
     </div>
   </div>
 
@@ -31,11 +32,13 @@
            (input)="checkUsermail()">
 
     <div *ngIf="useremailError"
-         class="error-message">{{ useremailErrorMessage }}
+         class="error-message">
+      {{ useremailErrorMessage }}
     </div>
 
     <div *ngIf="usermailError"
-         class="error-message">{{ usermailErrorMessage }}
+         class="error-message">
+      {{ usermailErrorMessage }}
     </div>
   </div>
 
@@ -51,7 +54,8 @@
            (input)="checkPassword()">
 
     <div *ngIf="passwordError"
-         class="error-message">{{ passwordErrorMessage }}
+         class="error-message">
+      {{ passwordErrorMessage }}
     </div>
   </div>
 
@@ -67,20 +71,23 @@
            (input)="checkPassword()">
 
     <div *ngIf="registrationError && ConfirmPassword && ConfirmPassword.trim() !== ''"
-         class="error-message">{{ registrationErrorMessage }}
+         class="error-message">
+      {{ registrationErrorMessage }}
     </div>
   </div>
 
   <button type="button"
           class="btn btn-secondary"
-          routerLink="/login">Back
+          routerLink="/login">
+    Back
   </button>
 
   <button type="button"
           class="btn btn-primary"
           (click)="registerUser()"
           [ngClass]="{'button-disabled': isButtonDisabled}"
-          [disabled]="isButtonDisabled">Sign up
+          [disabled]="isButtonDisabled">
+    Sign up
   </button>
 
   <div style="margin-top: 10px;"></div>

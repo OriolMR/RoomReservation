@@ -1,92 +1,94 @@
-<body>
-  <div id="profile-container"
-       style="width: 350px"
-       *ngIf="showProfile">
+  <div class="title-container">
+  <h2 id="tableLabel"
+      class="center-title">
+    Profile
+  </h2>
+</div>
+  <div *ngIf="showProfile">
 
-    <br><br>
+    <div id="profile-container">
 
-    <h2>Profile</h2>
+      <div>
+        <label>Username:</label>
+        <br>
+        <label>{{ newUserName }}</label>
+      </div>
 
-    <div>
-      <label>Username:</label>
-      <br>
-      <label>{{ newUserName }}</label>
-    </div>
+      <div>
+        <label>Email:</label>
+        <br>
+        <label>{{ newEmail }}</label>
+      </div>
 
-    <div>
-      <label>Email:</label>
-      <br>
-      <label>{{ newEmail }}</label>
-    </div>
-
-    <div>
       <button class="top_button"
-              (click)="goBack()">Back
+              (click)="goBack()">
+        Back
       </button>
       <button (click)="editProfileWindow()">Update</button>
+
     </div>
   </div>
 
-  <div id="edit-container" *ngIf="showEditProfile">
+  <div *ngIf="showEditProfile">
 
-    <br><br>
+    <div id="edit-container">
 
-    <h2>Update profile</h2>
-
-    <form role="form">
-
-      <div class="testClass">
-
-        <label>Username:</label>
+      <form role="form">
 
         <div>
-          <input type="text"
-                 name="newUserName"
-                 [(ngModel)]="newUserName">
+
+          <label>Username:</label>
+
+          <div>
+            <input type="text"
+                   name="newUserName"
+                   [(ngModel)]="newUserName">
+          </div>
         </div>
-      </div>
-
-      <div class="testClass">
-
-        <label>Email:</label>
 
         <div>
-          <input type="text"
-                 name="newEmail"
-                 [(ngModel)]="newEmail">
+
+          <label>Email:</label>
+
+          <div>
+            <input type="text"
+                   name="newEmail"
+                   [(ngModel)]="newEmail">
+          </div>
         </div>
-      </div>
-
-      <div class="testClass">
-
-        <label>Actual Password:</label>
 
         <div>
-          <input type="password"
-                 name="currentPasswordHash"
-                 [(ngModel)]="currentPasswordHash">
+
+          <label>Actual Password:</label>
+
+          <div>
+            <input type="password"
+                   name="currentPasswordHash"
+                   [(ngModel)]="currentPasswordHash">
+          </div>
         </div>
-      </div>
-
-      <div class="testClass">
-
-        <label>New Password:</label>
 
         <div>
-          <input type="password"
-                 name="newPasswordHash"
-                 [(ngModel)]="newPasswordHash">
+
+          <label>New Password:</label>
+
+          <div>
+            <input type="password"
+                   name="newPasswordHash"
+                   [(ngModel)]="newPasswordHash">
+          </div>
         </div>
-      </div>
 
-      <div class="testClass">
+        <div class="testClass">
 
-        <button class="top_button"
-                (click)="profileWindow()">Back
-        </button>
+          <button class="top_button"
+                  (click)="profileWindow()">
+            Back
+          </button>
 
-        <button (click)="saveProfile()">Save</button>
-      </div>
-    </form>
+          <button (click)="saveProfile()">Save</button>
+        </div>
+      </form>
+    </div>
+
   </div>
-</body>

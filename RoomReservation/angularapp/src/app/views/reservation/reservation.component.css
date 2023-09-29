@@ -4,21 +4,24 @@
     Para hacer referencia a una cosa de un archivo html, si es una etiqueta predeterminada, directamente se escribe su nombre.
 */
 
+/*.TITLE-CONTAINER*/
+h2{
+    text-align: center;
+}
 
 /*.HOME-CONTAINER*/
 
 /*Contenedor para los desplegables y el boton de clear selection*/
 .home-container {
   font-family: Arial, sans-serif;
-  color: #E2F6CA;
+  color: black;
   align-items: center;
   margin-top: 10px;
   padding: 20px;
   margin: 0 auto;
   text-align: center;
-  border-radius: 10px;
-  background: rgba(82, 97, 107, 0.8);
-  box-shadow: 5px 5px 10px #1c2b34, -5px -5px 10px #6eabd0;
+  background: white;
+  box-shadow: 1px 1px 10px #999999, -1px -1px 10px #999999;
   height: 60%;
   width: 830px;
 }
@@ -34,14 +37,20 @@
 /*Botones*/
 button {
   padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
+  background-color: white;
+  color: black;
   border: none;
   border-radius: 5px;
-  cursor: pointer;
   height: 50px;
   width: 150px;
   margin-top: 25px;
+  box-shadow: 1px 1px 10px #999999, -1px -1px 10px #999999;
+}
+
+button:hover {
+  color: black;
+  background-color: #f3f6f4;
+  box-shadow: 3px 3px 10px #999999, -3px -3px 10px #999999;
 }
 
 /*.MEETING-ROOMS-CONTAINER*/
@@ -66,6 +75,6 @@ button {
   justify-content: center; /* Centrar el contenido horizontalmente */
   align-items: center; /* Centrar el contenido verticalmente */
   border-radius: 10px;
-  background: #a8c8dc;
-  box-shadow: 5px 5px 10px #1c2b34, -5px -5px 10px #6eabd0;
+  background: white;
+  box-shadow: 1px 1px 10px #999999, -1px -1px 10px #999999;
 }

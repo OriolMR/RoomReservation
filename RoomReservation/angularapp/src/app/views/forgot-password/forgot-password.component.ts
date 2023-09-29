@@ -1,15 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { EmailService } from '../../service/email.service';
-import { HttpClient } from '@angular/common/http';
-import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.component.html',
   styleUrls: ['./forgot-password.component.css']
 })
-
 export class ForgotPasswordComponent implements OnInit {
   UserEmail: string = '';
 
@@ -27,11 +24,18 @@ export class ForgotPasswordComponent implements OnInit {
     }
 
     console.log("Email is: " + this.UserEmail);
-    this.emailService.requestPasswordReset(this.UserEmail).subscribe(
+
+ 
+    const emailData = { emailData: this.UserEmail };
+    console.log(emailData);
+
+    // Llama al servicio para enviar la solicitud con el objeto JSON
+    this.emailService.requestPasswordReset(emailData).subscribe(
       response => {
         console.log('Solicitud de restablecimiento de contraseña enviada con éxito', response);
       },
       error => {
+        console.error(error.error);
         console.error('Error al enviar la solicitud de restablecimiento de contraseña', error);
       }
     );

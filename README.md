@@ -17,68 +17,65 @@ C# con ASP.NET Core para la reserva de salas de reuniones de las diferentes ofic
 
 ## MySQL (Base de datos)
 
-**api.service.ts**
-<br>
-
 **dbo._EFMigrationsHistory**
 <br>
 
-lorem ipsum
+La tabla dbo._EFMigrationsHistory se utiliza para realizar un seguimiento de las migraciones de la base de datos en ASP.NET Core Identity. Esta tabla almacena información sobre las versiones de la base de datos y las migraciones aplicadas.
 
 **dbo.AspNetRoleClaims**
 <br>
 
-lorem ipsum
+La tabla dbo.AspNetRoleClaims almacena los reclamos (claims) asociados a los roles en tu sistema de autenticación. Los reclamos son afirmaciones sobre un usuario o entidad que pueden utilizarse para autorizar o denegar acceso a ciertas partes de la aplicación.
 
 **dbo.AspNetRoles**
 <br>
 
-lorem ipsum
+La tabla dbo.AspNetRoles almacena los roles de usuario en el sistema de autenticación. Los roles son una parte esencial de ASP.NET Core Identity y se utilizan para agrupar a los usuarios en categorías o roles específicos que definen sus permisos y acceso dentro de la aplicación.
 
 **dbo.AspNetUserClaims**
 <br>
 
-lorem ipsum
+La tabla dbo.AspNetUserClaims almacena los reclamos (claims) asociados a los usuarios en el sistema de autenticación.
 
 **dbo.AspNetUserLogins**
 <br>
 
-lorem ipsum
+La tabla dbo.AspNetUserLogins se utiliza para mantener un registro de los proveedores de inicio de sesión externos asociados a los usuarios en el sistema de autenticación.
 
 **dbo.AspNetUsers**
 <br>
 
-lorem ipsum
+La tabla dbo.AspNetUsers es una de las tablas centrales en ASP.NET Core Identity y almacena información sobre los usuarios registrados en el sistema de autenticación.
 
 **dbo.AspNetUserTokens**
 <br>
 
-lorem ipsum
+La tabla dbo.AspNetUserTokens se utiliza para almacenar tokens de seguridad asociados a los usuarios en el sistema de autenticación. Estos tokens son utilizados para la autenticación de dos factores y la recuperación de cuentas.
 
 **dbo.Cities**
 <br>
 
-lorem ipsum
+La tabla dbo.Cities almacena información sobre las ciudades dentro de cada país. Cada ciudad está asociada a un país a través de la columna **CountryId**.
 
 **dbo.Countries**
 <br>
 
-lorem ipsum
+La tabla dbo.Countries almacena información sobre los países disponibles en el sistema.
 
 **dbo.MeetingRooms**
 <br>
 
-lorem ipsum
+La tabla dbo.MeetingRooms almacena información sobre las salas de reuniones en cada oficina. Cada sala está relacionada con una oficina a través de la columna **OfficeId**.
 
-**dboffices**
+**db.Offices**
 <br>
 
-lorem ipsum
+La tabla dbo.Offices almacena información sobre las oficinas en cada ciudad. Cada oficina está relacionada con una ciudad a través de la columna **CityId**.
 
 **dbo.Reserves**
 <br>
 
-lorem ipsum
+La tabla dbo.Reserves almacena información sobre las reservas de las salas de reuniones. Cada reserva se asocia a una sala de reuniones a través de la columna **MeetingRoomId** y a un usuario a través de la columna **UserId**.
 
 -------------------------------------------------------------------------------------------
 
@@ -104,9 +101,9 @@ Cada pagina tiene un documento de estilos (CSS) que en general sigue unas direct
 - La tipografia para el resto de textos, sean botones, labels, inputs, etc. Es "Rubik".
 - La cabecera que (que tiene sus propios estilos) ha sido hecha con bootstrap. El logo de usuario se ha ubicado a la drecha del todo mientras que el resto a la izquierda.
 - El fondo de la aplicacion es una imagen de formas triangulares, que parecieran estar en diferentes capas. En un principio hiba a ser un degradado de azules, pero luego se opto por algo mas convencional como el blanco y finalmente la imagen predeterminada que hay de fondo en todas las vistas.
-- Los colores (excluyendo el blanco y el fondo) son unas tonalidades de azules oscuros y claros. Los oscuros se utilizan de forma predeterminada para que cuando el usuario interactue con algun componente de la vista que lo permita se aclarezca con una de las tonalidades mas claras de azul que hayamos escogido.
-- Por otra parte para centrar la vista del usuario en el centro (donde se encuentra lo relevanete) hemos optado por un trasfondo oscuro con sombreado.
-- En cuanto a los botones todos tienen los mismos estilos. Cuando se pasa el raton por encima o se interactua con ellos gracias a la opcion "hover" cambiamos la tonalidad del color del boton. Estos estan redondeados y el texto de su interior es blanco.
+- Los colores (excluyendo el blanco y el fondo) son unas tonalidades de blancos. Los oscuros se utilizan de forma predeterminada para que cuando el usuario interactue con algun componente de la vista que lo permita se oscurezca sutilmente.
+- Por otra parte para centrar la vista del usuario en el centro (donde se encuentra lo relevanete) hemos optado por un trasfondo blanco delimitado por un breve sombreado.
+- En cuanto a los botones todos tienen los mismos estilos. Cuando se pasa el raton por encima o se interactua con ellos gracias a la opcion "hover" cambiamos la tonalidad del color del boton. Estos estan redondeados y el texto de su interior es Negro.
 - Tienen una cabezera (refiriendonos al codigo y no a la vista como tal) donde se indica el contexto de cada una de las partes que forman el docuemnto html correspondiente. De esta forma es facil identificar que estilos se estan aplicando en un lugar y en que lugar.
 - Disponen de secciones ordenadas dentro del codigo por comentarios. Para una facil legibilidad y edicion.
 
@@ -124,11 +121,42 @@ Los estilos en este caso nos indican una serie de directrices acerca de que tan 
 **app.component.ts**
 <br>
 
-lorem ipsum
+La clase AppComponent se utiliza como el componente raíz de la aplicación Angular. Es el componente principal que representa la página principal de la aplicación.
+
+- **Selector**: El componente se utiliza en el HTML de la aplicación utilizando el selector <app-root></app-root>. Cualquier contenido definido en este componente se renderizará en el lugar donde se coloque <app-root></app-root> en el HTML.
+
+- **Plantilla y Estilos**: La propiedad templateUrl especifica la ubicación de la plantilla HTML que se utiliza para renderizar el contenido del componente. La propiedad styleUrls especifica la ubicación de un archivo CSS que se utiliza para aplicar estilos al componente.
+
+- **Datos del Componente**: En este caso, la clase AppComponent tiene una única propiedad llamada title, que tiene el valor 'AngularFrontend'.
+
+- **Interpolación**: La propiedad title se puede usar en la plantilla HTML del componente para mostrar su valor en la página. 
 
 **app.module.ts**
 <br>
-lorem ipsum
+
+La clase AppModule se utiliza para configurar y definir los módulos y componentes que forman parte de la aplicación.
+
+- **Importación de módulos**: La sección imports de AppModule lista todos los módulos que se utilizan en la aplicación. Estos módulos se importan desde bibliotecas o archivos locales y proporcionan funcionalidades adicionales a la aplicación. 
+
+- **Declaración de componentes**: La sección declarations enumera todos los componentes que forman parte de la aplicación. Cada componente debe declararse aquí para que Angular los conozca y pueda usarlos. 
+
+- **Configuración de proveedores de servicios**: La sección providers se utiliza para configurar los proveedores de servicios que se utilizarán en toda la aplicación. Por ejemplo, se ha configurado un interceptor HTTP llamado TokenInterceptor, que puede manipular las solicitudes HTTP antes de enviarlas. 
+
+- **Bootstrap**: La propiedad bootstrap se utiliza para especificar el componente raíz de la aplicación. En este caso, el componente raíz es AppComponent, lo que significa que este componente se carga cuando se inicia la aplicación Angular.
+
+- **Configuración de ToastrModule**: Dentro de la sección imports, se ha utilizado ToastrModule.forRoot(...) para configurar Toastr, que es una librería de notificaciones en la aplicación. Esto permite configurar opciones como la posición de las notificaciones (positionClass) y las clases CSS personalizadas (toastClass) que se aplicarán a las notificaciones
+
+### Forgot-password component
+**forgot-password.component.html**
+<br>
+
+Forgot-password tiene un documento html en el que se presenta un recuadro con una unica caja de texto donde introducir el correo electronico, seguida verticalmente y dentro del recueadro de dos botones. Uno para enviar el correo a la derecha del todo y otro para ir hacia atras a la izquierda del todo. Se accede a esta vista desde un hipertexto que se necuentra en la vista de login que dice tal que asi: forgot password?
+Por ultimo dispone de dos titulos, el principal y el secundaria indicando la empresa y para que sirve esta pagina.
+
+**forgot-password.component.css**
+<br>
+
+Contiene una serie de estilos de "forgot-password.component.html". Entre ellos principalmente el recuadro blanco donde se encuentra toda la accion. Con un sombreado fino y de color gris. En cuanto a los titulos siguen las directrices de todos los CSSs de esta aplicacion como se ha mencionado anteriormente al principio de esta seccion del fronted. Los botones son blancos con sierto sombreado que se accentua junto con un color mas oscuro al pasar el raton por encima.
 
 ### Menu component
 **menu.component.html**
@@ -144,13 +172,86 @@ El menu component, mas reconocido como header, es la cabecera de la aplicacion. 
 **menu.component.ts**
 <br>
 
-lorem ipsum
+Esta clase define un componente de interfaz de usuario. El componente representa y controla la funcionalidad relacionada con el menú de la aplicación.
+
+- **Inicialización**: En el método _ngOnInit()_, se realiza la inicialización del componente, verifica si el usuario está autenticado mediante el uso de la función isAuthenticated().
+
+- **Control de Autenticación**: La función _isAuthenticated()_ verifica si el usuario está autenticado. Esto se hace utilizando el servicio AuthenticationGuard para determinar si el usuario ha iniciado sesión.
+
+- **Control de Rol de Administrador**: La función _isAdmin()_ verifica si el usuario tiene el rol de administrador. Esto también se hace utilizando el servicio AuthenticationGuard.
+
+- **Cierre de Sesión**: El método _logout()_ se utiliza para cerrar la sesión del usuario. Envía una solicitud al servicio ApiService para realizar la acción de cierre de sesión. En caso de éxito, redirige al usuario a la página de inicio de sesión.
 
 > ### Service folder
 **api.service.ts**
 <br>
 
-lorem ipsum
+El servicio ApiService es una clase en una aplicación Angular que se utiliza para realizar solicitudes HTTP a una API en el servidor. Aquí está un resumen de lo que hace esta clase:
+
+- **URL de la API**: La clase tiene una propiedad privada llamada apiUrl que almacena la URL base de la API a la que se realizarán las solicitudes HTTP. En este caso, la URL base es 'https://localhost:7281/api'.
+
+- **Constructor**: El constructor de la clase inyecta el servicio HttpClient, que se utiliza para realizar las solicitudes HTTP.
+
+- **Manejo de Errores**: La clase contiene un método privado llamado handleError que se utiliza para manejar los errores que puedan ocurrir durante las solicitudes HTTP. En caso de error, este método devuelve un mensaje genérico de error.
+
+- **Métodos CRUD**: La clase ApiService proporciona métodos para realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar) en la API. Estos métodos son get, post, put, y delete. Cada uno de estos métodos toma un endpoint (una ruta específica de la API) y opcionalmente datos para enviar en la solicitud. Realizan la solicitud HTTP correspondiente a la API y manejan los errores utilizando el método handleError.
+
+Además de los métodos CRUD genéricos, la clase ApiService proporciona métodos específicos para obtener datos de la API:
+
+- Métodos GET:
+
+_**getCountries()**_: Obtiene una lista de países desde la API.
+
+_**getCities()**_: Obtiene una lista de ciudades desde la API.
+
+_**getOffices()**_: Obtiene una lista de oficinas desde la API.
+
+_**getMeetingRooms()**_: Obtiene una lista de salas de reuniones desde la API.
+
+_**getUsers()**_: Obtiene una lista de usuarios desde la API.
+
+_**getUserByUseremail(useremail: string)**_: Obtiene un usuario por su dirección de correo electrónico.
+
+_**getReserves()**_: Obtiene una lista de reservas desde la API.
+
+_**getEmailFromUserId(userId: string)**_: Obtiene la dirección de correo electrónico de un usuario por su identificador de usuario.
+
+_**getReservesByMeetingRoomId(meetingRoomId: number)**_: Obtiene las reservas asociadas a una sala de reuniones específica.
+
+_**getReservesByUserId(userId: string)**_: Obtiene las reservas asociadas a un usuario específico.
+
+_**getUserByUsername(username: string)**_: Obtiene un usuario por su nombre de usuario.
+
+_**getCitiesByCountryId(countryId: number)**_: Obtiene una lista de ciudades asociadas a un país específico.
+
+_**getOfficesByCityId(cityId: number)**_: Obtiene una lista de oficinas asociadas a una ciudad específica.
+
+_**getMeetingRoomsByOfficeId(officeId: number)**_: Obtiene una lista de salas de reuniones asociadas a una oficina específica.
+
+_**getMeetingRoomById(meetingRoomId: number)**_: Obtiene una sala de reuniones por su identificador.
+
+- Métodos POST:
+
+_**registerUser(userData: any)**_: Registra un nuevo usuario enviando datos de usuario a la API.
+
+_**createReservation(reservaData: any)**_: Crea una nueva reserva enviando datos de reserva a la API.
+
+_**login(userData: any)**_: Inicia sesión de usuario enviando datos de inicio de sesión a la API.
+
+_**logout()**_: Cierra la sesión del usuario y elimina el token de autenticación del almacenamiento local.
+
+- Métodos PUT:
+
+_**updateUserProfile(userId: string, profileData: any)**_: Actualiza el perfil de un usuario específico enviando los datos del perfil a la API. 
+
+_**updateReserveById(reservaId: number, reservaData: any)**_: Actualiza una reserva específica enviando los datos de la reserva a la API.
+
+- Métodos DELETE:
+
+_**deleteReserveById(reserveId: number)**_: Elimina una reserva específica enviando una solicitud de eliminación a la API. 
+
+_**deleteUserById(userId: string)**_: Elimina un usuario específico enviando una solicitud de eliminación a la API.
+
 
 > ### Shared folder
 > #### Interfaces
@@ -192,13 +293,13 @@ Cada una de estas opciones tiene un pequeño texto al lado indicando brevemente 
 **home.component.css**
 <br>
 
-Trasfondo redondeado, rectangular, oscuro y sombreado en el que se ven las 3 opciones antes mencionadas de color azul.
-Las opciones tienen sombreado bajo de color negro. Con el atributo hover el sombreado de sustitiye por un borde oscuro.
+Trasfondo redondeado, rectangular, blanco y sombreado en el que se ven las 3 opciones antes mencionadas de color blanco.
+Las opciones tienen sombreado  de color gris. Con el atributo hover el sombreado de sustitiye por un borde oscuro.
 
 **home.component.ts**
 <br>
 
-lorem ipsum
+Este componente muestra una lista de elementos (homeEntradas) con títulos, resúmenes y enlaces a diferentes partes de la aplicación. Cuando se selecciona una entrada, se muestra un cuadro de alerta con el título de la entrada. Se utiliza para proporcionar enlaces y una experiencia de navegación básica en la página de inicio de la aplicación.
 
 > #### Login View:
 **login.component.html**
@@ -210,16 +311,22 @@ Componente que actua de pagina principal cuando se intenta acceder a la aplicaci
 <br>
 
 Titulo centrado encima del trasfondo.
-Trasfondo redondeado, rectangular, oscuro y sombreado con dos inputs que contienen un placeholder indicando que es lo que se espera del usuario.
+Trasfondo rectangular, blanco y sombreado con dos inputs que contienen un placeholder indicando que es lo que se espera del usuario.
 Estos inputs estan redondeados.
-Color del texto de los componentes blanco y con tipografia Rubik.
-2 botones de color azul redondeados. se aclarecen gracias al atributo hover.
+Color del texto de los componentes negro y con tipografia Rubik.
+2 botones de color blanco con sombreado. Se oscurecen minimamente gracias al atributo hover.
 La tipografia de los textos es Rubik.
 
 **login.component.ts**
 <br>
 
-lorem ipsum
+Este componente se utiliza para gestionar el proceso de inicio de sesión en la aplicación.
+
+- _**login()**_: Dentro de este método, después de almacenar el token de autenticación y redirigir al usuario, se realiza una comprobación adicional para verificar si el token se almacenó correctamente en el localStorage. Si el token se encuentra en el localStorage, se registra un mensaje en la consola indicando su presencia.
+
+- **Estado de Autenticación**: El componente también interactúa con **AuthenticationGuard**. Después de un inicio de sesión exitoso, se establece el estado de autenticación en **true** utilizando this.authGuard.setAuthenticated(true). 
+
+- **Manejo de Errores**: En caso de que ocurra un error en la solicitud de inicio de sesión, se utiliza el servicio toastr para mostrar un mensaje de error en la interfaz de usuario.
 
 > #### Profile View:
 **profile.component.html**
@@ -235,9 +342,9 @@ Los botones siguen siendo iguales, solo que el "update" actualiza la informacion
 **profile.component.css**
 <br>
 
-Trasfondo redondeado, rectangular, oscuro y sombreado.
+Trasfondo rectangular, blanco y sombreado.
 Color del texto de los componentes blanco y con tipografia Rubik.
-2 botones de color azul redondeados. se aclarecen gracias al atributo hover.
+2 botones de color blanco son sombreado. Se oscurecen un poco gracias al atributo hover.
 2 inputs en la version "update". Cuadrados y de color blanco de fondo.
 
 **page-profile.component.ts**
@@ -255,10 +362,9 @@ Componente que actua de pagina secundaria cuando se intenta registrar a la aplic
 <br>
 
 Titulo centrado dentro, arriba del trasfondo.
-Trasfondo redondeado, rectangular, oscuro y sombreado con dos inputs que contienen un placeholder indicando que es lo que se espera del usuario.
-Estos inputs estan redondeados.
-Color del texto de los componentes blanco y con tipografia Rubik.
-2 botones de color azul redondeados. se aclarecen gracias al atributo hover.
+Trasfondo rectangular, blanco y sombreado con dos inputs que contienen un placeholder indicando que es lo que se espera del usuario.
+Color del texto de los componentes negro y con tipografia Rubik.
+2 botones de color blanco con sombreado. se oscurecen deliberadamente gracias al atributo hover.
 La tipografia de los textos es Rubik.
 
 **register.component.ts**

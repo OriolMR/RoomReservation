@@ -8,11 +8,11 @@
 
 /* Titulo de la pagina. */
 #myReserves {
-  text-align: center; /* Centra el texto horizontalmente */
-  margin-bottom: 10px; /* Opcional: agrega un margen superior para mejorar el espaciado */
-  /* Ajusta otros estilos según tus preferencias, como el tamaño de fuente, el color, etc. */
+  color: black;
+  font-family: Calibri;
+  text-align: center;
+  margin-bottom: 10px;
 }
-
 
 /* RESERVES-CONTAINER */
 
@@ -24,14 +24,13 @@
   margin-top: 20px;
   gap: 20px; /* Espacio entre cada reserva */
   /**/
-  color: #E2F6CA;
+  color: black;
   align-items: center;
   padding: 20px;
   margin: 0 auto;
   text-align: center;
-  border-radius: 10px;
-  background: rgba(82, 97, 107, 0.8);
-  box-shadow: 5px 5px 10px #1c2b34, -5px -5px 10px #6eabd0;
+  background: white;
+  box-shadow: 1px 1px 10px #999999, -1px -1px 10px #999999;
 }
 
 /*
@@ -46,11 +45,16 @@
   width: 540px; /* Ajusta el ancho según tus necesidades */
   height: 80px; /* Ajusta la altura según tus necesidades */
   margin-left: 10px;
-  border-radius: 10px;
-  background: #a8c8dc;
-  color: #fff;
+  background-color: white;
+  color: black;
   border: none;
   cursor: pointer;
+  box-shadow: 1px 1px 10px #999999, -1px -1px 10px #999999;
+}
+
+.reserve-container :hover {
+  background-color: #f3f6f4;
+  box-shadow: 3px 3px 10px #999999, -3px -3px 10px #999999;
 }
 
 /* Fecha de reserva de la reserva de uno de los contenedores .reserve-container. */
@@ -94,14 +98,20 @@
 
 .reserves-container button {
   margin: 5px;
-  background-color: #4A55A2;
   border-color: #7895CB;
   font-family: Rubik;
   /**/
   padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
+  background-color: white;
+  color: black;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  box-shadow: 1px 1px 10px #999999, -1px -1px 10px #999999;
+}
+
+/* Hover de los botones de .register-container. */
+.reserves-container button:hover {
+  background-color: #f3f6f4;
+  box-shadow: 3px 3px 10px #999999, -3px -3px 10px #999999;
 }

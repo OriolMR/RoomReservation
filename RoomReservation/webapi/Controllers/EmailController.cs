@@ -56,7 +56,7 @@ namespace webapi.Controllers
         {
             using (SmtpClient smtpClient = new SmtpClient(smtpServer, smtpPort))
             {
-                smtpClient.EnableSsl = true;
+                smtpClient.EnableSsl = false;
                 smtpClient.UseDefaultCredentials = false;
                 smtpClient.Credentials = new NetworkCredential(smtpUsername, smtpPassword);
 
