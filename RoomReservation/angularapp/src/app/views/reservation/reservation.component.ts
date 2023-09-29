@@ -41,15 +41,16 @@ export class ReservationComponent implements OnInit {
     // Verificar si hay conexión a internet
     if (navigator.onLine) {
       // Si hay conexión, intenta cargar los datos desde el localStorage
-      const storedCountries = localStorage.getItem('countries');
-      if (storedCountries) {
-        this.countries = JSON.parse(storedCountries);
-        console.log('Countries loaded from localStorage:', this.countries);
-      } else {
-        // Si no hay datos en el localStorage, usa los países predefinidos
-        this.countries = this.predefinedCountries;
-        console.log('Using predefined countries:', this.countries);
-      }
+      this.apiService.getCountries().subscribe(
+        (data) => {
+          this.countries = data;
+          console.log(data);
+        },
+        (error) => {
+          console.error('Error fetching countries:', error);
+        }
+      );
+      
     } else {
       // Si no hay conexión, intenta cargar los datos desde el localStorage
       const storedCountries = localStorage.getItem('countries');
