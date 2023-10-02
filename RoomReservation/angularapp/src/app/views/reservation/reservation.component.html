@@ -14,9 +14,11 @@
               [(ngModel)]="selectedCountryId"
               (ngModelChange)="getCitiesByCountryId()">
 
-        <option value=""></option>
+        <option id="country-option"
+                value=""></option>
 
-        <option *ngFor="let country of countries"
+        <option id="country-options"
+                *ngFor="let country of countries"
                 [value]="country.countryId">{{ country.countryName }}
         </option>
       </select>

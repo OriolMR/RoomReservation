@@ -57,6 +57,17 @@ button:hover {
   box-shadow: 3px 3px 10px #999999, -3px -3px 10px #999999;
 }
 
+.form-control {
+  border-width: thin;
+  border-color: black;
+  background-color: #ebebeb;
+}
+
+#country-options {
+  background-color: white;
+}
+
+
 /*.MEETING-ROOMS-CONTAINER*/
 /*Contenedor que aparece debajo de .home-container con las salas de la oficina seleccionada.*/
 .meeting-rooms-container {

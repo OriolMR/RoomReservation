@@ -91,9 +91,6 @@ export class ReservesComponent implements OnInit {
     return `${hours.padStart(2, '0')}:${minutes.padStart(2, '0')}`;
   }
 
-
-
-
   openEditModal(reserve: any): void {
     // Asigna la reserva seleccionada a la propiedad 'selectedReserve'
     this.selectedReserve = reserve;
@@ -111,9 +108,7 @@ export class ReservesComponent implements OnInit {
         const index = this.reservesList.findIndex((r) => r.reserveId === updatedReserveData.reserveId);
         if (index !== -1) {
           this.reservesList[index] = updatedReserveData;
-          this.getReservesByUserId(updatedReserveData.userId);
-
-          
+          this.getReservesByUserId(updatedReserveData.userId);         
         }
       }
     });

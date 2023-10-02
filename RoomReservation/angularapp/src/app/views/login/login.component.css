@@ -72,5 +72,13 @@ label {
     box-shadow: 3px 3px 10px #999999, -3px -3px 10px #999999;
   }
 
+#username {
+  background-color: #ebebeb;
+}
+
+#password {
+  background-color: #ebebeb;
+}
+
 
 

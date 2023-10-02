@@ -38,31 +38,44 @@ export class ReservationComponent implements OnInit {
   constructor(private apiService: ApiService, private http: HttpClient, private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    // Verificar si hay conexión a internet
+    // Intenta cargar los datos desde el localStorage
+    const storedCountries = localStorage.getItem('countries');
+
     if (navigator.onLine) {
-      // Si hay conexión, intenta cargar los datos desde el localStorage
+      // Si hay conexión, intenta cargar los datos desde la API
       this.apiService.getCountries().subscribe(
         (data) => {
           this.countries = data;
-          console.log(data);
+          console.log('Countries loaded (online)' + JSON.stringify(data));
+
+          // Guardar los países en el localStorage para su acceso sin conexión
+          localStorage.setItem('countries', JSON.stringify(data));
         },
         (error) => {
-          console.error('Error fetching countries:', error);
+          console.error('Error fetching countries from API:', error);
+
+          // Si hay un error al cargar desde la API, verifica si hay datos en el localStorage
+          if (storedCountries) {
+            this.countries = JSON.parse(storedCountries);
+            console.log('Countries loaded from localStorage (offline):', this.countries);
+          } else {
+            // Si no hay datos en el localStorage y ocurre un error en la API, usa los países predefinidos
+            this.countries = this.predefinedCountries;
+            console.log('Using predefined countries (offline):', this.countries);
+          }
         }
       );
-      
+    } else if (storedCountries) {
+      // Si no hay conexión a Internet pero hay datos en el localStorage, usa los datos del localStorage
+      this.countries = JSON.parse(storedCountries);
+      console.log('Countries loaded from localStorage (offline):', this.countries);
     } else {
-      // Si no hay conexión, intenta cargar los datos desde el localStorage
-      const storedCountries = localStorage.getItem('countries');
-      if (storedCountries) {
-        this.countries = JSON.parse(storedCountries);
-        console.log('Countries loaded from localStorage (offline):', this.countries);
-      } else {
-        // Si no hay datos en el localStorage, usa los países predefinidos
-        this.countries = this.predefinedCountries;
-        console.log('Using predefined countries (offline):', this.countries);
-      }
-    };
+      // Si no hay conexión a Internet ni datos en el localStorage, usa los países predefinidos
+      this.countries = this.predefinedCountries;
+      console.log('Using predefined countries (offline):', this.countries);
+    }
+  
+
 
     // Obtener todas las ciudades
     this.getAllCities();
