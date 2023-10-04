@@ -4,6 +4,8 @@ namespace LocationService.Models
 {
     public class Country
     {
+        internal int cityId;
+
         [Key]
         public int countryId { get; set; }
 
