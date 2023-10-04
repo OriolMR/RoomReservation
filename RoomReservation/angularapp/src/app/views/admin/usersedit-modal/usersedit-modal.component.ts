@@ -15,8 +15,6 @@ import { AuthenticationGuard } from '../../login/authentication.guard';
   styleUrls: ['./usersedit-modal.component.css']
 })
 export class UserseditModalComponent {
-  showProfile: boolean = true;
-  showEditProfile: boolean = false;
   newUserName: string = '';
   newEmail: string = '';
 
@@ -26,7 +24,7 @@ export class UserseditModalComponent {
   form: FormGroup;
   constructor(
     public dialogRef: MatDialogRef<UserseditModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: { userId: string },
     private apiService: ApiService,
     private http: HttpClient,
     private fb: FormBuilder,
@@ -67,10 +65,29 @@ export class UserseditModalComponent {
     );
   }
 
-  saveProfile() {
+  saveUser(): void {
     const profileData = {
       newUserName: this.newUserName,
-      newEmail: this.newEmail
+      newEmail: this.newEmail,
     };
+    const userId = this.data.userId; // Accede al userId desde el objeto data
+    console.log(userId);
+
+    // Llama al método deleteUserById pasando el userId como argumento
+    this.apiService.updateUserAdmin(userId, profileData).subscribe(
+      (response) => {
+        // La actualización del perfil se completó correctamente
+        console.log('Perfil actualizado:', response);
+        this.toastr.success('Profile updated successfully');
+        this.dialogRef.close("success");
+      },
+      (error) => {
+            // Ocurrió un error al actualizar el perfil
+        console.log(userId);
+            console.error('Error al actualizar el perfil:', error);
+            this.toastr.error('Error updating profile'); // Mostrar un mensaje de error usando ToastrService
+            // Aquí puedes manejar el error de acuerdo a tus necesidades
+      }
+    );
   }
 }

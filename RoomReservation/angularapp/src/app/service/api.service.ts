@@ -138,6 +138,10 @@ export class ApiService {
     return this.put(`users/${userId}`, profileData);
   }
 
+  updateUserAdmin(userId: string, profileData: any): Observable<any> {
+    return this.put(`users/admin/${userId}`, profileData);
+  }
+
   updateReserveById(reservaId: number, reservaData: any): Observable<any> {
     return this.put(`reserves/${reservaId}`, reservaData);
   }
@@ -151,5 +155,10 @@ export class ApiService {
   deleteUserById(userId: string): Observable<any> {
     const url = `${this.apiUrl}/Users/${userId}`;
     return this.http.delete(url);
+  }
+
+  deleteCountryById(countryId: string): Observable<any> {
+    const url = `${this.apiUrl}/Countries/${countryId}`;
+    return this.http.delete(url);;
   }
 }

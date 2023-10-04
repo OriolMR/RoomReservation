@@ -127,7 +127,37 @@ namespace RoomReservation.Controllers
                     return BadRequest(updateResult.Errors);
                 }
             }
+            return NotFound();
+        }
 
+        [HttpPut("admin/{id}")]
+        public async Task<IActionResult> UpdateUserAdmin(string id, [FromBody] UpdateUsersAdminModel userModel)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var existingUser = await userManager.FindByIdAsync(id);
+
+            if (existingUser != null)
+            {
+                // Actualizar solo las propiedades proporcionadas en el modelo
+                existingUser.UserName = userModel.newUserName ?? existingUser.UserName;
+                existingUser.Email = userModel.newEmail ?? existingUser.Email;
+
+                var updateResult = await userManager.UpdateAsync(existingUser);
+
+                if (updateResult.Succeeded)
+                {
+                    return Ok(existingUser);
+                }
+                else
+                {
+                    // Hubo un error al actualizar el usuario
+                    return BadRequest(updateResult.Errors);
+                }
+            }
             return NotFound();
         }
 
