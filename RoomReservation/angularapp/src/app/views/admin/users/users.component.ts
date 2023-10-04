@@ -137,19 +137,20 @@ export class UsersComponent implements AfterViewInit {
     });
   }
 
-  openEditUserModal(user: any): void {
+  openEditUserModal(enterAnimationDuration: string, exitAnimationDuration: string, userId: string): void {
+    console.log(userId);
     // Pasar los datos de la sala de reuniones seleccionada al modal
     const dialogRef = this.dialog.open(UserseditModalComponent, {
       width: '400px',
-      data: { user }
+      data: { userId }
     });
     // Obtener la sala de reuniones seleccionada del modal cuando se cierra (si es necesario)
     dialogRef.afterClosed().subscribe(result => {
       console.log('Modal closed:', result);
     // Reiniciar la selección de la sala de reuniones solo si el resultado del modal es válido
-      if (result) {
-        user = null;
-      }
+    //  if (result) {
+    //    userId = null;
+    //  }
     });
   }
 

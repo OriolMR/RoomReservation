@@ -24,7 +24,7 @@ export class UserseditModalComponent {
   form: FormGroup;
   constructor(
     public dialogRef: MatDialogRef<UserseditModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: { userId: string },
     private apiService: ApiService,
     private http: HttpClient,
     private fb: FormBuilder,
@@ -65,43 +65,29 @@ export class UserseditModalComponent {
     );
   }
 
-  saveProfile() {
+  saveUser(): void {
     const profileData = {
       newUserName: this.newUserName,
       newEmail: this.newEmail,
     };
+    const userId = this.data.userId; // Accede al userId desde el objeto data
+    console.log(userId);
 
-    // Obtén el token de autenticación del servicio AuthService
-    const token = this.authGuard.getToken();
-    console.log(token);
-
-    if (token) {
-      // Decodifica el token para obtener la información del usuario
-      console.log('Token obtenido del servicio:', this.authGuard.getToken());
-      const userId = this.authGuard.getUserIdFromToken(token);
-      console.log(userId);
-
-      if (userId) {
-        // Realiza la solicitud PUT al servidor para actualizar el perfil
-        console.log(profileData);
-        this.apiService.updateUserProfile(userId, profileData).subscribe(
-          (response) => {
-            // La actualización del perfil se completó correctamente
-            console.log('Perfil actualizado:', response);
-            this.toastr.success('Profile updated successfully');
-          },
-          (error) => {
+    // Llama al método deleteUserById pasando el userId como argumento
+    this.apiService.updateUserAdmin(userId, profileData).subscribe(
+      (response) => {
+        // La actualización del perfil se completó correctamente
+        console.log('Perfil actualizado:', response);
+        this.toastr.success('Profile updated successfully');
+        this.dialogRef.close("success");
+      },
+      (error) => {
             // Ocurrió un error al actualizar el perfil
+        console.log(userId);
             console.error('Error al actualizar el perfil:', error);
             this.toastr.error('Error updating profile'); // Mostrar un mensaje de error usando ToastrService
             // Aquí puedes manejar el error de acuerdo a tus necesidades
-          }
-        );
-      } else {
-        console.error('No se pudo obtener el ID de usuario del token.');
       }
-    } else {
-      console.error('No se encontró un token de autenticación.');
-    }
+    );
   }
 }
