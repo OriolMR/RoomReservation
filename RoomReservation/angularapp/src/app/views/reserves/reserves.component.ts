@@ -70,7 +70,7 @@ export class ReservesComponent implements OnInit {
       return;
     }
 
-   this.apiService.deleteReserveById(reserve.reserveId).subscribe(
+    this.apiService.deleteReserveById(reserve.reserveId).subscribe(
       (response) => {
         console.log('Reserva eliminada:', response);
         // Actualiza el array de reservas después de eliminar la reserva

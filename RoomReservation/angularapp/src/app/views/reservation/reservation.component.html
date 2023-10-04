@@ -1,6 +1,6 @@
   <h2>New reservation</h2>
 
-<div class="home-container" style="width: 630px; display: flex; flex-direction: column;">
+<div class="home-container" style="width: 830px; display: flex; flex-direction: column;">
 
   <div class="row align-items-center">
 
@@ -19,7 +19,8 @@
 
         <option id="country-options"
                 *ngFor="let country of countries"
-                [value]="country.countryId">{{ country.countryName }}
+                [value]="country.countryId">
+          {{ country.countryName }}
         </option>
       </select>
     </div>
@@ -37,7 +38,8 @@
         <option value=""></option>
 
         <option *ngFor="let city of cities"
-                [value]="city.cityId">{{ city.cityName }}
+                [value]="city.cityId">
+          {{ city.cityName }}
         </option>
       </select>
     </div>
@@ -53,7 +55,24 @@
         <option value=""></option>
 
         <option *ngFor="let office of offices"
-                [value]="office.officeId">{{ office.officeName }}
+                [value]="office.officeId">
+          {{ office.officeName }}
+        </option>
+      </select>
+    </div>
+
+    <div class="col-md-4 title-container">
+
+      <label for="capacity">Capacity:</label>
+
+      <select class="form-control"
+              name="capacity"
+              id="capacity"
+              [(ngModel)]="selectedCapacity"
+              (ngModelChange)="getMeetingRoomsByCapacity()">
+        <option id="capacity-option" value=""></option>
+        <option *ngFor="let capacity of capacities" [value]="capacity">
+          {{ capacity }} people
         </option>
       </select>
     </div>
@@ -86,5 +105,6 @@
        style="cursor: pointer;">
 
     <h3>{{ room.meetingRoomName }}</h3>
+    <p>Capacity: {{ room.capacity }}</p>
   </div>
 </div>
