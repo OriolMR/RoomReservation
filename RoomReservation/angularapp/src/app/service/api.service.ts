@@ -104,6 +104,13 @@ export class ApiService {
     return this.get(`meetingRooms/${meetingRoomId}`);
   }
 
+
+  getMeetingRoomsByCapacity(capacity: number): Observable<any[]> {
+    return this.get(`meetingRooms/${capacity}`);
+  }
+
+
+
   // POST
 
   registerUser(userData: any): Observable<any> {

@@ -51,6 +51,10 @@ label {
   font-family: Rubik;
 }
 
+.home-container input {
+  background-color: #f3f6f4;
+}
+
 /* Todos los componentes "button" de .home-container. */
 .home-container button {
   margin: 5px;
@@ -67,6 +71,14 @@ label {
     background-color: #f3f6f4;
     box-shadow: 3px 3px 10px #999999, -3px -3px 10px #999999;
   }
+
+#username {
+  background-color: #ebebeb;
+}
+
+#password {
+  background-color: #ebebeb;
+}
 
 
 

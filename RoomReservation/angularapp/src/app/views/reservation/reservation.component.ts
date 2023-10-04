@@ -11,6 +11,19 @@ import { ApiService } from '../../service/api.service';
 })
 export class ReservationComponent implements OnInit {
 
+  predefinedCountries: any[] = [
+    { id: 1, name: 'United States' },
+    { id: 2, name: 'United Kingdom' },
+    { id: 3, name: 'France' },
+    { id: 4, name: 'Germany' },
+    { id: 5, name: 'Spain' },
+    { id: 6, name: 'Italy' },
+    { id: 7, name: 'Japan' },
+    { id: 8, name: 'Australia' },
+    { id: 9, name: 'Canada' },
+    { id: 10, name: 'Mexico' },
+  ];
+
   countries: any[] = [];
   cities: any[] = [];
   offices: any[] = [];
@@ -22,20 +35,47 @@ export class ReservationComponent implements OnInit {
   selectedOfficeId: number | null = null;
   selectedMeetingRoom: any = null;
 
-
   constructor(private apiService: ApiService, private http: HttpClient, private dialog: MatDialog) { }
 
   ngOnInit(): void {
-    // Realizar la solicitud para obtener los países
-    this.apiService.getCountries().subscribe(
-      (data) => {
-        this.countries = data;
-        console.log(data);
-      },
-      (error) => {
-        console.error('Error fetching countries:', error);
-      }
-    );
+    // Intenta cargar los datos desde el localStorage
+    const storedCountries = localStorage.getItem('countries');
+
+    if (navigator.onLine) {
+      // Si hay conexión, intenta cargar los datos desde la API
+      this.apiService.getCountries().subscribe(
+        (data) => {
+          this.countries = data;
+          console.log('Countries loaded (online)' + JSON.stringify(data));
+
+          // Guardar los países en el localStorage para su acceso sin conexión
+          localStorage.setItem('countries', JSON.stringify(data));
+        },
+        (error) => {
+          console.error('Error fetching countries from API:', error);
+
+          // Si hay un error al cargar desde la API, verifica si hay datos en el localStorage
+          if (storedCountries) {
+            this.countries = JSON.parse(storedCountries);
+            console.log('Countries loaded from localStorage (offline):', this.countries);
+          } else {
+            // Si no hay datos en el localStorage y ocurre un error en la API, usa los países predefinidos
+            this.countries = this.predefinedCountries;
+            console.log('Using predefined countries (offline):', this.countries);
+          }
+        }
+      );
+    } else if (storedCountries) {
+      // Si no hay conexión a Internet pero hay datos en el localStorage, usa los datos del localStorage
+      this.countries = JSON.parse(storedCountries);
+      console.log('Countries loaded from localStorage (offline):', this.countries);
+    } else {
+      // Si no hay conexión a Internet ni datos en el localStorage, usa los países predefinidos
+      this.countries = this.predefinedCountries;
+      console.log('Using predefined countries (offline):', this.countries);
+    }
+
+
 
     // Obtener todas las ciudades
     this.getAllCities();
@@ -96,18 +136,18 @@ export class ReservationComponent implements OnInit {
     if (this.selectedCountryId) {
       // Llamada al método local para obtener las ciudades del país seleccionado
       this.apiService.getCitiesByCountryId(this.selectedCountryId).subscribe(
-          (cities) => {
-            this.cities = cities;
-            // Si se selecciona un país, obtener todas las oficinas de las ciudades de ese país
-            //this.getAllOfficesByCountry();
-            //this.filterMeetingRooms(); // Mover este método aquí para asegurarte de que se ejecute después de actualizar las selecciones
-            this.selectedCityId = null; // Limpiar la selección de la ciudad
-            this.selectedOfficeId = null; // Limpiar la selección de la oficina
-          },
-          (error) => {
-            console.error('Error fetching cities:', error);
-          }
-        );
+        (cities) => {
+          this.cities = cities;
+          // Si se selecciona un país, obtener todas las oficinas de las ciudades de ese país
+          //this.getAllOfficesByCountry();
+          //this.filterMeetingRooms(); // Mover este método aquí para asegurarte de que se ejecute después de actualizar las selecciones
+          this.selectedCityId = null; // Limpiar la selección de la ciudad
+          this.selectedOfficeId = null; // Limpiar la selección de la oficina
+        },
+        (error) => {
+          console.error('Error fetching cities:', error);
+        }
+      );
     } else {
       // Si no hay país seleccionado, mostrar todas las ciudades y todas las oficinas
       this.getAllCities();
@@ -122,14 +162,14 @@ export class ReservationComponent implements OnInit {
     if (this.selectedCityId) {
       /* Llamada al método local para obtener las oficinas de la ciudad seleccionada */
       this.apiService.getOfficesByCityId(this.selectedCityId).subscribe(
-          (offices) => {
-            this.offices = offices;
-  /*          this.filterMeetingRooms(); */// Actualizar las salas de reuniones basadas en la oficina seleccionada
-          },
-          (error) => {
-            console.error('Error fetching offices:', error);
-          }
-        );
+        (offices) => {
+          this.offices = offices;
+          /*          this.filterMeetingRooms(); */// Actualizar las salas de reuniones basadas en la oficina seleccionada
+        },
+        (error) => {
+          console.error('Error fetching offices:', error);
+        }
+      );
     } else {
       // Si no hay ciudad seleccionada, mostrar todas las oficinas del país seleccionado
       // this.getAllOfficesByCountry();
@@ -179,14 +219,14 @@ export class ReservationComponent implements OnInit {
   getMeetingRoomsByOfficeId(): void {
     if (this.selectedOfficeId) {
       this.apiService.getMeetingRoomsByOfficeId(this.selectedOfficeId).subscribe(
-          (meetingRooms) => {
-            this.meetingRooms = meetingRooms;
-            this.filteredMeetingRooms = meetingRooms;
-          },
-          (error) => {
-            console.error('Error fetching meeting rooms:', error);
-          }
-        );
+        (meetingRooms) => {
+          this.meetingRooms = meetingRooms;
+          this.filteredMeetingRooms = meetingRooms;
+        },
+        (error) => {
+          console.error('Error fetching meeting rooms:', error);
+        }
+      );
     } else {
       // Si no hay oficina seleccionada, mostrar todas las salas de reuniones
       this.filteredMeetingRooms = this.meetingRooms;

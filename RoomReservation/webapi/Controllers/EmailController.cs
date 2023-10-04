@@ -64,7 +64,8 @@ namespace webapi.Controllers
                 mailMessage.From = new MailAddress(smtpUsername);
                 mailMessage.To.Add(email);
                 mailMessage.Subject = "Solicitud de Restablecimiento de Contraseña";
-                mailMessage.Body = $"Haga clic en el siguiente enlace para restablecer su contraseña: https://tuapp.com/reset?token={resetToken}";
+                mailMessage.Body = $"Haga clic en el siguiente enlace para restablecer su contraseña:                       " +
+                    $"https://tuapp.com/reset?token={resetToken}";
 
                 await smtpClient.SendMailAsync(mailMessage);
             }

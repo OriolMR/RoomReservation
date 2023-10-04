@@ -55,7 +55,8 @@
     background-color: #00A4BD;
   }
 
-  #menu {
-      position: fixed;
-      width: 100%;
-  }
+#menu {
+  position: fixed;
+  width: 100%;
+  border-bottom: 2px solid #bcbcbc;
+}

@@ -41,6 +41,10 @@ label {
   font-family: Rubik;
 }
 
+input {
+  background-color: #f3f6f4;
+}
+
 /* Todos los elementos "button" de .register-container. */
 .register-container button {
   margin: 5px;
@@ -64,4 +68,8 @@ label {
 .button-disabled {
   opacity: 0.6;
   cursor: not-allowed;
+}
+
+.error-message {
+  color: #16537e;
 }

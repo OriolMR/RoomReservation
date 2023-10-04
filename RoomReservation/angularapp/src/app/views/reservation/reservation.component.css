@@ -23,7 +23,6 @@ h2{
   background: white;
   box-shadow: 1px 1px 10px #999999, -1px -1px 10px #999999;
   height: 60%;
-  width: 830px;
 }
 
 /*Titulo de .home-container*/
@@ -32,6 +31,10 @@ h2{
   font-family: Calibri;
   text-align: center;
   margin: 5px 0;
+}
+
+.meeting-rooms-container input {
+  background-color: #f3f6f4;
 }
 
 /*Botones*/
@@ -52,6 +55,19 @@ button:hover {
   background-color: #f3f6f4;
   box-shadow: 3px 3px 10px #999999, -3px -3px 10px #999999;
 }
+
+.form-control {
+  border-width: thin;
+  border-color: black;
+  background-color: #ebebeb;
+}
+
+
+
+#country-options {
+  background-color: white;
+}
+
 
 /*.MEETING-ROOMS-CONTAINER*/
 /*Contenedor que aparece debajo de .home-container con las salas de la oficina seleccionada.*/

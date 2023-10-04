@@ -13,6 +13,7 @@ namespace RoomReservation.Models
         public int officeId { get; set; }
         //[Column("MeetingRoomName")]
         public string meetingRoomName { get; set; }
+        public int capacity { get; set; }
 
         public MeetingRoom()
         {
