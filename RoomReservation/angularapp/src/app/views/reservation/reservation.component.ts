@@ -74,7 +74,7 @@ export class ReservationComponent implements OnInit {
       this.countries = this.predefinedCountries;
       console.log('Using predefined countries (offline):', this.countries);
     }
-  
+
 
 
     // Obtener todas las ciudades
@@ -136,18 +136,18 @@ export class ReservationComponent implements OnInit {
     if (this.selectedCountryId) {
       // Llamada al método local para obtener las ciudades del país seleccionado
       this.apiService.getCitiesByCountryId(this.selectedCountryId).subscribe(
-          (cities) => {
-            this.cities = cities;
-            // Si se selecciona un país, obtener todas las oficinas de las ciudades de ese país
-            //this.getAllOfficesByCountry();
-            //this.filterMeetingRooms(); // Mover este método aquí para asegurarte de que se ejecute después de actualizar las selecciones
-            this.selectedCityId = null; // Limpiar la selección de la ciudad
-            this.selectedOfficeId = null; // Limpiar la selección de la oficina
-          },
-          (error) => {
-            console.error('Error fetching cities:', error);
-          }
-        );
+        (cities) => {
+          this.cities = cities;
+          // Si se selecciona un país, obtener todas las oficinas de las ciudades de ese país
+          //this.getAllOfficesByCountry();
+          //this.filterMeetingRooms(); // Mover este método aquí para asegurarte de que se ejecute después de actualizar las selecciones
+          this.selectedCityId = null; // Limpiar la selección de la ciudad
+          this.selectedOfficeId = null; // Limpiar la selección de la oficina
+        },
+        (error) => {
+          console.error('Error fetching cities:', error);
+        }
+      );
     } else {
       // Si no hay país seleccionado, mostrar todas las ciudades y todas las oficinas
       this.getAllCities();
@@ -162,14 +162,14 @@ export class ReservationComponent implements OnInit {
     if (this.selectedCityId) {
       /* Llamada al método local para obtener las oficinas de la ciudad seleccionada */
       this.apiService.getOfficesByCityId(this.selectedCityId).subscribe(
-          (offices) => {
-            this.offices = offices;
-  /*          this.filterMeetingRooms(); */// Actualizar las salas de reuniones basadas en la oficina seleccionada
-          },
-          (error) => {
-            console.error('Error fetching offices:', error);
-          }
-        );
+        (offices) => {
+          this.offices = offices;
+          /*          this.filterMeetingRooms(); */// Actualizar las salas de reuniones basadas en la oficina seleccionada
+        },
+        (error) => {
+          console.error('Error fetching offices:', error);
+        }
+      );
     } else {
       // Si no hay ciudad seleccionada, mostrar todas las oficinas del país seleccionado
       // this.getAllOfficesByCountry();
@@ -219,14 +219,14 @@ export class ReservationComponent implements OnInit {
   getMeetingRoomsByOfficeId(): void {
     if (this.selectedOfficeId) {
       this.apiService.getMeetingRoomsByOfficeId(this.selectedOfficeId).subscribe(
-          (meetingRooms) => {
-            this.meetingRooms = meetingRooms;
-            this.filteredMeetingRooms = meetingRooms;
-          },
-          (error) => {
-            console.error('Error fetching meeting rooms:', error);
-          }
-        );
+        (meetingRooms) => {
+          this.meetingRooms = meetingRooms;
+          this.filteredMeetingRooms = meetingRooms;
+        },
+        (error) => {
+          console.error('Error fetching meeting rooms:', error);
+        }
+      );
     } else {
       // Si no hay oficina seleccionada, mostrar todas las salas de reuniones
       this.filteredMeetingRooms = this.meetingRooms;

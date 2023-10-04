@@ -59,6 +59,22 @@ namespace RoomReservation.Controllers
             return NotFound();
         }
 
+        // GET: api/MeetingRooms/ByCapacity/{capacity}
+        [HttpGet("meetingRooms/{capacity}")]
+        public async Task<ActionResult<IEnumerable<MeetingRoom>>> GetMeetingRoomsByCapacity(int capacity)
+        {
+            var meetingRooms = await roomReservationDbContext.MeetingRooms
+                .Where(x => x.capacity == capacity)
+                .ToListAsync();
+
+            if (meetingRooms != null && meetingRooms.Count > 0)
+            {
+                return Ok(meetingRooms);
+            }
+
+            return NotFound();
+        }
+
         // POST: api/Rooms
         [HttpPost]
         public async Task<IActionResult> AddRoom([FromBody] MeetingRoom room)

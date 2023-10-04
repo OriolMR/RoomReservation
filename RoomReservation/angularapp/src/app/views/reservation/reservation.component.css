@@ -23,7 +23,6 @@ h2{
   background: white;
   box-shadow: 1px 1px 10px #999999, -1px -1px 10px #999999;
   height: 60%;
-  width: 830px;
 }
 
 /*Titulo de .home-container*/
@@ -62,6 +61,8 @@ button:hover {
   border-color: black;
   background-color: #ebebeb;
 }
+
+
 
 #country-options {
   background-color: white;
