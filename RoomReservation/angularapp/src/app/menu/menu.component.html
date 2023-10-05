@@ -10,10 +10,10 @@
           <a class="nav-link active" aria-current="page" routerLink="/home">Home</a>
         </li>
         <li class="nav-item" *ngIf="isAuthenticated()">
-          <a class="nav-link" routerLink="/reserves">Reserves</a>
+          <a class="nav-link" routerLink="/reserves">My reservations</a>
         </li>
         <li class="nav-item" *ngIf="isAuthenticated()">
-          <a class="nav-link" routerLink="/reservation">Reservation</a>
+          <a class="nav-link" routerLink="/reservation">New reservation</a>
         </li>
         <li class="nav-item" *ngIf="isAuthenticated() && isAdmin()">
           <a class="nav-link" routerLink="/admin">Admin</a>
