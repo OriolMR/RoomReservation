@@ -97,7 +97,7 @@ export class ApiService {
   }
 
   getMeetingRoomsByOfficeId(officeId: number): Observable<any[]> {
-    return this.get(`meetingrooms/getMeetingRoomsByOfficeId/${officeId}`);
+    return this.get(`https://localhost:7281/api/meetingrooms/getMeetingRoomsByOfficeId/${officeId}`);
   }
 
   getMeetingRoomById(meetingRoomId: number): Observable<any> {
