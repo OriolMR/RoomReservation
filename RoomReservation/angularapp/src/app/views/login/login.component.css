@@ -58,6 +58,7 @@ label {
 /* Todos los componentes "button" de .home-container. */
 .home-container button {
   margin: 5px;
+  width: 97px;
   font-family: Rubik;
   padding: 10px 20px;
   background-color: white;
@@ -71,6 +72,18 @@ label {
     background-color: #f3f6f4;
     box-shadow: 3px 3px 10px #999999, -3px -3px 10px #999999;
   }
+
+.form-group {
+    margin-bottom: 5px;
+}
+
+#button-container {
+  margin: 12px 10px 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+}
 
 #username {
   background-color: #ebebeb;

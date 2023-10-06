@@ -1,5 +1,6 @@
 ﻿using LocationService.Models;
 using Microsoft.EntityFrameworkCore;
+using RoomReservation.Models;
 using System.Collections.Generic;
 
 namespace LocationService.DataAccess
@@ -12,6 +13,8 @@ namespace LocationService.DataAccess
 
         public DbSet<Country> Countries { get; set; }
         public DbSet<City> Cities { get; set; }
+
+        public DbSet<Office> Offices { get; set; }
 
 
         // Otras DbSet para entidades relacionadas

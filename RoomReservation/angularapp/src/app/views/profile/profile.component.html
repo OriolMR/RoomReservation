@@ -9,23 +9,21 @@
   <div id="profile-container">
 
     <div>
-      <label>Username:</label>
+      <label class="profile-label">Username:</label>
       <br>
       <label>{{ newUserName }}</label>
     </div>
 
     <div>
-      <label>Email:</label>
+      <label class="profile-label">Email:</label>
       <br>
       <label>{{ newEmail }}</label>
     </div>
 
-    <button class="top_button"
-            (click)="goBack()">
-      Back
-    </button>
-    <button (click)="editProfileWindow()">Update</button>
-
+    <div class="button-container">
+      <button (click)="goBack()"> Back </button>
+      <button (click)="editProfileWindow()">Update</button>
+    </div>
   </div>
 
 </div>
@@ -74,12 +72,9 @@
                [(ngModel)]="newPasswordHash">
       </div>
 
-      <div class="testClass">
+      <div class="button-container">
 
-        <button class="top_button"
-        (click)="profileWindow()">
-        Back
-        </button>
+        <button (click)="profileWindow()"> Back </button>
 
         <button (click)="saveProfile()">Save</button>
 

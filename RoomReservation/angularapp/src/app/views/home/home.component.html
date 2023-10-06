@@ -1,8 +1,8 @@
-<body>
-  <h3 id="titulo">ACME</h3>
+<h3 id="titulo">ACME</h3>
+<div id="home-container">
   <div id="listado">
     <app-entrada *ngFor="let entrada of homeEntradas"
                  [entrada]="entrada" routerLink="{{entrada.link}}">
     </app-entrada>
   </div>
-</body>
+</div>
