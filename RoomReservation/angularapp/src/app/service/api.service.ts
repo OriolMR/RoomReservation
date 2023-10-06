@@ -81,7 +81,7 @@ export class ApiService {
   }
 
   getReservesByUserId(userId: string): Observable<any[]> {
-    return this.get(`reserves/user/${userId}`);
+    return this.get(`https://localhost:7065/api/Reserves/user/${userId}`);
   }
 
   getUserByUsername(username: string): Observable<any> {
@@ -101,7 +101,7 @@ export class ApiService {
   }
 
   getMeetingRoomById(meetingRoomId: number): Observable<any> {
-    return this.get(`meetingRooms/${meetingRoomId}`);
+    return this.get('https://localhost:7281/api/meetingrooms/${meetingRoomId}');
   }
 
 

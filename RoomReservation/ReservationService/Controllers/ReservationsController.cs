@@ -2,18 +2,17 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using webapi.DataAccess;
-using webapi.Repositories;
-using webapi.Models;
+
 
 namespace RoomReservation.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    public class ReservesController : ControllerBase, IReservesController
+    public class ReservesController : ControllerBase
     {
-        private readonly RoomReservationDbContext roomReservationDbContext;
+        private readonly ReservationsDbContext roomReservationDbContext;
 
-        public ReservesController(RoomReservationDbContext roomReservationDbContext)
+        public ReservesController(ReservationsDbContext roomReservationDbContext)
         {
             this.roomReservationDbContext = roomReservationDbContext;
         }
@@ -82,23 +81,23 @@ namespace RoomReservation.Controllers
 
         // POST: api/Reserves
         [HttpPost]
-        public async Task<IActionResult> AddReserve([FromBody] ReserveData reserveData)
+        public async Task<IActionResult> AddReserve([FromBody] webapi.Models.ReserveData reserveData)
         {
             // Verificar si hay solapamiento de reservas en la base de datos
             var existingReserves = await roomReservationDbContext
                                    .Reserves
-                                   .Where(r => r.meetingRoomId == reserveData.MeetingRoomId 
+                                   .Where(r => r.meetingRoomId == reserveData.MeetingRoomId
                                        && r.reserveDate == reserveData.ReserveDate)
                                    .ToListAsync();
 
             // Verificar solapamiento de reservas
             foreach (var existingReserve in existingReserves)
             {
-                if ((reserveData.StartingHour >= existingReserve.startingHour 
-                       && reserveData.StartingHour < existingReserve.endingHour) 
-                   || (reserveData.EndingHour > existingReserve.startingHour 
-                       && reserveData.EndingHour <= existingReserve.endingHour) 
-                   || (reserveData.StartingHour <= existingReserve.startingHour 
+                if ((reserveData.StartingHour >= existingReserve.startingHour
+                       && reserveData.StartingHour < existingReserve.endingHour)
+                   || (reserveData.EndingHour > existingReserve.startingHour
+                       && reserveData.EndingHour <= existingReserve.endingHour)
+                   || (reserveData.StartingHour <= existingReserve.startingHour
                        && reserveData.EndingHour >= existingReserve.startingHour))
                 {
                     return BadRequest("La reserva se solapa con otra reserva existente.");
@@ -126,7 +125,7 @@ namespace RoomReservation.Controllers
 
         // PUT: api/Reserves/{id}
         [HttpPut("{id:int}")]
-        public async Task<IActionResult> UpdateReserve(int id, [FromBody] UpdateReserveModel reserve)
+        public async Task<IActionResult> UpdateReserve(int id, [FromBody] webapi.Models.UpdateReserveModel reserve)
         {
             var existingReserve = await roomReservationDbContext
                                       .Reserves
@@ -137,18 +136,18 @@ namespace RoomReservation.Controllers
                 // Realizar verificación de solapamiento de reservas
                 var existingReserves = await roomReservationDbContext
                                            .Reserves
-                                           .Where(r => r.meetingRoomId == reserve.MeetingRoomId 
+                                           .Where(r => r.meetingRoomId == reserve.MeetingRoomId
                                                && r.reserveDate == reserve.ReserveDate
                                                && r.reserveId != id)
                                            .ToListAsync();
 
                 foreach (var existing in existingReserves)
                 {
-                    if ((reserve.StartingHour >= existing.startingHour 
-                            && reserve.StartingHour < existing.endingHour) 
-                        || (reserve.EndingHour > existing.startingHour 
+                    if ((reserve.StartingHour >= existing.startingHour
+                            && reserve.StartingHour < existing.endingHour)
+                        || (reserve.EndingHour > existing.startingHour
                             && reserve.EndingHour <= existing.endingHour)
-                        || (reserve.StartingHour <= existing.startingHour 
+                        || (reserve.StartingHour <= existing.startingHour
                             && reserve.EndingHour >= existing.startingHour))
                     {
                         return BadRequest("La reserva se solapa con otra reserva existente.");
@@ -190,4 +189,5 @@ namespace RoomReservation.Controllers
         }
     }
 }
+
 

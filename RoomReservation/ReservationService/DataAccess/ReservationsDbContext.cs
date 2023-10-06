@@ -1,15 +1,15 @@
 ﻿using RoomReservation.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 
 namespace webapi.DataAccess
 {
-    public class RoomReservationDbContext : DbContext
+    public class ReservationsDbContext : DbContext
     {
 
-        public RoomReservationDbContext(DbContextOptions<RoomReservationDbContext> options) : base(options)
+        public ReservationsDbContext(DbContextOptions<ReservationsDbContext> options) : base(options)
         {
         }
-        public DbSet<MeetingRoom> MeetingRooms { get; set; }
         public DbSet<Reserve> Reserves { get; set; }
 
         public async Task<int> SaveChangesAsync()
