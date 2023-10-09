@@ -132,6 +132,10 @@ export class ApiService {
     return this.post('authentication/logout', {});
   }
 
+  addCountry(countryData: any): Observable<any> {
+    return this.post('countries', countryData);
+  }
+
   // PUT
 
   updateUserProfile(userId: string, profileData: any): Observable<any> {
@@ -144,6 +148,10 @@ export class ApiService {
 
   updateReserveById(reservaId: number, reservaData: any): Observable<any> {
     return this.put(`reserves/${reservaId}`, reservaData);
+  }
+
+  updateCountryById(countryId: number, countryData: any): Observable<any> {
+    return this.put(`countries/${countryId}`, countryData);
   }
 
   // DELETE

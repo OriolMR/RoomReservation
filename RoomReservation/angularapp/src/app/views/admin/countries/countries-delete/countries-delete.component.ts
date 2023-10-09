@@ -27,6 +27,7 @@ export class CountriesDeleteComponent {
       },
       (error) => {
         console.error('Error al eliminar la ciudad:', error);
+        console.log(countryId);
         // Maneja el error si es necesario.
       }
     );

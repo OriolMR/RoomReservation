@@ -48,7 +48,7 @@ namespace RoomReservation.Controllers
 
         // POST: api/Country
         [HttpPost]
-        [Authorize(Roles = "Administrador")]
+        //[Authorize(Roles = "Administrador")]
         public async Task<IActionResult> AddCountry([FromBody] Country country)
         {
             country.countryId = 0;
@@ -63,8 +63,8 @@ namespace RoomReservation.Controllers
         }
 
         // PUT: api/Country/{id}
-        [HttpPut("{id:guid}")]
-        [Authorize(Roles = "Administrador")]
+        [HttpPut("{id:int}")]
+        //[Authorize(Roles = "Administrador")]
         public async Task<IActionResult> UpdateCountry(int id, [FromBody] Country country)
         {
             var existingCountry = await roomReservationDbContext
@@ -86,7 +86,7 @@ namespace RoomReservation.Controllers
 
         // DELETE: api/Country/{id}
         [HttpDelete("{id:int}")]
-        [Authorize(Roles = "Administrador")]
+        //[Authorize(Roles = "Administrador")]
         public async Task<IActionResult> DeleteCountry(int id)
         {
             var country = await roomReservationDbContext

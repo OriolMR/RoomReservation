@@ -13,6 +13,8 @@ import { CountriesDeleteComponent } from './countries-delete/countries-delete.co
 import { ApiService } from '../../../service/api.service';
 import { HttpClientModule } from '@angular/common/http';
 import {MatIconModule} from '@angular/material/icon';
+import { CountriesaddModalComponent } from '../countriesadd-modal/countriesadd-modal.component';
+import { CountrieseditModalComponent } from '../countriesedit-modal/countriesedit-modal.component';
 
 @Component({
   selector: 'app-countries',
@@ -43,10 +45,9 @@ export class CountriesComponent implements AfterViewInit {
   }
 
   openDialog(countryId: string): void {
-    console.log(countryId);
+    console.log("ID" + countryId);
     const dialogRef = this.dialog.open(CountriesDeleteComponent, {
       width: '250px',
-     
       data: { countryId }, // Pasa el userId como dato al diálogo UsersDeleteComponent
     });
 
@@ -112,5 +113,39 @@ export class CountriesComponent implements AfterViewInit {
 
   addData() {
     const randomElementIndex = Math.floor(Math.random() * this.dataSource.data.length);
+  }
+
+  openAddCountryModal(country: any): void {
+    // Pasar los datos de la sala de reuniones seleccionada al modal
+    const dialogRef = this.dialog.open(CountriesaddModalComponent, {
+      width: '400px',
+      data: { country }
+    });
+    // Obtener la sala de reuniones seleccionada del modal cuando se cierra (si es necesario)
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Modal closed:', result);
+
+      // Reiniciar la selección de la sala de reuniones solo si el resultado del modal es válido
+      if (result) {
+        country = null;
+      }
+    });
+  }
+
+  openEditCountryModal(countryId: number): void {
+    // Pasar los datos de la sala de reuniones seleccionada al modal
+    const dialogRef = this.dialog.open(CountrieseditModalComponent, {
+      width: '400px',
+      data: { countryId }
+    });
+    // Obtener la sala de reuniones seleccionada del modal cuando se cierra (si es necesario)
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Modal closed:', result);
+
+      // Reiniciar la selección de la sala de reuniones solo si el resultado del modal es válido
+      if (result) {
+        countryId = 0;
+      }
+    });
   }
 }

@@ -97,6 +97,7 @@
   cursor: pointer;
   color: #fff;
   font-size: 14px; /* Ajusta el tamaño de fuente deseado */
+  background-color: #dc3545;
 }
 
 /* Boton actualizar verde del contenedor button-container. */
