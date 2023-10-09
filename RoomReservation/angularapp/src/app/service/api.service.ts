@@ -56,7 +56,7 @@ export class ApiService {
   }
 
   getMeetingRooms(): Observable<any[]> {
-    return this.get('https://localhost:7281/api/meetingRooms');
+    return this.get('https://localhost:7065/api/meetingRooms');
   }
 
   getUsers(): Observable<any[]> {
@@ -77,7 +77,7 @@ export class ApiService {
   }
 
   getReservesByMeetingRoomId(meetingRoomId: number): Observable<any> {
-    return this.get(`Reserves/getReservesByMeetingRoomId/${meetingRoomId}`);
+    return this.get(`https://localhost:7065/api/Reserves/getReservesByMeetingRoomId/${meetingRoomId}`);
   }
 
   getReservesByUserId(userId: string): Observable<any[]> {
@@ -97,12 +97,13 @@ export class ApiService {
   }
 
   getMeetingRoomsByOfficeId(officeId: number): Observable<any[]> {
-    return this.get(`https://localhost:7281/api/meetingrooms/getMeetingRoomsByOfficeId/${officeId}`);
+    return this.get(`https://localhost:7065/api/meetingrooms/getMeetingRoomsByOfficeId/${officeId}`);
   }
 
   getMeetingRoomById(meetingRoomId: number): Observable<any> {
-    return this.get('https://localhost:7281/api/meetingrooms/${meetingRoomId}');
+    return this.get(`https://localhost:7065/api/meetingrooms/${meetingRoomId}`);
   }
+
 
 
   getMeetingRoomsByCapacity(capacity: number): Observable<any[]> {
@@ -118,7 +119,7 @@ export class ApiService {
   }
 
   createReservation(reservaData: any): Observable<any> {
-    return this.post('reserves', reservaData);
+    return this.http.post<any>(`https://localhost:7065/api/Reserves`, reservaData)
   }
 
   login(userData: any): Observable<any> {
@@ -143,13 +144,14 @@ export class ApiService {
   }
 
   updateReserveById(reservaId: number, reservaData: any): Observable<any> {
-    return this.put(`reserves/${reservaId}`, reservaData);
+    return this.http.put<any>(`https://localhost:7065/api/reserves/${reservaId}`, reservaData);
   }
+
 
   // DELETE
 
   deleteReserveById(reserveId: number): Observable<any> {
-    return this.delete(`reserves/${reserveId}`);
+    return this.http.delete<any>(`https://localhost:7065/api/reserves/${reserveId}`);
   }
 
   deleteUserById(userId: string): Observable<any> {

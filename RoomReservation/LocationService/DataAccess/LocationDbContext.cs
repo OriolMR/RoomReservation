@@ -13,7 +13,6 @@ namespace LocationService.DataAccess
 
         public DbSet<Country> Countries { get; set; }
         public DbSet<City> Cities { get; set; }
-
         public DbSet<Office> Offices { get; set; }
 
 

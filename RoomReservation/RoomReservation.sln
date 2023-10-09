@@ -9,9 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "webapi", "webapi\webapi.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LocationService", "LocationService\LocationService.csproj", "{79D5B8C2-8999-4A04-82FE-897BE21D2693}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EnvioCorreo.Logica", "EnvioCorreo.Logica\EnvioCorreo.Logica.csproj", "{2186B3AC-430D-4149-89DA-1C2BD3FE0AC8}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReservationService", "ReservationService\ReservationService.csproj", "{11BC2088-9B6C-4A0D-92B9-E89F76408E75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReservationService", "ReservationService\ReservationService.csproj", "{11BC2088-9B6C-4A0D-92B9-E89F76408E75}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +31,6 @@ Global
 		{79D5B8C2-8999-4A04-82FE-897BE21D2693}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79D5B8C2-8999-4A04-82FE-897BE21D2693}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79D5B8C2-8999-4A04-82FE-897BE21D2693}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2186B3AC-430D-4149-89DA-1C2BD3FE0AC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2186B3AC-430D-4149-89DA-1C2BD3FE0AC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2186B3AC-430D-4149-89DA-1C2BD3FE0AC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2186B3AC-430D-4149-89DA-1C2BD3FE0AC8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{11BC2088-9B6C-4A0D-92B9-E89F76408E75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{11BC2088-9B6C-4A0D-92B9-E89F76408E75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11BC2088-9B6C-4A0D-92B9-E89F76408E75}.Release|Any CPU.ActiveCfg = Release|Any CPU

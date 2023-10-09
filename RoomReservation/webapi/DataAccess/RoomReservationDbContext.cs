@@ -10,7 +10,6 @@ namespace webapi.DataAccess
         {
         }
         public DbSet<MeetingRoom> MeetingRooms { get; set; }
-        public DbSet<Reserve> Reserves { get; set; }
 
         public async Task<int> SaveChangesAsync()
         {
