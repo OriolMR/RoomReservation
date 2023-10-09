@@ -1,0 +1,17 @@
+<div class="modal-overlay" (click)="onOverlayClick($event)">
+  <div class="modal-content" (click)="onContentClick($event)">
+    <h2>Create Country:</h2>
+    <!--
+    <div class="form-group">
+      <label for="countryId">Country Id:</label><br>
+      <input type="text" id="countryId" class="form-control" placeholder="Enter a country ID" [(ngModel)]="countryId" (keydown.enter)="addCountry()">
+    </div> -->
+    <div class="form-group">
+      <label for="countryName">Country Name:</label><br>
+      <input type="text" id="countryName" class="form-control" placeholder="Enter a country name" [(ngModel)]="countryName" (keydown.enter)="addCountry()">
+    </div>
+    <button class="custom-button" (click)="close()">Close</button>
+    <button type="button" class="btn btn-primary" (click)="addCountry()" [ngClass]="{'button-disabled': isButtonDisabled}" [disabled]="isButtonDisabled">Add New User</button>
+    <div style="margin-top: 10px;"></div>
+  </div>
+</div>

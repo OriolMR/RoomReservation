@@ -48,6 +48,7 @@ import { ForgotPasswordComponent } from './views/forgot-password/forgot-password
 import { UserseditModalComponent } from './views/admin/usersedit-modal/usersedit-modal.component';
 import { CountrieseditModalComponent } from './views/admin/countriesedit-modal/countriesedit-modal.component';
 import { CountriesaddModalComponent } from './views/admin/countriesadd-modal/countriesadd-modal.component';
+import { CitiesaddModalComponent } from './views/admin/citiesadd-modal/citiesadd-modal.component';
 
 ToastrModule.forRoot({
   positionClass: 'toast-top-center',
@@ -82,6 +83,7 @@ ToastrModule.forRoot({
     UserseditModalComponent,
     CountrieseditModalComponent,
     CountriesaddModalComponent,
+    CitiesaddModalComponent,
   ],
   imports: [
     BrowserModule,

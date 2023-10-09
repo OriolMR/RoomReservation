@@ -59,7 +59,7 @@ namespace RoomReservation.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Administrador")]
+        //[Authorize(Roles = "Administrador")]
         public async Task<IActionResult> AddCity([FromBody] City city)
         {
             city.cityId = 0;
@@ -73,7 +73,7 @@ namespace RoomReservation.Controllers
         }
 
         [HttpPut("{id:int}")]
-        [Authorize(Roles = "Administrador")]
+        //[Authorize(Roles = "Administrador")]
         public async Task<IActionResult> UpdateCity(int id, [FromBody] City city)
         {
             var existingCity = await locationDbContext
@@ -93,7 +93,7 @@ namespace RoomReservation.Controllers
         }
 
         [HttpDelete("{id:int}")]
-        [Authorize(Roles = "Administrador")]
+        //[Authorize(Roles = "Administrador")]
         public async Task<IActionResult> DeleteCity(int id)
         {
             var city = await locationDbContext.Cities.FindAsync(id);
