@@ -20,7 +20,7 @@ export class ApiService {
   /* ***************************************************************** */
 
   get(endpoint: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/${endpoint}`)
+    return this.http.get<any>(`${endpoint}`)
       .pipe(catchError(this.handleError));
   }
 
@@ -44,23 +44,23 @@ export class ApiService {
   // GET
 
   getCountries(): Observable<any[]> {
-    return this.get('countries');
+    return this.get('https://localhost:7290/api/countries');
   }
 
   getCities(): Observable<any[]> {
-    return this.get('cities');
+    return this.get('https://localhost:7290/api/cities');
   }
 
   getOffices(): Observable<any[]> {
-    return this.get('offices');
+    return this.get('https://localhost:7290/api/offices');
   }
 
   getMeetingRooms(): Observable<any[]> {
-    return this.get('meetingRooms');
+    return this.get('https://localhost:7281/api/meetingRooms');
   }
 
   getUsers(): Observable<any[]> {
-    return this.get('users');
+    return this.get('https://localhost:7281/api/users');
   }
 
   //-----//
@@ -89,15 +89,15 @@ export class ApiService {
   }
 
   getCitiesByCountryId(countryId: number): Observable<any[]> {
-    return this.get(`cities/getCitiesByCountryId/${countryId}`);
+    return this.get(`https://localhost:7290/api/Cities/getCitiesByCountryId/${countryId}`);
   }
 
   getOfficesByCityId(cityId: number): Observable<any[]> {
-    return this.get(`offices/getOfficesByCityId/${cityId}`);
+    return this.get(`https://localhost:7290/api/Offices/getOfficesByCityId/${cityId}`);
   }
 
   getMeetingRoomsByOfficeId(officeId: number): Observable<any[]> {
-    return this.get(`meetingrooms/getMeetingRoomsByOfficeId/${officeId}`);
+    return this.get(`https://localhost:7281/api/meetingrooms/getMeetingRoomsByOfficeId/${officeId}`);
   }
 
   getMeetingRoomById(meetingRoomId: number): Observable<any> {

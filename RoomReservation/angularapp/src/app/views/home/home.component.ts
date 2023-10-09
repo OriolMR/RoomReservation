@@ -18,12 +18,12 @@ public homeEntradas: Entrada[];
         link: '/profile'
       },
       {
-        titulo: 'Reserves',
+        titulo: 'My reservations',
         resumen: 'Click here to view your reservations',
         link: '/reserves'
       },
       {
-        titulo: 'Reservation',
+        titulo: 'New reservation',
         resumen: 'Click here to make a reservation',
         link: '/reservation'
       }

@@ -22,10 +22,10 @@ namespace webapi.Controllers
         {
             try
             {
-                string smtpServer = configuration["EmailSettings:SmtpServer"];
-                int smtpPort = configuration.GetValue<int>("EmailSettings:SmtpPort");
-                string smtpUsername = configuration["EmailSettings:SmtpUsername"];
-                string smtpPassword = configuration["EmailSettings:SmtpPassword"];
+                string smtpServer = configuration["EmailSettings:stServidor"];
+                int smtpPort = configuration.GetValue<int>("EmailSettings:stPuerto");
+                string smtpUsername = configuration["EmailSettings:stUsuario"];
+                string smtpPassword = configuration["EmailSettings:stPassword"];
 
 
                 // Validar el correo electrónico aquí si es necesario.
@@ -56,7 +56,7 @@ namespace webapi.Controllers
         {
             using (SmtpClient smtpClient = new SmtpClient(smtpServer, smtpPort))
             {
-                smtpClient.EnableSsl = false;
+                smtpClient.EnableSsl = true;
                 smtpClient.UseDefaultCredentials = false;
                 smtpClient.Credentials = new NetworkCredential(smtpUsername, smtpPassword);
 

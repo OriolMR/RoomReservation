@@ -76,21 +76,20 @@
     </div>
   </div>
 
-  <button type="button"
-          class="btn btn-secondary"
-          routerLink="/login">
-    Back
-  </button>
+  <div id="button-container">
+    <button type="button"
+            routerLink="/login">
+      Back
+    </button>
 
-  <button type="button"
-          class="btn btn-primary"
-          (click)="registerUser()"
-          [ngClass]="{'button-disabled': isButtonDisabled}"
-          [disabled]="isButtonDisabled">
-    Sign up
-  </button>
+    <button type="button"
+            (click)="registerUser()"
+            [ngClass]="{'button-disabled': isButtonDisabled}"
+            [disabled]="isButtonDisabled">
+      Sign up
+    </button>
+  </div>
 
-  <div style="margin-top: 10px;"></div>
 </div>
 
 
