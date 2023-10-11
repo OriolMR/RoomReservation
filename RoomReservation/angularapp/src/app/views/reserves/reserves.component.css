@@ -1,22 +1,12 @@
-/*
+x/*
     Para hacer referencia a una cosa de un archivo html, si es "class", se le pone un "." delante de su nombre.
     Para hacer referencia a una cosa de un archivo html, si es "id", se le pone un "#" delante de su nombre.
     Para hacer referencia a una cosa de un archivo html, si es una etiqueta predeterminada, directamente se escribe su nombre.
 */
 
-/* TITULO */
-h2 {
-  color: black;
-  font-family: Calibri;
-  text-align: center;
-}
-
 /* Titulo de la pagina. */
 #myReserves {
-  color: black;
-  font-family: Calibri;
   text-align: center;
-  margin-bottom: 10px;
 }
 
 /* RESERVES-CONTAINER */
