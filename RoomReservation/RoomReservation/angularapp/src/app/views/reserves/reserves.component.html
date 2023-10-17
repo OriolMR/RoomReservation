@@ -1,0 +1,54 @@
+<!-- reserves.component.html -->
+<div class="title-container">
+  <h2 id="myReserves">My reservations</h2>
+</div>
+
+<div id="entrada">
+
+  <!-- Utilizamos un div con la clase 'reserves-container' para contener todas las reservas -->
+  <div class="reserves-container"
+       style="width:auto">
+
+    <p>Total reserves: {{ reservesList.length }}</p>
+
+    <div *ngFor="let reserve of reservesList"
+         class="reserve-item">
+      <!-- Envuelve cada reserva en un div con la clase 'reserve-container' -->
+      <div class="reserve-container">
+
+        <p class="reserve-date">{{ reserve.reserveDate | date:'dd/MM/yyyy' }}</p>
+
+        <p class="starting-hour">{{ formatHour(reserve.startingHour) }} - {{ formatHour(reserve.endingHour) }}</p>
+
+        <!-- Otras propiedades de la reserva que desees mostrar -->
+        <!-- Muestra luego el nombre de la sala de reuniones (meetingRoomName) -->
+        <p class="meetingRoomName">{{ reserve.meetingRoomName }}</p>
+
+        <!-- Botón "Update" dentro del contenedor de reserva -->
+        <img id="edit-button"
+             src="https://cdn.icon-icons.com/icons2/1339/PNG/512/editdocumentbutton_87517.png"
+             (click)="openEditModal(reserve)">
+
+        <!-- Botón "Delete" dentro del contenedor de reserva -->
+        <img id="delete-button"
+             src="https://i.pinimg.com/originals/09/90/f8/0990f82b768e363f0dec55de307fdf4c.png"
+             (click)="deleteReserve(reserve)">
+      </div>
+    </div>
+
+    <img id="plus-button"
+         src="https://static.vecteezy.com/system/resources/previews/009/266/327/original/plus-sign-icon-free-png.png"
+         routerLink="/reservation"
+         style="cursor: pointer;">
+
+    <button type="button"
+            class="btn btn-secondary"
+            routerLink="/home">Back
+    </button>
+  </div>
+</div>
+
+
+
+
+
