@@ -65,8 +65,15 @@ namespace webapi.Controllers
                 mailMessage.To.Add(email);
                 
                 mailMessage.Subject = "Solicitud de Restablecimiento de Contraseña";
-                mailMessage.Body = $"Haga clic en el siguiente enlace para restablecer su contraseña:                       " +
-                    $"https://tuapp.com/reset?token={resetToken}";
+                mailMessage.IsBodyHtml = true;
+                mailMessage.Body = "<p style=\"color:#000000\";>Hola, <br><br> Hace unos momentos se ha enviado una peticion de " +
+                    "restablecimiento de contraseña, para un usuario de ACME, ha esta dirreccion de correo electronico. <br><br> " +
+                    "<strong>Si no ha sido usted, por favor, ignore este mensaje</strong>. Cualquier mal uso de dicho " +
+                    "correo podria resultar en consequencias legales. <br><br> " +
+                    "En caso contrario, por favor, dirijase al siguiente enlace para cambiar su contraseña. " +
+                    $"https://tuapp.com/reset?token={resetToken}. <br><br> " +
+                    "Cordialmente, <br> " +
+                    "El equipo de atencion al cliente de ACME </p>";
 
                 await smtpClient.SendMailAsync(mailMessage);
             }
