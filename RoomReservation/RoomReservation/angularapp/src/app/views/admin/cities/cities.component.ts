@@ -13,6 +13,8 @@ import { CitiesDeleteComponent } from './cities-delete/cities-delete.component';
 import { ApiService } from '../../../service/api.service';
 import { HttpClientModule } from '@angular/common/http';
 import {MatIconModule} from '@angular/material/icon';
+import { CitiesaddModalComponent } from './citiesadd-modal/citiesadd-modal.component';
+import { CitiesEditComponent } from './cities-edit/cities-edit.component';
 
 @Component({
   selector: 'app-cities',
@@ -42,11 +44,46 @@ export class CitiesComponent implements AfterViewInit {
     this.getAllCities();
   }
 
-  openCitiesDelete(cityId: number): void {
+  openDeleteCity(cityId: number): void {
     console.log("ID: " + cityId);
     const dialogRef = this.dialog.open(CitiesDeleteComponent, {
       width: '250px',
       data: { cityId }, // Pasa el userId como dato al diálogo UsersDeleteComponent
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === 'success') {
+
+        console.log("el resultado es:" + result);
+        // Realiza cualquier acción adicional después de eliminar el usuario y cerrar el modal.
+        // Por ejemplo, puedes actualizar la lista de usuarios para que se reflejen los cambios en la tabla.
+        this.getAllCities(); // Vuelve a cargar los usuarios para que se actualice la tabla.
+      }
+    });
+  }
+
+  openEditCity(cityId: number): void {
+    console.log("ID: " + cityId);
+    const dialogRef = this.dialog.open(CitiesEditComponent, {
+      width: '400px',
+      data: { cityId }, // Pasa el userId como dato al diálogo UsersDeleteComponent
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === 'success') {
+
+        console.log("el resultado es:" + result);
+        // Realiza cualquier acción adicional después de eliminar el usuario y cerrar el modal.
+        // Por ejemplo, puedes actualizar la lista de usuarios para que se reflejen los cambios en la tabla.
+        this.getAllCities(); // Vuelve a cargar los usuarios para que se actualice la tabla.
+      }
+    });
+  }
+
+  openAddCity(city: any): void {
+    const dialogRef = this.dialog.open(CitiesaddModalComponent, {
+      width: '400px',
+      data: { city }, // Pasa el userId como dato al diálogo UsersDeleteComponent
     });
 
     dialogRef.afterClosed().subscribe((result) => {
@@ -105,6 +142,11 @@ export class CitiesComponent implements AfterViewInit {
 
   addData() {
     const randomElementIndex = Math.floor(Math.random() * this.dataSource.data.length);
+  }
+
+  onRowClick(row: any) {
+    // Obtener el userId de la fila seleccionada
+    const countryId = row.countryId;
   }
 }
 
