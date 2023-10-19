@@ -7,7 +7,7 @@
 </mat-form-field>
 
 <div class="demo-button-container">
-  <button mat-raised-button (click)="addData()"
+  <button mat-raised-button (click)="openAddCity()"
           class="demo-button">
     Add City
   </button>
@@ -42,14 +42,15 @@
         <mat-icon id="edit-btn"
                   aria-hidden="false"
                   aria-label="edit-btn"
-                  fontIcon="edit">
+                  fontIcon="edit"
+                  (click)="openEditCity(element.cityId)">
 
         </mat-icon>
         <mat-icon id="delete-btn"
                   aria-hidden="false"
                   aria-label="delete-btn"
                   fontIcon="delete"
-                  (click)="openCitiesDelete(element.cityId)">
+                  (click)="openDeleteCity(element.cityId)">
         </mat-icon>
       </td>
     </ng-container>

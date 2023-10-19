@@ -135,12 +135,11 @@ export class ApiService {
     return this.http.post<any>('https://localhost:7290/api/Countries', countryData);
   }
 
-  // PUT
-
-  updateCountryById(countryId: number, countryData: any): Observable<any> {
-    return this.http.put<any>(`https://localhost:7290/api/countries/${countryId}`, countryData);
+  addCity(cityData: any): Observable<any> {
+    return this.http.post<any>('https://localhost:7290/api/cities', cityData);
   }
 
+  // PUT
   updateUserProfile(userId: string, profileData: any): Observable<any> {
     return this.http.put<any>(`https://localhost:7295/api/users/${userId}`, profileData);
   }
@@ -151,6 +150,14 @@ export class ApiService {
 
   updateReserveById(reservaId: number, reservaData: any): Observable<any> {
     return this.http.put<any>(`https://localhost:7065/api/reserves/${reservaId}`, reservaData);
+  }
+
+  updateCountryById(countryId: number, countryData: any): Observable<any> {
+    return this.http.put<any>(`https://localhost:7290/api/countries/${countryId}`, countryData);
+  }
+
+  updateCityById(cityId: number, cityData: any): Observable<any> {
+    return this.http.put<any>(`https://localhost:7290/api/cities/${cityId}`, cityData);
   }
 
   // DELETE
@@ -170,7 +177,7 @@ export class ApiService {
   }
 
   deleteCityById(cityId: number): Observable<any> {
-    const url = `https://localhost:7290/cities/${cityId}`;
+    const url = `https://localhost:7290/api/cities/${cityId}`;
     return this.http.delete(url);;
   }
 }

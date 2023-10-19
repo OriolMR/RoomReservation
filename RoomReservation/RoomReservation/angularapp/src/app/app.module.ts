@@ -37,6 +37,7 @@ import { UserseditModalComponent } from './views/admin/users/usersedit-modal/use
 import { CountrieseditModalComponent } from './views/admin/countries/countriesedit-modal/countriesedit-modal.component';
 import { CountriesaddModalComponent } from './views/admin/countries/countriesadd-modal/countriesadd-modal.component';
 import { CitiesaddModalComponent } from './views/admin/cities/citiesadd-modal/citiesadd-modal.component';
+import { CitiesEditComponent } from './views/admin/cities/cities-edit/cities-edit.component';
 
 //Material UI
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
@@ -85,6 +86,7 @@ ToastrModule.forRoot({
     CountrieseditModalComponent,
     CountriesaddModalComponent,
     CitiesaddModalComponent,
+    CitiesEditComponent,
   ],
   imports: [
     BrowserModule,
