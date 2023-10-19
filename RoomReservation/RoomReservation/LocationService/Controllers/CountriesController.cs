@@ -44,7 +44,7 @@ public class CountriesController : ControllerBase
 
     // POST: api/Country
     [HttpPost]
-    [Authorize(Roles = "Administrador")]
+    //[Authorize(Roles = "Administrador")]
     public async Task<IActionResult> AddCountry([FromBody] Country country)
     {
         country.countryId = 0;
@@ -59,8 +59,8 @@ public class CountriesController : ControllerBase
     }
 
     // PUT: api/Country/{id}
-    [HttpPut("{id:guid}")]
-    [Authorize(Roles = "Administrador")]
+    [HttpPut("{id:int}")]
+    //[Authorize(Roles = "Administrador")]
     public async Task<IActionResult> UpdateCountry(int id, [FromBody] Country country)
     {
         var existingCountry = await locationDbContext
@@ -82,7 +82,7 @@ public class CountriesController : ControllerBase
 
     // DELETE: api/Country/{id}
     [HttpDelete("{id:int}")]
-    [Authorize(Roles = "Administrador")]
+    //[Authorize(Roles = "Administrador")]
     public async Task<IActionResult> DeleteCountry(int id)
     {
         var country = await locationDbContext

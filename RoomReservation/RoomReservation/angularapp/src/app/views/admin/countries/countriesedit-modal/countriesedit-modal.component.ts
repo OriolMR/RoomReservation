@@ -5,9 +5,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IgxTimePickerComponent } from 'igniteui-angular/lib/time-picker/time-picker.component';
 import { DatePipe } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
-import { ApiService } from '../../../service/api.service';
+import { ApiService } from '../../../../service/api.service';
 import { Router } from '@angular/router';
-import { AuthenticationGuard } from '../../login/authentication.guard';
+import { AuthenticationGuard } from '../../../login/authentication.guard';
 
 @Component({
   selector: 'app-countriesedit-modal',
@@ -17,7 +17,6 @@ import { AuthenticationGuard } from '../../login/authentication.guard';
 export class CountrieseditModalComponent {
   countryId: number = 0;
   countryName: string = '';
-
 
   @ViewChild('toast', { static: true })
   private toast!: { open: () => void; };
@@ -53,11 +52,10 @@ export class CountrieseditModalComponent {
   saveCountry(): void {
     const countryId = this.data.countryId; // Accede al countryId desde el objeto data
     const countryData = {
-      countryId : countryId,
+      countryId: this.countryId,
       countryName: this.countryName,
     };
     console.log(countryData);
-
     console.log(countryId);
 
     // Llama al método deleteUserById pasando el userId como argumento
@@ -71,10 +69,10 @@ export class CountrieseditModalComponent {
       (error) => {
         // Ocurrió un error al actualizar el perfil
         console.log(countryId);
-        console.error('Error al actualizar el país: aaaa', error);
+        console.error('Error al actualizar el país: ', error);
         this.toastr.error('Error updating country'); // Mostrar un mensaje de error usando ToastrService
         // Aquí puedes manejar el error de acuerdo a tus necesidades
-        console.log(countryId);
+        console.log("CountryData: " + countryData);
       }
     );
   }

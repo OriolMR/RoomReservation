@@ -11,12 +11,11 @@ export class CountriesDeleteComponent {
   constructor(
     private apiService: ApiService,
     public dialogRef: MatDialogRef<CountriesDeleteComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: { countryId: string } // Recibe el userId desde el componente que lo llamó
+    @Inject(MAT_DIALOG_DATA) public data: { countryId: number } // Recibe el userId desde el componente que lo llamó
   ) { }
 
   deleteCountry(): void {
     const countryId = this.data.countryId; // Accede al userId desde el objeto data
-
     // Llama al método deleteUserById pasando el userId como argumento
     this.apiService.deleteCountryById(countryId).subscribe(
       () => {
