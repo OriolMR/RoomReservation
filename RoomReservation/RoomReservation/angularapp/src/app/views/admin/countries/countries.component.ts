@@ -13,8 +13,8 @@ import { CountriesDeleteComponent } from './countries-delete/countries-delete.co
 import { ApiService } from '../../../service/api.service';
 import { HttpClientModule } from '@angular/common/http';
 import {MatIconModule} from '@angular/material/icon';
-import { CountriesaddModalComponent } from '../countriesadd-modal/countriesadd-modal.component';
-import { CountrieseditModalComponent } from '../countriesedit-modal/countriesedit-modal.component';
+import { CountriesaddModalComponent } from '../countries/countriesadd-modal/countriesadd-modal.component';
+import { CountrieseditModalComponent } from '../countries/countriesedit-modal/countriesedit-modal.component';
 
 @Component({
   selector: 'app-countries',
@@ -44,8 +44,8 @@ export class CountriesComponent implements AfterViewInit {
     this.getAllCountries();
   }
 
-  openDialog(countryId: string): void {
-    console.log("ID" + countryId);
+  openDeleteCountry(countryId: number): void {
+    console.log("ID: " + countryId);
     const dialogRef = this.dialog.open(CountriesDeleteComponent, {
       width: '250px',
       data: { countryId }, // Pasa el userId como dato al diálogo UsersDeleteComponent
@@ -65,8 +65,6 @@ export class CountriesComponent implements AfterViewInit {
   onRowClick(row: any) {
     // Obtener el userId de la fila seleccionada
     const countryId = row.countryId;
-
-    // Llamar a la función openDialog con el userId como parámetro
   }
 
   getAllCountries() {

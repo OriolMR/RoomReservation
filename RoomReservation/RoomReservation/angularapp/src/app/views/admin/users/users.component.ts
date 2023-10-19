@@ -15,8 +15,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
-import { UsersaddModalComponent } from '../usersadd-modal/usersadd-modal.component';
-import { UserseditModalComponent } from '../usersedit-modal/usersedit-modal.component';
+import { UsersaddModalComponent } from '../users/usersadd-modal/usersadd-modal.component';
+import { UserseditModalComponent } from '../users/usersedit-modal/usersedit-modal.component';
 
 
 @Component({

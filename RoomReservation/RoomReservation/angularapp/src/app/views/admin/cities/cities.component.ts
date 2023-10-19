@@ -42,11 +42,21 @@ export class CitiesComponent implements AfterViewInit {
     this.getAllCities();
   }
 
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(CitiesDeleteComponent, {
+  openCitiesDelete(cityId: number): void {
+    console.log("ID: " + cityId);
+    const dialogRef = this.dialog.open(CitiesDeleteComponent, {
       width: '250px',
-      enterAnimationDuration,
-      exitAnimationDuration,
+      data: { cityId }, // Pasa el userId como dato al diálogo UsersDeleteComponent
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === 'success') {
+
+        console.log("el resultado es:" + result);
+        // Realiza cualquier acción adicional después de eliminar el usuario y cerrar el modal.
+        // Por ejemplo, puedes actualizar la lista de usuarios para que se reflejen los cambios en la tabla.
+        this.getAllCities(); // Vuelve a cargar los usuarios para que se actualice la tabla.
+      }
     });
   }
 

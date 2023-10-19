@@ -15,27 +15,15 @@ import { MenuComponent } from './menu/menu.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TokenInterceptor } from './views/login/token.interceptor';
 import { ToastrModule } from 'ngx-toastr';
-import { MatDialogModule } from '@angular/material/dialog';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbDatepickerModule } from '@ng-bootstrap/ng-bootstrap';
 import { UpdateModalComponent } from './views/update-modal/update-modal.component';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
 import { DatePipe } from '@angular/common';
 import { IgxTimePickerModule, IgxToastModule } from 'igniteui-angular';
 import { ReservationModalComponent } from './views/reservation-modal/reservation-modal.component';
 import { ApiService } from './service/api.service';
 import { AdminComponent } from './views/admin/admin.component';
 import { EntradaAdminComponent } from './views/admin/entrada-admin/entrada-admin.component';
-
-//Material UI
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIconModule } from '@angular/material/icon';
-import { MatDividerModule } from '@angular/material/divider';
 import { CitiesDeleteComponent } from './views/admin/cities/cities-delete/cities-delete.component';
 import { CountriesDeleteComponent } from './views/admin/countries/countries-delete/countries-delete.component';
 import { OfficesDeleteComponent } from './views/admin/offices/offices-delete/offices-delete.component';
@@ -43,12 +31,25 @@ import { MeetingRoomsDeleteComponent } from './views/admin/meeting-rooms/meeting
 import { UsersDeleteComponent } from './views/admin/users/users-delete/users-delete.component';
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
 import { ReservesDeleteComponent } from './views/admin/reserves-admin/reserves-delete/reserves-delete.component';
-import { UsersaddModalComponent } from './views/admin/usersadd-modal/usersadd-modal.component';
+import { UsersaddModalComponent } from './views/admin/users/usersadd-modal/usersadd-modal.component';
 import { ForgotPasswordComponent } from './views/forgot-password/forgot-password.component';
-import { UserseditModalComponent } from './views/admin/usersedit-modal/usersedit-modal.component';
-import { CountrieseditModalComponent } from './views/admin/countriesedit-modal/countriesedit-modal.component';
-import { CountriesaddModalComponent } from './views/admin/countriesadd-modal/countriesadd-modal.component';
-import { CitiesaddModalComponent } from './views/admin/citiesadd-modal/citiesadd-modal.component';
+import { UserseditModalComponent } from './views/admin/users/usersedit-modal/usersedit-modal.component';
+import { CountrieseditModalComponent } from './views/admin/countries/countriesedit-modal/countriesedit-modal.component';
+import { CountriesaddModalComponent } from './views/admin/countries/countriesadd-modal/countriesadd-modal.component';
+import { CitiesaddModalComponent } from './views/admin/cities/citiesadd-modal/citiesadd-modal.component';
+
+//Material UI
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
+
 
 ToastrModule.forRoot({
   positionClass: 'toast-top-center',

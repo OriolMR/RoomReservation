@@ -138,7 +138,7 @@ export class ApiService {
   // PUT
 
   updateCountryById(countryId: number, countryData: any): Observable<any> {
-    return this.http.put<any>(`https://localhost:7065/api/countries/${countryId}`, countryData);
+    return this.http.put<any>(`https://localhost:7290/api/countries/${countryId}`, countryData);
   }
 
   updateUserProfile(userId: string, profileData: any): Observable<any> {
@@ -164,8 +164,13 @@ export class ApiService {
     return this.http.delete(url);
   }
 
-  deleteCountryById(countryId: string): Observable<any> {
-    const url = `https://localhost:7290/Countries/${countryId}`;
+  deleteCountryById(countryId: number): Observable<any> {
+    const url = `https://localhost:7290/api/countries/${countryId}`;
+    return this.http.delete(url);;
+  }
+
+  deleteCityById(cityId: number): Observable<any> {
+    const url = `https://localhost:7290/cities/${cityId}`;
     return this.http.delete(url);;
   }
 }
