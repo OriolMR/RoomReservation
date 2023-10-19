@@ -16,7 +16,7 @@ export class CitiesDeleteComponent {
 
   deleteCity(): void {
     const cityId = this.data.cityId; // Accede al userId desde el objeto data
-
+    console.log(cityId);
     // Llama al método deleteUserById pasando el userId como argumento
     this.apiService.deleteCityById(cityId).subscribe(
       () => {

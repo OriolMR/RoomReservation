@@ -38,6 +38,7 @@ import { CountrieseditModalComponent } from './views/admin/countries/countriesed
 import { CountriesaddModalComponent } from './views/admin/countries/countriesadd-modal/countriesadd-modal.component';
 import { CitiesaddModalComponent } from './views/admin/cities/citiesadd-modal/citiesadd-modal.component';
 import { CitiesEditComponent } from './views/admin/cities/cities-edit/cities-edit.component';
+import { OfficesAddComponent } from './views/admin/offices/offices-add/offices-add.component';
 
 //Material UI
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
@@ -50,6 +51,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
+import { OfficesEditComponent } from './views/admin/offices/offices-edit/offices-edit.component';
 
 
 ToastrModule.forRoot({
@@ -87,6 +89,8 @@ ToastrModule.forRoot({
     CountriesaddModalComponent,
     CitiesaddModalComponent,
     CitiesEditComponent,
+    OfficesAddComponent,
+    OfficesEditComponent,
   ],
   imports: [
     BrowserModule,
