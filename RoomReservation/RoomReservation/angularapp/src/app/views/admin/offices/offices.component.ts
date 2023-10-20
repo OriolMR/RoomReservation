@@ -13,6 +13,8 @@ import { OfficesDeleteComponent } from './offices-delete/offices-delete.componen
 import { ApiService } from '../../../service/api.service';
 import { HttpClientModule } from '@angular/common/http';
 import {MatIconModule} from '@angular/material/icon';
+import { OfficesAddComponent } from './offices-add/offices-add.component';
+import { OfficesEditComponent } from './offices-edit/offices-edit.component';
 
 @Component({
   selector: 'app-offices',
@@ -42,11 +44,56 @@ export class officesComponent implements AfterViewInit {
     this.getAllOffices();
   }
 
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialog.open(OfficesDeleteComponent, {
+  openAddOffice(office: any): void {
+    const dialogRef = this.dialog.open(OfficesAddComponent, {
+      width: '400px',
+      data: { office }, // Pasa el userId como dato al diálogo UsersDeleteComponent
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === 'success') {
+
+        console.log("el resultado es:" + result);
+        // Realiza cualquier acción adicional después de eliminar el usuario y cerrar el modal.
+        // Por ejemplo, puedes actualizar la lista de usuarios para que se reflejen los cambios en la tabla.
+        this.getAllOffices(); // Vuelve a cargar los usuarios para que se actualice la tabla.
+      }
+    });
+  }
+
+  openDeleteOffice(officeId: number): void {
+    console.log("ID: " + officeId);
+    const dialogRef = this.dialog.open(OfficesDeleteComponent, {
       width: '250px',
-      enterAnimationDuration,
-      exitAnimationDuration,
+      data: { officeId }, // Pasa el userId como dato al diálogo UsersDeleteComponent
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === 'success') {
+
+        console.log("el resultado es:" + result);
+        // Realiza cualquier acción adicional después de eliminar el usuario y cerrar el modal.
+        // Por ejemplo, puedes actualizar la lista de usuarios para que se reflejen los cambios en la tabla.
+        this.getAllOffices(); // Vuelve a cargar los usuarios para que se actualice la tabla.
+      }
+    });
+  }
+
+  openEditOffice(officeId: number): void {
+    console.log("ID: " + officeId);
+    const dialogRef = this.dialog.open(OfficesEditComponent, {
+      width: '400px',
+      data: { officeId }, // Pasa el userId como dato al diálogo UsersDeleteComponent
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result === 'success') {
+
+        console.log("el resultado es:" + result);
+        // Realiza cualquier acción adicional después de eliminar el usuario y cerrar el modal.
+        // Por ejemplo, puedes actualizar la lista de usuarios para que se reflejen los cambios en la tabla.
+        this.getAllOffices(); // Vuelve a cargar los usuarios para que se actualice la tabla.
+      }
     });
   }
 

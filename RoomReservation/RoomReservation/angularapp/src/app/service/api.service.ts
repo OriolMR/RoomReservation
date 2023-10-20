@@ -139,6 +139,10 @@ export class ApiService {
     return this.http.post<any>('https://localhost:7290/api/cities', cityData);
   }
 
+  addOffice(officeData: any): Observable<any> {
+    return this.http.post<any>('https://localhost:7290/api/offices', officeData);
+  }
+
   // PUT
   updateUserProfile(userId: string, profileData: any): Observable<any> {
     return this.http.put<any>(`https://localhost:7295/api/users/${userId}`, profileData);
@@ -160,6 +164,10 @@ export class ApiService {
     return this.http.put<any>(`https://localhost:7290/api/cities/${cityId}`, cityData);
   }
 
+  updateOfficeById(officeId: number, officeData: any): Observable<any> {
+    return this.http.put<any>(`https://localhost:7290/api/offices/${officeId}`, officeData);
+  }
+
   // DELETE
 
   deleteReserveById(reserveId: number): Observable<any> {
@@ -178,6 +186,11 @@ export class ApiService {
 
   deleteCityById(cityId: number): Observable<any> {
     const url = `https://localhost:7290/api/cities/${cityId}`;
+    return this.http.delete(url);;
+  }
+
+  deleteOfficeById(officeId: number): Observable<any> {
+    const url = `https://localhost:7290/api/offices/${officeId}`;
     return this.http.delete(url);;
   }
 }

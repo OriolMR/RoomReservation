@@ -6,7 +6,7 @@
 </mat-form-field>
 
 <div class="demo-button-container">
-  <button mat-raised-button (click)="addData()" class="demo-button">
+  <button mat-raised-button (click)="openAddOffice()" class="demo-button">
     Add Office
   </button>
 </div>
@@ -39,13 +39,14 @@
         <mat-icon id="edit-btn"
                   aria-hidden="false"
                   aria-label="edit-btn"
-                  fontIcon="edit">
+                  fontIcon="edit"
+                  (click)="openEditOffice(element.officeId)">
         </mat-icon>
         <mat-icon id="delete-btn"
                   aria-hidden="false"
                   aria-label="delete-btn"
                   fontIcon="delete"
-                  (click)="openDialog('0ms', '0ms')">
+                  (click)="openDeleteOffice(element.officeId)">
         </mat-icon>
       </td>
     </ng-container>

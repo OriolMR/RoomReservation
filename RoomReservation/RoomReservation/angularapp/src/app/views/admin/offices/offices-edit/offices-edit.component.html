@@ -1,0 +1,20 @@
+<div class="modal-overlay" (click)="onOverlayClick($event)">
+
+  <div class="modal-content" (click)="onContentClick($event)">
+    <h2>Update Office:</h2>
+    <div class="form-group">
+      <label for="officeName">Office Name:</label><br>
+      <input type="text" id="officeName" class="form-control" placeholder="Enter the new office name" [(ngModel)]="officeName" (keydown.enter)="saveOffice()">
+    </div>
+
+    <div class="form-group">
+      <label for="cityId">City ID:</label><br>
+      <input type="number" id="cityId" class="form-control" placeholder="Enter the new city ID" [(ngModel)]="cityId" (keydown.enter)="saveOffice()">
+    </div>
+
+    <div class="form-group">
+      <button class="custom-button" (click)="close()">Close</button>
+      <button type="button" class="btn btn-primary" (click)="saveOffice()" [ngClass]="{'button-disabled': isButtonDisabled}" [disabled]="isButtonDisabled">Submit</button>
+      <div style="margin-top: 10px;"></div>
+    </div>
+  </div>
